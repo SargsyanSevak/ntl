@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #eeeef7;
+}
+.shadow {
+ 
+  box-shadow: 0px 18px 50px -15px rgba(25, 42, 89, 0.2);
+ 
+}
+.background {
+  background-image: url('./assets/background-top.svg');
+  background-size: cover;
+}
+.background-bottom {
+  background-image: url('./assets/background-bottom.svg');
+  background-size: cover;
+}
+.main-color {
+  color: #1c90f3;
+  letter-spacing: 0.5px;
+}
+.secondary-color {
+  color: rgba(23, 39, 85, 1);
+}
+.heading-color {
+  color: rgba(23, 39, 85, 1);
+  letter-spacing: 0.8px;
+}
+.text-color {
+  color:#8794BA;
+  letter-spacing: 0.5px;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.login {
+  position: relative;
+  background-image: url(https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  width: 50%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 10;
+  --mask:
+  radial-gradient(172.18px at 231.00px 50%,#000 99%,#0000 101%) 0 calc(50% - 154px)/100% 308px,
+  radial-gradient(172.18px at -154px 50%,#0000 99%,#000 101%) 77px 50%/100% 308px repeat-y;
+-webkit-mask: var(--mask);
+        mask: var(--mask);
+}
+.register {
+  position: relative;
+  background-image: url(https://images.pexels.com/photos/16167848/pexels-photo-16167848/free-photo-of-crane-and-ship-in-port.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  width: 50%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 10;
+  --mask:
+  radial-gradient(172.18px at 231.00px 50%,#000 99%,#0000 101%) 0 calc(50% - 154px)/100% 308px,
+  radial-gradient(172.18px at -154px 50%,#0000 99%,#000 101%) 77px 50%/100% 308px repeat-y;
+-webkit-mask: var(--mask);
+        mask: var(--mask);
 }
 
-.App-link {
-  color: #61dafb;
+::-webkit-scrollbar {
+  width: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1c90f3;
+  border-radius: 6px;
 }
