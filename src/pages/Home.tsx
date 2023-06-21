@@ -10,15 +10,15 @@ import Plans from "../components/Plans";
 export default function Home() {
   return (
     <section className="reletive max-w-[1600px] w-full mx-auto">
-      <Header/>
+      <Header />
       <main className={`w-full min-h-screen`}>
-        <HomePage/>
-        <Features/>
-        <AutomatedWidgets/>
-       <Customizable/>
-        <Calendar/>
-        <Plans/>
-        <Footer/>
+        <HomePage />
+        <Features />
+        <AutomatedWidgets />
+        <Customizable />
+        <Calendar />
+        <Plans />
+        <Footer />
       </main>
     </section>
   );
