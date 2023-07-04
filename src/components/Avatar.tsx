@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Avatar = () => {
-  const [open, setOpen] = useState<Boolean | null>(true);
+  const [open, setOpen] = useState<Boolean | null>(false);
 
   const handleOpen = () => {
     setOpen(!open);

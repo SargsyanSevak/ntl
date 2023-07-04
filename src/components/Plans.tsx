@@ -32,8 +32,8 @@ const Plans:React.FC = () => {
                   </div>
                   <p className="w-full text-center text-color">per month</p>
 
-                  <div className="w-full h-[150px] flex justify-center items-center text-white">
-                    <button className="border-x-2 border-y-2 border-[#2A407C]  w-2/3 rounded-[50px] py-2">Order</button>
+                  <div className="w-full h-[150px] flex justify-center items-center text-gray-500">
+                    <button className="border-x-2 border-y-2 border-[#2A407C]  w-2/3 rounded-[50px] py-2" disabled>Order</button>
                   </div>
                 </div>
                 <div className="w-[80vw] md:w-[300px] h-[400px] flex-shrink-0  px-10  bg-[#fff] rounded-[50px]">
