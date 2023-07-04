@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from '../assets/logo.svg'
 import { AiOutlineClose } from "react-icons/ai";
+import Avatar from "./Avatar";
 interface FullScreenModalProps {
   isOpen: boolean;
   navigation: any;
@@ -42,9 +43,14 @@ export const MobileMenu: React.FC<FullScreenModalProps> = ({
               </div>
               <div className="w-full h-full">
                 <div className=" h-full flex flex-col justify-center gap-y-12  items-center uppercase">
-                  <div>
+                  
+                    <div>
+                      <Avatar/>
+                    </div>
+                  
+                  {/* <div>
                     <img src={Logo} alt="" />
-                  </div>
+                  </div> */}
                   {navigation.map((el: any) => (
                     <a
                       href={el.href}

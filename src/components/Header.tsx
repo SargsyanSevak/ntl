@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { GoSignIn } from "react-icons/go";
 import Logo from "../assets/logo.svg";
 import Burger from "../assets/burger.svg";
+import Avatar from "./Avatar";
 const navigation = [
   {
     name: "Գլխավոր",
@@ -30,7 +31,7 @@ const navigation = [
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [activeUser, setActiveUser] = useState<Boolean | null>(true);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -60,9 +61,12 @@ const Header = () => {
         </div>
         <div className="w-2/3 md:w-[20%] h-full ">
           <div className="w-full h-full flex md:hidden justify-end items-center  text-sm gap-4 ">
-            <Link to="/login" className="text-xl mr-6 block text-white">
+            {
+              !activeUser && <><Link to="/login" className="text-xl mr-6 block text-white">
               <GoSignIn />
-            </Link>
+            </Link></>
+            }
+            
             <img
               src={Burger}
               alt=""
@@ -75,20 +79,25 @@ const Header = () => {
               navigation={navigation}
             />
           </div>
-
-          <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
-            <div className="flex md:hidden">
-              <GoSignIn />
+          {activeUser ? (
+            <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
+            <Avatar/>
             </div>
-            <Link to="/login">
-              <button className="border-none outline-none">Մուտք</button>
-            </Link>
-            <Link to="/register">
-              <button className="px-[20px] border-x-2 border-y-2 py-[10px] border-[#465B95] rounded-[100px] text-[#9ca8cb]">
-                Գրանցվել
-              </button>
-            </Link>
-          </div>
+          ) : (
+            <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
+              <div className="flex md:hidden">
+                <GoSignIn />
+              </div>
+              <Link to="/login">
+                <button className="border-none outline-none">Մուտք</button>
+              </Link>
+              <Link to="/register">
+                <button className="px-[20px] border-x-2 border-y-2 py-[10px] border-[#465B95] rounded-[100px] text-[#9ca8cb]">
+                  Գրանցվել
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </motion.header>
