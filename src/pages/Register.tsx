@@ -4,6 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import Logo from '../assets/logo.svg'
 export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
@@ -16,7 +17,7 @@ export default function Register() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto h-20 w-auto"
-              src='/logo.svg'
+              src={Logo}
               alt="Your Company"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -100,7 +101,7 @@ export default function Register() {
                   <input
                     id="password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Գաղտնաբառ"
                     autoComplete="current-password"
                     required

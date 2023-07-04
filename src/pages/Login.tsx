@@ -4,7 +4,7 @@ import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"; 
-
+import Logo from '../assets/logo.svg'
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export default function LogIn() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto h-20 w-auto"
-              src='/logo.svg'
+              src={Logo}
               alt="Your Company"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
