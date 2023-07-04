@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const Forgot: React.FC = () => {
   const [showEmail, setShowEmail] = useState<boolean | null>(true);
@@ -20,6 +21,9 @@ const Forgot: React.FC = () => {
   };
   return (
     <section className="w-full h-screen flex justify-center items-center container p-[1rem]">
+       <Helmet>
+        <title>{`Վերականգնել գաղտնաբառը`}</title>
+      </Helmet>
       <div className="w-[500px] h-[500px] flex flex-col justify-around items-center  overflow-hidden px-[0.4rem]">
         {showEmail && (
           <>

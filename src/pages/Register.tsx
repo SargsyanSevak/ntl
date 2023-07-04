@@ -5,6 +5,7 @@ import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from '../assets/logo.svg'
+import { Helmet } from 'react-helmet';
 export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +13,9 @@ export default function Register() {
   const handleShow = () => setShowPassword(!showPassword);
   return (
     <section className="w-full min-h-screen flex">
+       <Helmet>
+        <title>{`Գրանցվել`}</title>
+      </Helmet>
       <div className="w-full md:w-1/2 h-screen  px-sm">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
