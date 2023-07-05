@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const Avatar = () => {
+const Avatar:React.FC = () => {
   const [open, setOpen] = useState<Boolean | null>(false);
+  const ref = useRef<any>()
 
   const handleOpen = () => {
     setOpen(!open);
@@ -19,18 +20,33 @@ const Avatar = () => {
       return "NTL";
     }
   };
+  useEffect(() => {
+    const checkIfClickedOutside = (e:any) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        setOpen(false)
+      }
+    }
 
+    document.addEventListener("mousedown", checkIfClickedOutside)
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", checkIfClickedOutside)
+    }
+  }, [open])
   return (
-    <div className="reletive">
+    <div className="reletive" >
       <div className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white" onClick={handleOpen}>
         <p> {avatarWords(str)}</p>
       </div>
 
       {open && (
-        <div className="hidden md:block absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <div className="hidden md:block absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600" ref={ref}>
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
-            <div className="font-medium truncate">name@flowbite.com</div>
+            <div className="font-medium truncate">name@ntluser.com</div>
           </div>
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -38,7 +54,7 @@ const Avatar = () => {
           >
             <li>
               <a
-                href="#"
+                href="http://google.com"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Dashboard
@@ -46,7 +62,7 @@ const Avatar = () => {
             </li>
             <li>
               <a
-                href="#"
+                 href="http://google.com"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Settings
@@ -54,7 +70,7 @@ const Avatar = () => {
             </li>
             <li>
               <a
-                href="#"
+                href="http://google.com"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Earnings
@@ -63,7 +79,7 @@ const Avatar = () => {
           </ul>
           <div className="py-1">
             <a
-              href="#"
+               href="http://google.com"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
               Sign out
