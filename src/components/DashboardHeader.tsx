@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DatePickerUi from "./DatePicker";
 
 const DashboardHeader = () => {
   const [open, setOpen] = useState<boolean | null>(false);
@@ -8,6 +9,7 @@ const DashboardHeader = () => {
  
     >
       <button onClick={() => setOpen(!open)}>Open</button>
+      <DatePickerUi/>
     </div>
   );
 };
