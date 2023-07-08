@@ -10,9 +10,9 @@ const DatePickerUi: React.FC = () => {
   ));
 
   return (
-    <div className="flex flex-col justify-between  text-sm font-medium leading-4 text-gray-900">
+    <div className="flex w-full sm:w-[48%] lg:w-full flex-col justify-between  text-sm font-medium leading-4 text-gray-900 md:gap-0 gap-2">
       <label>Բարձման օր</label>
-      <div className="px-4 py-[9.3px] bg-white rounded-md">
+      <div className="px-4 py-[9.3px] bg-white rounded-md ">
         <DatePicker
           selected={startDate}
           onChange={(date: any) => setStartDate(date)}

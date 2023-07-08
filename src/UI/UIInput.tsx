@@ -16,7 +16,7 @@ const UIInput: React.FC<InputProps> = ({
   onChange,
 }) => {
   return (
-    <div className="flex flex-col justify-between  text-sm font-medium leading-4 text-gray-900">
+    <div className="flex w-full sm:w-[48%] lg:w-full flex-col justify-between  text-sm font-medium leading-4 text-gray-900 lg:gap-0 gap-2">
       <label>{label}</label>
       <input
         type={type}

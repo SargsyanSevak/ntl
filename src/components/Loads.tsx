@@ -11,7 +11,7 @@ const Loads = () => {
 
   return (
     <div>
-      <div className="w-full h-10 bg-gray-400 flex items-center pl-6">
+      <div className="w-full h-10 bg-gray-400 flex items-center pl-4 lg:pl-6">
         <p>{testload.length} Total results </p>
       </div>
       {testload.slice(0, next)?.map((el, i) => (

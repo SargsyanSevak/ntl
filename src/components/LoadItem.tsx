@@ -34,13 +34,13 @@ const LoadItem = ({
       <div
         className={`hidden  w-full py-2 bg-slate-300 lg:flex flex-col lg:gap-0 gap-2 lg:flex-row justify-between items-center px-2 lg:px-6 text-[0.75rem] lg:text-[0.9rem] font-bold border-b-2`}
       >
-        <div className="age flex justify-start items-center gap-2  bg-red-400 text-[1.2rem]">
+        <div className="age flex justify-start items-center gap-2 ">
           <span className="block lg:hidden">
             <AiOutlineClockCircle />
           </span>
           {age}
         </div>
-        <div className="date flex justify-start items-center gap-2 bg-green-400 text-[1.2rem]">
+        <div className="date flex justify-start items-center gap-2 ">
           <span className="block lg:hidden">
             <AiOutlineCalendar />
           </span>
@@ -109,9 +109,9 @@ const LoadItem = ({
               {CutString(pickup)}
             </div>
             <div className="arrow text-gray-500">
-          {" "}
-          <div className="h-[20px] w-[2px] bg-gray-500 ml-[6px] md:ml-2"></div>
-        </div>
+              {" "}
+              <div className="h-[20px] w-[2px] bg-gray-500 ml-[6px] md:ml-2"></div>
+            </div>
             <div className="delivery flex justify-start items-center gap-2">
               <span className="block lg:hidden text-[#1C90F3] ">
                 <HiLocationMarker />
@@ -120,23 +120,21 @@ const LoadItem = ({
             </div>
           </div>
           <div className="flex w-full h-[40px] items-center justify-between">
-          <div className="length">{length}մ³</div>
-          <div className="weight">{weight}կգ</div>
-          <div className="truckType flex justify-center items-center gap-2">
-          <span className="block lg:hidden">
-            <BsTruck />
-          </span>
-          {truckType}
-        </div>
-        <div className="distance">{distance}կմ</div>
+            <div className="length">{length}մ³</div>
+            <div className="weight">{weight}կգ</div>
+            <div className="truckType flex justify-center items-center gap-2">
+              <span className="block lg:hidden">
+                <BsTruck />
+              </span>
+              {truckType}
+            </div>
+            <div className="distance">{distance}կմ</div>
           </div>
           <div className="flex w-full h-[40px] justify-between items-center">
-          <div className="company text-[#1C90F3]" title={company}>
-          {company}
-        </div>
-        {
-          rate ?  <div className="rate">{rate}$</div> : <div> - </div>
-        }
+            <div className="company text-[#1C90F3]" title={company}>
+              {company}
+            </div>
+            {rate ? <div className="rate">{rate}$</div> : <div> - </div>}
           </div>
         </div>
       </div>

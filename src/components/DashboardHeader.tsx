@@ -34,7 +34,7 @@ const DashboardHeader = () => {
   };
   return (
     <>
-      <div className={`w-full  bg-gray-300 py-2 px-6`}>
+      <div className={`w-full  bg-gray-300 py-2 px-4 lg:px-6`}>
         <div className="flex justify-between items-center">
           <div
             onClick={() => setOpen(!open)}
@@ -50,9 +50,9 @@ const DashboardHeader = () => {
           </div>
         </div>
 
-        <div className={`${open ? "flex" : "hidden"} py-8 gap-4`}>
+        <div className={`${open ? "flex" : "hidden"} py-8 gap-4 flex-wrap lg:flex-nowrap`}>
           <DatePickerUi />
-          <div className="trucktype w-32">
+          <div className="trucktype w-full sm:w-[48%] lg:w-full">
             <UISelect data={trucks} label="Տ/Մ" />
           </div>
           <UIInput
@@ -69,7 +69,7 @@ const DashboardHeader = () => {
             value={name}
             onChange={handleNameChange}
           />
-          <div className="trucktype w-32">
+          <div className="trucktype w-full sm:w-[48%] lg:w-full">
             <UISelect data={fullOrPartial} label="Ա/Հ" />
           </div>
           <UIInput
@@ -94,18 +94,18 @@ const DashboardHeader = () => {
             onChange={handleNameChange}
           />
           <div className="flex justify-center items-end">
-            <button className="px-4 py-[8px] bg-[#1C90F3] rounded-md text-white text-sm">
+            <button className="px-10 lg:px-4 py-[8px] bg-[#1C90F3] rounded-md text-white text-sm">
               Որոնել
             </button>
           </div>
           <div className="flex justify-center items-end">
-            <div className="px-3 py-[8px] bg-gray-500 rounded-md flex justify-center items-end text-sm cursor-pointer">
+            <div className="px-4 lg:px-3 py-[8px] bg-gray-500 rounded-md flex justify-center items-end text-sm cursor-pointer">
               X
             </div>
           </div>
         </div>
       </div>
-      <Loads/>
+      <Loads />
     </>
   );
 };
