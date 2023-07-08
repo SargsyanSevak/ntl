@@ -84,8 +84,8 @@ const LoadItem = ({
         </div>
       </div>
 
-      <div className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-2 text-[0.9rem] md:text-[1.2rem] font-bold">
-        <div className="w-[20%] min-h-[100px] flex flex-col justify-around">
+      <div className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold">
+        <div className="w-[20%] min-h-[100px] flex flex-col justify-around items-start md:items-center">
           <div className="age flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
               <AiOutlineClockCircle />
