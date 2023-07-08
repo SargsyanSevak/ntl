@@ -4,6 +4,7 @@ import UIInput from "../UI/UIInput";
 import { LuFilter, LuFilterX } from "react-icons/lu";
 import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
+import Loads from "./Loads";
 const trucks = [
   {
     id: 1,
@@ -104,7 +105,7 @@ const DashboardHeader = () => {
           </div>
         </div>
       </div>
-      <p>loads</p>
+      <Loads/>
     </>
   );
 };
