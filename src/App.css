@@ -12,6 +12,7 @@ body {
 .background {
   background-image: url('./assets/background-top.svg');
   background-size: cover;
+ 
 }
 .background-bottom {
   background-image: url('./assets/background-bottom.svg');

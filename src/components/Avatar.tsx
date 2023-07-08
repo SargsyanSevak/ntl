@@ -37,13 +37,13 @@ const Avatar:React.FC = () => {
     }
   }, [open])
   return (
-    <div className="reletive" >
-      <div className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white" onClick={handleOpen}>
+    <div className="reletive" ref={ref}>
+      <div className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white" onClick={handleOpen} >
         <p> {avatarWords(str)}</p>
       </div>
 
       {open && (
-        <div className="hidden md:block absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600" ref={ref}>
+        <div className="hidden md:block absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600" >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
             <div className="font-medium truncate">name@ntluser.com</div>

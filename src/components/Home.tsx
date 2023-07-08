@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <section className="max-w-[1600px] mx-auto">
+      <section className="max-w-[1600px] mx-auto h-screen">
         <div className="w-full h-screen relative background">
           <div className="max-w-[1280px] h-full  mx-auto px-[20px] flex">
             <div className="w-full md:w-1/2 h-full  flex flex-col gap-6 md:gap-10 justify-center items-center">
@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
                 <img
                   src={dashboardSmall}
                   alt=""
-                  className=" w-full"
+                  className=" w-full "
                   width={700}
                   height={400}
                 />
