@@ -45,7 +45,7 @@ export const MobileMenu: React.FC<FullScreenModalProps> = ({
                 <div className=" h-full flex flex-col justify-center gap-y-12  items-center uppercase">
                   
                     <div>
-                      <Avatar/>
+                      <Avatar showDropDown={false}/>
                     </div>
                   
                   {/* <div>

@@ -81,7 +81,7 @@ const Header = () => {
           </div>
           {activeUser ? (
             <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
-            <Avatar/>
+            <Avatar showDropDown={true}/>
             </div>
           ) : (
             <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">

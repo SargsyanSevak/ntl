@@ -46,7 +46,7 @@ const DashboardHeader = () => {
             <p className="text-xl font-bold text-gray-600">NTL LOAD BOARD</p>
           </div>
           <div>
-            <Avatar />
+            <Avatar showDropDown={true}/>
           </div>
         </div>
 
