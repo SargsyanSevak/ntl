@@ -5,14 +5,11 @@ body {
   background: #eeeef7;
 }
 .shadow {
- 
-  box-shadow: 0px 18px 50px -15px rgba(25, 42, 89, 0.2);
- 
+  box-shadow: 0px 0px 25px 5px rgba(129,129,129,0.64)
 }
 .background {
   background-image: url('./assets/background-top.svg');
   background-size: cover;
- 
 }
 .background-bottom {
   background-image: url('./assets/background-bottom.svg');
