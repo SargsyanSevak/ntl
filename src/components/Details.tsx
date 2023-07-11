@@ -46,7 +46,7 @@ const Details = () => {
           </div>
           <div className="w-full  h-1/2 bg-slate-100 rounded-[50px]"></div>
         </div>
-        <div className="w-full h-[50vh] md:h-full   rounded-[50px] bg-slate-300 rounded-[50px] overflow-hidden">
+        <div className="w-full h-[50vh] md:h-full   rounded-[50px] bg-slate-300 overflow-hidden">
           <Map />
           {/* <MapTest /> */}
         </div>
