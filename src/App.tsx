@@ -6,9 +6,17 @@ import Register from "./pages/Register";
 import Forgot from "./pages/Forgot";
 import Dashboard from "./pages/Dashboard";
 import Details from "./components/Details";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 function App() {
   return (
     <>
+      {/* <Helmet>
+        <script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`}
+        />
+      </Helmet> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />

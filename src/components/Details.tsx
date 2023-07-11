@@ -1,8 +1,10 @@
-
 import { BsRecordCircle } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
 import { HiMail } from "react-icons/hi";
+import { Map } from "./Map";
+import MapTest from "./MapTest";
+
 const Details = () => {
   return (
     <div className="w-full min-h-screen md:min-h-screen bg-white">
@@ -30,14 +32,13 @@ const Details = () => {
             <div className="w-full h-[30%] px-4 pb-4 overflow-hidden">
               <div className="w-full h-full rounded-[50px] bg-white flex justify-around items-center pr-2 ">
                 <div className="flex flex-col justify-cente items-center w-[calc(100%-80px)] ">
-                    <h4 className="font-bold">NTL LOGISTICS INC</h4>
-                    <h4>Suren Gasparyan</h4>
+                  <h4 className="font-bold">NTL LOGISTICS INC</h4>
+                  <h4>Suren Gasparyan</h4>
                 </div>
                 <div className="w-[60px] h-[60px] rounded-full bg-blue-500 flex justify-center items-center text-2xl text-white cursor-pointer">
                   <div className="">
                     <FiPhoneCall />
                     {/* <HiMail /> */}
-
                   </div>
                 </div>
               </div>
@@ -45,7 +46,10 @@ const Details = () => {
           </div>
           <div className="w-full  h-1/2 bg-slate-100 rounded-[50px]"></div>
         </div>
-        <div className="w-full h-[50vh] md:h-full   rounded-[50px] bg-slate-300"></div>
+        <div className="w-full h-[50vh] md:h-full   rounded-[50px] bg-slate-300 rounded-[50px] overflow-hidden">
+          <Map />
+          {/* <MapTest /> */}
+        </div>
       </div>
     </div>
   );

@@ -18,17 +18,14 @@ const Loads = () => {
         <div className="w-full h-10 bg-gray-400 flex items-center justify-between pl-4 lg:pl-6 pr-8">
           <p>{testload.length} Total results </p>
           <div className="h-full flex items-center gap-4">
-          <SortLoads/>
-          <div
-            onClick={() => setOpen(!open)}
-            className="cursor-pointer text-xl font-bold"
-          >
-            {open ? <LuFilterX /> : <LuFilter />}
+            <SortLoads />
+            <div
+              onClick={() => setOpen(!open)}
+              className="cursor-pointer text-xl font-bold"
+            >
+              {open ? <LuFilterX /> : <LuFilter />}
+            </div>
           </div>
-         
-          </div>
-         
-     
         </div>
         <DashboardFilter open={open} />
         {testload.slice(0, next)?.map((el, i) => (

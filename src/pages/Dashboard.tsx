@@ -1,15 +1,16 @@
+import React from "react";
+import DashboardHeader from "../components/DashboardHeader";
+import Loads from "../components/Loads";
 
-import React from 'react'
-import DashboardHeader from '../components/DashboardHeader'
-
-const Dashboard:React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
-   <>
-      <section className='max-w-[1600px] h-screen mx-auto'>
-      <DashboardHeader/>
+    <>
+      <section className="max-w-[1600px] h-screen mx-auto">
+        <DashboardHeader />
+        <Loads />
       </section>
-   </>
-  )
-}
+    </>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

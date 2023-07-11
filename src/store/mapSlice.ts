@@ -2,8 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import { TypeFrom, TypeInitialState } from "./types";
 
 const initialState: TypeInitialState = {
-  from: {} as TypeFrom,
-  to: {} as TypeFrom,
+  from: {
+    location: { lat: 40.1872023, lng: 44.515209 },
+    description: "Ereván, Армения",
+  } as TypeFrom,
+
+  to: {
+    location: { lat: 40.807399, lng: 44.4970268 },
+    description: "Vanadzor, Армения",
+  } as TypeFrom,
   travelTime: 0,
   selectedOption: "",
 };
