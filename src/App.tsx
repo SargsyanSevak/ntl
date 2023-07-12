@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Details from "./components/Details";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import Detail from "./components/Detail";
+import Preview from "./components/Preview";
 function App() {
   return (
     <>
@@ -23,7 +25,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="forgot" element={<Forgot />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/details/:id" element={<Details />} />
+        <Route path="/dashboard/Preview/:id" element={<Preview />} />
       </Routes>
     </>
   );
