@@ -11,33 +11,6 @@ const Preview = () => {
   return (
     <>
       <div className="desktop w-full h-screen hidden md:flex relative">
-        {/* <div className="w-[400px] h-full flex flex-col justify-between">
-          <div className="w-full h-full  flex justify-center items-center">
-            <div className="h-[300px] w-40  flex flex-col justify-between items-center ">
-              <div className="w-12 h-12 rounded-full bg-gray-400 flex justify-center items-center text-white text-2xl">
-                <BsRecordCircle />
-              </div>
-              <div className="w-[2px] h-[70%] bg-slate-400"></div>
-              <div className="w-12 h-12 rounded-full bg-gray-400 flex justify-center items-center text-white text-2xl">
-                <HiLocationMarker />
-              </div>
-            </div>
-            <div className="w-full h-full flex flex-col justify-center items-center ">
-              <div className="h-[300px] w-full  flex flex-col justify-between items-start text-[14px] py-2">
-                <h4 className="text-[18px]">Erevan,AM</h4>
-                <div>
-                  <h4 className="text-gray-600">TOTAL TRIP MILES </h4>
-                  <p>2300km</p>
-                </div>
-                <div>
-                  <h4 className="text-gray-600">TOTAL TRIP TIME</h4>
-                  <p>13 hr 13 min</p>
-                </div>
-                <h4 className="text-[18px]">Ekaterinburg,RU</h4>
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="w-[300px] h-[350px] bg-[#fff] absolute top-4 left-4 z-50 rounded-2xl opacity-[80%]">
         <div className="w-[400px] h-full flex flex-col justify-between">
           <div className="w-full h-full  flex justify-center items-center">
