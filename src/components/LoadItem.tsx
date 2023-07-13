@@ -79,14 +79,14 @@ const LoadItem = ({
         <div className="weight">{weight}կգ</div>
         <div className="rate">{rate}$</div>
         <div className="book">
-          <Link to={`/dashboard/Preview/${id}`} className="rounded-md bg-[#1C90F3] px-2 py-2 text-white text-[.8rem] cursor-pointer">
+          <Link to={`/dashboard/preview/${id}`} className="rounded-md bg-[#1C90F3] px-2 py-2 text-white text-[.8rem] cursor-pointer">
             Դիտել
           </Link>
         </div>
       </div>
 
 
-      <Link to={`/dashboard/detail/${id}`} className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold">
+      <Link to={`/dashboard/preview/${id}`} className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold">
         <div className="w-[20%] min-h-[100px] flex flex-col justify-around items-start md:items-center">
           <div className="age flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
