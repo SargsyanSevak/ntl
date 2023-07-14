@@ -23,7 +23,7 @@ const navigation = [
     current: false,
   },
   {
-    name: "Dashboard",
+    name: "Բեռներ",
     href: "/dashboard",
     current: false,
   },

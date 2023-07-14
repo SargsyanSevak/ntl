@@ -20,7 +20,7 @@ export const MobileMenu: React.FC<FullScreenModalProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed  inset-0 modal flex justify-center items-center bg-[#172755]  mobile"
+          className="fixed  inset-0 modal flex justify-center items-center bg-[#ccd8fa]  mobile"
         >
           <motion.div
             initial={{ width: "90%", height: "1%" }}
