@@ -2,7 +2,7 @@ import React from "react";
 
 const Plans:React.FC = () => {
   return (
-    <section className="max-w-[1600px] mx-auto background-bottom pt-40">
+    <section className="max-w-[1600px] mx-auto pt-40 bg-white">
       <div className="w-full h-screen relative  flex flex-col justify-evenly items-center">
         <div>
           {" "}

@@ -26,7 +26,7 @@ const navigation = [
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-[#172755] shadow dark:bg-gray-900  max-w-[1600px] mx-auto">
+    <footer className="bg-white dark:bg-gray-900  max-w-[1600px] mx-auto">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="flex sm:items-center justify-between">
           <a

@@ -15,9 +15,9 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <section className="max-w-[1600px] mx-auto h-screen">
+      <section className="max-w-[1600px] mx-auto min-h-screen">
         <div className="w-full h-screen relative background">
-          <div className="max-w-[1280px] h-full  mx-auto px-[20px] flex">
+          <div className="max-w-[1280px] h-full  mx-auto px-[20px] flex container">
             <div className="w-full md:w-1/2 h-full  flex flex-col gap-6 md:gap-10 justify-center items-center">
               <div className="flex md:hidden  justify-center items-center">
                 <img

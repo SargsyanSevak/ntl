@@ -7,6 +7,7 @@ import Calendar from "../components/Calendar";
 import Footer from "../components/Footer";
 import Plans from "../components/Plans";
 import { Helmet } from 'react-helmet';
+import HomeComp from "../components/HomeComp";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
       </Helmet>
       <Header />
       <main className={`w-full min-h-screen`}>
-        <HomePage />
+        <HomeComp />
         <Features />
         <AutomatedWidgets />
         <Customizable />

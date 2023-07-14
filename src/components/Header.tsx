@@ -40,7 +40,7 @@ const Header = () => {
     setIsModalOpen(false);
   };
   return (
-    <motion.header className=" w-full max-w-[1600px] mx-auto h-[100px] px-[20px] absolute top-0 right-0 left-0 z-50 text-[#9ca8cb]">
+    <motion.header className=" w-full max-w-[1600px] mx-auto h-[100px] px-[20px] absolute top-0 right-0 left-0 z-50 text-[#2e3343]">
       <div className="max-w-7xl mx-auto h-full flex">
         <div className="w-1/3 md:w-[20%] h-ful flex justify-start items-center font-bold text-xl gap-4">
           <img src={Logo} alt="logo" />

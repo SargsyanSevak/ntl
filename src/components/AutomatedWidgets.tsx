@@ -2,7 +2,7 @@ import React from "react";
 import widget1 from '../assets/widget1.svg'
 const AutomatedWidgets:React.FC = () => {
   return (
-    <div className="w-full md:h-[600px] h-auto max-w-[1600px] mx-auto">
+    <div className="w-full md:h-[600px] h-auto max-w-[1600px] mx-auto bg-white">
       <div className="max-w-[1280px] md:h-[600px] h-auto  mx-auto px-6 md:px-8 flex gap-4 flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2 h-[400px]  flex flex-col justify-center items-start gap-10">
           <div>
