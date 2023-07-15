@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Avatar = ({showDropDown}:any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
@@ -53,20 +54,21 @@ const Avatar = ({showDropDown}:any) => {
             aria-labelledby="avatarButton"
           >
             <li>
-              <a
-                href="http://google.com"
+              <Link
+                to="/dashboard"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                 href="http://google.com"
+              <Link
+                 to="/admin"
+                 target="_blank"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
-                Settings
-              </a>
+                Admin pannel
+              </Link>
             </li>
             <li>
               <a

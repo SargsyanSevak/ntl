@@ -34,7 +34,7 @@ const Footer = () => {
             className="flex items-center mb-4 sm:mb-0"
           >
             <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
               NTL
             </span>
           </a>
