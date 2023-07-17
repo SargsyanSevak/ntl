@@ -63,6 +63,7 @@ export default function Register() {
                   </div>
                 </div>
               </div>
+              
               <div>
                 <div className="mt-2 relative">
                   <select className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[17px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	">

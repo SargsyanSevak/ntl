@@ -15,6 +15,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import AdminHome from "./components/Admin/AdminHome";
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="forgot" element={<Forgot />} />
         <Route path="/dashboard/preview/:id" element={<Preview />} />
         <Route path="/admin" element={<AdminPannel />}>
+          <Route index element={<AdminHome />} />
           <Route path="addloads" element={<AddLoads />} />
           <Route path="changeloads" element={<ChangeLoads />} />
           <Route path="settings" element={<Settings />} />

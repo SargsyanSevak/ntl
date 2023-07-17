@@ -44,7 +44,7 @@ const Avatar = ({showDropDown}:any) => {
       </div>
 
       {open && (
-        <div className={`${showDropDown ? 'block' : 'hidden'} absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`} >
+        <div className={`${showDropDown ? 'block' : 'hidden'} absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`} >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
             <div className="font-medium truncate">name@ntluser.com</div>

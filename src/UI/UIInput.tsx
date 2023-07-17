@@ -1,7 +1,7 @@
 import React, { ChangeEventHandler } from "react";
 
 type InputProps = {
-  label: string;
+  label?: string;
   text: string;
   type?: "text" | "number";
   value: string | number;
@@ -17,7 +17,7 @@ const UIInput: React.FC<InputProps> = ({
 }) => {
   return (
     <div className="flex w-full sm:w-[48%] lg:w-full flex-col justify-between  text-sm font-medium leading-4 text-gray-900 lg:gap-0 gap-2">
-      <label>{label}</label>
+      <label className="pb-4">{label}</label>
       <input
         type={type}
         id={text}

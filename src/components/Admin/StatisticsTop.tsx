@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { BsFillBoxFill } from "react-icons/bs";
 import { GiRoad } from "react-icons/gi";
 import { BsCheckAll } from "react-icons/bs";
+import { useLocation } from "react-router-dom";
+
 const StatisticsTop = () => {
+  const { pathname } = useLocation();
+
+  const dynamicStatisticTitle = useMemo(() => {
+    console.log("count");
+    switch (pathname) {
+      case "/admin":
+        return {
+          title: "Good morning ,Aram",
+          description: "helooooooo",
+        };
+        break;
+      case "/admin/addloads":
+        return {
+          title: "Add loads anytime ,anywhere",
+          description: "helooooooo",
+        };
+        break;
+      case "/admin/changeloads":
+        return {
+          title: "Change your loads below",
+          description: "helooooooo",
+        };
+        break;
+      case "/admin/settings":
+        return {
+          title: "See seetings",
+          description: "helooooooo",
+        };
+        break;
+      default:
+        return {
+          title: "Good morning ,Aram",
+          description: "helooooooo",
+        };
+    }
+  }, [pathname]);
   return (
     <div className="w-full h-[200px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around overflow-hidden">
       <div
@@ -19,11 +57,11 @@ const StatisticsTop = () => {
       </div>
 
       <div>
-        <h4 className="text-[28px]">Good morning, Aram</h4>
-        <p className="text-gray-500">You can follow all new data here</p>
+        <h4 className="text-[28px]">{dynamicStatisticTitle.title}</h4>
+        <p className="text-gray-500">{dynamicStatisticTitle.description}</p>
       </div>
       <div className="statistics">
-        <div className="flex justify-around md:justify-start md:items-center md:gap-10 gap-2">
+        <div className="flex justify-between md:justify-start md:items-center md:gap-10 gap-2">
           <div className="loads flex gap-2 justify-start items-center ">
             <div className="w-10 h-10 rounded-full text-orange-300 bg-gray-800 flex justify-center items-center text-xl">
               <BsFillBoxFill />
