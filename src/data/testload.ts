@@ -14,7 +14,8 @@ export const testload:LoadProps[] = [
         contact: '077 323232',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
     {
         id:'2',
@@ -29,7 +30,8 @@ export const testload:LoadProps[] = [
         contact: '077 323232',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
     {
         id:'3',
@@ -44,6 +46,7 @@ export const testload:LoadProps[] = [
         contact: '077 323232',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
 ]

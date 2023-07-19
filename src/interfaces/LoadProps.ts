@@ -16,4 +16,5 @@ export interface LoadProps {
   length : number;
   weight : number;
   rate : number;
+  status:string
 }
