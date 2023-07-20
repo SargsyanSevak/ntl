@@ -3,6 +3,7 @@ import { testload } from "../data/testload";
 import LoadItem from "./LoadItem";
 import Loader from "./Loader";
 import { LuFilter, LuFilterX } from "react-icons/lu";
+import {RxUpdate} from 'react-icons/rx'
 import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
 const itemsPerRow = 50;
@@ -29,8 +30,8 @@ const Loads = () => {
         </div>
         <div className="lg:block hidden">
           <div className="w-full h-[30px] bg-[#c4c4c4b1] text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
-            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
-              <div title={"վերջին թարմացումը"}>թարմ.</div>
+            <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
+              <div title={"վերջին թարմացումը"} className="cursor-pointer"><RxUpdate/></div>
             </div>
             <div className=" flex justify-start items-center pl-[6px] w-[50px]">
               <div title={"բարձման օր"}>օր</div>

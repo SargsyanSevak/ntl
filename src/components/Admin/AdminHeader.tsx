@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../Avatar";
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/mainlogowhite.svg";
 
 const adminNavItems = [
   {
@@ -30,9 +30,8 @@ const AdminHeader = () => {
   return (
     <header className="w-full h-16 bg-black  text-white mx-auto md:px-10 px-4 border-b-[0.3px] border-b-slate-500">
       <div className="z-50 relative w-full h-full flex justify-between items-center">
-        <div className=" h-ful flex justify-center items-center font-bold text-xl gap-4">
-          <img src={Logo} alt="logo" />
-          <p>NTL</p>
+        <div className=" h-ful flex justify-center items-center font-bold text-xl gap-4 overflow-hidden">
+          <img src={Logo} alt="logo" className="w-[90px] logo -mt-[6px]"/>
         </div>
         <nav className="md:block hidden">
           <ul className="flex w-full h-16 justify-center  items-center text-[15px]  tracking-wide	">
