@@ -104,3 +104,6 @@ body {
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.logo{
+  filter: drop-shadow(1.5px 1.5px 2px #1c8ff3b2);
+}

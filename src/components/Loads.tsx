@@ -52,7 +52,7 @@ const Loads = () => {
               <div title={"բերնաթափման վայր"}>բեռնաթափում</div>
             </div>
             <div className="flex justify-start items-center pl-[6px] w-[70px]">
-              <div title={"հեռավորություն"}>հեռ.</div>
+              <div title={"հեռավորություն"}>հեռավ.</div>
             </div>
             <div className="flex justify-start items-center pl-[6px] w-[160px]">
               <div>պատվիրատու</div>

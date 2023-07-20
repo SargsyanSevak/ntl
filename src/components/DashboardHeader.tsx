@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatePickerUi from "./DatePicker";
 import UIInput from "../UI/UIInput";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/mainlogo.svg";
 import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
 import Loads from "./Loads";
@@ -37,11 +37,14 @@ const fullOrPartial = [
 const DashboardHeader = () => {
   return (
     <>
-      <div className={`w-full  bg-gray-300 py-2 px-4 lg:px-6`}>
+      <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 lg:px-6`}>
         <div className="flex justify-between items-center">
-          <img src={Logo} alt="" />
+          <div className=" h-12 relative flex justify-start items-center overflow-hidden -ml-2">
+             <img src={Logo} alt="" className="w-[90px] logo"/>
+          </div>
+         
           <div>
-            <p className="text-xl font-bold text-gray-600"> NTL LOAD BOARD</p>
+            <p className="text-xl font-bold text-gray-600 md:block hidden"> NTL LOAD BOARD</p>
           </div>
           <div>
             <Avatar showDropDown={true} />

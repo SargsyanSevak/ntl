@@ -30,7 +30,7 @@ const LoadDesktop = ({
           <div>{truckType}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[40px]">
-          <div>F</div>
+          <div title={loadType}>{loadType[0].toUpperCase()}</div>
         </div>
 
         <div className="flex justify-start items-center pl-[6px] w-[150px]">
