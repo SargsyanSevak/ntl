@@ -15,7 +15,7 @@ const Loads = () => {
   return (
     <>
       <div>
-        <div className="w-full h-10 bg-gray-400 flex items-center justify-between pl-4 lg:pl-6 pr-8">
+        <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px]">
           <p>{testload.length} Total results </p>
           <div className="h-full flex items-center gap-4">
             <SortLoads />
@@ -27,9 +27,54 @@ const Loads = () => {
             </div>
           </div>
         </div>
+        <div className="lg:block hidden">
+          <div className="w-full h-[30px] bg-[#c4c4c4b1] text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div title={"վերջին թարմացումը"}>թարմ.</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div title={"բարձման օր"}>օր</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div title={"տրանսպորտային միջոցի տեսակը"}>տ/մ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[40px]">
+              <div title={"ամբողջական/հավաքական"}>Ա/Հ</div>
+            </div>
+
+            <div className=" flex justify-start items-center pl-[6px] w-[150px]">
+              <div title={"բարձման վայր"}>բարձում</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[35px]">
+              <div></div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[150px]">
+              <div title={"բերնաթափման վայր"}>բեռնաթափում</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[70px]">
+              <div title={"հեռավորություն"}>հեռ.</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[160px]">
+              <div>պատվիրատու</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[140px]">
+              <div>կոնտակտ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div>ծավալ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[80px]">
+              <div>քաշ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[70px]">
+              <div>գին</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[70px]"></div>
+          </div>
+        </div>
         <DashboardFilter open={open} />
         {testload.slice(0, next)?.map((el, i) => (
-          <div key={i}>
+          <div key={i} className="pb-[2px]">
             <LoadItem {...el} />
           </div>
         ))}

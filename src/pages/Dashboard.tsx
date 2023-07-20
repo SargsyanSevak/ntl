@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardHeader from "../components/DashboardHeader";
 import Loads from "../components/Loads";
+import Loadx from "../components/LoadDesktop";
 
 const Dashboard: React.FC = () => {
   return (
