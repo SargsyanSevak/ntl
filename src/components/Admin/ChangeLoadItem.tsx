@@ -59,77 +59,118 @@ const ChangeLoadItem = ({
   };
   return (
     <div
-      className={`w-full min-h-[50px] bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center gap-4 mb-2 text-sm`}
+      className={`w-full min-h-[50px] bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] lg:mb-2 text-sm`}
     >
-      <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center">
-      <input
-        type={isDisabled ? "text" : "date"}
-        value={date}
-        onChange={(e) => setValue(e.target.value)}
-        className="w-full lg:w-full px-2 h-[40px] rounded-md border-none focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      />
+      <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center mb-[3px] md:mb-0">
+        <input
+          type={isDisabled ? "text" : "date"}
+          value={date}
+          onChange={(e) => setValue(e.target.value)}
+          className="w-full lg:w-full px-2 h-[40px] rounded-md border-none focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
-      <div className="trailer w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center -mt-2">
-      <UISelect data={trucks} isDisabled={isDisabled} adminVersion={true}/>
+      <div className="trailer w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center -mt-2  mb-[3px]">
+        <UISelect data={trucks} isDisabled={isDisabled} adminVersion={true} />
       </div>
-      <div className="pickup w-full sm:w-[48%] lg:w-[350px]  h-[40px] ">
-      <input
-        type="text"
-        value={pickup}
-        onChange={(e) => setValue(e.target.value)}
-        className="w-full h-full px-2 rounded-md border-none focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      /> 
+      <div className="pickup w-full sm:w-[48%] lg:w-[350px]  h-[40px]">
+        <input
+          type="text"
+          value={pickup}
+          onChange={(e) => setValue(e.target.value)}
+          className="w-full h-full px-2 rounded-md border-none focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
       <div className="delivery w-full sm:w-[48%] lg:w-[350px]  h-[40px] ">
-      <input
-        type="text"
-        value={delivery}
-        onChange={(e) => setValue(e.target.value)}
-        className="px-2 w-full   h-[40px] rounded-md border-none focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      />
+        <input
+          type="text"
+          value={delivery}
+          onChange={(e) => setValue(e.target.value)}
+          className="px-2 w-full   h-[40px] rounded-md border-none focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
-      <div className="length w-full sm:w-[48%] lg:w-[100px]  h-[40px]">
-      <input
-        type="text"
-        value={length}
-        onChange={(e) => setValue(e.target.value)}
-        className="px-2 w-full h-[40px] rounded-md border-none flex justify-center items-center focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      />
+      <div className="length w-[49%] sm:w-[48%] lg:w-[100px]  h-[40px]">
+        <input
+          type="text"
+          value={length}
+          onChange={(e) => setValue(e.target.value)}
+          className="px-2 w-full h-[40px] rounded-md border-none flex justify-center items-center focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
-      <div className="weight w-full sm:w-[48%] lg:w-[150px]  h-[40px] ">
-      <input
-        type="text"
-        value={weight}
-        onChange={(e) => setValue(e.target.value)}
-        className="px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      />
+      <div className="weight w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px] ">
+        <input
+          type="text"
+          value={weight}
+          onChange={(e) => setValue(e.target.value)}
+          className="px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
-      <div className="rate w-full sm:w-[48%] lg:w-[150px]  h-[40px]">
-      <input
-        type="text"
-        value={rate}
-        onChange={(e) => setValue(e.target.value)}
-        className="px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
-        disabled={isDisabled}
-      />
+      <div className="rate w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px]">
+        <input
+          type="text"
+          value={rate}
+          onChange={(e) => setValue(e.target.value)}
+          className=" px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
+          disabled={isDisabled}
+        />
       </div>
-      <div className="status w-full sm:w-[48%] lg:w-[300px]  h-[40px]  md:-mt-4 -mt-2">
-      <UISelect data={loadStatus} isDisabled={isDisabled} adminVersion={true}/>
+      <div className="status w-[49%] sm:w-[48%] lg:w-[300px]  h-[40px]  lg:-mt-4 -mt-4">
+        <UISelect
+          data={loadStatus}
+          isDisabled={isDisabled}
+          adminVersion={true}
+        />
       </div>
-      <div className="btns w-full sm:w-[48%] lg:w-[80px]  h-[40px]  flex items-center justify-end gap-4 rounded-xl">
-      <div className={`text-[20px] ${isDisabled ? 'block' : 'hidden'} cursor-pointer bg-gray-700 hover:bg-white hover:text-black transition-all text-white w-10 h-10 rounded-full flex justify-center items-center`}  onClick={makeDisabled}>
+      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-center justify-end gap-4 rounded-xl">
+        <div
+          className={`px-4 py-2 bg-blue-500 text-white rounded-md ${
+            isDisabled ? "block lg:hidden" : "hidden"
+          }`}
+          onClick={makeDisabled}
+        >
+          Փոփոխել
+        </div>
+        <div
+          className={`px-4 py-2 bg-green-500 text-white rounded-md  ${
+            isDisabled ? "hidden" : "block lg:hidden"
+          }`}
+          onClick={() => setIsDisabled(true)}
+        >
+          Պահպանել
+        </div>
+        <div
+          className={`px-4 py-2 bg-red-500 text-white rounded-md  ${
+            isDisabled ? "hidden" : "block lg:hidden"
+          }`}
+        >
+          Չեղարկել
+        </div>
+        <div
+          className={`text-[20px] ${
+            isDisabled ? "lg:flex hidden" : "hidden"
+          }  cursor-pointer bg-gray-700 hover:bg-white hover:text-black transition-all text-white w-10 h-10 rounded-full flex justify-center items-center`}
+          onClick={makeDisabled}
+        >
           {" "}
           <FiEdit2 />
         </div>
-        <div  className={`text-[25px] text-green-700 hover:text-green-800 transition-all ${isDisabled ? 'hidden' : 'block'} cursor-pointer`} onClick={()=> setIsDisabled(true)}>
+        <div
+          className={`text-[25px] text-green-700 hover:text-green-800 transition-all ${
+            isDisabled ? "hidden" : "lg:block hidden"
+          } cursor-pointer`}
+          onClick={() => setIsDisabled(true)}
+        >
           <BsCheck2All />
         </div>
-        <div className={`text-[25px] text-red-600 hover:text-red-800 transition-all ${isDisabled ? 'hidden' : 'block'} cursor-pointer`}>
+        <div
+          className={`text-[25px] text-red-600 hover:text-red-800 transition-all ${
+            isDisabled ? "hidden" : "lg:block hidden"
+          } cursor-pointer`}
+        >
           <FiX />
         </div>
       </div>

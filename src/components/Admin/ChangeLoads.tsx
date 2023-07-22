@@ -18,13 +18,13 @@ const ChangeLoads: React.FC = ({}) => {
           Բեռնաթափում
         </div>
         <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
-          Ծավալ մ³
+          Ծավալ
         </div>
         <div className="w-full sm:w-[48%] lg:w-[150px] pl-1 flex items-center">
-          Քաշ կգ
+          Քաշ
         </div>
         <div className="w-full sm:w-[48%] lg:w-[150px] pl-1 flex items-center">
-          Գին $
+          Գին
         </div>
         <div className="w-full sm:w-[48%] lg:w-[300px] pl-1 flex items-center">
           Կարգավիճակ

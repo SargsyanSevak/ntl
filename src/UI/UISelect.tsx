@@ -20,7 +20,7 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
             <Listbox.Button
               className={`${
                 isDisabled ? "bg-[#EFEFEF4D]" : "bg-white"
-              } relative  cursor-default rounded-md ${adminVersion ? 'py-2' : 'py-[6px]'} pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1C90F3] sm:text-sm sm:leading-6 w-full`}
+              } relative  cursor-default rounded-md ${adminVersion ? 'lg:py-2 py-[9px]' : 'py-[6px]'} pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1C90F3] sm:text-sm sm:leading-6 w-full`}
               aria-disabled={isDisabled}
             >
               <span className="flex items-center">
