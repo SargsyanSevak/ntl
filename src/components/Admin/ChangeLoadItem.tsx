@@ -125,7 +125,7 @@ const ChangeLoadItem = ({
           adminVersion={true}
         />
       </div>
-      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[5px]">
+      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[4px]">
         <div
           className={`px-4 py-2 bg-blue-500 text-white rounded-md ${
             isDisabled ? "block lg:hidden" : "hidden"
