@@ -6,22 +6,22 @@ import Logo from "../../assets/mainlogowhite.svg";
 const adminNavItems = [
   {
     id: 1,
-    title: "Admin",
+    title: "Գլխավոր",
     to: "/admin",
   },
   {
     id: 2,
-    title: "Add loads",
+    title: "Ավելացնել բեռներ",
     to: "/admin/addloads",
   },
   {
     id: 3,
-    title: "Change loads",
+    title: "Փոփոխել բեռները",
     to: "/admin/changeloads",
   },
   {
     id: 4,
-    title: "Settings",
+    title: "Կարգավորումներ",
     to: "/admin/settings",
   },
 ];
