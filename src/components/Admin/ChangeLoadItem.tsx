@@ -59,7 +59,7 @@ const ChangeLoadItem = ({
   };
   return (
     <div
-      className={`w-full min-h-[50px] bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] lg:mb-2 text-sm`}
+      className={`w-full min-h-[50px] bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] mb-2 text-sm`}
     >
       <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center mb-[3px] md:mb-0">
         <input
@@ -125,7 +125,7 @@ const ChangeLoadItem = ({
           adminVersion={true}
         />
       </div>
-      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-center justify-end gap-4 rounded-xl">
+      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[5px]">
         <div
           className={`px-4 py-2 bg-blue-500 text-white rounded-md ${
             isDisabled ? "block lg:hidden" : "hidden"
