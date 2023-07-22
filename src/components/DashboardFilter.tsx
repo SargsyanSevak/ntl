@@ -49,7 +49,7 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
       } px-4 lg:px-6 py-8 gap-4 justify-between flex-wrap lg:flex-nowrap`}
     >
       <DatePickerUi />
-      <div className="trucktype w-full sm:w-[48%] lg:w-full">
+      <div className="trucktype w-full sm:w-[48%] lg:w-full flex flex-col justify-between">
         <UISelect data={trucks} label="Տ/Մ" />
       </div>
       <UIInput
@@ -66,7 +66,7 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
         value={name}
         onChange={handleNameChange}
       />
-      <div className="trucktype w-full sm:w-[48%] lg:w-full">
+      <div className="trucktype w-full sm:w-[48%] lg:w-full flex flex-col justify-between">
         <UISelect data={fullOrPartial} label="Ա/Հ" />
       </div>
       <UIInput

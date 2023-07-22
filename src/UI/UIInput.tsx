@@ -3,7 +3,7 @@ import React, { ChangeEventHandler } from "react";
 type InputProps = {
   label?: string;
   text: string;
-  type?: "text" | "number";
+  type?: "text" | "number" | 'date';
   value: string | number;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
@@ -24,7 +24,7 @@ const UIInput: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         placeholder={text}
-        className="px-4 py-[9px] border border-gray-200 rounded-md focus:outline-none w-full text-black"
+        className="px-4 py-[9px] border-x-[1px] border-y-[1px]  border-slate-300 rounded-md focus:outline-none w-full text-black"
       />
     </div>
   );

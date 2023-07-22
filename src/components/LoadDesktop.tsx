@@ -15,7 +15,7 @@ const LoadDesktop = ({
   length,
   weight,
   rate,
-  CutString
+  CutString,
 }: any) => {
   return (
     <div className="max-w-[1600px] lg:flex hidden">
@@ -66,7 +66,8 @@ const LoadDesktop = ({
           <Link
             to={`/dashboard/preview/${id}`}
             target="_blank"
-            className="flex justify-center items-end px-[10px] py-1 bg-blue-500 font-light rounded-[8px] text-white text-[12px]"
+            type="button"
+            className=" font-light text-gray-200 bg-[#1C90F3] border border-gray-300 focus:outline-none hover:bg-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[12px] px-2 py-[3px]  flex justify-center items-center"
           >
             ավելին
           </Link>
