@@ -61,7 +61,7 @@ const Avatar = ({showDropDown}:any) => {
                 Dashboard
               </Link>
             </li>
-            <li>
+            <li >
               <Link
                  to="/admin"
                  target="_blank"

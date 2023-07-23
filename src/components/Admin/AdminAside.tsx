@@ -6,8 +6,33 @@ import { AiOutlineHome, AiOutlineEdit } from "react-icons/ai";
 import { MdPostAdd } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import Avatar from "../Avatar";
-
-const AdminAside = (adminNavItems: any) => {
+const navigation = [
+  {
+    id: 1,
+    title: "Գլխավոր",
+    to: "/admin",
+    icon: <AiOutlineHome />,
+  },
+  {
+    id: 2,
+    title: "Ավելացնել բեռներ",
+    to: "/admin/addloads",
+    icon: <MdPostAdd />,
+  },
+  {
+    id: 3,
+    title: "Փոփոխել բեռները",
+    to: "/admin/changeloads",
+    icon: <AiOutlineEdit />,
+  },
+  {
+    id: 4,
+    title: "Կարգավորումներ",
+    to: "/admin/settings",
+    icon: <CiSettings />,
+  },
+];
+const AdminAside:React.FC = () => {
   const { pathname } = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,41 +85,22 @@ const AdminAside = (adminNavItems: any) => {
         )}
       </button>
       <aside
-        className={`fixed top-[65px] right-0 h-full w-[280px] bg-black shadow-lg transform ${
+        className={`fixed top-[65px] opacity-95 right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-200`}
       >
         <div className="p-0">
-          <div className="avatar w-full h-[80px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
-          <Avatar />
-          <p className="text-[20px] pt-[6px]">Vedi Alco</p>
-          
+          <div className="avatar w-full h-[75px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
+            <Avatar />
+            <p className="text-[20px] pt-[6px]">Vedi Alco</p>
           </div>
-          <ul className="text-[18px] tracking-wider	 flex flex-col h-full gap-8 mt-6 px-4">
-            <li className="flex gap-4 items-center">
-              <div className="text-[24px]">
-                <AiOutlineHome />
-              </div>
-              <Link to="/admin">Գլխավոր</Link>
-            </li>
-            <li className="flex items-center gap-4">
-              <div className="text-[24px]">
-                <MdPostAdd />
-              </div>
-              <Link to="/admin/addloads">Ավելացնել բեռներ</Link>
-            </li>
-            <li className="flex items-center gap-4">
-              <div className="text-[24px]">
-                <AiOutlineEdit />
-              </div>
-              <Link to="/admin/changeloads">Փոփոխել բեռները</Link>
-            </li>
-            <li className="flex items-center gap-4">
-              <div className="text-[24px]">
-                <CiSettings />
-              </div>
-              <Link to="/admin/settings">Կարգավորումներ</Link>
-            </li>
+          <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
+            {navigation.map((el) => (
+              <li className={`flex items-center gap-4 h-16 pl-4  ${pathname === el.to ? 'active-link' : ''}`} key={el.id}>
+                <div className="text-[24px]">{el.icon}</div>
+                <Link to={el.to}>{el.title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       </aside>

@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../Avatar";
 import Logo from "../../assets/mainlogowhite.svg";
-import Burger from '../../assets/burgerwhite.svg'
 import AdminAside from "./AdminAside";
 const adminNavItems = [
   {
@@ -26,7 +25,7 @@ const adminNavItems = [
     to: "/admin/settings",
   },
 ];
-const AdminHeader = () => {
+const AdminHeader:React.FC = () => {
   const { pathname } = useLocation();
   return (
     <header className="w-full h-16 bg-black  text-white mx-auto md:px-10 px-4 border-b-[0.3px] border-b-slate-500">
