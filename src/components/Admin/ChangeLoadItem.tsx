@@ -91,7 +91,7 @@ const ChangeLoadItem = ({
           disabled={isDisabled}
         />
       </div>
-      <div className="length w-[49%] sm:w-[48%] lg:w-[100px]  h-[40px]">
+      <div className="length w-[49%] sm:w-[48%] lg:w-[100px]  h-[40px] relative overflow-hidden">
         <input
           type="text"
           value={length}
@@ -99,8 +99,9 @@ const ChangeLoadItem = ({
           className="px-2 w-full h-[40px] rounded-md border-none flex justify-center items-center focus:outline-none focus:bg-blue-100"
           disabled={isDisabled}
         />
+        <div className="w-10 h-10 text-[16px] rounded-md flex lg:hidden  justify-center items-center absolute right-0 bottom-0">մ³</div>
       </div>
-      <div className="weight w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px] ">
+      <div className="weight w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px] relative overflow-hidden">
         <input
           type="text"
           value={weight}
@@ -108,8 +109,9 @@ const ChangeLoadItem = ({
           className="px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
           disabled={isDisabled}
         />
+        <div className="w-10 h-10 text-[16px] rounded-md flex lg:hidden  justify-center items-center absolute right-0 bottom-[1.5px]">կգ</div>
       </div>
-      <div className="rate w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px]">
+      <div className="rate w-[49%] sm:w-[48%] lg:w-[150px]  h-[40px] relative overflow-hidden">
         <input
           type="text"
           value={rate}
@@ -117,6 +119,7 @@ const ChangeLoadItem = ({
           className=" px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
           disabled={isDisabled}
         />
+        <div className="w-10 h-10 text-[16px] rounded-md flex lg:hidden justify-center items-center absolute right-0 bottom-[1.5px]">$</div>
       </div>
       <div className="status w-[49%] sm:w-[48%] lg:w-[300px]  h-[40px]  lg:-mt-4 -mt-4">
         <UISelect
@@ -127,49 +130,43 @@ const ChangeLoadItem = ({
       </div>
       <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[4px]">
         <div
-          className={`px-4 py-2 bg-blue-500 text-white rounded-md ${
-            isDisabled ? "block lg:hidden" : "hidden"
-          }`}
+          className={`px-4 py-2 bg-blue-500 text-white rounded-md ${isDisabled ? "block lg:hidden" : "hidden"
+            }`}
           onClick={makeDisabled}
         >
           Փոփոխել
         </div>
         <div
-          className={`px-4 py-2 bg-green-500 text-white rounded-md  ${
-            isDisabled ? "hidden" : "block lg:hidden"
-          }`}
+          className={`px-4 py-2 bg-green-500 text-white rounded-md  ${isDisabled ? "hidden" : "block lg:hidden"
+            }`}
           onClick={() => setIsDisabled(true)}
         >
           Պահպանել
         </div>
         <div
-          className={`px-4 py-2 bg-red-500 text-white rounded-md  ${
-            isDisabled ? "hidden" : "block lg:hidden"
-          }`}
+          className={`px-4 py-2 bg-red-500 text-white rounded-md  ${isDisabled ? "hidden" : "block lg:hidden"
+            }`}
         >
           Չեղարկել
         </div>
         <div
-          className={`text-[20px] ${
-            isDisabled ? "lg:flex hidden" : "hidden"
-          }  cursor-pointer bg-gray-700 hover:bg-white hover:text-black transition-all text-white w-10 h-10 rounded-full flex justify-center items-center`}
+          className={`text-[20px] ${isDisabled ? "lg:flex hidden" : "hidden"
+            }  cursor-pointer bg-gray-700 hover:bg-white hover:text-black transition-all text-white w-10 h-10 rounded-full flex justify-center items-center`}
           onClick={makeDisabled}
         >
           {" "}
           <FiEdit2 />
         </div>
         <div
-          className={`text-[25px] text-green-700 hover:text-green-800 transition-all ${
-            isDisabled ? "hidden" : "lg:block hidden"
-          } cursor-pointer`}
+          className={`text-[25px] text-green-700 hover:text-green-800 transition-all ${isDisabled ? "hidden" : "lg:block hidden"
+            } cursor-pointer`}
           onClick={() => setIsDisabled(true)}
         >
           <BsCheck2All />
         </div>
         <div
-          className={`text-[25px] text-red-600 hover:text-red-800 transition-all ${
-            isDisabled ? "hidden" : "lg:block hidden"
-          } cursor-pointer`}
+          className={`text-[25px] text-red-600 hover:text-red-800 transition-all ${isDisabled ? "hidden" : "lg:block hidden"
+            } cursor-pointer`}
         >
           <FiX />
         </div>

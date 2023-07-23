@@ -16,6 +16,9 @@ import {
   Route,
 } from "react-router-dom";
 import AdminHome from "./components/Admin/AdminHome";
+import Profile from "./components/Admin/Profile";
+import Notifications from "./components/Admin/Notifications";
+import Teams from "./components/Admin/Teams";
 
 
 
@@ -34,7 +37,12 @@ function App() {
           <Route index element={<AdminHome />} />
           <Route path="addloads" element={<AddLoads />} />
           <Route path="changeloads" element={<ChangeLoads />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<Settings />}>
+          <Route index element={<Profile />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="teams" element={<Teams />} />
+          </Route>
         </Route>
       </>
     )
