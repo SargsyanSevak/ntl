@@ -85,7 +85,7 @@ const AdminAside:React.FC = () => {
         )}
       </button>
       <aside
-        className={`fixed top-[65px] opacity-95 right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
+        className={`fixed top-[65px]  right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-200`}
       >
