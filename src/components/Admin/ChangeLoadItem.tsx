@@ -61,7 +61,7 @@ const ChangeLoadItem = ({
     <div
       className={`w-full min-h-[50px] bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] mb-2 text-sm`}
     >
-      <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center mb-[3px] md:mb-0">
+      <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center mb-[1px] md:mb-0">
         <input
           type={isDisabled ? "text" : "date"}
           value={date}
@@ -70,7 +70,7 @@ const ChangeLoadItem = ({
           disabled={isDisabled}
         />
       </div>
-      <div className="trailer w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center -mt-2  mb-[3px]">
+      <div className="trailer w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center -mt-[6px]  mb-[3px]">
         <UISelect data={trucks} isDisabled={isDisabled} adminVersion={true} />
       </div>
       <div className="pickup w-full sm:w-[48%] lg:w-[350px]  h-[40px]">
@@ -128,7 +128,7 @@ const ChangeLoadItem = ({
           adminVersion={true}
         />
       </div>
-      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[4px]">
+      <div className="btns w-full sm:w-[100%]  lg:w-[80px]  h-[40px]  flex lg:items-center items-end justify-end gap-4 rounded-xl lg:mt-0 mt-[4px]">
         <div
           className={`px-4 py-2 bg-blue-500 text-white rounded-md ${isDisabled ? "block lg:hidden" : "hidden"
             }`}
