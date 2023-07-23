@@ -2,7 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../Avatar";
 import Logo from "../../assets/mainlogowhite.svg";
-
+import Burger from '../../assets/burgerwhite.svg'
+import AdminAside from "./AdminAside";
 const adminNavItems = [
   {
     id: 1,
@@ -34,7 +35,7 @@ const AdminHeader = () => {
           <img src={Logo} alt="logo" className="w-[90px] logo -mt-[6px]"/>
         </div>
         <nav className="md:block hidden">
-          <ul className="flex w-full h-16 justify-center  items-center text-[15px]  tracking-wide	">
+          <ul className="flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide	">
             {adminNavItems.map((el) => (
               <li className="px-8" key={el.title}>
                 <Link
@@ -47,10 +48,15 @@ const AdminHeader = () => {
             ))}
           </ul>
         </nav>
-        <div className=" flex justify-center items-center">
+        <div className=" flex justify-center items-center gap-4">
+      
           <Avatar showDropDown={true} />
+          <div className="w-10 h-full flex justify-center items-center fill-white md:hidden  relative z-50">
+           <AdminAside adminNavItems={adminNavItems}/>
+          </div>
         </div>
       </div>
+    
     </header>
   );
 };

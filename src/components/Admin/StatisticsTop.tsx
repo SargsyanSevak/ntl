@@ -42,9 +42,9 @@ const StatisticsTop = () => {
     }
   }, [pathname]);
   return (
-    <div className="w-full h-[200px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around overflow-hidden">
+    <div className="w-full h-[200px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around ">
       <div
-        className="absolute inset-x-0 -top-40  transform-gpu overflow-hidden blur-3xl sm:-top-80 "
+        className="absolute inset-x-0 -top-40  transform-gpu overflow-hidden blur-3xl sm:-top-80 z-30"
         aria-hidden="true"
       >
         <div

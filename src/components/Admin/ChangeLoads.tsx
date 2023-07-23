@@ -3,7 +3,7 @@ import { testload } from "../../data/testload";
 import ChangeLoadItem from "./ChangeLoadItem";
 const ChangeLoads: React.FC = ({}) => {
   return (
-    <div className="relative z-50 flex flex-col ">
+    <div className="relative z-40 flex flex-col ">
       <div className="w-full h-8 bg-slate-700 px-4 lg:flex hidden justify-between items-center gap-2 text-[13px] text-gray-400 font-semibold">
         <div className="w-full sm:w-[48%] lg:w-[200px] pl-1flex items-center">
           Օր

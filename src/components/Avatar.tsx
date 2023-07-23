@@ -38,19 +38,19 @@ const Avatar = ({showDropDown}:any) => {
     }
   }, [open])
   return (
-    <div className="reletive" ref={ref}>
+    <div className="reletive zzz" ref={ref}>
       <div className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white" onClick={handleOpen} >
         <p> {avatarWords(str)}</p>
       </div>
 
       {open && (
-        <div className={`${showDropDown ? 'block' : 'hidden'} absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`} >
+        <div className={`${showDropDown ? 'block' : 'hidden'} absolute top-[80px] right-[20px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`} >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
             <div className="font-medium truncate">name@ntluser.com</div>
           </div>
           <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
+            className="py-2 text-sm text-gray-700 dark:text-gray-200 "
             aria-labelledby="avatarButton"
           >
             <li>

@@ -4,7 +4,12 @@ body {
   box-sizing: border-box;
   background: #eeeef7;
 }
-
+.zzz{
+  z-index: 1200;
+}
+.zuzu{
+  z-index: 1500;
+}
 .shadow {
   box-shadow: 0px 0px 25px 5px rgba(198, 197, 197, 0.64)
 }
