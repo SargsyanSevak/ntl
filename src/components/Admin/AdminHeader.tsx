@@ -49,10 +49,12 @@ const AdminHeader = () => {
           </ul>
         </nav>
         <div className=" flex justify-center items-center gap-4">
-      
-          <Avatar showDropDown={true} />
+        <div className="w-10 h-full md:flex justify-center items-center hidden  relative z-50">
+            <Avatar showDropDown={true} />
+          </div>
+         
           <div className="w-10 h-full flex justify-center items-center fill-white md:hidden  relative z-50">
-           <AdminAside adminNavItems={adminNavItems}/>
+           <AdminAside/>
           </div>
         </div>
       </div>
