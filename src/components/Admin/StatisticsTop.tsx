@@ -4,36 +4,35 @@ import { GiRoad } from "react-icons/gi";
 import { BsCheckAll } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 
-const StatisticsTop = () => {
+const StatisticsTop: React.FC = () => {
   const { pathname } = useLocation();
 
   const dynamicStatisticTitle = useMemo(() => {
-    console.log("count");
     switch (pathname) {
       case "/admin":
         return {
           title: "Good morning ,Aram",
           description: "helooooooo",
         };
-        break;
+
       case "/admin/addloads":
         return {
           title: "Add loads anytime ,anywhere",
           description: "helooooooo",
         };
-        break;
+
       case "/admin/changeloads":
         return {
           title: "Change your loads below",
           description: "helooooooo",
         };
-        break;
+
       case "/admin/settings":
         return {
           title: "See seetings",
           description: "helooooooo",
         };
-        break;
+
       default:
         return {
           title: "Good morning ,Aram",
