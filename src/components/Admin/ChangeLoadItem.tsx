@@ -119,7 +119,7 @@ const ChangeLoadItem = ({
           className=" px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
           disabled={isDisabled}
         />
-        <div className="w-10 h-10 text-[16px] rounded-md flex lg:hidden justify-center items-center absolute right-0 bottom-[1.5px]">$</div>
+        <div className="w-10 h-10 text-[16px] rounded-md flex lg:hidden justify-center items-center absolute right-0 bottom-0">$</div>
       </div>
       <div className="status w-[49%] sm:w-[48%] lg:w-[300px]  h-[40px]  lg:-mt-4 -mt-4">
         <UISelect

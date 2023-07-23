@@ -109,24 +109,3 @@ const AdminAside:React.FC = () => {
 };
 
 export default AdminAside;
-// {
-//   id: 1,
-//   title: "Գլխավոր",
-//   to: "/admin",
-// },
-// {
-//   id: 2,
-//   title: "Ավելացնել բեռներ",
-//   to: "/admin/addloads",
-// },
-// {
-//   id: 3,
-//   title: "Փոփոխել բեռները",
-//   to: "/admin/changeloads",
-// },
-// {
-//   id: 4,
-//   title: "Կարգավորումներ",
-//   to: "/admin/settings",
-// },
-// ];
