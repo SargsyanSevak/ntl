@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom'
 
 const Settings = () => {
   return (
-    <div className='w-full h-screen md:pr-4 px-0 flex'>
+    <div className='w-full h-screen  flex'>
      <AsideMenu/>
-     <div className='content p-6 w-[80%]'>
+     <div className='content px-2 py-6 w-full overflow-y-auto'>
          <Outlet/>
      </div>
     </div>
