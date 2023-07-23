@@ -18,28 +18,31 @@ const navigation = [
   },
   {
     id: 3,
-    title: "Teams",
+    title: "Աշխատակիցներ",
     to: "teams",
     icon: <AiOutlineTeam />,
   },
 ];
 const AsideMenu = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   
   return (
-    <div className="w-[20%] py-6">
+    <div className="md:w-[300px] w-[60px] py-6">
       <nav className="w-full h-full border-r-2">
         <ul className="flex flex-col">
           {navigation.map((el) => (
             <li
-              className={`flex items-center gap-4 h-[60px] pl-4  ${
+              className={`  ${
                 pathname.includes(el.to)? "active-link" : ""
               }`}
               key={el.id}
             >
-              <div className="text-[24px]">{el.icon}</div>
-              <Link to={el.to}>{el.title}</Link>
+              
+              <Link to={el.to} className="flex items-center gap-4 h-[60px] pl-4 ">
+                <div className="text-[24px]">{el.icon}</div>
+                <p className="md:block hidden">{el.title}</p>
+              </Link>
             </li>
           ))}
         </ul>
