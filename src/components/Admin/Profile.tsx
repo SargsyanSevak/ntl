@@ -1,23 +1,50 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Avatar from "../Avatar";
+import verifyIcon from "../../assets/verifyIcon.png";
+import { CiEdit } from "react-icons/ci";
+import { AiOutlineCheck } from "react-icons/ai";
+import { FcCancel } from "react-icons/fc";
 const Profile = () => {
+  const [bio, setBio] = useState(
+    " Lorem ipsum dolor sit amet consectetur adipisicing elit. In iste aspernatur, adipisci eius rem reiciendis sed sequi, officiis placeat provident numquam quisquam iusto, quam accusamus nostrum accusantium ab quas. Quas delectus quis dicta amet praesentium deserunt sit ratione optio pariatur nemo. Explicabo autem quidem amet repellendus sequi nisi. Nemo rem obcaecati provident ipsa officia expedita dolores exercitationem atque minus, odio voluptatem consequuntur cupiditate fuga, iste quos quis possimus hic corporis! Rem doloribus eaque vitae enim reiciendis? Commodi quae nulla repudiandae. Iusto repudiandae saepe quas quo, ad, pariatur nobis architecto magni ab dolore placeat corporis enim commodi vel dicta delectus voluptatum."
+  );
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const handleEdit = () => {
+    setIsDisabled(true);
+  };
+  const handleSave = () => {
+    setIsDisabled(false);
+  };
   return (
     <div className="md:px-10 px-2 flex flex-col gap-6">
-      <div className="avatar">
-        <div className="w-full h-40 border-2 border-slate-300 rounded-xl"></div>
+      <div className="avatar relative">
+        <div className="w-full h-36 border-2 border-slate-300 rounded-xl flex flex-col justify-evenly items-center banner">
+          <div className="z-1">
+            <Avatar />
+          </div>
+
+          <p className="md:text-[30px] text-[24px] font-bold">
+            NTL LOGISTICS LLC
+          </p>
+          <div className="absolute right-4 top-4">
+            <img
+              src={verifyIcon}
+              alt=""
+              className="md:w-8 w-6"
+              title="Verify"
+            />
+          </div>
+        </div>
       </div>
 
-      <div className="flex md:flex-nowrap flex-wrap border-2 border-slate-300 rounded-xl p-4">
+      <div className="flex md:flex-nowrap flex-wrap border-2 border-slate-300 rounded-xl p-4 ">
         <div className="personal-info text-sm md:w-1/2 w-full ">
           <div className="w-full  ">
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Ընկերության անվանումը</h4>
               <p>NTL Logistics LLC</p>
             </div>
-            <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
-              <h4 className="text-gray-500">Գործունեության տեսակը</h4>
-              <p>Պատվիրատու</p>
-            </div>
+
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Էլ-հասցե</h4>
               <p>info@ntllogistics.com</p>
@@ -31,17 +58,14 @@ const Profile = () => {
         <div className="personal-info text-sm md:w-1/2 w-full">
           <div className="w-full  ">
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
-              <h4 className="text-gray-500">Ընկերության անվանումը</h4>
-              <p>NTL Logistics LLC</p>
+              <h4 className="text-gray-500">Հասցե</h4>
+              <p>ք.Երևան,Կենտրոն վ/շ 6/2</p>
             </div>
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Գործունեության տեսակը</h4>
               <p>Պատվիրատու</p>
             </div>
-            <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
-              <h4 className="text-gray-500">Էլ-հասցե</h4>
-              <p>info@ntllogistics.com</p>
-            </div>
+
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Վեբ կայք</h4>
               <p>www.ntl.am</p>
@@ -51,21 +75,59 @@ const Profile = () => {
       </div>
       <div className="payment">
         <div className="w-full border-2 border-slate-300 rounded-xl">
-          <h4 className="md:text-center  font-semibold pt-4 pl-4 md:pl-0">Վճարային համակարգ</h4>
+          <h4 className="md:text-center  font-semibold pt-4 pl-4 md:pl-0">
+            Վճարային համակարգ
+          </h4>
           <div className="flex pb-4 flex-wrap md:flex-nowrap px-4 text-sm">
-          <div className="w-full md:w-1/2 h-14 flex border-b-2 md:border-b-0 flex-col justify-center md:items-center items-start">
-              <h4 className="text-gray-500">Վճարաման եղանակ</h4>
+            <div className="w-full md:w-1/2 h-14 flex border-b-2 md:border-b-0 flex-col justify-center md:items-center items-start">
+              <h4 className="text-gray-500">Վճարման եղանակ</h4>
               <p>Անկանխիկ բանկային փոխանցում</p>
             </div>
-          <div className="w-full md:w-1/2 h-14  flex flex-col justify-center md:items-center items-start">
-              <h4 className="text-gray-500">Տևողությււն</h4>
-              <p>7 աշխատանքային օր</p> 
+            <div className="w-full md:w-1/2 h-14  flex flex-col justify-center md:items-center items-start">
+              <h4 className="text-gray-500">Տևողություն</h4>
+              <p>7 աշխատանքային օր</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="password">
-        <div className="w-full h-40 border-2 border-slate-300 rounded-xl"></div>
+      <div className="bio relative">
+        <div className="w-full border-2 border-slate-300 rounded-xl">
+          <h4 className="md:text-center  font-semibold py-4 pl-4 md:pl-0">
+            Կարճ ընկերության մասին
+          </h4>
+          <div className="flex pb-4 flex-wrap md:flex-nowrap px-4 text-sm min-h-auto ">
+            {isDisabled ? (
+              <textarea
+                className="text-gray-500 md:px-4 resize-none py-10 px-0    border-0 bg-inherit w-full"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+            ) : (
+              <p className="text-gray-500 text-justify">{bio}</p>
+            )}
+          </div>
+          <div className="w-full">
+            {!isDisabled ? (
+              <div
+                className="edit w-6 h-6 rounded-full bg-blue-200 text-md  font-bold flex justify-center items-center absolute top-4 right-4 cursor-pointer"
+                onClick={handleEdit}
+              >
+                <CiEdit />
+              </div>
+            ) : (
+              <div className="absolute top-4 right-4 cursor-pointer flex gap-2">
+                <div className="edit w-6 h-6 rounded-full bg-blue-200 text-md text-green-600  font-bold flex justify-center items-center cursor-pointer"
+                onClick={handleSave}
+                >
+                  <AiOutlineCheck />
+                </div>
+                <div className="edit w-6 h-6 rounded-full bg-blue-200 text-md text-green-600  font-bold flex justify-center items-center  cursor-pointer">
+                  <FcCancel />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

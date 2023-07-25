@@ -15,6 +15,10 @@ body {
   background-image: linear-gradient(to left, #c7e5ff, #46a6fa);
   /* border-left: 6px solid #023d70; */
 }
+.banner{
+  width: 100%;
+  background-image: linear-gradient(to top, #c7e5ff, #7abcf5);
+}
 .shadow {
   box-shadow: 0px 0px 25px 5px rgba(198, 197, 197, 0.64)
 }

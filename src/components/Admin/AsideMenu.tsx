@@ -41,7 +41,7 @@ const AsideMenu = () => {
   
   return (
     <div className="md:w-[300px] w-[60px] py-6">
-      <nav className="w-full h-full border-r-2">
+      <nav className="w-full h-full md:border-r-2 border-r-0">
         <ul className="flex flex-col">
           {navigation.map((el) => (
             <li
