@@ -1,11 +1,85 @@
-import React from 'react'
-
+import React from "react";
+import { CiSearch } from "react-icons/ci";
+import TeamMember from "./TeamMember";
+const teamData = [
+  {
+    firstName: "Hakob",
+    lastName: "Harutyunyan",
+    title: "dispatcher",
+    email: "hakob@ntl.com",
+    tell: "+37477 34-56-78",
+    online: true,
+  },
+  {
+    firstName: "Aram",
+    lastName: "Harutyunyan",
+    title: "dispatcher",
+    email: "hakob@ntl.com",
+    tell: "+37477 34-56-78",
+    online: true,
+  },
+  {
+    firstName: "Karen",
+    lastName: "Harutyunyan",
+    title: "dispatcher",
+    email: "hakob@ntl.com",
+    tell: "+37477 34-56-78",
+    online: true,
+  },
+  {
+    firstName: "Gagik",
+    lastName: "Harutyunyan",
+    title: "dispatcher",
+    email: "hakob@ntl.com",
+    tell: "+37477 34-56-78",
+    online: true,
+  },
+];
 const Teams = () => {
   return (
     <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nostrum culpa ut quam quas, eveniet consequuntur quia recusandae quis officiis doloremque sit cumque illum error. Atque illo, ducimus provident ipsam velit est, sed perferendis laborum reiciendis, porro molestias earum molestiae ipsa. Odit voluptas numquam vero nemo, corporis doloremque qui architecto odio nostrum error fugit. Facilis ipsam, ipsum cupiditate ducimus ipsa ad quae vitae ratione nobis eius fuga, eum ab ex possimus optio impedit. Libero vitae id repellat odit, cupiditate rem illum culpa exercitationem quod delectus corrupti! Dignissimos atque corporis odio! Illo perspiciatis similique laudantium veritatis iure vero qui nobis facilis, ratione repellat excepturi fugiat officia ab repellendus dolores earum deleniti, dolorum optio nisi vel ea! Saepe voluptatibus aperiam natus tempore quasi magnam adipisci consequuntur aspernatur pariatur, omnis ad unde fugiat eaque, animi tenetur deserunt eligendi. Culpa dolorum itaque unde quae dolores velit fuga veniam praesentium quod molestias eligendi qui, sed aspernatur consequuntur aliquid voluptatibus, perspiciatis veritatis et! Est, illo? Voluptatum tempore commodi optio perferendis ex laborum perspiciatis temporibus a iste eum similique expedita voluptatem dolor accusantium velit, nisi laudantium aperiam doloribus est minus? Sit eligendi quibusdam iusto laudantium unde doloribus illo nihil aliquid in labore mollitia, illum vitae sed error adipisci odit esse molestias perferendis dolorum voluptatum architecto? Quae culpa eligendi accusantium sed voluptatum fuga, id itaque iure omnis assumenda, reiciendis animi ipsam mollitia cumque nostrum! Reiciendis perspiciatis amet quibusdam, vel sunt alias ut placeat dolore ipsa aliquid tempore nostrum at consequuntur? Enim optio ea dolor blanditiis, obcaecati molestiae fuga quam amet vero. Reiciendis nihil assumenda nobis sunt quis! Minus sed consectetur corporis! Facilis inventore dolorum repellat aliquam velit deleniti vitae dolores recusandae. Voluptatum vero aliquam molestiae vitae optio, facere odio nulla quaerat earum cumque? Placeat at voluptate ullam eius corporis reiciendis magni quo provident ut officiis, magnam, neque ducimus.
+      <div className="w-full h-20 border-2 flex justify-between items-center px-2 md:px-4">
+        <div className="flex h-full items-center">
+          <h4>Թիմի անդամների քանակը</h4>
+          <p>({teamData.length})</p>
+        </div>
+        {/* <div>
+          <div className="w-60 h-10 relative">
+            <input
+              type="search"
+              placeholder="փնտրել..."
+              className="w-full h-full rounded-xl pl-10 active:border-none"
+            />
+            <div className="absolute top-1/2 left-4 transform -translate-x-1/2 -translate-y-1/2 text-xl">
+              <CiSearch />
+            </div>
+          </div>
+        </div> */}
+        <div className="add-team">
+          <button className="bg-transparent hover:bg-blue-500 text-blue-700  hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            Ավելացնել
+          </button>
+        </div>
+      </div>
+      <div className="header w-full h-20 mt-10 md:flex justify-between items-center text-sm font-semibold hidden">
+        <div className="w-60 h-12  flex justify-center items-center">
+          <p>Full Name & email</p>
+        </div>
+        <div className="w-40 h-10  flex justify-center items-center">View content</div>
+        <div className="w-40 h-10  flex justify-center items-center">Manage content</div>
+        <div className="w-40 h-10  flex justify-center items-center">Manage loads</div>
+        <div className="w-40 h-10  flex justify-center items-center">Manage teams</div>
+        <div className="w-[100px] h-10 flex justify-center items-center"></div>
+      </div>
+      <div className="w-full flex flex-col ">
+          {
+            teamData.map((el)=>(
+              <TeamMember {...el}/>
+            ))
+          }
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Teams
+export default Teams;

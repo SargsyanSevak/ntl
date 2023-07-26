@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Avatar from "../Avatar";
 import verifyIcon from "../../assets/verifyIcon.png";
-import { CiEdit } from "react-icons/ci";
-import { AiOutlineCheck } from "react-icons/ai";
-import { FcCancel } from "react-icons/fc";
+import Edit from "../../UI/Edit";
+
 const Profile = () => {
   const [bio, setBio] = useState(
     " Lorem ipsum dolor sit amet consectetur adipisicing elit. In iste aspernatur, adipisci eius rem reiciendis sed sequi, officiis placeat provident numquam quisquam iusto, quam accusamus nostrum accusantium ab quas. Quas delectus quis dicta amet praesentium deserunt sit ratione optio pariatur nemo. Explicabo autem quidem amet repellendus sequi nisi. Nemo rem obcaecati provident ipsa officia expedita dolores exercitationem atque minus, odio voluptatem consequuntur cupiditate fuga, iste quos quis possimus hic corporis! Rem doloribus eaque vitae enim reiciendis? Commodi quae nulla repudiandae. Iusto repudiandae saepe quas quo, ad, pariatur nobis architecto magni ab dolore placeat corporis enim commodi vel dicta delectus voluptatum."
@@ -37,7 +36,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="flex md:flex-nowrap flex-wrap border-2 border-slate-300 rounded-xl p-4 ">
+      <div className="flex md:flex-nowrap flex-wrap border-2 border-slate-300 rounded-xl p-4 relative">
         <div className="personal-info text-sm md:w-1/2 w-full ">
           <div className="w-full  ">
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
@@ -72,8 +71,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
       </div>
-      <div className="payment">
+      <div className="payment relative">
         <div className="w-full border-2 border-slate-300 rounded-xl">
           <h4 className="md:text-center  font-semibold pt-4 pl-4 md:pl-0">
             Վճարային համակարգ
@@ -89,6 +89,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
       </div>
       <div className="bio relative">
         <div className="w-full border-2 border-slate-300 rounded-xl">
@@ -98,35 +99,15 @@ const Profile = () => {
           <div className="flex pb-4 flex-wrap md:flex-nowrap px-4 text-sm min-h-auto ">
             {isDisabled ? (
               <textarea
-                className="text-gray-500 md:px-4 resize-none py-10 px-0    border-0 bg-inherit w-full"
+                className="text-gray-500 md:px-4 resize-none py-10 px-2    border-0 bg-inherit w-full"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
               />
             ) : (
-              <p className="text-gray-500 text-justify">{bio}</p>
+              <p className="text-gray-500 text-justify pb-2">{bio}</p>
             )}
           </div>
-          <div className="w-full">
-            {!isDisabled ? (
-              <div
-                className="edit w-6 h-6 rounded-full bg-blue-200 text-md  font-bold flex justify-center items-center absolute top-4 right-4 cursor-pointer"
-                onClick={handleEdit}
-              >
-                <CiEdit />
-              </div>
-            ) : (
-              <div className="absolute top-4 right-4 cursor-pointer flex gap-2">
-                <div className="edit w-6 h-6 rounded-full bg-blue-200 text-md text-green-600  font-bold flex justify-center items-center cursor-pointer"
-                onClick={handleSave}
-                >
-                  <AiOutlineCheck />
-                </div>
-                <div className="edit w-6 h-6 rounded-full bg-blue-200 text-md text-green-600  font-bold flex justify-center items-center  cursor-pointer">
-                  <FcCancel />
-                </div>
-              </div>
-            )}
-          </div>
+             <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
         </div>
       </div>
     </div>
