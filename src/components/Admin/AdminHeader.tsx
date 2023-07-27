@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../Avatar";
 import Logo from "../../assets/mainlogowhite.svg";
+import { MdNotificationsNone } from "react-icons/md";
 import AdminAside from "./AdminAside";
 const adminNavItems = [
   {
@@ -28,6 +29,7 @@ const adminNavItems = [
   },
 ];
 const AdminHeader: React.FC = () => {
+  const [notificationCount, setNotificationCount] = useState<number>(1);
   const { pathname } = useLocation();
 
   const handlePath = (path: string, to: string) => {
@@ -44,7 +46,7 @@ const AdminHeader: React.FC = () => {
         <div className=" h-ful flex justify-center items-center font-bold text-xl gap-4 overflow-hidden">
           <img src={Logo} alt="logo" className="w-[90px] logo -mt-[6px]" />
         </div>
-        <nav className="md:block hidden">
+        <nav className="lg:block hidden">
           <ul className="flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide	">
             {adminNavItems.map((el) => (
               <li className="px-8" key={el.title}>
@@ -60,12 +62,21 @@ const AdminHeader: React.FC = () => {
             ))}
           </ul>
         </nav>
-        <div className=" flex justify-center items-center gap-4">
-          <div className="w-10 h-full md:flex justify-center items-center hidden  relative z-50">
+        <div className=" flex justify-center items-center gap-8 lg:gap-6">
+          <div className="notifications relative text-2xl cursor-pointer">
+            {notificationCount > 0 && (
+              <div className="count absolute w-[15px] h-[15px] rounded-full bg-red-500 -top-[7px] -right-[6px] text-[12px] flex justify-center items-center">
+                {notificationCount}
+              </div>
+            )}
+
+            <MdNotificationsNone />
+          </div>
+          <div className="w-10 h-full lg:flex justify-center items-center hidden  relative z-50">
             <Avatar showDropDown={true} />
           </div>
 
-          <div className="w-10 h-full flex justify-center items-center fill-white md:hidden  relative z-50">
+          <div className="w-10 h-full flex justify-center items-center fill-white lg:hidden  relative z-50">
             <AdminAside />
           </div>
         </div>
