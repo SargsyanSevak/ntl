@@ -37,9 +37,9 @@ const Notification = ({
     return `${day}-${month}-${year} ${hours}:${minutes}`;
   };
   return (
-    <div className="border-2 border-gray-200 shadow px-2 rounded-md">
+    <div className="border-2 border-gray-200 shadow  rounded-md">
       <div
-        className={`font-bold cursor-pointer py-2 flex ${
+        className={`font-bold cursor-pointer flex justify-center items-center p-2 ${
           isRead ? "text-gray-500 " : "text-black "
         }`}
       >
@@ -55,15 +55,15 @@ const Notification = ({
         </div>
         <div className="w-full  flex md:flex-row flex-col-reverse">
           <div
-            className="w-full md:w-[70%] h-full font-semibold  flex flex-col justify-between items-start pl-4"
+            className="w-full lg:w-[70%] h-full font-semibold  flex flex-col justify-between items-start pl-4"
             onClick={toggleDetails}
           >
             <h4 className="text[2vw]">Customer's support team</h4>
             <h4 className="text-sm">{title}</h4>
           </div>
-          <div className="w-full md:w-[30%] h-full  flex md:flex-col flex-row md:justify-around justify-between items-end px-4  font-light">
+          <div className="w-full lg:w-[30%] h-full  flex md:flex-col flex-row md:justify-around justify-between items-end pl-4 md:pr-4 pr-0 font-light">
             <div className="">{getCurrentDateTime()}</div>
-            <div className="stars flex gap-4">
+            <div className="stars flex sm:gap-4 gap-2">
               <span className="text-xl" onClick={handleSetImportant}>
                 {isImportant ? (
                   <AiFillStar color="orange" />
@@ -79,7 +79,7 @@ const Notification = ({
         </div>
       </div>
       {showDetails && (
-        <p className="text-gray-600 font-semibold py-4 px-2">{description}</p>
+        <p className="text-gray-600 text-sm leading-6 font-semibold py-4 px-2">{description}</p>
       )}
     </div>
   );
