@@ -66,7 +66,7 @@ const toggleEmailIcon = () =>{
           </div>
           <div className="w-full lg:w-[30%] h-full  flex md:flex-col flex-row md:justify-around justify-between items-end pl-4 md:pr-4 pr-0 font-light">
             <div className="">{getCurrentDateTime()}</div>
-            <div className="stars flex sm:gap-4 gap-2">
+            <div className="stars flex gap-4">
               <span className="text-xl" onClick={handleSetImportant}>
                 {isImportant ? (
                   <AiFillStar color="orange" />
@@ -75,7 +75,7 @@ const toggleEmailIcon = () =>{
                 )}
               </span>
               <div
-                className="text-xl flex md:gap-4 gap-2"
+                className="text-xl flex gap-4"
                
               >
                 <span className="transition-all hover:text-gray-500" onClick={toggleEmailIcon}>
