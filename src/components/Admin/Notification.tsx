@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { CiMenuKebab } from "react-icons/ci";
 import { HiOutlineMail, HiOutlineMailOpen } from "react-icons/hi";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import Logo from '../../assets/mainlogo.svg'
@@ -49,7 +48,7 @@ const toggleEmailIcon = () =>{
         }`}
       >
         <div className="w-[50px] h-full flex justify-center items-center">
-          <div className="w-[40px] h-[40px] rounded-full bg-gray-200 flex justify-center items-center ">
+          <div className="w-[40px] h-[40px] border-2 border-gray-400 rounded-full bg-gray-200 flex justify-center items-center ">
             <img
               src={Logo}
               alt=""
