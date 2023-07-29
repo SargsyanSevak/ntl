@@ -29,7 +29,7 @@ const Profile = () => {
             <img
               src={verifyIcon}
               alt=""
-              className="md:w-8 w-6"
+              className="md:w-6 w-4"
               title="Verify"
             />
           </div>

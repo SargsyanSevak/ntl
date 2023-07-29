@@ -4,6 +4,7 @@ import Avatar from "../Avatar";
 import Logo from "../../assets/mainlogowhite.svg";
 import { MdNotificationsNone } from "react-icons/md";
 import AdminAside from "./AdminAside";
+import { notificationsData } from "../../data/notificationData";
 const adminNavItems = [
   {
     id: 1,
@@ -31,6 +32,10 @@ const adminNavItems = [
 const AdminHeader: React.FC = () => {
   const [notificationCount, setNotificationCount] = useState<number>(1);
   const { pathname } = useLocation();
+
+  const getNotificationCount = () => {
+    return notificationsData.filter((el: any) => el.isOpened === false).length;
+  };
 
   const handlePath = (path: string, to: string) => {
     if (path.length === 2) {
@@ -63,15 +68,18 @@ const AdminHeader: React.FC = () => {
           </ul>
         </nav>
         <div className=" flex justify-center items-center gap-8 lg:gap-6">
-          <div className="notifications relative text-2xl cursor-pointer">
-            {notificationCount > 0 && (
+          <Link
+            to="settings/notifications"
+            className="notifications relative text-2xl cursor-pointer"
+          >
+            {getNotificationCount() > 0 && (
               <div className="count absolute w-[15px] h-[15px] rounded-full bg-red-500 -top-[7px] -right-[6px] text-[12px] flex justify-center items-center">
-                {notificationCount}
+                {getNotificationCount()}
               </div>
             )}
 
             <MdNotificationsNone />
-          </div>
+          </Link>
           <div className="w-10 h-full lg:flex justify-center items-center hidden  relative z-50">
             <Avatar showDropDown={true} />
           </div>
