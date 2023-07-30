@@ -7,7 +7,7 @@ const Security = () => {
   const handleShow = () => setShowPassword(!showPassword);
   return (
     <div className="w-full pt-8 pl-4 pr-4 flex flex-col justify-center items-center">
-      <h4 className="pb-8">Փոփոխել գաղտնաբառ</h4>
+      <h4 className="pb-8">Փոփոխել գաղտնաբառը</h4>
       <div className="w-full flex flex-col gap-10 items-center">
         <div className="box  md:w-1/2 w-full">
           <input
