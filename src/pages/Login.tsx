@@ -4,8 +4,12 @@ import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"; 
+<<<<<<< Updated upstream
 import Logo from '../assets/mainlogo.svg'
 import { Helmet } from 'react-helmet';
+=======
+import Logo from '../assets/logo.svg'
+>>>>>>> Stashed changes
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
@@ -27,7 +31,11 @@ export default function LogIn() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
+<<<<<<< Updated upstream
               className="mx-auto h-20 w-auto logo"
+=======
+              className="mx-auto h-20 w-auto"
+>>>>>>> Stashed changes
               src={Logo}
               alt="Your Company"
             />
