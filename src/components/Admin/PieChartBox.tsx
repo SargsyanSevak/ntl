@@ -2,16 +2,22 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "../../styles/pieChartBox.scss";
 
 const data = [
-  { name: "Mobile", value: 400, color: "#0088FE" },
-  { name: "Desktop", value: 300, color: "#00C49F" },
-  { name: "Laptop", value: 300, color: "#FFBB28" },
-  { name: "Tablet", value: 200, color: "#FF8042" },
+  { name: "Բեռներ", value: 13, color: "#0088FE" },
+  { name: "Ճանապարհին", value: 8, color: "#00C49F" },
+  { name: "Դատարկված", value: 3, color: "#FFBB28" },
+  { name: "Չեղարկված", value: 2, color: "#FF8042" },
 ];
 
 const PieChartBox = () => {
+    function CutString(inputString: string): string {
+        if (inputString.length > 6) {
+          return inputString.slice(0, 6) + "...";
+        }
+        return inputString;
+      }
   return (
     <div className="pieChartBox">
-      <h1>Leads by Source</h1>
+      <h1>Բեռների վիճակագրություն</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height={300}>
           <PieChart>
@@ -37,7 +43,7 @@ const PieChartBox = () => {
           <div className="option" key={item.name}>
             <div className="title">
               <div className="dot" style={{ backgroundColor: item.color }} />
-              <span>{item.name}</span>
+              <span title={item.name}>{CutString(item.name)}</span>
             </div>
             <span>{item.value}</span>
           </div>
