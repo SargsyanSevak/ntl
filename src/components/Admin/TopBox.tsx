@@ -4,7 +4,7 @@ import { topDealUsers } from "../../data/data"
 const TopBox = () => {
   return (
     <div className="topBox">
-      <h1>Top Deals</h1>
+      <h1>Աշխատակիցներ</h1>
       <div className="list">
         {topDealUsers.map(user=>(
           <div className="listItem" key={user.id}>

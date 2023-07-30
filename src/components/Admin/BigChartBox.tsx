@@ -10,43 +10,43 @@ import {
   
   const data = [
     {
-      name: "Sun",
+      name: "Կիր",
       books: 4000,
       clothes: 2400,
       electronic: 2400,
     },
     {
-      name: "Mon",
+      name: "Երկ",
       books: 3000,
       clothes: 1398,
       electronic: 2210,
     },
     {
-      name: "Tue",
+      name: "Երք",
       books: 2000,
       clothes: 9800,
       electronic: 2290,
     },
     {
-      name: "Wed",
+      name: "Չոր",
       books: 2780,
       clothes: 3908,
       electronic: 2000,
     },
     {
-      name: "Thu",
+      name: "Հնգ",
       books: 1890,
       clothes: 4800,
       electronic: 2181,
     },
     {
-      name: "Fri",
+      name: "Ուրբ",
       books: 2390,
       clothes: 3800,
       electronic: 2500,
     },
     {
-      name: "Sat",
+      name: "Շաբ",
       books: 3490,
       clothes: 4300,
       electronic: 2100,
@@ -56,7 +56,7 @@ import {
   const BigChartBox = () => {
     return (
       <div className="bigChartBox">
-        <h1>Revenue Analytics</h1>
+        <h1>Բեռնափոխադրումների վերլուծություն</h1>
         <div className="chart">
           <ResponsiveContainer width="99%" height="100%">
             <AreaChart
