@@ -10,8 +10,8 @@ const data = [
 
 const PieChartBox = () => {
     function CutString(inputString: string): string {
-        if (inputString.length > 6) {
-          return inputString.slice(0, 6) + "...";
+        if (inputString.length > 5) {
+          return inputString.slice(0, 5);
         }
         return inputString;
       }

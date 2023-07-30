@@ -54,6 +54,7 @@ import {
   ];
   
   const BigChartBox = () => {
+    
     return (
       <div className="bigChartBox">
         <h1>Բեռնափոխադրումների վերլուծություն</h1>
