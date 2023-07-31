@@ -32,6 +32,7 @@ const Avatar = ({showDropDown}:any) => {
 
     document.addEventListener("mousedown", checkIfClickedOutside)
 
+   
     return () => {
       // Cleanup the event listener
       document.removeEventListener("mousedown", checkIfClickedOutside)
@@ -58,7 +59,7 @@ const Avatar = ({showDropDown}:any) => {
                 to="/dashboard"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
-                Dashboard
+                Բեռներ
               </Link>
             </li>
             <li >
@@ -67,24 +68,17 @@ const Avatar = ({showDropDown}:any) => {
                  target="_blank"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
-                Admin pannel
+                Իմ էջը
               </Link>
             </li>
-            <li>
-              <a
-                href="http://google.com"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Earnings
-              </a>
-            </li>
+          
           </ul>
           <div className="py-1">
             <a
                href="http://google.com"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
             >
-              Sign out
+              Դուրս գալ
             </a>
           </div>
         </div>

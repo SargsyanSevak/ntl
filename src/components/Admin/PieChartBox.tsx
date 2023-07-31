@@ -9,12 +9,12 @@ const data = [
 ];
 
 const PieChartBox = () => {
-    function CutString(inputString: string): string {
-        if (inputString.length > 5) {
-          return inputString.slice(0, 5);
-        }
-        return inputString;
-      }
+  function CutString(inputString: string): string {
+    if (inputString.length > 5) {
+      return inputString.slice(0, 5);
+    }
+    return inputString;
+  }
   return (
     <div className="pieChartBox">
       <h1>Բեռների վիճակագրություն</h1>
