@@ -23,7 +23,7 @@ export default function Home() {
         <AutomatedWidgets />
         <Customizable />
         <Calendar />
-        <PricingTables />
+        {/* <PricingTables /> */}
         <Footer />
       </main>
     </section>

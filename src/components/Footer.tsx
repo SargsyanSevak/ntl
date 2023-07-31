@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from '../assets/logo.svg'
+import Logo from '../assets/mainlogo.svg'
 import LanguageSwitcher from "./LanguageSwitcher";
 const navigation = [
   {
@@ -31,12 +31,10 @@ const Footer = () => {
         <div className="flex sm:items-center justify-between">
           <a
             href="https://flowbite.com/"
-            className="flex items-center mb-4 sm:mb-0"
+            className="flex items-center "
           >
-            <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
-              NTL
-            </span>
+            <img src={Logo} className="w-16 mr-3" alt="Flowbite Logo" />
+            
           </a>
          
           <ul className="hidden md:flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400 ">
