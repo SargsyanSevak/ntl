@@ -6,8 +6,8 @@ const Features:React.FC = () => {
   return (
     <div className="w-full md:h-[600px] h-auto max-w-[1600px] mx-auto bg-white">
       <div className="max-w-[1280px] md:h-[600px] h-auto  mx-auto px-6 md:px-8 flex flex-col justify-evenly">
-        <h2 className="w-full text-center text-[40px] font-bold mt-10 md:mt-0">
-          Main Features
+        <h2 className="w-full text-center text-[30px] font-bold mt-10 md:mt-0">
+          Հիմնական առավելություններ
         </h2>
         <div className="w-full flex justify-start mt-6 md:mt-0">
           <p className="text-color text-[18px] text-center">
@@ -24,7 +24,7 @@ const Features:React.FC = () => {
                 <img src={watch} alt="" />
               </div>
               <div className="font-bold">
-                <h4>Monitoring 24/7</h4>
+                <h4>Հասանելիություն 24/7</h4>
               </div>
               <div>
                 <p className="text-color">
@@ -38,7 +38,7 @@ const Features:React.FC = () => {
                 <img src={pc} alt="" />
               </div>
               <div className="font-bold">
-                <h4>Widget System</h4>
+                <h4>Պարզություն</h4>
               </div>
               <div>
                 <p className="text-color">
@@ -52,7 +52,7 @@ const Features:React.FC = () => {
                 <img src={performance} alt="" />
               </div>
               <div className="font-bold">
-                <h4>Best Performance</h4>
+                <h4>Արագություն</h4>
               </div>
               <div>
                 <p className="text-color">

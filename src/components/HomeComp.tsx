@@ -5,7 +5,7 @@ import dashboardSmall from "../assets/dashboard-small.svg";
 
 export default function HomeComp() {
   return (
-    <div className="bg-white min-h-screen flex flex-col lg:flex-row justify-center items-center">
+    <div className="bg-white min-h-screen flex flex-col-reverse lg:gap-2 gap-6 lg:flex-row justify-center items-center">
       <div className="relative isolate px-6  lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -19,28 +19,26 @@ export default function HomeComp() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              Data to enrich your online business
+        <div className="mx-auto max-w-2xl py-8  lg:py-56">
+          <div className="lg:text-start text-center">
+            <h1 className="text-[6vw]  font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Բեռնափոխադրումների ամբողջական կառավարում 
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+            <p className="mt-6 text-md leading-7 text-gray-600 text-justify">
+            Անխափան կերպով կապվեք ճիշտ գործընկերների հետ և օպտիմիզացրեք ձեր բեռնափոխադրումների ամբողջ գործընթացը, ինչպես երբեք: Միացեք մեզ հիմա և փոխեք ապրանքների տեղափոխման ձևը:
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex items-center  lg:justify-start justify-center gap-x-6">
               <a
                 href="#"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="rounded-md bg-[#1C90F3] px-3.5 py-2.5 text-sm  text-white shadow-sm hover:bg-[#4ca7f7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Get started
+                Սկսել հիմա
               </a>
               <a
                 href="#"
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="text-sm  leading-6 text-gray-900"
               >
-                Learn more <span aria-hidden="true">→</span>
+                Իմանալ ավելին <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -59,7 +57,7 @@ export default function HomeComp() {
           />
         </div>
       </div>
-      <div className="max-w-[600px] hidden lg:flex   justify-center items-center">
+      <div className="max-w-[600px] flex  justify-center items-center pt-[100px] lg:px-0 px-4  lg:py-56">
         <img src={`https://www.dat.com/wp-content/uploads/2021/01/screenshot_power_loads_sidebar_2020-03-laptop-v1.0x650.webp`} alt="" />
       </div>
     </div>
