@@ -24,7 +24,7 @@ export default function HomeComp() {
             <h1 className="text-[6vw]  font-bold tracking-tight text-gray-900 sm:text-4xl">
               Բեռնափոխադրումների ամբողջական կառավարում 
             </h1>
-            <p className="mt-6 text-md leading-7 text-gray-600 text-justify">
+            <p className="mt-6 text-md lg:leading-7 leading-6 text-gray-600 text-justify">
             Անխափան կերպով կապվեք ճիշտ գործընկերների հետ և օպտիմիզացրեք ձեր բեռնափոխադրումների ամբողջ գործընթացը, ինչպես երբեք: Միացեք մեզ հիմա և փոխեք ապրանքների տեղափոխման ձևը:
             </p>
             <div className="mt-10 flex items-center  lg:justify-start justify-center gap-x-6">
