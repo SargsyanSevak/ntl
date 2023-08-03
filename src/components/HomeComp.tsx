@@ -5,7 +5,7 @@ import dashboardSmall from "../assets/dashboard-small.svg";
 
 export default function HomeComp() {
   return (
-    <div className="bg-white min-h-screen flex flex-col-reverse lg:gap-2 gap-6 lg:flex-row justify-center items-center">
+    <div className="bg-white min-h-screen flex flex-col-reverse gap-2 lg:flex-row justify-center items-center">
       <div className="relative isolate px-6  lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -57,7 +57,7 @@ export default function HomeComp() {
           />
         </div>
       </div>
-      <div className="max-w-[600px] flex  justify-center items-center pt-[100px] lg:px-0 px-4  lg:py-56">
+      <div className="max-w-[600px] flex  justify-center items-center pt-[100px] lg:px-0 px-4  lg:py-[150px]">
         <img src={`https://www.dat.com/wp-content/uploads/2021/01/screenshot_power_loads_sidebar_2020-03-laptop-v1.0x650.webp`} alt="" />
       </div>
     </div>
