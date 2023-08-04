@@ -37,7 +37,7 @@ const fullOrPartial = [
   },
 ];
 const DashboardHeader = () => {
-  const [activeUser,setActivUser] = useState<boolean>(true)
+  const [activeUser,setActivUser] = useState<boolean>(false)
   return (
     <>
       <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>

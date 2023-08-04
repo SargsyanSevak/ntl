@@ -5,8 +5,8 @@ const ModeSwitcher = () => {
   const [isDrkMode, setIsDarkMode] = useState<boolean>(false);
   const handleChangeMode = () =>{
     setIsDarkMode(!isDrkMode)
-    document.body.classList.toggle('dark', isDrkMode);
-    localStorage.setItem('darkMode', isDrkMode ? 'enabled' : 'disabled');
+    // document.body.classList.toggle('dark', isDrkMode);
+    // localStorage.setItem('darkMode', isDrkMode ? 'enabled' : 'disabled');
   }
  
   return (
