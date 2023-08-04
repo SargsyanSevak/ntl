@@ -40,7 +40,7 @@ const Avatar = ({ showDropDown }: any) => {
   return (
     <div className="reletive z-50" ref={ref}>
       <div
-        className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
+        className="w-10 h-10 bg-gray-600 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
         onClick={handleOpen}
       >
         <p> {avatarWords(str)}</p>

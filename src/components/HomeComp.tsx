@@ -22,10 +22,12 @@ export default function HomeComp() {
         <div className="mx-auto max-w-2xl py-8  lg:py-56">
           <div className="lg:text-start text-center">
             <h1 className="text-[6vw]  font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Բեռնափոխադրումների ամբողջական կառավարում 
+              Բեռնափոխադրումների ամբողջական կառավարում
             </h1>
             <p className="mt-6 text-md lg:leading-7 leading-6 text-gray-600 text-justify">
-            Անխափան կերպով կապվեք ճիշտ գործընկերների հետ և օպտիմիզացրեք ձեր բեռնափոխադրումների ամբողջ գործընթացը, ինչպես երբեք: Միացեք մեզ հիմա և փոխեք ապրանքների տեղափոխման ձևը:
+              Անխափան կերպով կապվեք ճիշտ գործընկերների հետ և օպտիմիզացրեք ձեր
+              բեռնափոխադրումների ամբողջ գործընթացը, ինչպես երբեք: Միացեք մեզ
+              հիմա և փոխեք ապրանքների տեղափոխման ձևը:
             </p>
             <div className="mt-10 flex items-center  lg:justify-start justify-center gap-x-6">
               <a
@@ -34,10 +36,7 @@ export default function HomeComp() {
               >
                 Սկսել հիմա
               </a>
-              <a
-                href="#"
-                className="text-sm  leading-6 text-gray-900"
-              >
+              <a href="#" className="text-sm  leading-6 text-gray-900">
                 Իմանալ ավելին <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -58,7 +57,10 @@ export default function HomeComp() {
         </div>
       </div>
       <div className="max-w-[600px] flex  justify-center items-center pt-[100px] lg:px-0 px-4  lg:py-[150px]">
-        <img src={`https://www.dat.com/wp-content/uploads/2021/01/screenshot_power_loads_sidebar_2020-03-laptop-v1.0x650.webp`} alt="" />
+        <img
+          src={`https://www.dat.com/wp-content/uploads/2021/01/screenshot_power_loads_sidebar_2020-03-laptop-v1.0x650.webp`}
+          alt=""
+        />
       </div>
     </div>
   );
