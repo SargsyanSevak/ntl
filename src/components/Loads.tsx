@@ -29,7 +29,7 @@ const Loads = () => {
           </div>
         </div>
         <div className="lg:block hidden">
-          <div className="w-full h-[30px] bg-[#c4c4c4b1] text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
+          <div className="w-full h-[30px] bg-gray-300 text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
             <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
               <div title={"վերջին թարմացումը"} className="cursor-pointer"><RxUpdate/></div>
             </div>

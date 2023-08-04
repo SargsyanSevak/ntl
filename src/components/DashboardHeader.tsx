@@ -6,6 +6,7 @@ import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
 import Loads from "./Loads";
 import DashboardFilter from "./DashboardFilter";
+import LoginBtn from "./LoginBtn";
 const trucks = [
   {
     id: 1,
@@ -35,9 +36,10 @@ const fullOrPartial = [
   },
 ];
 const DashboardHeader = () => {
+  const [activeUser,setActivUser] = useState<boolean>(false)
   return (
     <>
-      <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 lg:px-6 relative`}>
+      <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
         <div className="flex justify-between items-center">
           <div className=" h-12 relative flex justify-start items-center overflow-hidden -ml-2">
             <img src={Logo} alt="" className="w-[90px] logo" />
@@ -49,14 +51,17 @@ const DashboardHeader = () => {
               NTL LOAD BOARD
             </p>
           </div>
-          <div className="absolute md:right-36 right-20 font-bold text-sm">
+          <div className={`absolute ${activeUser ? 'right-[70px] md:right-[90px]' : 'right-[110px] md:right-[130px]'}   font-bold text-sm`}>
             <ul className="flex  gap-2">
               <li className="active cursor-pointer">Հայ</li>
               <li className="cursor-pointer">Рус</li>
             </ul>
           </div>
           <div>
-            <Avatar showDropDown={true} />
+            {
+              activeUser ?  <Avatar showDropDown={true} /> : <LoginBtn/>
+            }
+           
           </div>
         </div>
       </div>
