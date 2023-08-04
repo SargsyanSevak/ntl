@@ -50,7 +50,7 @@ const Avatar = ({ showDropDown }: any) => {
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-50 top-[80px] right-[20px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`}
+          } absolute z-50 top-[60px] right-[10px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
