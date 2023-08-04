@@ -67,6 +67,12 @@ const AdminHeader: React.FC = () => {
             ))}
           </ul>
         </nav>
+        <div className="absolute md:right-28 right-28 font-bold text-sm">
+            <ul className="flex  gap-2">
+              <li className="active cursor-pointer">Հայ</li>
+              <li className="cursor-pointer">Рус</li>
+            </ul>
+          </div>
         <div className=" flex justify-center items-center gap-8 lg:gap-6">
           <Link
             to="settings/notifications"
