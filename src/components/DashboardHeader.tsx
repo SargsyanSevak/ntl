@@ -7,6 +7,7 @@ import UISelect from "../UI/UISelect";
 import Loads from "./Loads";
 import DashboardFilter from "./DashboardFilter";
 import LoginBtn from "./LoginBtn";
+import ModeSwitcher from "./ModeSwitcher";
 const trucks = [
   {
     id: 1,
@@ -36,7 +37,7 @@ const fullOrPartial = [
   },
 ];
 const DashboardHeader = () => {
-  const [activeUser,setActivUser] = useState<boolean>(false)
+  const [activeUser,setActivUser] = useState<boolean>(true)
   return (
     <>
       <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
@@ -51,12 +52,17 @@ const DashboardHeader = () => {
               NTL LOAD BOARD
             </p>
           </div>
+          <div className={`absolute ${activeUser ? 'right-[150px] md:right-[160px]' : 'right-[190px] md:right-[210px]'}   font-bold text-sm`}>
+              <ModeSwitcher/>
+          </div>
+        
           <div className={`absolute ${activeUser ? 'right-[70px] md:right-[90px]' : 'right-[110px] md:right-[130px]'}   font-bold text-sm`}>
             <ul className="flex  gap-2">
               <li className="active cursor-pointer">Հայ</li>
               <li className="cursor-pointer">Рус</li>
             </ul>
           </div>
+          
           <div>
             {
               activeUser ?  <Avatar showDropDown={true} /> : <LoginBtn/>
