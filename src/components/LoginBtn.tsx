@@ -54,7 +54,6 @@ const LoginBtn = () => {
             <li>
               <Link
                 to="/register"
-                target="_blank"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Գրանցվել
