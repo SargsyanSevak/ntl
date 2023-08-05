@@ -4,7 +4,7 @@ import LoadItem from "./LoadItem";
 import Loader from "./Loader";
 import { LuFilter, LuFilterX } from "react-icons/lu";
 import { RxUpdate } from "react-icons/rx";
-import DashboardFilter from "./DashboardFilter 2";
+import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
 const itemsPerRow = 50;
 const Loads = () => {

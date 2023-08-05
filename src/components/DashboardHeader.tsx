@@ -11,7 +11,7 @@ const DashboardHeader: React.FC = () => {
       <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
         <div className="flex justify-between items-center">
           <div className=" h-12 relative flex justify-start items-center overflow-hidden -ml-2">
-            <img src={Logo} alt="" className="w-[90px] logo" />
+            <img src={Logo} alt="logo" className="w-[90px] logo" />
           </div>
 
           <div>
