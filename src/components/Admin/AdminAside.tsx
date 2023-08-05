@@ -2,16 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Burger from "../../assets/burgerwhite.svg";
 import { Link, useLocation } from "react-router-dom";
-import { AiOutlineHome, AiOutlineEdit } from "react-icons/ai";
+import {  AiOutlineEdit } from "react-icons/ai";
 import { MdPostAdd } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import Avatar from "../Avatar";
-const navigation = [
+interface NavigationItem {
+  id: number;
+  title: string;
+  to: string;
+  icon: JSX.Element;
+}
+const navigation: NavigationItem[] = [
   {
     id: 1,
     title: "Գլխավոր",
     to: "/admin",
-    icon: <AiOutlineHome />,
+    icon: <AiOutlineEdit />,
   },
   {
     id: 2,
@@ -32,7 +38,8 @@ const navigation = [
     icon: <CiSettings />,
   },
 ];
-const AdminAside:React.FC = () => {
+
+const AdminAside: React.FC = () => {
   const { pathname } = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,7 +74,6 @@ const AdminAside:React.FC = () => {
   }, [isMenuOpen]);
   return (
     <>
-      {/* Button to toggle the aside menu */}
       <button
         className=" text-white outline-none bg-inherit"
         onClick={toggleMenu}
@@ -96,7 +102,12 @@ const AdminAside:React.FC = () => {
           </div>
           <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
             {navigation.map((el) => (
-              <li className={`flex items-center gap-4 h-16 pl-4  ${pathname === el.to ? 'active-link' : ''}`} key={el.id}>
+              <li
+                className={`flex items-center gap-4 h-16 pl-4  ${
+                  pathname === el.to ? "active-link" : ""
+                }`}
+                key={el.id}
+              >
                 <div className="text-[24px]">{el.icon}</div>
                 <Link to={el.to}>{el.title}</Link>
               </li>

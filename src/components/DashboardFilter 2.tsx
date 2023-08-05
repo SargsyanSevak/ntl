@@ -1,40 +1,8 @@
 import React, { useState } from "react";
 import DatePickerUi from "./DatePicker";
 import UIInput from "../UI/UIInput";
-
-import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
-import Loads from "./Loads";
-
-const trucks = [
-  {
-    id: 1,
-    name: "ռեֆ",
-  },
-  {
-    id: 2,
-    name: "տենտ",
-  },
-  {
-    id: 3,
-    name: "կոնտեյնեռ",
-  },
-  {
-    id: 4,
-    name: "ավիա",
-  },
-];
-
-const fullOrPartial = [
-  {
-    id: 1,
-    name: "ամբողջական",
-  },
-  {
-    id: 2,
-    name: "հավաքական",
-  },
-];
+import { fullOrPartial,trucks } from "../constants/LoadItems"; 
 
 const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
   const [name, setName] = useState("");

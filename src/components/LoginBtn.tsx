@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
+import {  RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const LoginBtn = () => {

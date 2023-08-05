@@ -1,43 +1,11 @@
 import React, { useState } from "react";
-import DatePickerUi from "./DatePicker";
-import UIInput from "../UI/UIInput";
 import Logo from "../assets/mainlogo.svg";
 import Avatar from "./Avatar";
-import UISelect from "../UI/UISelect";
-import Loads from "./Loads";
-import DashboardFilter from "./DashboardFilter 2";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
-const trucks = [
-  {
-    id: 1,
-    name: "ռեֆ",
-  },
-  {
-    id: 2,
-    name: "տենտ",
-  },
-  {
-    id: 3,
-    name: "կոնտեյնեռ",
-  },
-  {
-    id: 4,
-    name: "ավիա",
-  },
-];
-const fullOrPartial = [
-  {
-    id: 1,
-    name: "ամբողջական",
-  },
-  {
-    id: 2,
-    name: "հավաքական",
-  },
-];
-const DashboardHeader = () => {
-  const [activeUser, setActivUser] = useState<boolean>(false)
+
+const DashboardHeader: React.FC = () => {
+  const [activeUser, setActivUser] = useState<boolean>(false);
   return (
     <>
       <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
@@ -52,11 +20,23 @@ const DashboardHeader = () => {
               NTL LOAD BOARD
             </p>
           </div>
-          <div className={`absolute ${activeUser ? 'right-[150px] md:right-[160px]' : 'right-[190px] md:right-[210px]'}   font-bold text-sm`}>
+          <div
+            className={`absolute ${
+              activeUser
+                ? "right-[150px] md:right-[160px]"
+                : "right-[190px] md:right-[210px]"
+            }   font-bold text-sm`}
+          >
             <ModeSwitcher />
           </div>
 
-          <div className={`absolute ${activeUser ? 'right-[70px] md:right-[90px]' : 'right-[110px] md:right-[130px]'}   font-bold text-sm`}>
+          <div
+            className={`absolute ${
+              activeUser
+                ? "right-[70px] md:right-[90px]"
+                : "right-[110px] md:right-[130px]"
+            }   font-bold text-sm`}
+          >
             <ul className="flex  gap-2">
               <li className="active cursor-pointer">Հայ</li>
               <li className="cursor-pointer">Рус</li>
@@ -64,10 +44,7 @@ const DashboardHeader = () => {
           </div>
 
           <div>
-            {
-              activeUser ? <Avatar showDropDown={true} /> : <LoginBtn />
-            }
-
+            {activeUser ? <Avatar showDropDown={true} /> : <LoginBtn />}
           </div>
         </div>
       </div>

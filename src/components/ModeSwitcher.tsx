@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { HiOutlineMoon } from "react-icons/hi";
 const ModeSwitcher = () => {

@@ -5,30 +5,7 @@ import Logo from "../../assets/mainlogowhite.svg";
 import { MdNotificationsNone } from "react-icons/md";
 import AdminAside from "./AdminAside";
 import { notificationsData } from "../../data/notificationData";
-const adminNavItems = [
-  {
-    id: 1,
-    title: "Գլխավոր",
-    to: "/admin",
-    fullPath: "/admin",
-  },
-  {
-    id: 2,
-    title: "Ավելացնել բեռներ",
-    to: "/admin/addloads",
-    fullPath: "/admin/addloads",
-  },
-  {
-    id: 3,
-    title: "Փոփոխել բեռները",
-    to: "/admin/changeloads",
-  },
-  {
-    id: 4,
-    title: "Կարգավորումներ",
-    to: "/admin/settings",
-  },
-];
+import { adminNavItems } from "../../constants/NavItems";
 const AdminHeader: React.FC = () => {
   const [notificationCount, setNotificationCount] = useState<number>(1);
   const { pathname } = useLocation();
@@ -68,11 +45,11 @@ const AdminHeader: React.FC = () => {
           </ul>
         </nav>
         <div className="absolute md:right-28 right-28 font-bold text-sm">
-            <ul className="flex  gap-2">
-              <li className="active cursor-pointer">Հայ</li>
-              <li className="cursor-pointer">Рус</li>
-            </ul>
-          </div>
+          <ul className="flex  gap-2">
+            <li className="active cursor-pointer">Հայ</li>
+            <li className="cursor-pointer">Рус</li>
+          </ul>
+        </div>
         <div className=" flex justify-center items-center gap-8 lg:gap-6">
           <Link
             to="settings/notifications"

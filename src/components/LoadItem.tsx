@@ -1,13 +1,8 @@
-import React, { useState } from "react";
 import { LoadProps } from "../interfaces/LoadProps";
-import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineClockCircle, AiOutlineCalendar } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
-import { TbCurrentLocation } from "react-icons/tb";
-import { SlLocationPin } from "react-icons/sl";
 import { BsRecordCircle } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import { MdOutlineHeight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import LoadDesktop from "./LoadDesktop";
 const LoadItem = ({
