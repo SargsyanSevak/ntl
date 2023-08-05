@@ -1,11 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {  RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ContactMe } from "./ContactMe";
 const LoginBtn = () => {
   const [open, setOpen] = useState<Boolean | null>(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [showDropDown, setShowDropDown] = useState<Boolean | null>(true);
   const ref = useRef<any>();
+
+  const handleOpenContact = () => {
+    setIsOpen(true);
+   
+  };
+
+  const handleCloseContact = () => {
+    setIsOpen(false);
+  };
+
 
   const handleOpen = () => {
     setOpen(!open);
@@ -61,12 +73,16 @@ const LoginBtn = () => {
             </li>
           </ul>
           <div className="py-1">
-            <div className="flex items-center gap-2 cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+            <div className="flex items-center gap-2 cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            onClick={handleOpenContact}
+            >
               Հետադարձ կապ
             </div>
+           
           </div>
         </div>
       )}
+       <ContactMe isOpen={isOpen} onClose={handleCloseContact} />
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Loads = () => {
       <div>
         <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px]">
           <p>{testload.length} Total results </p>
-          <div className="h-full flex items-center gap-4">
+          <div className="h-full flex items-center gap-4 relative -z-1">
             <SortLoads />
             <div
               onClick={() => setOpen(!open)}
