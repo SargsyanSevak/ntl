@@ -5,7 +5,7 @@ import Logo from "../assets/mainlogo.svg";
 import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
 import Loads from "./Loads";
-import DashboardFilter from "./DashboardFilter";
+import DashboardFilter from "./DashboardFilter 2";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
 const trucks = [
