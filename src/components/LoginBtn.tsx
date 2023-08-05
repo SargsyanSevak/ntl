@@ -2,20 +2,20 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import {  RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { ContactMe } from "./ContactMe";
+import ModalContact from "./ContactMe";
 const LoginBtn = () => {
   const [open, setOpen] = useState<Boolean | null>(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [openContact, setOpenContact] = useState(false);
   const [showDropDown, setShowDropDown] = useState<Boolean | null>(true);
   const ref = useRef<any>();
 
   const handleOpenContact = () => {
-    setIsOpen(true);
+    setOpenContact(true);
    
   };
 
   const handleCloseContact = () => {
-    setIsOpen(false);
+    setOpenContact(false);
   };
 
 
@@ -82,7 +82,7 @@ const LoginBtn = () => {
           </div>
         </div>
       )}
-       <ContactMe isOpen={isOpen} onClose={handleCloseContact} />
+       <ModalContact isOpen={openContact} onClose={handleCloseContact} />
     </div>
   );
 };
