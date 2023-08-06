@@ -32,7 +32,7 @@ const Loads = () => {
     <>
       <div>
         <div className="w-full h-10 bg-[#eaeaea] dark:bg-[#081423] dark:text-white flex items-center justify-between pl-4 pr-4 ">
-          <p>{loadData.length} Total results</p>
+          <p className="text-[14px]">{loadData.length} գտնված բեռներ</p>
           <div className="h-full flex items-center gap-4 relative -z-1 dark:text-white">
             <SortLoads />
             <div
