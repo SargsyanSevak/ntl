@@ -1,12 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
-const Avatar = ({ showDropDown }: any) => {
+import ModalContact from "./ContactMe";
+const Avatar = ({ showDropDown, setActivUser }: any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
+  const [openModal, setOpenModal] = useState(false);
   const ref = useRef<any>();
 
   const handleOpen = () => {
     setOpen(!open);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const logOutUser = () => {
+    setActivUser(false);
   };
   let str = "Aram Petrosyan";
 
@@ -23,8 +35,6 @@ const Avatar = ({ showDropDown }: any) => {
   };
   useEffect(() => {
     const checkIfClickedOutside = (e: any) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
       if (open && ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
       }
@@ -33,12 +43,12 @@ const Avatar = ({ showDropDown }: any) => {
     document.addEventListener("mousedown", checkIfClickedOutside);
 
     return () => {
-      // Cleanup the event listener
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [open]);
   return (
     <div className="reletive z-50" ref={ref}>
+      <ModalContact isOpen={openModal} onClose={handleCloseModal} />
       <div
         className="w-10 h-10 bg-gray-600 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
         onClick={handleOpen}
@@ -50,7 +60,7 @@ const Avatar = ({ showDropDown }: any) => {
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-50 top-[60px] right-[10px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`}
+          } absolute z-20 top-[60px] right-[10px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600 cursor-pointer`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
@@ -62,26 +72,29 @@ const Avatar = ({ showDropDown }: any) => {
           >
             <li>
               <Link
-                to="/dashboard"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Բեռներ
-              </Link>
-            </li>
-            <li>
-              <Link
                 to="/admin"
-                target="_blank"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 Իմ էջը
               </Link>
             </li>
+            <li>
+              <button
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={handleOpenModal}
+              >
+                Հետադարձ կապ
+              </button>
+            </li>
           </ul>
-          <div className="py-1">
-            <div className="flex items-center gap-2 cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-              <BiLogOut/>Դուրս գալ
-            </div>
+          <div className="py-1 w-full">
+            <button
+              className="flex w-full items-center  gap-2 cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              onClick={logOutUser}
+            >
+              <BiLogOut />
+              Դուրս գալ
+            </button>
           </div>
         </div>
       )}

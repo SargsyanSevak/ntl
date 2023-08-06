@@ -11,13 +11,11 @@ const LoginBtn = () => {
 
   const handleOpenContact = () => {
     setOpenContact(true);
-   
   };
 
   const handleCloseContact = () => {
     setOpenContact(false);
   };
-
 
   const handleOpen = () => {
     setOpen(!open);

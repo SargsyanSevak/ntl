@@ -5,7 +5,8 @@ import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
 
 const DashboardHeader: React.FC = () => {
-  const [activeUser, setActivUser] = useState<boolean>(false);
+  const [activeUser, setActivUser] = useState<boolean>(true);
+
   return (
     <>
       <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
@@ -44,7 +45,7 @@ const DashboardHeader: React.FC = () => {
           </div>
 
           <div>
-            {activeUser ? <Avatar showDropDown={true} /> : <LoginBtn />}
+            {activeUser ? <Avatar showDropDown={true} setActivUser={setActivUser}/> : <LoginBtn />}
           </div>
         </div>
       </div>
