@@ -25,7 +25,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async ({}) => {
+  const onSubmit = async () => {
     if (isValid) {
       await emailjs
         .sendForm(
@@ -61,7 +61,6 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     Հետադարձ կապ
                   </h3>
                 </div>
-
                 <form
                   className="p-6 space-y-6"
                   ref={ref}
@@ -123,7 +122,6 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     )}
                   </div>
                 </form>
-
                 <div className="flex relative items-center justify-between p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                   <p className="absolute top-0 w-full">{success && ""}</p>
                   <button

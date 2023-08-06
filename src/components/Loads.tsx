@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { testload } from "../data/testload";
-import LoadItem from "./LoadItem";
-import Loader from "./Loader"; // Replace with your Loader component
+import LoadItem from "./LoadItem";// Replace with your Loader component
 import { LuFilter, LuFilterX } from "react-icons/lu";
-import { RxUpdate } from "react-icons/rx";
 import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
 import { LoadProps } from "../interfaces/LoadProps";

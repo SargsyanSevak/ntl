@@ -49,7 +49,7 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
                       classNames(
                         active ? "bg-[#1C90F3] text-white" : "text-gray-900",
                         "relative cursor-default select-none py-2 pl-3 pr-9",
-                        el.name == 'ջնջել' && active ? 'bg-red-500' : ''
+                        el.name === 'ջնջել' && active ? 'bg-red-500' : ''
                       )
                     }
                     value={el}

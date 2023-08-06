@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { HiOutlineMoon } from "react-icons/hi";
 
-const ModeSwitcher = ({setIsChangedMode}:any) => {
+interface ChangedModsProps {
+  setIsChangedMode: (props: boolean) => void;
+}
+
+const ModeSwitcher: React.FC<ChangedModsProps> = ({ setIsChangedMode }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const storedTheme = localStorage.getItem("theme");
     return storedTheme === "dark";
@@ -17,14 +21,14 @@ const ModeSwitcher = ({setIsChangedMode}:any) => {
 
     if (isDarkMode) {
       element.classList.add("dark");
-      document.body.classList.add('darkMode')
+      document.body.classList.add("darkMode");
       localStorage.setItem("theme", "dark");
-      setIsChangedMode(true)
+      setIsChangedMode(true);
     } else {
       element.classList.remove("dark");
-      document.body.classList.remove('darkMode')
+      document.body.classList.remove("darkMode");
       localStorage.removeItem("theme");
-      setIsChangedMode(false)
+      setIsChangedMode(false);
     }
   }, [isDarkMode]);
 
