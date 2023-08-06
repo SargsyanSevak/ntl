@@ -66,7 +66,7 @@ const LoadDesktop = ({
             to={`/dashboard/preview/${id}`}
             target="_blank"
             type="button"
-            className=" font-light text-gray-200 bg-[#1C90F3] border border-gray-300 focus:outline-none hover:bg-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[12px] px-2 py-[3px]  flex justify-center items-center"
+            className=" font-light text-gray-200 bg-[#15558d] focus:outline-none hover:bg-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
           >
             ավելին
           </Link>
