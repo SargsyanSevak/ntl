@@ -25,16 +25,16 @@ const Preview = () => {
             </div>
             <div className="w-full h-full flex flex-col justify-center items-center ">
               <div className="h-[300px] w-full  flex flex-col justify-between items-start text-[14px] py-2">
-                <h4 className="text-[18px]">Erevan,AM</h4>
+                <h4 className="text-[18px]">Երևան</h4>
                 <div>
-                  <h4 className="text-gray-600">TOTAL TRIP MILES </h4>
-                  <p>2300km</p>
+                  <h4 className="text-gray-600">Հեռավորությունը</h4>
+                  <p>2300կմ</p>
                 </div>
                 <div>
-                  <h4 className="text-gray-600">TOTAL TRIP TIME</h4>
-                  <p>13 hr 13 min</p>
+                  <h4 className="text-gray-600">Տևողությունը</h4>
+                  <p>13 ժ 13 րոպե</p>
                 </div>
-                <h4 className="text-[18px]">Ekaterinburg,RU</h4>
+                <h4 className="text-[18px]">Եկատերինբուրգ</h4>
               </div>
             </div>
           </div>
