@@ -13,7 +13,7 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium leading-4 text-gray-900">
+          <Listbox.Label className="block text-sm font-medium leading-4 text-gray-900 dark:text-white">
             {label}
           </Listbox.Label>
           <div className="relative mt-2 w-full">

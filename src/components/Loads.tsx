@@ -16,9 +16,9 @@ const Loads = () => {
   return (
     <>
       <div>
-        <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px]">
-          <p>{testload.length} Total results </p>
-          <div className="h-full flex items-center gap-4 relative -z-1">
+        <div className="w-full h-10 bg-[#eaeaea] dark:bg-[#081423] dark:text-white flex items-center justify-between pl-4 pr-4 ">
+          <p >{testload.length} Total results </p>
+          <div className="h-full flex items-center gap-4 relative -z-1 dark:text-white">
             <SortLoads />
             <div
               onClick={() => setOpen(!open)}
@@ -29,7 +29,7 @@ const Loads = () => {
           </div>
         </div>
         <div className="lg:block hidden">
-          <div className="w-full h-[30px] bg-gray-300 text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
+          <div className="w-full h-[30px] bg-gray-300 dark:bg-gray-800 dark:text-gray-200 text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
             <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
               <div title={"վերջին թարմացումը"} className="cursor-pointer">
                 <RxUpdate />

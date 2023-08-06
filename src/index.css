@@ -7,8 +7,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-.dark{
-    background-color: rgb(28, 28, 28);
+
+.darkMode{
+  background: #0E192D;
 }
 
 .loader {

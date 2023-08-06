@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 import Logo from "../assets/mainlogo.svg";
+import LogoWhite from "../assets/mainlogowhite.svg";
 import Avatar from "./Avatar";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
 
-const DashboardHeader: React.FC = () => {
+const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
   const [activeUser, setActivUser] = useState<boolean>(true);
+  const [changedMode, setIsChangedMode] = useState<boolean>(false);
 
   return (
     <>
-      <div className={`w-full  bg-gray-300 py-2 md:px-4 px-2 relative`}>
+      <div
+        className={`w-full  bg-gray-300 dark:bg-[#0E192D] py-2 md:px-4 px-2 relative`}
+      >
         <div className="flex justify-between items-center">
           <div className=" h-12 relative flex justify-start items-center overflow-hidden -ml-2">
-            <img src={Logo} alt="logo" className="w-[90px] logo" />
+            <img
+              src={changedMode ? LogoWhite : Logo}
+              alt="logo"
+              className="w-[90px] logo"
+            />
           </div>
 
           <div>
-            <p className="text-xl font-bold text-gray-600 md:block hidden">
+            <p className="text-xl font-bold text-gray-600 md:block hidden dark:text-white">
               {" "}
               NTL LOAD BOARD
             </p>
@@ -28,7 +36,7 @@ const DashboardHeader: React.FC = () => {
                 : "right-[190px] md:right-[210px]"
             }   font-bold text-sm`}
           >
-            <ModeSwitcher />
+            <ModeSwitcher setIsChangedMode={setIsChangedMode} />
           </div>
 
           <div
@@ -38,14 +46,18 @@ const DashboardHeader: React.FC = () => {
                 : "right-[110px] md:right-[130px]"
             }   font-bold text-sm`}
           >
-            <ul className="flex  gap-2">
+            <ul className="flex  gap-2 dark:text-white">
               <li className="active cursor-pointer">Հայ</li>
-              <li className="cursor-pointer">Рус</li>
+              <li className="cursor-pointer ">Рус</li>
             </ul>
           </div>
 
           <div>
-            {activeUser ? <Avatar showDropDown={true} setActivUser={setActivUser}/> : <LoginBtn />}
+            {activeUser ? (
+              <Avatar showDropDown={true} setActivUser={setActivUser} />
+            ) : (
+              <LoginBtn />
+            )}
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ const LoadItem = ({
 
       <Link
         to={`/dashboard/preview/${id}`}
-        className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"
+        className="mobile lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"
         target="_blank"
       >
         <div className="w-[20%] min-h-[100px] flex flex-col justify-around items-start md:items-center">
