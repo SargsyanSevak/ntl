@@ -7,6 +7,7 @@ import { RxUpdate } from "react-icons/rx";
 import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
 import { LoadProps } from "../interfaces/LoadProps";
+import TruckLoader from "./TruckLoader";
 
 const itemsPerRow = 50;
 
@@ -47,7 +48,7 @@ const Loads = () => {
 
         {isLoading ? (
           <div className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
-            <Loader />
+            <TruckLoader />
           </div>
         ) : (
           <>
