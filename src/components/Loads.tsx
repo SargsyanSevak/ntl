@@ -27,8 +27,8 @@ const Loads = () => {
   return (
     <>
       <div>
-        <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px]">
-          <p>{testload.length} Total results </p>
+        <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px] dark:border-t-0 dark:bg-[#0b1c2f] dark:text-white">
+          <p className="text-[14px]">{testload.length} գտնված բեռներ</p>
           <div className="h-full flex items-center gap-4 relative -z-1">
             <SortLoads />
             <div
@@ -40,7 +40,7 @@ const Loads = () => {
           </div>
         </div>
         <div className="lg:block hidden">
-          <div className="w-full h-[30px] bg-gray-300 text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
+          <div className="w-full h-[30px] bg-gray-300 dark:bg-[#27374D] dark:text-white text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700 mb-[2px]">
             <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
               <div title={"վերջին թարմացումը"} className="cursor-pointer">
                 <RxUpdate />
