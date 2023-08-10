@@ -36,8 +36,6 @@ const navigation = [
 ];
 const AsideMenu = () => {
   const { pathname } = useLocation();
-
-  console.log(pathname);
   
   return (
     <div className="md:w-[300px] w-[60px] py-6">

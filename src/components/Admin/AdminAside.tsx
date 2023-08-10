@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import {  AiOutlineEdit } from "react-icons/ai";
 import { MdPostAdd } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
+import { BsFillBoxFill } from "react-icons/bs";
 import Avatar from "../Avatar";
 interface NavigationItem {
   id: number;
@@ -97,7 +98,7 @@ const AdminAside: React.FC = () => {
       >
         <div className="p-0">
           <div className="avatar w-full h-[75px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
-            <Avatar />
+            <Avatar/>
             <p className="text-[20px] pt-[6px]">Vedi Alco</p>
           </div>
           <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
@@ -113,6 +114,7 @@ const AdminAside: React.FC = () => {
               </li>
             ))}
           </ul>
+         
         </div>
       </aside>
     </>

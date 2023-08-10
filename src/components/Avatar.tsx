@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import ModalContact from "./ContactMe";
 const Avatar = ({ showDropDown, setActivUser }: any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
   const [openModal, setOpenModal] = useState(false);
   const ref = useRef<any>();
-
+  const {pathname} = useLocation()
+ 
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -70,7 +71,18 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
             className="py-2 text-sm text-gray-700 dark:text-gray-200 "
             aria-labelledby="avatarButton"
           >
-            <li>
+           { 
+           pathname.includes('admin') ?
+           <li>
+              <Link
+                to="/"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                Բեռներ
+              </Link>
+            </li>
+            :
+           <li>
               <Link
                 to="/admin"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -78,6 +90,8 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
                 Իմ էջը
               </Link>
             </li>
+            
+            }
             <li>
               <button
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"

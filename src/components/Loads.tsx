@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { testload } from "../data/testload";
-import LoadItem from "./LoadItem";// Replace with your Loader component
+import LoadItem from "./LoadItem";
 import { LuFilter, LuFilterX } from "react-icons/lu";
+import { RxUpdate } from "react-icons/rx";
 import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
 import { LoadProps } from "../interfaces/LoadProps";
 import TruckLoader from "./TruckLoader";
-
 const itemsPerRow = 50;
-
 const Loads = () => {
   const [next, setNext] = useState<number>(itemsPerRow);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,19 +18,18 @@ const Loads = () => {
     setTimeout(() => {
       setLoadData(testload);
       setIsLoading(false);
-    }, 2000); 
+    }, 2000);
   }, []);
 
-  const handleMoreImage = () => {
+  const handleMoreLoads = () => {
     setNext(next + 50);
   };
-
   return (
     <>
       <div>
-        <div className="w-full h-10 bg-[#eaeaea] dark:bg-[#081423] dark:text-white flex items-center justify-between pl-4 pr-4 ">
-          <p className="text-[14px]">{loadData.length} գտնված բեռներ</p>
-          <div className="h-full flex items-center gap-4 relative -z-1 dark:text-white">
+        <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px]">
+          <p>{testload.length} Total results </p>
+          <div className="h-full flex items-center gap-4 relative -z-1">
             <SortLoads />
             <div
               onClick={() => setOpen(!open)}
@@ -41,7 +39,53 @@ const Loads = () => {
             </div>
           </div>
         </div>
-        <div className="lg:block hidden"></div>
+        <div className="lg:block hidden">
+          <div className="w-full h-[30px] bg-gray-300 text-[12px]  flex justify-around gap-[1px] font-semibold text-gray-700">
+            <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
+              <div title={"վերջին թարմացումը"} className="cursor-pointer">
+                <RxUpdate />
+              </div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div title={"բարձման օր"}>օր</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div title={"տրանսպորտային միջոցի տեսակը"}>տ/մ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[40px]">
+              <div title={"ամբողջական/հավաքական"}>Ա/Հ</div>
+            </div>
+
+            <div className=" flex justify-start items-center pl-[6px] w-[150px]">
+              <div title={"բարձման վայր"}>բարձում</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[35px]">
+              <div></div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[150px]">
+              <div title={"բերնաթափման վայր"}>բեռնաթափում</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[70px]">
+              <div title={"հեռավորություն"}>հեռավ.</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[160px]">
+              <div>պատվիրատու</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[140px]">
+              <div>կոնտակտ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[50px]">
+              <div>ծավալ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[80px]">
+              <div>քաշ</div>
+            </div>
+            <div className=" flex justify-start items-center pl-[6px] w-[70px]">
+              <div>գին</div>
+            </div>
+            <div className="flex justify-start items-center pl-[6px] w-[70px]"></div>
+          </div>
+        </div>
         <DashboardFilter open={open} />
 
         {isLoading ? (
@@ -57,11 +101,10 @@ const Loads = () => {
             ))}
           </>
         )}
-
         {next < testload?.length && (
           <div className="w-full flex justify-center py-4 ">
             <button
-              onClick={handleMoreImage}
+              onClick={handleMoreLoads}
               className="bg-[#1C90F3] text-white text-sm rounded-md px-4 py-2"
             >
               LOAD MORE
