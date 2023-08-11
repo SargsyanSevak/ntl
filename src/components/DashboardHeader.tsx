@@ -4,6 +4,7 @@ import LogoWhite from "../assets/mainlogowhite.svg";
 import Avatar from "./Avatar";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
   const [activeUser, setActivUser] = useState<boolean>(true);
@@ -46,10 +47,7 @@ const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
                 : "right-[110px] md:right-[130px]"
             }   font-bold text-sm`}
           >
-            <ul className="flex  gap-2 dark:text-white">
-              <li className="active cursor-pointer">Հայ</li>
-              <li className="cursor-pointer ">Рус</li>
-            </ul>
+            <LanguageSwitcher />
           </div>
 
           <div>

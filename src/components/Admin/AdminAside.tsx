@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Burger from "../../assets/burgerwhite.svg";
 import { Link, useLocation } from "react-router-dom";
-import {  AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 import { MdPostAdd } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { BsFillBoxFill } from "react-icons/bs";
@@ -76,7 +76,7 @@ const AdminAside: React.FC = () => {
   return (
     <>
       <button
-        className=" text-white outline-none bg-inherit"
+        className=" text-white outline-none bg-inherit z-50"
         onClick={toggleMenu}
         ref={menuRef}
       >
@@ -92,13 +92,13 @@ const AdminAside: React.FC = () => {
         )}
       </button>
       <aside
-        className={`fixed top-[65px]  right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
+        className={`fixed top-0  right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-200`}
       >
-        <div className="p-0">
-          <div className="avatar w-full h-[75px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
-            <Avatar/>
+        <div className="pt-12">
+          <div className="avatar w-full h-[90px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
+            <Avatar />
             <p className="text-[20px] pt-[6px]">Vedi Alco</p>
           </div>
           <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
@@ -114,7 +114,6 @@ const AdminAside: React.FC = () => {
               </li>
             ))}
           </ul>
-         
         </div>
       </aside>
     </>

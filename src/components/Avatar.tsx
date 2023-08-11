@@ -6,8 +6,8 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
   const [openModal, setOpenModal] = useState(false);
   const ref = useRef<any>();
-  const {pathname} = useLocation()
- 
+  const { pathname } = useLocation();
+
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -51,7 +51,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
     <div className="reletive z-50" ref={ref}>
       <ModalContact isOpen={openModal} onClose={handleCloseModal} />
       <div
-        className="w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
+        className="outline-0 w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
         onClick={handleOpen}
       >
         <p> {avatarWords(str)}</p>
@@ -61,7 +61,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-20 top-[60px] right-[10px]  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600 cursor-pointer`}
+          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600 cursor-pointer`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
@@ -71,27 +71,25 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
             className="py-2 text-sm text-gray-700 dark:text-gray-200 "
             aria-labelledby="avatarButton"
           >
-           { 
-           pathname.includes('admin') ?
-           <li>
-              <Link
-                to="/"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Բեռներ
-              </Link>
-            </li>
-            :
-           <li>
-              <Link
-                to="/admin"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Իմ էջը
-              </Link>
-            </li>
-            
-            }
+            {pathname.includes("admin") ? (
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Բեռներ
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/admin"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Իմ էջը
+                </Link>
+              </li>
+            )}
             <li>
               <button
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
