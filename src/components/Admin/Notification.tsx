@@ -41,7 +41,7 @@ const toggleEmailIcon = () =>{
     return `${day}-${month}-${year} ${hours}:${minutes}`;
   };
   return (
-    <div className="border-2 border-gray-200 shadow  rounded-md">
+    <div className="border-2 border-gray-200 shadow-lg  rounded-xl">
       <div
         className={`font-bold cursor-pointer flex justify-center items-center p-2 ${
           isRead ? "text-gray-500 " : "text-black "

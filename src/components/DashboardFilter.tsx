@@ -59,12 +59,12 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
         onChange={handleNameChange}
       />
       <div className="flex justify-center items-end">
-        <button className="px-10 lg:px-4 py-[8px] bg-[#1C90F3] rounded-md text-white text-sm">
+        <button className="px-10 lg:px-4 py-[8px] bg-[#1C90F3] hover:bg-[#48a8fb] transition-all  rounded-md text-white text-sm">
           Որոնել
         </button>
       </div>
       <div className="flex justify-center items-end">
-        <div className="px-4 lg:px-3 py-[8px] bg-gray-500 rounded-md flex justify-center items-end text-sm cursor-pointer text-white">
+        <div className="px-4 lg:px-3 py-[8px] bg-gray-500 hover:bg-gray-400 transition-all  rounded-md flex justify-center items-end text-sm cursor-pointer text-white">
           X
         </div>
       </div>

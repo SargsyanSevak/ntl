@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormValues } from "../interfaces/FormProps";
 import emailjs from "emailjs-com";
+import Toast from "../UI/UIToast";
 interface ModalProps {
   isOpen: Boolean;
   onClose: () => void;
@@ -40,7 +41,13 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             setIsSent(true);
             reset();
             setSuccess(true);
-          }, 5000);
+          }, 3000);
+        })
+        .then(() => {
+          setSuccess(false);
+        })
+        .catch((err) => {
+          setSuccess(false);
         });
     } else {
       setSuccess(false);
@@ -49,7 +56,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   return (
     <>
       {isOpen && (
-        <div className="fixed  inset-0  flex justify-center items-center bg-slate-3  bg-slate-200 dark:bg-[#0E192D] z-50 ">
+        <div className="fixed  inset-0  flex justify-center items-center bg-slate-200 dark:bg-[#0E192D] z-50 ">
           <div
             id="staticModal"
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full p-4 overflow-x-hidden overflow-y-auto  h-[calc(100%-1rem)] max-h-full  z-50 flex justify-center items-center"
@@ -73,9 +80,9 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     </label>
                     <input
                       type="text"
-                      id="email"
-                      className="px-4 py-[9px] mt-2 border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none focus:bg-blue-100 w-full text-black transition-all"
-                      placeholder="Ձեր անունը"
+                      id="fullName"
+                      className="px-4 py-[9px] mt-2 border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none w-full text-black"
+                      placeholder="Ձեր անուն,ազգանունը"
                       required
                       autoComplete="false"
                       {...register("name")}
@@ -93,7 +100,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     <input
                       type="email"
                       id="email"
-                      className="px-4 py-[9px] border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none focus:bg-blue-100 w-full text-black transition-all"
+                      className="px-4 py-[9px] border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none  w-full text-black"
                       placeholder="Ձեր  Էլ. հասցեն"
                       required
                       autoComplete="false"
@@ -110,7 +117,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       Հաղորդագրությունը
                     </label>
                     <textarea
-                      className="px-4 py-[9px] min-h-[140px] resize-none border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none focus:bg-blue-100 w-full text-black transition-all"
+                      className="px-4 py-[9px] min-h-[140px] resize-none border-x-[1px] border-y-[1px]  border-slate-300 rounded-xl focus:outline-none  w-full text-black"
                       placeholder="Ձեր հաղորդագրությունը"
                       required
                       {...register("message")}
@@ -146,6 +153,12 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
         </div>
+      )}
+      {success && (
+        <Toast
+          type="success"
+          message="Ձեր հաղորդագրությունը հաջողությամբ ուղարկվել է"
+        />
       )}
     </>
   );

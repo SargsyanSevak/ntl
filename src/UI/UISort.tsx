@@ -39,7 +39,7 @@ export default function SortLoads() {
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  By rate
+                  թարմության
                 </a>
               )}
             </Menu.Item>
@@ -54,7 +54,7 @@ export default function SortLoads() {
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  by weight
+                  քաշի
                 </a>
               )}
             </Menu.Item>
@@ -69,7 +69,7 @@ export default function SortLoads() {
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  by new
+                  գնի
                 </a>
               )}
             </Menu.Item>

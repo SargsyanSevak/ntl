@@ -10,6 +10,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
 
   const handleOpen = () => {
     setOpen(!open);
+
   };
   const handleCloseModal = () => {
     setOpenModal(false);

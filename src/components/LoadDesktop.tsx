@@ -17,7 +17,7 @@ const LoadDesktop = ({
   CutString,
 }: any) => {
   return (
-    <div className="max-w-[1600px] lg:flex hidden">
+    <div className="max-w-[2000px] lg:flex hidden">
       <div className="w-full h-[32px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[13px]  flex justify-around gap-[1px] font-[400]">
         <div className="flex justify-start items-center pl-[6px] w-[50px]">
           <div>{age}</div>
