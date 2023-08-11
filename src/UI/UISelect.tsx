@@ -13,7 +13,7 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium leading-4 text-gray-900 dark:text-white">
+          <Listbox.Label className="block text-sm font-medium  text-gray-900 dark:text-white">
             {label}
           </Listbox.Label>
           <div className="relative mt-2 w-full">
@@ -41,14 +41,14 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-4 text-base  ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {data.map((el: any) => (
                   <Listbox.Option
                     key={el.id}
                     className={({ active }) =>
                       classNames(
                         active ? "bg-[#1C90F3] text-white" : "text-gray-900",
-                        "relative cursor-default select-none py-2 pl-3 pr-9",
+                        "relative cursor-default select-none py-4 pl-3 pr-9",
                         el.name === 'ջնջել' && active ? 'bg-red-500' : ''
                       )
                     }
