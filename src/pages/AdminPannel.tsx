@@ -12,7 +12,7 @@ const AdminPannel = () => {
       <Helmet>
         <title>Իմ էջը</title>
       </Helmet>
-      <div className=" mx-auto max-w-[1600px]">
+      <div className=" mx-auto max-w-[1600px] bg-slate-200 min-h-screen">
         <AdminHeader />
 
         {!pathname.includes("/admin/settings") && <StatisticsTop />}

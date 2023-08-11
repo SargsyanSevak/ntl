@@ -1,6 +1,6 @@
 export default function AddLoads() {
   return (
-    <form className="px-4 md:px-10 pb-4">
+    <form className="px-4 md:px-10 pb-4 ">
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 md:gap-y-4 gap-y-2 sm:grid-cols-6">
