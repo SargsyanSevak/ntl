@@ -1,5 +1,6 @@
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import CallOptions from "./CallOptions";
 const LoadDesktop = ({
   id,
   age,
@@ -50,7 +51,7 @@ const LoadDesktop = ({
           <div title={company}>{CutString(company)}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[140px]">
-          <div>{contact}</div>
+          <button className="cursor-pointer" onClick={()=> console.log('clicked')}><CallOptions contact={contact}/></button>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[50px]">
           <div>{length} մ³</div>
