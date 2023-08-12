@@ -8,6 +8,7 @@ import TruckLoader from "./TruckLoader";
 import TruckItem from "./TruckItem";
 import { TruckProps } from "../interfaces/TruckProps";
 const itemsPerRow = 50;
+
 const Truck = () => {
   const [next, setNext] = useState<number>(itemsPerRow);
   const [isLoading, setIsLoading] = useState(true);
