@@ -1,7 +1,7 @@
 import React from "react";
-import DashboardHeader from "../components/DashboardHeader";
 import Loads from "../components/Loads";
 import { Helmet } from "react-helmet";
+import Header from "../components/Header";
 
 
 
@@ -12,7 +12,7 @@ const Dashboard: React.FC = () => {
       <Helmet>
         <title>NTL | Բեռներ</title>
       </Helmet>
-        <DashboardHeader />
+        <Header />
         <Loads />
       </section>
     </>

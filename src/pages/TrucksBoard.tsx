@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import DashboardHeader from '../components/DashboardHeader'
 import Trucks from '../components/Trucks'
+import Header from '../components/Header'
 
 const TrucksBoard = () => {
   return (
@@ -10,7 +10,7 @@ const TrucksBoard = () => {
     <Helmet>
       <title>NTL | Բեռնատարներ</title>
     </Helmet>
-      <DashboardHeader />
+      <Header />
       <Trucks />
     </section>
   </>

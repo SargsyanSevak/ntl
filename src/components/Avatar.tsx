@@ -49,10 +49,11 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
     };
   }, [open]);
   return (
-    <div className="reletive z-50" ref={ref}>
+    <div className="reletive z-50 " ref={ref}>
       <ModalContact isOpen={openModal} onClose={handleCloseModal} />
       <div
-        className="outline-0 w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
+        className="outline-0 focus:outline-none active:outline-none 
+        w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
         onClick={handleOpen}
       >
         <p> {avatarWords(str)}</p>

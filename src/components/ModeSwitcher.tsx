@@ -46,7 +46,7 @@ const ModeSwitcher: React.FC<ChangedModsProps> = ({ setIsChangedMode }) => {
   }, []);
 
   return (
-    <div className="text-[20px]" onClick={toggleDarkMode}>
+    <div className="text-[20px] flex justify-center items-center h-full" onClick={toggleDarkMode}>
       {isDarkMode ? (
         <span className="cursor-pointer text-yellow-500">
           <FiSun />

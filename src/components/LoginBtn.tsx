@@ -36,10 +36,10 @@ const LoginBtn = () => {
   return (
     <div ref={ref} onClick={handleOpen}>
       <div className="w-[80px] h-[40px] cursor-pointer border-slate-400 border-[0.7px] rounded-[20px] flex justify-around items-center hover:shadow hover:border-[0.3px]">
-        <span className="text-[17px] ">
+        <span className="text-[17px] dark:text-white">
           <RxHamburgerMenu />
         </span>
-        <span className="text-[30px] text-slate-600">
+        <span className="text-[30px] text-slate-600 dark:text-slate-300">
           <FaUserCircle />
         </span>
       </div>
