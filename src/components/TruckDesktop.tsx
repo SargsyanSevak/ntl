@@ -1,7 +1,8 @@
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import CallOptions from "./CallOptions";
-const LoadDesktop = ({
+
+const TruckDesktop = ({
   id,
   age,
   date,
@@ -51,7 +52,7 @@ const LoadDesktop = ({
           <div title={company}>{CutString(company)}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[140px]">
-          <button className="cursor-pointer"><CallOptions contact={contact}/></button>
+          <button className="cursor-pointer" onClick={()=> console.log('clicked')}><CallOptions contact={contact}/></button>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[50px]">
           <div>{length} մ³</div>
@@ -62,19 +63,9 @@ const LoadDesktop = ({
         <div className="flex justify-start items-center pl-[6px] w-[70px]">
           <div>{rate} $</div>
         </div>
-        <div className="flex justify-start items-center pl-[6px] w-[70px]">
-          <Link
-            to={`/dashboard/preview/${id}`}
-            target="_blank"
-            type="button"
-            className=" font-light text-gray-200 bg-[#15558d] focus:outline-none hover:bg-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
-          >
-            ավելին
-          </Link>
-        </div>
       </div>
     </div>
   );
 };
 
-export default LoadDesktop;
+export default TruckDesktop;

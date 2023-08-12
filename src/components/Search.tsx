@@ -47,7 +47,7 @@ const Search = () => {
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-50 top-[55px]  md:right-[130px] right-[110px]  bg-white  divide-gray-100 rounded-lg  w-[160px] dark:bg-gray-700 dark:divide-gray-600`}
+          } absolute z-50 top-[55px]  lg:right-[170px] right-[120px]  bg-white  divide-gray-100 rounded-lg  w-[160px] dark:bg-gray-700 dark:divide-gray-600`}
         >
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200 "

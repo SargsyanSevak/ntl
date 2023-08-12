@@ -1,9 +1,10 @@
 import React from 'react'
+import Truck from './Truck'
 
 const Trucks = () => {
   return (
     <div>
-      trucks here
+     <Truck/>
     </div>
   )
 }
