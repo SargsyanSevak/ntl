@@ -43,8 +43,8 @@ const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
           <div
             className={`absolute ${
               activeUser
-                ? "right-[180px] md:right-[200px]"
-                : "right-[200px] md:right-[240px]"
+                ? "right-[190px] md:right-[210px]"
+                : "right-[230px] md:right-[245px]"
             }   font-bold text-sm`}
           >
             <Search/>
