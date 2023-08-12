@@ -2,19 +2,19 @@ type TruckTypeProps = "տենտ" | "ռեֆ";
 type LoadTypeProps = "ամբողջակսն" | "հավաքական";
 type ContactTypeProps = string | number;
 
-export interface LoadProps {
+export interface TruckProps {
   id:string;
   age: string;
   date: string;
   truckType: TruckTypeProps;
   loadType: LoadTypeProps;
   pickup: string;
-  delivery: string;
-  distance: number;
+  delivery? : string | null;
+  distance?: number | null;
   company: string;
   contact: ContactTypeProps;
-  length : number | null;
-  weight : number | null;
-  rate : number |null;
+  length? : number | null;
+  weight? : number | null;
+  rate? : number | null;
   status:string
 }

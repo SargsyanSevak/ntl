@@ -5,6 +5,7 @@ import { BsRecordCircle } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import LoadDesktop from "./LoadDesktop";
+import { CutString,checkLengthOfValue } from "../utils/Check";
 const LoadItem = ({
   id,
   age,
@@ -20,12 +21,7 @@ const LoadItem = ({
   weight,
   rate,
 }: LoadProps) => {
-  function CutString(inputString: string): string {
-    if (inputString.length > 15) {
-      return inputString.slice(0, 18) + "...";
-    }
-    return inputString;
-  }
+ 
   return (
     <>
       <LoadDesktop
@@ -85,8 +81,8 @@ const LoadItem = ({
             </div>
           </div>
           <div className="flex w-full h-[40px] items-center justify-between">
-            <div className="length">{length}մ³</div>
-            <div className="weight">{weight}կգ</div>
+            <div className="length">{checkLengthOfValue(length,'մ³')}</div>
+            <div className="weight">{checkLengthOfValue(weight,'կգ')}</div>
             <div className="truckType flex justify-center items-center gap-2">
               <span className="block lg:hidden">
                 <BsTruck />
@@ -99,7 +95,7 @@ const LoadItem = ({
             <div className="company text-[#1C90F3]" title={company}>
               {company}
             </div>
-            {rate ? <div className="rate">{rate}$</div> : <div> - </div>}
+            <div className="rate">{checkLengthOfValue(rate,'$')}</div> 
           </div>
         </div>
       </Link>

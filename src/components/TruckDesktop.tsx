@@ -1,7 +1,7 @@
 import { HiArrowRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
 import CallOptions from "./CallOptions";
-
+import { checkLengthOfValue } from "../utils/Check";
+import { CutString } from "../utils/Check";
 const TruckDesktop = ({
   id,
   age,
@@ -16,8 +16,9 @@ const TruckDesktop = ({
   length,
   weight,
   rate,
-  CutString,
 }: any) => {
+
+
   return (
     <div className="max-w-[2000px] lg:flex hidden">
       <div className="w-full h-[32px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[13px]  flex justify-around gap-[1px] font-[400]">
@@ -43,25 +44,25 @@ const TruckDesktop = ({
           </div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[150px]">
-          <div title={delivery}>{CutString(delivery)}</div>
+          <div title={delivery}>{CutString(checkLengthOfValue(delivery))}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[70px]">
-          <div>{distance} կմ</div>
+          <div>{checkLengthOfValue(distance,'կմ')} </div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[160px] text-[#1C90F3]">
           <div title={company}>{CutString(company)}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[140px]">
-          <button className="cursor-pointer" onClick={()=> console.log('clicked')}><CallOptions contact={contact}/></button>
+          <div className="cursor-pointer"><CallOptions contact={contact}/></div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[50px]">
-          <div>{length} մ³</div>
+          <div>{checkLengthOfValue(length,'մ³')} </div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[80px]">
-          <div>{weight} կգ</div>
+          <div>{checkLengthOfValue(weight,'կգ')} </div>
         </div>
         <div className="flex justify-start items-center pl-[6px] w-[70px]">
-          <div>{rate} $</div>
+          <div>{checkLengthOfValue(rate,'$')}</div>
         </div>
       </div>
     </div>

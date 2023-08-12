@@ -4,15 +4,15 @@ import { LuFilter, LuFilterX } from "react-icons/lu";
 import { RxUpdate } from "react-icons/rx";
 import DashboardFilter from "./DashboardFilter";
 import SortLoads from "../UI/UISort";
-import { LoadProps } from "../interfaces/LoadProps";
 import TruckLoader from "./TruckLoader";
 import TruckItem from "./TruckItem";
+import { TruckProps } from "../interfaces/TruckProps";
 const itemsPerRow = 50;
 const Truck = () => {
   const [next, setNext] = useState<number>(itemsPerRow);
   const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState<boolean>(false);
-  const [loadData, setLoadData] = useState<LoadProps[]>([]);
+  const [loadData, setLoadData] = useState<TruckProps[]>([]);
   const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {

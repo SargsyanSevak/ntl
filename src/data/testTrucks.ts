@@ -1,6 +1,7 @@
-import { LoadProps } from "../interfaces/LoadProps";
 
-export const testTrucks:LoadProps[] = [
+import { TruckProps } from "../interfaces/TruckProps";
+
+export const testTrucks:TruckProps[] = [
     {
         id:'1',
         age: '00:01',
@@ -8,13 +9,13 @@ export const testTrucks:LoadProps[] = [
         truckType: 'տենտ',
         loadType: 'հավաքական',
         pickup: 'Մոսկվա',
-        delivery: 'Գորիս',
-        distance: 2300,
+        delivery: '',
+        distance: null,
         company: 'Գլոբալ Տրանս',
         contact: '+37477 32-32-32',
-        length : 86,
-        weight : 23000,
-        rate : 3500,
+        length : null,
+        weight : null,
+        rate :null ,
         status:'open'
     },
     {
@@ -45,7 +46,7 @@ export const testTrucks:LoadProps[] = [
         company: 'ՆԹԼ լոգիստիկս',
         contact: '+37477 32-32-32',
         length : 86,
-        weight : 23000,
+        weight : null,
         rate : 3500,
         status:'open'
     },

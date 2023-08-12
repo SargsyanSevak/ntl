@@ -1,6 +1,7 @@
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import CallOptions from "./CallOptions";
+import { CutString,checkLengthOfValue } from "../utils/Check";
 const LoadDesktop = ({
   id,
   age,
@@ -15,7 +16,6 @@ const LoadDesktop = ({
   length,
   weight,
   rate,
-  CutString,
 }: any) => {
   return (
     <div className="max-w-[2000px] lg:flex hidden">
@@ -51,16 +51,16 @@ const LoadDesktop = ({
           <div title={company}>{CutString(company)}</div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[140px]">
-          <button className="cursor-pointer"><CallOptions contact={contact}/></button>
+          <div className="cursor-pointer"><CallOptions contact={contact}/></div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[50px]">
-          <div>{length} մ³</div>
+          <div>{checkLengthOfValue(length,'մ³')} </div>
         </div>
         <div className=" flex justify-start items-center pl-[6px] w-[80px]">
-          <div>{weight} կգ</div>
+          <div>{checkLengthOfValue(weight,'կգ')} </div>
         </div>
         <div className="flex justify-start items-center pl-[6px] w-[70px]">
-          <div>{rate} $</div>
+          <div>{checkLengthOfValue(rate,'$')}</div>
         </div>
         <div className="flex justify-start items-center pl-[6px] w-[70px]">
           <Link
