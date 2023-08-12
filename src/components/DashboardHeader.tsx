@@ -4,7 +4,7 @@ import LogoWhite from "../assets/mainlogowhite.svg";
 import Avatar from "./Avatar";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
-import LanguageSwitcher from "./LanguageSwitcher";
+import Search from "./Search";
 
 const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
   const [activeUser, setActivUser] = useState<boolean>(true);
@@ -34,7 +34,7 @@ const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
             className={`absolute ${
               activeUser
                 ? "right-[150px] md:right-[160px]"
-                : "right-[190px] md:right-[210px]"
+                : "right-[190px] md:right-[200px]"
             }   font-bold text-sm`}
           >
             <ModeSwitcher setIsChangedMode={setIsChangedMode} />
@@ -43,11 +43,23 @@ const DashboardHeader: React.FC = ({ isDarkMode }: any) => {
           <div
             className={`absolute ${
               activeUser
-                ? "right-[70px] md:right-[90px]"
-                : "right-[110px] md:right-[130px]"
+                ? "right-[180px] md:right-[200px]"
+                : "right-[200px] md:right-[240px]"
             }   font-bold text-sm`}
           >
-            <LanguageSwitcher />
+            <Search/>
+          </div>
+          <div
+            className={`absolute ${
+              activeUser
+                ? "right-[70px] md:right-[80px]"
+                : "right-[110px] md:right-[120px]"
+            }   font-bold text-sm`}
+          >
+            <ul className="flex  gap-2 dark:text-white">
+              <li className="active cursor-pointer">Հայ</li>
+              <li className="cursor-pointer ">Рус</li>
+            </ul>
           </div>
 
           <div>

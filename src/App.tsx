@@ -19,13 +19,15 @@ import Profile from "./components/Admin/Profile";
 import Notifications from "./components/Admin/Notifications";
 import Teams from "./components/Admin/Teams";
 import Security from "./components/Admin/Security";
+import TrucksBoard from "./pages/TrucksBoard";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" index element={<Dashboard />} />
+        <Route path="/trucks" element={<TrucksBoard />} />
         <Route path="/admin" element={<AdminPannel />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="register" element={<Register />} />
