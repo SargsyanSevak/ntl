@@ -28,7 +28,7 @@ export default function Header({ isDarkMode }: any) {
         <Search />
         <ModeSwitcher setIsChangedMode={setIsChangedMode} />
         <div>
-          <ul className="flex  gap-2 dark:text-white">
+          <ul className="flex  gap-2 dark:text-white font-bold text-sm">
             <li className="active cursor-pointer">Հայ</li>
             <li className="cursor-pointer ">Рус</li>
           </ul>
