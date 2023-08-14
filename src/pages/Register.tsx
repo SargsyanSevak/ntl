@@ -4,10 +4,10 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import Logo from '../assets/logo.svg'
+import Logo from '../assets/mainlogo.svg'
 import { Helmet } from 'react-helmet';
-export default function Register() {
 
+export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShow = () => setShowPassword(!showPassword);
@@ -20,7 +20,7 @@ export default function Register() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
-              className="mx-auto h-20 w-auto"
+              className="mx-auto h-20 w-auto logo"
               src={Logo}
               alt="Your Company"
             />
@@ -83,6 +83,20 @@ export default function Register() {
                   </div>
                 </div>
               </div>
+              <div className="mt-2 relative">
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    autoComplete="company"
+                    required
+                    placeholder="Ընկերության անվանումը"
+                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none"
+                  />
+                  <div className="absolute top-[1rem] right-6 text-xl text-slate-500">
+                    <CgProfile />
+                  </div>
+                </div>
               <div>
                 <div className="mt-2 relative">
                   <input

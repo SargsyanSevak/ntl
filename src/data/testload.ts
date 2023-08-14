@@ -10,11 +10,12 @@ export const testload:LoadProps[] = [
         pickup: 'Մոսկվա',
         delivery: 'Գորիս',
         distance: 2300,
-        company: 'NTL LOGISTICS INC',
-        contact: '077 323232',
+        company: 'Սիս Նատուրալ',
+        contact: '+37477 32-32-32',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
     {
         id:'2',
@@ -22,14 +23,15 @@ export const testload:LoadProps[] = [
         date: '07/07',
         truckType: 'տենտ',
         loadType: 'հավաքական',
-        pickup: 'Մոսկվա',
-        delivery: 'Գորիս',
+        pickup: 'Վանաձոր',
+        delivery: 'Կրասնոդար',
         distance: 2300,
-        company: 'NTL LOGISTICS INC',
-        contact: '077 323232',
+        company: 'Վեդի Ալկո',
+        contact: '+37477 32-32-32',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
     {
         id:'3',
@@ -37,13 +39,14 @@ export const testload:LoadProps[] = [
         date: '07/07',
         truckType: 'տենտ',
         loadType: 'հավաքական',
-        pickup: 'Մոսկվա',
-        delivery: 'Գորիս',
+        pickup: 'Մարտունի',
+        delivery: 'Եկատերինբուրգ',
         distance: 2300,
-        company: 'NTL LOGISTICS INC',
-        contact: '077 323232',
+        company: 'Գրանդ Քենդի',
+        contact: '+37477 32-32-32',
         length : 86,
         weight : 23000,
-        rate : 3500
+        rate : 3500,
+        status:'open'
     },
 ]

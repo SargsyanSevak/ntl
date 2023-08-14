@@ -3,9 +3,10 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"; 
-import Logo from '../assets/logo.svg'
-import { Helmet } from 'react-helmet';
+import { useNavigate } from "react-router-dom";
+
+import Logo from "../assets/mainlogo.svg";
+import { Helmet } from "react-helmet";
 
 export default function LogIn() {
   //i18n
@@ -21,14 +22,14 @@ export default function LogIn() {
 
   return (
     <section className="w-full h-screen flex ">
-       <Helmet>
+      <Helmet>
         <title>{`Մուտք`}</title>
       </Helmet>
       <div className="w-full md:w-1/2 h-screen  px-sm">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
-              className="mx-auto h-20 w-auto"
+              className="mx-auto h-20 w-auto logo"
               src={Logo}
               alt="Your Company"
             />

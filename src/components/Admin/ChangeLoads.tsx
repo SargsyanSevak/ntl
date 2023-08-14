@@ -1,105 +1,39 @@
-import React, { useState } from 'react';
-import { testload } from '../../data/testload';
-
-interface Freight {
-  id: string;
-  origin: string;
-  destination: string;
-}
-
-const ChangeLoads: React.FC = () => {
-  const [freights, setFreights] = useState<Freight[]>([
-    { id: '1', origin: 'Origin 1', destination: 'Destination 1' },
-    { id: '2', origin: 'Origin 2', destination: 'Destination 2' },
-    { id: '3', origin: 'Origin 3', destination: 'Destination 3' },
-  ]);
-
-  const [editingFreightId, setEditingFreightId] = useState<string | null>(null);
-  const [editingOrigin, setEditingOrigin] = useState('');
-  const [editingDestination, setEditingDestination] = useState('');
-
-  const handleEditFreight = (freight: Freight) => {
-    setEditingFreightId(freight.id);
-    setEditingOrigin(freight.origin);
-    setEditingDestination(freight.destination);
-  };
-
-  const handleSaveFreight = () => {
-    if (!editingFreightId) return;
-
-    // Update the freight in the local state with the saved changes
-    const updatedFreights = freights.map((f) =>
-      f.id === editingFreightId
-        ? { ...f, origin: editingOrigin, destination: editingDestination }
-        : f
-    );
-    setFreights(updatedFreights);
-    setEditingFreightId(null); // Reset editing state
-    setEditingOrigin('');
-    setEditingDestination('');
-  };
-
-  const handleCancelEditing = () => {
-    setEditingFreightId(null);
-    setEditingOrigin('');
-    setEditingDestination('');
-  };
-
+import React from "react";
+import { testload } from "../../data/testload";
+import ChangeLoadItem from "./ChangeLoadItem";
+const ChangeLoads: React.FC = ({}) => {
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {freights.map((freight) => (
-            <React.Fragment key={freight.id}>
-              <tr>
-                <td>{freight.id}</td>
-                <td>{freight.origin}</td>
-                <td>{freight.destination}</td>
-                <td>
-                  {editingFreightId === freight.id ? (
-                    <>
-                      <button onClick={handleSaveFreight}>Save</button>
-                      <button onClick={handleCancelEditing}>Cancel</button>
-                    </>
-                  ) : (
-                    <button onClick={() => handleEditFreight(freight)}>
-                      Edit
-                    </button>
-                  )}
-                </td>
-              </tr>
-              {editingFreightId === freight.id && (
-                <tr>
-                  <td colSpan={4}>
-                    <div>
-                      <input
-                        type="text"
-                        value={editingOrigin}
-                        onChange={(e) => setEditingOrigin(e.target.value)}
-                      />
-                      <input
-                        type="text"
-                        value={editingDestination}
-                        onChange={(e) =>
-                          setEditingDestination(e.target.value)
-                        }
-                      />
-                    </div>
-                  </td>
-                </tr>
-              )}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
+    <div className="relative z-40 flex flex-col bg-inherit">
+      <div className="w-full h-8 bg-slate-700 px-4 lg:flex hidden justify-between items-center gap-2 text-[13px] text-gray-400 font-semibold">
+        <div className="w-full sm:w-[48%] lg:w-[200px] pl-1flex items-center">
+          Օր
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[200px] pl-1 flex items-center">
+          Տ/Մ
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
+          Բարձում
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
+          Բեռնաթափում
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
+          Ծավալ
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[150px] pl-1 flex items-center">
+          Քաշ
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[150px] pl-1 flex items-center">
+          Գին
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[300px] pl-1 flex items-center">
+          Կարգավիճակ
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[80px]"></div>
+      </div>
+      {testload.map((el) => (
+        <ChangeLoadItem {...el} />
+      ))}
     </div>
   );
 };

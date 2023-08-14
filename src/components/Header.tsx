@@ -1,107 +1,44 @@
 import React, { useState } from "react";
-import { MobileMenu } from "./Burger";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { GoSignIn } from "react-icons/go";
-import Logo from "../assets/logo.svg";
-import Burger from "../assets/burger.svg";
+import Logo from "../assets/mainlogo.svg";
+import LogoWhite from "../assets/mainlogowhite.svg";
 import Avatar from "./Avatar";
-const navigation = [
-  {
-    name: "Գլխավոր",
-    href: "/",
-    current: true,
-  },
-  {
-    name: "Մեր մասին",
-    href: "https://www.youtube.com/results?search_query=navbar+with+react+and+tailwind",
-    current: false,
-  },
-  {
-    name: "Ծառայություններ",
-    href: "https://www.youtube.com/results?search_query=navbar+with+react+and+tailwind",
-    current: false,
-  },
-  {
-    name: "Բեռներ",
-    href: "/dashboard",
-    current: false,
-  },
-];
+import LoginBtn from "./LoginBtn";
+import ModeSwitcher from "./ModeSwitcher";
+import Search from "./Search";
 
-const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeUser, setActiveUser] = useState<Boolean | null>(true);
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+export default function Header({ isDarkMode }: any) {
+  const [activeUser, setActivUser] = useState<boolean>(true);
+  const [changedMode, setIsChangedMode] = useState<boolean>(false);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
   return (
-    <motion.header className=" w-full max-w-[1600px] mx-auto h-[100px] px-[20px] absolute top-0 right-0 left-0 z-50 text-[#2e3343]">
-      <div className="max-w-7xl mx-auto h-full flex">
-        <div className="w-1/3 md:w-[20%] h-ful flex justify-start items-center font-bold text-xl gap-4">
-          <img src={Logo} alt="logo" />
-          <p>NTL</p>
-        </div>
-        <div className="w-[] md:w-[60%] h-full  hidden md:block">
-          <nav className="w-full h-full  hidden md:flex justify-evenly items-center text-sm ">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                aria-current={item.current ? "page" : undefined}
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-        </div>
-        <div className="w-2/3 md:w-[20%] h-full ">
-          <div className="w-full h-full flex md:hidden justify-end items-center  text-sm gap-4 ">
-            {
-              !activeUser && <><Link to="/login" className="text-xl mr-6 block text-white">
-              <GoSignIn />
-            </Link></>
-            }
-            
-            <img
-              src={Burger}
-              alt=""
-              className="w-[30px]"
-              onClick={handleOpenModal}
-            />
-            <MobileMenu
-              isOpen={isModalOpen}
-              onClose={handleCloseModal}
-              navigation={navigation}
-            />
-          </div>
-          {activeUser ? (
-            <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
-            <Avatar showDropDown={true}/>
-            </div>
-          ) : (
-            <div className=" w-full h-full hidden md:flex justify-end items-center  text-sm gap-4">
-              <div className="flex md:hidden">
-                <GoSignIn />
-              </div>
-              <Link to="/login">
-                <button className="border-none outline-none">Մուտք</button>
-              </Link>
-              <Link to="/register">
-                <button className="px-[20px] border-x-2 border-y-2 py-[10px] border-[#465B95] rounded-[100px] text-[#9ca8cb]">
-                  Գրանցվել
-                </button>
-              </Link>
-            </div>
-          )}
-        </div>
+    <header className="bg-gray-300 dark:bg-[#0E192D] h-16 md:px-4 px-2 flex relative">
+      <div className="logo1 md:w-1/2 w-1/4 flex justify-start items-center overflow-hidden -ml-1">
+        <img
+          src={changedMode ? LogoWhite : Logo}
+          alt="logo"
+          className="w-[90px] logo"
+        />
       </div>
-    </motion.header>
+      <div className="title md:w-full w-0 flex justify-center items-center">
+        <p className="text-xl font-bold text-gray-600 md:block hidden dark:text-white">
+          NTL LOAD BOARD
+        </p>
+      </div>
+      <div className="snack md:w-1/2 w-full  flex justify-end items-center md:gap-4 gap-[12px]">
+        <Search />
+        <ModeSwitcher setIsChangedMode={setIsChangedMode} />
+        <div>
+          <ul className="flex  gap-2 dark:text-white font-bold text-sm">
+            <li className="active cursor-pointer">Հայ</li>
+            <li className="cursor-pointer ">Рус</li>
+          </ul>
+        </div>
+        {activeUser ? (
+          <Avatar showDropDown={true} setActivUser={setActivUser} />
+        ) : (
+          <LoginBtn />
+        )}
+      </div>
+    </header>
   );
-};
-
-export default Header;
+}

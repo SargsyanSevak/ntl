@@ -13,7 +13,8 @@ export interface LoadProps {
   distance: number;
   company: string;
   contact: ContactTypeProps;
-  length : number;
-  weight : number;
-  rate : number;
+  length : number | null;
+  weight : number | null;
+  rate : number |null;
+  status:string
 }

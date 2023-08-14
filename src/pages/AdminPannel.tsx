@@ -1,15 +1,20 @@
 import React from "react";
-import AsideMenu from "../components/Admin/AdminHeader";
 import AdminHeader from "../components/Admin/AdminHeader";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import StatisticsTop from "../components/Admin/StatisticsTop";
+import { Helmet } from "react-helmet";
 
 const AdminPannel = () => {
+  const { pathname } = useLocation();
+
   return (
     <section className="w-full">
-      <div className=" mx-auto max-w-[1600px]">
+      <Helmet>
+        <title>Իմ էջը</title>
+      </Helmet>
+      <div className=" mx-auto max-w-[2000px] bg-slate-100 min-h-screen">
         <AdminHeader />
-        <StatisticsTop/>
+        {!pathname.includes("/admin/settings") && <StatisticsTop />}
         <Outlet />
       </div>
     </section>

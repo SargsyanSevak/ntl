@@ -1,14 +1,11 @@
-import React, { useState } from "react";
 import { LoadProps } from "../interfaces/LoadProps";
-import { HiArrowRight } from "react-icons/hi";
 import { AiOutlineClockCircle, AiOutlineCalendar } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
-import { TbCurrentLocation } from "react-icons/tb";
-import { SlLocationPin } from "react-icons/sl";
 import { BsRecordCircle } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
-import { MdOutlineHeight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import LoadDesktop from "./LoadDesktop";
+import { CutString,checkLengthOfValue } from "../utils/Check";
 const LoadItem = ({
   id,
   age,
@@ -24,69 +21,31 @@ const LoadItem = ({
   weight,
   rate,
 }: LoadProps) => {
-  function CutString(inputString: string): string {
-    if (inputString.length > 15) {
-      return inputString.slice(0, 15) + "...";
-    }
-    return inputString;
-  }
+ 
   return (
     <>
-      <div
-        className={`hidden  w-full py-2 bg-slate-300 lg:flex flex-col lg:gap-0 gap-2 lg:flex-row justify-between items-center px-2 lg:px-6 text-[0.75rem] lg:text-[0.9rem] font-bold border-b-2`}
+      <LoadDesktop
+        id={id}
+        age={age}
+        date={date}
+        truckType={truckType}
+        loadType={loadType}
+        pickup={pickup}
+        delivery={delivery}
+        distance={distance}
+        company={company}
+        contact={contact}
+        length={length}
+        weight={weight}
+        rate={rate}
+        CutString={CutString}
+      />
+
+      <Link
+        to={`/dashboard/preview/${id}`}
+        className="mobile lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"
+        target="_blank"
       >
-        <div className="age flex justify-start items-center gap-2 ">
-          <span className="block lg:hidden">
-            <AiOutlineClockCircle />
-          </span>
-          {age}
-        </div>
-        <div className="date flex justify-start items-center gap-2 ">
-          <span className="block lg:hidden">
-            <AiOutlineCalendar />
-          </span>
-          {date}
-        </div>
-        <div className="truckType flex justify-center items-center gap-2">
-          <span className="block lg:hidden">
-            <BsTruck />
-          </span>
-          {truckType}
-        </div>
-        <div className="loadType">{loadType[0].toUpperCase()}</div>
-        <div className="pickup flex justify-center items-center gap-2">
-          <span className="block lg:hidden">
-            <TbCurrentLocation />
-          </span>
-          {CutString(pickup)}
-        </div>
-        <div className="arrow text-gray-500">
-          {" "}
-          <HiArrowRight />
-        </div>
-        <div className="delivery flex justify-center items-center gap-2">
-          <span className="block lg:hidden">
-            <SlLocationPin />
-          </span>
-          {CutString(delivery)}
-        </div>
-        <div className="distance">{distance}կմ</div>
-        <div className="company text-[#1C90F3]" title={company}>
-          {CutString(company)}
-        </div>
-        <div className="contact">{contact}</div>
-        <div className="length">{length}մ³</div>
-        <div className="weight">{weight}կգ</div>
-        <div className="rate">{rate}$</div>
-        <div className="book">
-          <Link to={`/dashboard/preview/${id}`} className="rounded-md bg-[#1C90F3] px-2 py-2 text-white text-[.8rem] cursor-pointer" target="_blank">
-            Դիտել
-          </Link>
-        </div>
-      </div>
-
-
-      <Link to={`/dashboard/preview/${id}`} className="mobile lg:hidden flex bg-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"  target="_blank">
         <div className="w-[20%] min-h-[100px] flex flex-col justify-around items-start md:items-center">
           <div className="age flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
@@ -122,8 +81,8 @@ const LoadItem = ({
             </div>
           </div>
           <div className="flex w-full h-[40px] items-center justify-between">
-            <div className="length">{length}մ³</div>
-            <div className="weight">{weight}կգ</div>
+            <div className="length">{checkLengthOfValue(length,'մ³')}</div>
+            <div className="weight">{checkLengthOfValue(weight,'կգ')}</div>
             <div className="truckType flex justify-center items-center gap-2">
               <span className="block lg:hidden">
                 <BsTruck />
@@ -136,7 +95,7 @@ const LoadItem = ({
             <div className="company text-[#1C90F3]" title={company}>
               {company}
             </div>
-            {rate ? <div className="rate">{rate}$</div> : <div> - </div>}
+            <div className="rate">{checkLengthOfValue(rate,'$')}</div> 
           </div>
         </div>
       </Link>

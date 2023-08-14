@@ -1,5 +1,4 @@
 import "./App.css";
-import Home from "./pages/Home";
 import { RouterProvider } from "react-router-dom";
 import LogIn from "./pages/Login";
 import Register from "./pages/Register";
@@ -16,15 +15,19 @@ import {
   Route,
 } from "react-router-dom";
 import AdminHome from "./components/Admin/AdminHome";
-
-
+import Profile from "./components/Admin/Profile";
+import Notifications from "./components/Admin/Notifications";
+import Teams from "./components/Admin/Teams";
+import Security from "./components/Admin/Security";
+import TrucksBoard from "./pages/TrucksBoard";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" index element={<Dashboard />} />
+        <Route path="/trucks" element={<TrucksBoard />} />
         <Route path="/admin" element={<AdminPannel />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="register" element={<Register />} />
@@ -34,7 +37,12 @@ function App() {
           <Route index element={<AdminHome />} />
           <Route path="addloads" element={<AddLoads />} />
           <Route path="changeloads" element={<ChangeLoads />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<Settings />}>
+            <Route index element={<Profile />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="teams" element={<Teams />} />
+            <Route path="security" element={<Security />} />
+          </Route>
         </Route>
       </>
     )

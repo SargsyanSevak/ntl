@@ -20,7 +20,7 @@ const Forgot: React.FC = () => {
     navigate("/login");
   };
   return (
-    <section className="w-full h-screen flex justify-center items-center container p-[1rem]">
+    <section className="w-full h-screen flex justify-center items-center p-[1rem]">
        <Helmet>
         <title>{`Վերականգնել գաղտնաբառը`}</title>
       </Helmet>
@@ -77,7 +77,7 @@ const Forgot: React.FC = () => {
             <button
               type="submit"
               onClick={handleCheckCode}
-              className="flex w-full justify-center rounded-2xl bg-[#1c90f3] px-3 py-[20px] text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
+              className="flex w-full justify-center rounded-2xl bg-[#1c90f3] px-3 py-[10px] text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
             >
               Հաստատել
             </button>

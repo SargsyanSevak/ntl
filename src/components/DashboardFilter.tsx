@@ -1,40 +1,8 @@
 import React, { useState } from "react";
 import DatePickerUi from "./DatePicker";
 import UIInput from "../UI/UIInput";
-
-import Avatar from "./Avatar";
 import UISelect from "../UI/UISelect";
-import Loads from "./Loads";
-
-const trucks = [
-  {
-    id: 1,
-    name: "ռեֆ",
-  },
-  {
-    id: 2,
-    name: "տենտ",
-  },
-  {
-    id: 3,
-    name: "կոնտեյնեռ",
-  },
-  {
-    id: 4,
-    name: "ավիա",
-  },
-];
-
-const fullOrPartial = [
-  {
-    id: 1,
-    name: "ամբողջական",
-  },
-  {
-    id: 2,
-    name: "հավաքական",
-  },
-];
+import { fullOrPartial,trucks } from "../constants/LoadItems"; 
 
 const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
   const [name, setName] = useState("");
@@ -49,7 +17,7 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
       } px-4 lg:px-6 py-8 gap-4 justify-between flex-wrap lg:flex-nowrap`}
     >
       <DatePickerUi />
-      <div className="trucktype w-full sm:w-[48%] lg:w-full">
+      <div className="trucktype w-full sm:w-[48%] lg:w-full flex flex-col justify-between">
         <UISelect data={trucks} label="Տ/Մ" />
       </div>
       <UIInput
@@ -66,7 +34,7 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
         value={name}
         onChange={handleNameChange}
       />
-      <div className="trucktype w-full sm:w-[48%] lg:w-full">
+      <div className="trucktype w-full sm:w-[48%] lg:w-full flex flex-col justify-between">
         <UISelect data={fullOrPartial} label="Ա/Հ" />
       </div>
       <UIInput
@@ -91,12 +59,12 @@ const DashboardFilter: React.FC<{ open: boolean }> = ({ open }) => {
         onChange={handleNameChange}
       />
       <div className="flex justify-center items-end">
-        <button className="px-10 lg:px-4 py-[8px] bg-[#1C90F3] rounded-md text-white text-sm">
+        <button className="px-10 lg:px-4 py-[8px] bg-[#1C90F3] hover:bg-[#48a8fb] transition-all  rounded-md text-white text-sm">
           Որոնել
         </button>
       </div>
       <div className="flex justify-center items-end">
-        <div className="px-4 lg:px-3 py-[8px] bg-gray-500 rounded-md flex justify-center items-end text-sm cursor-pointer text-white">
+        <div className="px-4 lg:px-3 py-[8px] bg-gray-500 hover:bg-gray-400 transition-all  rounded-md flex justify-center items-end text-sm cursor-pointer text-white">
           X
         </div>
       </div>

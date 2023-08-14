@@ -1,12 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-
-const Avatar = ({showDropDown}:any) => {
+import { Link, useLocation } from "react-router-dom";
+import { BiLogOut } from "react-icons/bi";
+import ModalContact from "./ContactMe";
+const Avatar = ({ showDropDown, setActivUser }: any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
-  const ref = useRef<any>()
+  const [openModal, setOpenModal] = useState(false);
+  const ref = useRef<any>();
+  const { pathname } = useLocation();
 
   const handleOpen = () => {
     setOpen(!open);
+
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const logOutUser = () => {
+    setActivUser(false);
   };
   let str = "Aram Petrosyan";
 
@@ -22,70 +36,79 @@ const Avatar = ({showDropDown}:any) => {
     }
   };
   useEffect(() => {
-    const checkIfClickedOutside = (e:any) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
+    const checkIfClickedOutside = (e: any) => {
       if (open && ref.current && !ref.current.contains(e.target)) {
-        setOpen(false)
+        setOpen(false);
       }
-    }
+    };
 
-    document.addEventListener("mousedown", checkIfClickedOutside)
+    document.addEventListener("mousedown", checkIfClickedOutside);
 
     return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", checkIfClickedOutside)
-    }
-  }, [open])
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [open]);
   return (
-    <div className="reletive" ref={ref}>
-      <div className="w-10 h-10 bg-[#1C90F3] rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white" onClick={handleOpen} >
+    <div className="reletive z-50 " ref={ref}>
+      <ModalContact isOpen={openModal} onClose={handleCloseModal} />
+      <div
+        className="outline-0 focus:outline-none active:outline-none 
+        w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
+        onClick={handleOpen}
+      >
         <p> {avatarWords(str)}</p>
       </div>
 
       {open && (
-        <div className={`${showDropDown ? 'block' : 'hidden'} absolute top-[80px] right-[20px] z-10  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600`} >
+        <div
+          className={`${
+            showDropDown ? "block" : "hidden"
+          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600 cursor-pointer`}
+        >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>
             <div className="font-medium truncate">name@ntluser.com</div>
           </div>
           <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
+            className="py-2 text-sm text-gray-700 dark:text-gray-200 "
             aria-labelledby="avatarButton"
           >
+            {pathname.includes("admin") ? (
+              <li>
+                <Link
+                  to="/"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Բեռներ
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/admin"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Իմ էջը
+                </Link>
+              </li>
+            )}
             <li>
-              <Link
-                to="/dashboard"
+              <button
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                onClick={handleOpenModal}
               >
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link
-                 to="/admin"
-                 target="_blank"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Admin pannel
-              </Link>
-            </li>
-            <li>
-              <a
-                href="http://google.com"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Earnings
-              </a>
+                Հետադարձ կապ
+              </button>
             </li>
           </ul>
-          <div className="py-1">
-            <a
-               href="http://google.com"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          <div className="py-1 w-full">
+            <button
+              className="flex w-full items-center  gap-2 cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              onClick={logOutUser}
             >
-              Sign out
-            </a>
+              <BiLogOut />
+              Դուրս գալ
+            </button>
           </div>
         </div>
       )}
