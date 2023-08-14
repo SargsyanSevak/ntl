@@ -80,7 +80,7 @@ body {
   position: relative;
   background-image: url(https://images.pexels.com/photos/16167848/pexels-photo-16167848/free-photo-of-crane-and-ship-in-port.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
