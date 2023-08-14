@@ -83,6 +83,20 @@ export default function Register() {
                   </div>
                 </div>
               </div>
+              <div className="mt-2 relative">
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    autoComplete="company"
+                    required
+                    placeholder="Ընկերության անվանումը"
+                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none"
+                  />
+                  <div className="absolute top-[1rem] right-6 text-xl text-slate-500">
+                    <CgProfile />
+                  </div>
+                </div>
               <div>
                 <div className="mt-2 relative">
                   <input
