@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 import Logo from "../assets/mainlogo.svg";
 import { Helmet } from "react-helmet";
+import { loginSchema } from "../utils/formScheme";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginFormProps } from "../interfaces/FormProps";
 
 export default function LogIn() {
   //i18n
@@ -15,44 +18,65 @@ export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleShow = () => setShowPassword(!showPassword);
-  const handleLogin = (e: any) => {
-    e.preventDefault();
-    navigate("/");
-  };
+  
+  const ref = useRef<any>(null);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<LoginFormProps>({
+    mode: "onChange",
+    resolver: yupResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: any) => {
+    if (isValid) {
+      console.log(data);
+    }
+  };
   return (
     <section className="w-full h-screen flex ">
       <Helmet>
         <title>{`Մուտք`}</title>
       </Helmet>
-      <div className="w-full md:w-1/2 h-screen  px-sm">
+      <div className="w-full lg:w-1/2 h-screen  px-sm">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
-              className="mx-auto h-20 w-auto logo"
+              className="mx-auto w-20  logo"
               src={Logo}
               alt="Your Company"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               {/* {t("login.mutq")} */}
               Մուտք
             </h2>
           </div>
 
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+          <div className="mt-10 md:mx-auto md:w-full md:max-w-sm">
+            <form className="space-y-6" ref={ref }  onSubmit={(e) =>{
+              e.preventDefault()
+                 handleSubmit(onSubmit)}
+            }>
               <div>
                 <div className="mt-2 relative">
                   <input
                     id="email"
-                    name="email"
                     type="email"
                     autoComplete="email"
                     placeholder="էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none"
+                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    {...register("email")}
                   />
-                  <div className="absolute top-[1rem] right-6 text-xl text-slate-500">
+                   {errors.email && (
+                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                      {errors.email.message}
+                    </p>
+                  )}
+                  <div className="absolute top-[1rem] right-6 text-xl text-slate-500 ">
                     <MdOutlineMailOutline />
                   </div>
                 </div>
@@ -63,13 +87,18 @@ export default function LogIn() {
                 <div className="mt-2 relative">
                   <input
                     id="password"
-                    name="password"
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                     placeholder="Գաղտնաբառ"
                     required
-                    className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none"
+                    className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    {...register("password")}
                   />
+                   {errors.password && (
+                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                      {errors.password.message}
+                    </p>
+                  )}
                   <div
                     className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
                     onClick={handleShow}
@@ -90,8 +119,8 @@ export default function LogIn() {
               <div>
                 <button
                   type="submit"
-                  onClick={handleLogin}
                   className="flex w-full justify-center rounded-2xl bg-[#1c90f3] px-4 py-[10px] text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
+                  onClick={handleSubmit(onSubmit)}
                 >
                   Մուտք
                 </button>
@@ -110,7 +139,7 @@ export default function LogIn() {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-1/2 h-screen bg-green-400 hidden md:block login"></div>
+      <div className="w-full md:w-1/2 h-screen  hidden lg:block login"></div>
     </section>
   );
 }
