@@ -39,7 +39,7 @@ export default function LogIn() {
             </h2>
           </div>
 
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-10 md:mx-auto md:w-full md:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <div className="mt-2 relative">
