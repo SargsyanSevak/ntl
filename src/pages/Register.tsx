@@ -4,6 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
 import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { BsBuildingCheck } from "react-icons/bs";
 import Logo from "../assets/mainlogo.svg";
 import { Helmet } from "react-helmet";
 import { registerSchema } from "../utils/formScheme";
@@ -39,7 +40,7 @@ export default function Register() {
         <title>{`Գրանցվել`}</title>
       </Helmet>
       <div className="w-full lg:w-1/2 h-screen  px-sm">
-        <div className="flex min-h-full flex-1 flex-col justify-center  py-12 ">
+        <div className="flex min-h-full flex-1 flex-col justify-center  py-4 ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img className="mx-auto w-20  logo" src={Logo} alt="Your Company" />
             <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -49,13 +50,13 @@ export default function Register() {
 
           <div className="mt-10 md:mx-auto md:w-full md:max-w-sm">
             <form
-              className="space-y-4"
+              className="space-y-2"
               action="#"
               ref={ref}
               onSubmit={() => handleSubmit}
             >
               <div>
-                <div className="mt-2 relative">
+                <div className="relative">
                   <input
                     id="name"
                     type="text"
@@ -100,13 +101,13 @@ export default function Register() {
               <div>
                 <div className="mt-2 relative">
                   <select
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[17px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	"
+                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	"
                     {...register("userType")}
                   >
                     <option
                       value=""
                       disabled
-                      defaultValue={"none"}
+                      selected
                       className="text-gray-200"
                     >
                       Գործունեության տեսակ
@@ -119,7 +120,7 @@ export default function Register() {
                       {errors.userType.message}
                     </p>
                   )}
-                  <div className="absolute top-[1.2rem] right-6 text-2xl text-slate-500">
+                  <div className="absolute top-[1rem] right-6 text-2xl text-slate-500">
                     <IoIosArrowDown />
                   </div>
                 </div>
@@ -139,8 +140,8 @@ export default function Register() {
                     {errors.companyName.message}
                   </p>
                 )}
-                <div className="absolute top-[1rem] right-6 text-xl text-slate-500">
-                  <CgProfile />
+                <div className="absolute top-[1.1rem] right-6 text-[18px] text-slate-500">
+                  <BsBuildingCheck />
                 </div>
               </div>
               <div>
@@ -167,7 +168,7 @@ export default function Register() {
 
               <div>
                 <div className="flex items-center justify-between"></div>
-                <div className="mt-2 relative">
+                <div className=" relative">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
@@ -195,7 +196,7 @@ export default function Register() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-2xl bg-[#1c90f3] px-3 py-[10px] text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all"
+                  className="mt-4 flex w-full justify-center rounded-2xl bg-[#1c90f3] px-3 py-[10px] text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all"
                   onClick={handleSubmit(onSubmit)}
                 >
                   Գրանցվել
@@ -203,7 +204,7 @@ export default function Register() {
               </div>
             </form>
 
-            <p className="mt-10  text-center text-sm text-gray-500">
+            <p className="mt-6  text-center text-sm text-gray-500">
               Արդեն ունե՞ք հաշիվ{" "}
               <Link
                 to="/login"
