@@ -40,7 +40,7 @@ export default function Register() {
         <title>{`Գրանցվել`}</title>
       </Helmet>
       <div className="w-full lg:w-1/2 h-screen  px-sm">
-        <div className="flex min-h-full flex-1 flex-col justify-center  py-4 ">
+        <div className="flex min-h-full flex-1 flex-col justify-center  px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img className="mx-auto w-20  logo" src={Logo} alt="Your Company" />
             <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -48,9 +48,9 @@ export default function Register() {
             </h2>
           </div>
 
-          <div className="mt-10 md:mx-auto md:w-full md:max-w-sm">
+          <div className="mt-[20px] md:mx-auto md:w-full md:max-w-sm">
             <form
-              className="space-y-2"
+              className="space-y-4"
               action="#"
               ref={ref}
               onSubmit={() => handleSubmit}
@@ -67,7 +67,7 @@ export default function Register() {
                     {...register("firstName")}
                   />
                   {errors.firstName && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
                       {errors.firstName.message}
                     </p>
                   )}
@@ -77,7 +77,7 @@ export default function Register() {
                 </div>
               </div>
               <div>
-                <div className="mt-2 relative">
+                <div className="relative">
                   <input
                     id="lastName"
                     type="text"
@@ -88,7 +88,7 @@ export default function Register() {
                     {...register("lastName")}
                   />
                   {errors.lastName && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
                       {errors.lastName.message}
                     </p>
                   )}
@@ -99,7 +99,7 @@ export default function Register() {
               </div>
 
               <div>
-                <div className="mt-2 relative">
+                <div className=" relative">
                   <select
                     className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	"
                     {...register("userType")}
@@ -116,7 +116,7 @@ export default function Register() {
                     <option value="carrier">Փոխադրող</option>
                   </select>
                   {errors.userType && (
-                    <p className="text-red-600   pl-0  md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600   pt-1 pl-2 text-[12px] tracking-wide">
                       {errors.userType.message}
                     </p>
                   )}
@@ -125,7 +125,7 @@ export default function Register() {
                   </div>
                 </div>
               </div>
-              <div className="mt-2 relative">
+              <div className=" relative">
                 <input
                   id="company"
                   type="text"
@@ -136,7 +136,7 @@ export default function Register() {
                   {...register("companyName")}
                 />
                 {errors.companyName && (
-                  <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                  <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
                     {errors.companyName.message}
                   </p>
                 )}
@@ -145,7 +145,7 @@ export default function Register() {
                 </div>
               </div>
               <div>
-                <div className="mt-2 relative">
+                <div className=" relative">
                   <input
                     id="email"
                     type="email"
@@ -156,7 +156,7 @@ export default function Register() {
                     {...register("email")}
                   />
                   {errors.email && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600  pt-1 pl-2 text-[12px] tracking-wide">
                       {errors.email.message}
                     </p>
                   )}
@@ -179,7 +179,7 @@ export default function Register() {
                     {...register("password")}
                   />
                   {errors.password && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600   pt-1 pl-2 text-[12px] tracking-wide">
                       {errors.password.message}
                     </p>
                   )}

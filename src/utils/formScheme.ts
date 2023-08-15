@@ -40,8 +40,8 @@ export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Խնդրում ենք նշել ճիշտ էլ. հասցե")
-    .matches(/[@.]/, "Գաղտնաբառը պարտադիր է")
-    .required("Էլ-հասցեն պարտադիր է"),
+    .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
+    .required("Էլ. հասցեն պարտադիր է"),
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
 });
