@@ -18,7 +18,7 @@ const Truck = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setLoadData(loadData);
+      setLoadData(testTrucks);
       setIsLoading(false);
     }, 2000);
   }, []);
@@ -36,7 +36,7 @@ const Truck = () => {
     <>
       <div>
         <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px] dark:border-t-0 dark:bg-[#0b1c2f] dark:text-white">
-          <p className="text-[14px]">{testTrucks.length} գտնված բեռնատարներ</p>
+          <p className="text-[14px]">{loadData.length} գտնված բեռնատարներ</p>
           <div className="h-full flex items-center gap-4 relative -z-1">
             <SortLoads />
             <div

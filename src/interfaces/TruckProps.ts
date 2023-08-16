@@ -1,4 +1,4 @@
-type TruckTypeProps = "տենտ" | "ռեֆ";
+type TruckTypeProps = "տենտ" | "ռեֆ" | "կոնետյներ" | "ավիա";
 type LoadTypeProps = "ամբողջակսն" | "հավաքական";
 type ContactTypeProps = string | number;
 

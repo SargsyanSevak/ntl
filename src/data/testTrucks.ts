@@ -1,6 +1,6 @@
-import { LoadProps } from "../interfaces/LoadProps";
+import { TruckProps } from "../interfaces/TruckProps";
 
-export const testTrucks:LoadProps[] = [
+export const testTrucks:TruckProps[] = [
     {
         id:'1',
         age: '00:01',
@@ -13,7 +13,7 @@ export const testTrucks:LoadProps[] = [
         company: 'Գլոբալ Տրանս',
         contact: '+37477 32-32-32',
         length : 86,
-        weight : 23000,
+        weight : null,
         rate : 3500,
         status:'open'
     },
@@ -30,7 +30,7 @@ export const testTrucks:LoadProps[] = [
         contact: '+37477 32-32-32',
         length : 86,
         weight : 23000,
-        rate : 3500,
+        rate : null,
         status:'open'
     },
     {
@@ -44,7 +44,7 @@ export const testTrucks:LoadProps[] = [
         distance: 2300,
         company: 'ՆԹԼ լոգիստիկս',
         contact: '+37477 32-32-32',
-        length : 86,
+        length : null,
         weight : 23000,
         rate : 3500,
         status:'open'
