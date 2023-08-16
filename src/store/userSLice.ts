@@ -9,7 +9,6 @@ let initialState: any = {
     phoneNumber: "",
     userType: "",
     companyName: "",
-    passwordHash: "",
     subCustomers: "",
     address: "",
     website: "",
