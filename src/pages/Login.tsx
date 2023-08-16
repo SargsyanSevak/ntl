@@ -74,7 +74,7 @@ export default function LogIn() {
                     {...register("email")}
                   />
                   {errors.email && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600   pl-2 pt-1 text-[12px] tracking-wide">
                       {errors.email.message}
                     </p>
                   )}
@@ -97,7 +97,7 @@ export default function LogIn() {
                     {...register("password")}
                   />
                   {errors.password && (
-                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
+                    <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
                       {errors.password.message}
                     </p>
                   )}

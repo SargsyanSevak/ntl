@@ -27,15 +27,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route
-          path="/"
-          index
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" index element={<Dashboard />} />
         <Route
           path="/trucks"
           element={
