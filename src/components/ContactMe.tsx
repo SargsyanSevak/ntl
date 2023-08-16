@@ -62,7 +62,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full p-4 overflow-x-hidden overflow-y-auto  h-[calc(100%-1rem)] max-h-full  z-50 flex justify-center items-center"
           >
             <div className="relative w-full max-w-2xl max-h-full">
-              <div className="relative bg-white rounded-3xl shadow dark:bg-[#142441]">
+              <div className="relative bg-white rounded-3xl shadow-xl dark:bg-[#142441]">
                 <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center w-full">
                     Հետադարձ կապ
