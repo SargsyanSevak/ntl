@@ -45,3 +45,15 @@ export const loginSchema = yup.object().shape({
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
 });
+
+export const addLoadsSchema = yup.object().shape({
+  date: yup.string().required("Խնդրում ենք նշել բարձման օրը"),
+  truckType: yup.string().required("Խնդրում ենք նշել բեռնատարի տեսակը"),
+  loadType: yup.string().required("Խնդրում ենք նշել բեռի տեսակը"),
+  pickup: yup.string().required("Խնդրում ենք նշել բարձման վայրը"),
+  delivery: yup.string().required("Խնդրում ենք նշել դատարկման վայրը"),
+  length : yup.number(),
+  weight : yup.number(),
+  rate : yup.number(),
+});
+

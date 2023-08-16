@@ -18,7 +18,7 @@ const Truck = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setLoadData(testTrucks);
+      setLoadData(loadData);
       setIsLoading(false);
     }, 2000);
   }, []);

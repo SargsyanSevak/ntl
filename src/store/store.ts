@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { mapSLice } from "./mapSlice";
 import userSlice from "./userSlice";
 
+
 // export const rootReducer = configureStore({
 //   reducer: {
 //     taxi: taxiSLice.reducer,

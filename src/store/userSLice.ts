@@ -24,7 +24,7 @@ let initialState: any = {
   },
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
