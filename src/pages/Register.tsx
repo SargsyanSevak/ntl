@@ -11,11 +11,15 @@ import { registerSchema } from "../utils/formScheme";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegsiserFormProps } from "../interfaces/FormProps";
-
+import { registerThunk } from "../store/asyncThunk";
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
+import { getUser } from "../store/userSlice";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const handleShow = () => setShowPassword(!showPassword);
+  const dispatch = useTypedDispatch();
+  const user = useTypedSelector((state) => state.user);
 
   const ref = useRef<any>(null);
 
@@ -30,10 +34,16 @@ export default function Register() {
   });
 
   const onSubmit = async (data: any) => {
-    if (isValid) {
-      console.log(data);
-    }
+    console.log(data);
+    await dispatch(registerThunk(data));
   };
+
+  const printUser = (e: any) => {
+    // e.preventDefault();
+    // dispatch(getUser());
+    console.log(user);
+  };
+
   return (
     <section className="w-full min-h-screen flex">
       <Helmet>
@@ -216,6 +226,7 @@ export default function Register() {
           </div>
         </div>
       </div>
+
       <div className="w-full md:w-1/2 h-screen  hidden lg:block register"></div>
     </section>
   );

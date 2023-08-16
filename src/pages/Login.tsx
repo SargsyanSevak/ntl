@@ -10,15 +10,18 @@ import { loginSchema } from "../utils/formScheme";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormProps } from "../interfaces/FormProps";
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
+import { loginThunk } from "../store/asyncThunk";
 
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
-
+  const dispatch = useTypedDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleShow = () => setShowPassword(!showPassword);
-  
+  const user = useTypedSelector((state) => state.user);
+
   const ref = useRef<any>(null);
 
   const {
@@ -32,10 +35,9 @@ export default function LogIn() {
   });
 
   const onSubmit = async (data: any) => {
-    if (isValid) {
-      console.log(data);
-    }
+    await dispatch(loginThunk(data));
   };
+
   return (
     <section className="w-full h-screen flex ">
       <Helmet>
@@ -44,11 +46,7 @@ export default function LogIn() {
       <div className="w-full lg:w-1/2 h-screen  px-sm">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img
-              className="mx-auto w-20  logo"
-              src={Logo}
-              alt="Your Company"
-            />
+            <img className="mx-auto w-20  logo" src={Logo} alt="Your Company" />
             <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               {/* {t("login.mutq")} */}
               Մուտք
@@ -56,10 +54,14 @@ export default function LogIn() {
           </div>
 
           <div className="mt-10 md:mx-auto md:w-full md:max-w-sm">
-            <form className="space-y-6" ref={ref }  onSubmit={(e) =>{
-              e.preventDefault()
-                 handleSubmit(onSubmit)}
-            }>
+            <form
+              className="space-y-6"
+              ref={ref}
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit(onSubmit);
+              }}
+            >
               <div>
                 <div className="mt-2 relative">
                   <input
@@ -71,8 +73,8 @@ export default function LogIn() {
                     className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
                     {...register("email")}
                   />
-                   {errors.email && (
-                    <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
+                  {errors.email && (
+                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
                       {errors.email.message}
                     </p>
                   )}
@@ -94,8 +96,8 @@ export default function LogIn() {
                     className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
                     {...register("password")}
                   />
-                   {errors.password && (
-                    <p className="text-red-600  pt-1 pl-2 text-[12px] tracking-wide">
+                  {errors.password && (
+                    <p className="text-red-600   pl-0 md:pl-2 text-[12px] tracking-wide">
                       {errors.password.message}
                     </p>
                   )}

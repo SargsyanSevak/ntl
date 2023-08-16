@@ -1,35 +1,54 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TypeFrom, TypeInitialState } from "./types";
+import { registerThunk, loginThunk } from "./asyncThunk";
 
-const initialState: TypeInitialState = {
-  from: {
-    location: { lat: 40.1872023, lng: 44.515209 },
-    description: "Ereván, Армения",
-  } as TypeFrom,
-
-  to: {
-    location: { lat: 40.807399, lng: 44.4970268 },
-    description: "Vanadzor, Армения",
-  } as TypeFrom,
-  travelTime: 0,
-  selectedOption: "",
+let initialState: any = {
+  user: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    userType: "",
+    companyName: "",
+    passwordHash: "",
+    subCustomers: "",
+    address: "",
+    website: "",
+    paymentType: "",
+    paymentDuration: null,
+    about: "",
+    planType: "",
+    notification: null,
+    isVerified: false,
+    failedLoginAttempts: null,
+    lockoutUntil: null,
+  },
 };
 
-export const mapSLice = createSlice({
-  name: "map",
+const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
-    setFrom: (state, action) => {
-      state.from = action.payload;
-    },
-    setTo: (state, action) => {
-      state.to = action.payload;
-    },
-    setTravelTime: (state, action) => {
-      state.travelTime = action.payload;
-    },
-    setSelectedOption: (state, action) => {
-      state.selectedOption = action.payload;
+    getUser: (state) => {
+      // state.user.firstName = "aaa";
+      // console.log("Hello world");
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(registerThunk.fulfilled, (state, { payload }) => {
+        console.log("payload");
+        console.log(payload);
+
+        state.user = payload;
+      })
+      .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        console.log("payload");
+        console.log(payload);
+
+        state.user = payload;
+      });
+  },
 });
+
+export const { getUser } = userSlice.actions;
+export default userSlice.reducer;
