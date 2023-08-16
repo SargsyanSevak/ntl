@@ -1,6 +1,8 @@
+import Cookies from "js-cookie";
+
 export const saveToken = async (token) => {
   try {
-    await AsyncStorage.setItem("@token", token);
+    Cookies.set("Bearer", token);
   } catch (error) {
     console.log("error saving token", error);
   }

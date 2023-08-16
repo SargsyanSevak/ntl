@@ -2,13 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../axios";
 import { saveToken } from "../utils/helpers";
 
-export const login = createAsyncThunk(
-  "user/login",
-  async (loginObj, ) => {
-    const res = await axios.post(`/users/login`, {
-      email: loginObj.email,
-      password: loginObj.password,
-    });
+export const registerThunk = createAsyncThunk<any, any>(
+  "userSLice/registerThunk",
+  async (data) => {
+    const res = await axios.post(`auth/register`, data);
+
+    // console.log(res);
+
     // if (res?.status === "error") {
     //   thunkApi.dispatch(
     //     showSnackBar({
@@ -24,6 +24,18 @@ export const login = createAsyncThunk(
     if (token) {
       saveToken(token);
     }
-    return token;
+    return res.data;
   }
 );
+
+export const loginThunk = createAsyncThunk<any, any>("login", async (data) => {
+  const res = await axios.post(`auth/login`, data);
+
+  console.log(res);
+
+  const token = await res.data.token;
+  if (token) {
+    saveToken(token);
+  }
+  return res.data;
+});

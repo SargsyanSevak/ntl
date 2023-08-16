@@ -18,3 +18,7 @@ export interface CustomerProps {
   failedLoginAttempts: number | null;
   lockoutUntil: Date | null;
 }
+
+export interface User {
+  user: CustomerProps;
+}
