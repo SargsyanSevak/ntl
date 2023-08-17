@@ -24,13 +24,13 @@ export const registerSchema = yup.object().shape({
     .required("Խնդրում ենք նշել Ձեր ընկերության անվանումը"),
   email: yup
     .string()
-    .email("Խնդրում ենք նշել ճիշտ էլ. հասցե")
-    .required("Խնդրում ենք նշել էլ. հասցեն"),
+    .email("Խնդրում ենք նշել ճիշտ  էլ. հասցե")
+    .required("Խնդրում ենք նշել Ձեր էլ. հասցեն"),
   password: yup
     .string()
     .matches(
       passwordRegex,
-      "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ,առնվազն 1 ,թվեր և առնվազն մեկ նշան(!@#$%^&*.)"
+      "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ,առնվազն 1 թիվ և առնվազն 1 նշան(!@#$%^&*.)"
     )
     .min(8, "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ")
     .required("Խնդրում ենք նշել Ձեր գաղնտաբառը"),
@@ -40,8 +40,20 @@ export const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Խնդրում ենք նշել ճիշտ էլ. հասցե")
-    .matches(/[@.]/, "Գաղտնաբառը պարտադիր է")
-    .required("Էլ-հասցեն պարտադիր է"),
+    .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
+    .required("Էլ. հասցեն պարտադիր է"),
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
 });
+
+export const addLoadsSchema = yup.object().shape({
+  date: yup.string().required("Խնդրում ենք նշել բարձման օրը"),
+  truckType: yup.string().required("Խնդրում ենք նշել բեռնատարի տեսակը"),
+  loadType: yup.string().required("Խնդրում ենք նշել բեռի տեսակը"),
+  pickup: yup.string().required("Խնդրում ենք նշել բարձման վայրը"),
+  delivery: yup.string().required("Խնդրում ենք նշել դատարկման վայրը"),
+  length : yup.number(),
+  weight : yup.number(),
+  rate : yup.number(),
+});
+
