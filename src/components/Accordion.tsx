@@ -82,7 +82,7 @@ const Accordion = ({
               <div>{checkLengthOfValue(weight, "կգ")} </div>
             </div>
             <div className="flex justify-start items-center pl-[6px] w-[70px]">
-              <div>{checkLengthOfValue(rate, "$")}</div>
+              <div className="text-[#1C90F3]">{checkLengthOfValue(rate, "$")}</div>
             </div>
             {boardType === "load" && (
               <div className="flex justify-start items-center pl-[6px] w-[70px]">
@@ -90,7 +90,7 @@ const Accordion = ({
                   to={`/dashboard/preview/${id}`}
                   target="_blank"
                   type="button"
-                  className=" font-light text-gray-200 bg-[#15558d] focus:outline-none hover:bg-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
+                  className=" font-light text-gray-900 bg-slate-300 focus:outline-none hover:bg-slate-200 hover:border-[0.2px] hover:shadow hover:border-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
@@ -120,7 +120,7 @@ const Accordion = ({
               transition={{ duration: 0.2 }}
               className="content-placeholder bg-inherit lg:block hidden"
             >
-              <div className="w-full h-[80px] flex justify-between items-center text-[12px] gap-4 dark:text-gray-100">
+              <div className="w-full h-[60px] flex justify-between items-center text-[12px] gap-4 dark:text-gray-100">
                 {boardType === "load" && (
                   <div className="commodity w-[400px] h-full  flex items-center p-2 rounded-xl font-bold">
                     Բեռը : <p className="font-normal pl-2">{commodity}</p>
