@@ -22,8 +22,17 @@ import Security from "./components/Admin/Security";
 import TrucksBoard from "./pages/TrucksBoard";
 import PrivateRoute from "./hoc/PrivateRoute";
 import PublicRoute from "./hoc/PublicRoute";
+import { useEffect, useLayoutEffect } from "react";
+import { authMe } from "./store/asyncThunk";
+import { useTypedDispatch } from "./hooks/useTypedSelector";
 
 function App() {
+  const dispatch = useTypedDispatch();
+
+  useEffect(() => {
+    dispatch(authMe());
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

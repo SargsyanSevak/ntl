@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { BiShow } from "react-icons/bi";
@@ -19,6 +19,7 @@ export default function Register() {
   const handleShow = () => setShowPassword(!showPassword);
   const dispatch = useTypedDispatch();
   const user = useTypedSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const ref = useRef<any>(null);
 
@@ -33,13 +34,13 @@ export default function Register() {
   });
 
   const onSubmit = async (data: any) => {
-    console.log(data);
-    await dispatch(registerThunk(data));
+    let user = await dispatch(registerThunk(data));
+    if (user.payload.email) {
+      navigate("/");
+    }
   };
 
   const printUser = (e: any) => {
-    // e.preventDefault();
-    // dispatch(getUser());
     console.log(user);
   };
 
