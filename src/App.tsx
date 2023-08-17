@@ -20,143 +20,28 @@ import Notifications from "./components/Admin/Notifications";
 import Teams from "./components/Admin/Teams";
 import Security from "./components/Admin/Security";
 import TrucksBoard from "./pages/TrucksBoard";
-import PrivateRoute from "./hoc/PrivateRoute";
-import PublicRoute from "./hoc/PublicRoute";
-import { useEffect, useLayoutEffect } from "react";
-import { authMe } from "./store/asyncThunk";
-import { useTypedDispatch } from "./hooks/useTypedSelector";
 
 function App() {
-  const dispatch = useTypedDispatch();
-
-  useEffect(() => {
-    dispatch(authMe());
-  }, []);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" index element={<Dashboard />} />
-        <Route
-          path="/trucks"
-          element={
-            <PrivateRoute>
-              <TrucksBoard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute>
-              <AdminPannel />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LogIn />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="forgot"
-          element={
-            <PublicRoute>
-              <Forgot />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/dashboard/preview/:id"
-          element={
-            <PrivateRoute>
-              <Preview />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute>
-              <AdminPannel />
-            </PrivateRoute>
-          }
-        >
-          <Route
-            index
-            element={
-              <PrivateRoute>
-                <AdminHome />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="addloads"
-            element={
-              <PrivateRoute>
-                <AddLoads />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="changeloads"
-            element={
-              <PrivateRoute>
-                <ChangeLoads />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="settings"
-            element={
-              <PrivateRoute>
-                <Settings />
-              </PrivateRoute>
-            }
-          >
-            <Route
-              index
-              element={
-                <PrivateRoute>
-                  <Profile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="notifications"
-              element={
-                <PrivateRoute>
-                  <Notifications />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="teams"
-              element={
-                <PrivateRoute>
-                  <Teams />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="security"
-              element={
-                <PrivateRoute>
-                  <Security />
-                </PrivateRoute>
-              }
-            />
+        <Route path="/trucks" element={<TrucksBoard />} />
+        <Route path="/admin" element={<AdminPannel />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="register" element={<Register />} />
+        <Route path="forgot" element={<Forgot />} />
+        <Route path="/dashboard/preview/:id" element={<Preview />} />
+        <Route path="/admin" element={<AdminPannel />}>
+          <Route index element={<AdminHome />} />
+          <Route path="addloads" element={<AddLoads />} />
+          <Route path="changeloads" element={<ChangeLoads />} />
+          <Route path="settings" element={<Settings />}>
+            <Route index element={<Profile />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="teams" element={<Teams />} />
+            <Route path="security" element={<Security />} />
           </Route>
         </Route>
       </>
