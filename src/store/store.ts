@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { mapSLice } from "./mapSlice";
-import  userSlice  from "./userSlice";
+import userSlice from "./userSlice";
 
 // export const rootReducer = configureStore({
 //   reducer: {
@@ -11,7 +11,7 @@ import  userSlice  from "./userSlice";
 export const store = configureStore({
   reducer: {
     map: mapSLice.reducer,
-    user:  userSlice,
+    user: userSlice,
   },
 });
 

@@ -35,7 +35,11 @@ export default function LogIn() {
   });
 
   const onSubmit = async (data: any) => {
-    await dispatch(loginThunk(data));
+    let user = await dispatch(loginThunk(data));
+    console.log(user);
+    if (user.payload.email) {
+      navigate("/");
+    }
   };
 
   return (

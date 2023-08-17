@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerThunk, loginThunk } from "./asyncThunk";
+import { registerThunk, loginThunk, authMe } from "./asyncThunk";
 
 let initialState: any = {
   user: {
@@ -43,7 +43,11 @@ const userSlice = createSlice({
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
         console.log("payload");
         console.log(payload);
-
+        state.user = payload;
+      })
+      .addCase(authMe.fulfilled, (state, { payload }) => {
+        console.log("payload");
+        console.log(payload);
         state.user = payload;
       });
   },

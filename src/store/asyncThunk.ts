@@ -28,14 +28,28 @@ export const registerThunk = createAsyncThunk<any, any>(
   }
 );
 
-export const loginThunk = createAsyncThunk<any, any>("login", async (data) => {
-  const res = await axios.post(`auth/login`, data);
+export const loginThunk = createAsyncThunk<any, any>(
+  "userSLice/loginThunk",
+  async (data) => {
+    const res = await axios.post(`auth/login`, data);
+
+    console.log(res);
+
+    const token = await res.data.token;
+    if (token) {
+      saveToken(token);
+    }
+    return res.data;
+  }
+);
+
+export const authMe = createAsyncThunk<any>("userSLice/authMe", async () => {
+  const res = await axios.get(`auth/me`);
 
   console.log(res);
-
-  const token = await res.data.token;
-  if (token) {
-    saveToken(token);
-  }
+  // const token = await res.data.token;
+  // if (token) {
+  //   saveToken(token);
+  // }
   return res.data;
 });
