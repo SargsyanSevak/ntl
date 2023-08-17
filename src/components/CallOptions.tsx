@@ -1,20 +1,18 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { LuPhoneCall } from "react-icons/lu";
-import { FaViber,FaWhatsapp } from "react-icons/fa";
+import { FaViber, FaWhatsapp } from "react-icons/fa";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function CallOptions({contact}:any) {
+export default function CallOptions({ contact }: any) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center bg-inherit ">
-          
-            <p>{contact}</p>
-          
+          <p>{contact}</p>
         </Menu.Button>
       </div>
 
@@ -40,7 +38,10 @@ export default function CallOptions({contact}:any) {
                     "flex px-4 py-2 text-sm items-center gap-2"
                   )}
                 >
-                 <span><LuPhoneCall color="purple" /></span> Direct
+                  <span>
+                    <LuPhoneCall color="purple" />
+                  </span>{" "}
+                  Direct
                 </a>
               )}
             </Menu.Item>
@@ -55,7 +56,10 @@ export default function CallOptions({contact}:any) {
                     "flex px-4 py-2 text-sm items-center gap-2"
                   )}
                 >
-                 <span><FaViber color="#59267c	"/></span> Viber
+                  <span>
+                    <FaViber color="#59267c	" />
+                  </span>{" "}
+                  Viber
                 </a>
               )}
             </Menu.Item>
@@ -70,7 +74,10 @@ export default function CallOptions({contact}:any) {
                     "flex px-4 py-2 text-sm items-center gap-2 "
                   )}
                 >
-                  <span><FaWhatsapp color="#25D366"/></span>Whatsapp
+                  <span>
+                    <FaWhatsapp color="#25D366" />
+                  </span>
+                  Whatsapp
                 </a>
               )}
             </Menu.Item>
