@@ -11,7 +11,7 @@ import userSlice from "./userSlice";
 export const store = configureStore({
   reducer: {
     map: mapSLice.reducer,
-    user: userSlice,
+    user: userSlice.reducer,
   },
 });
 
