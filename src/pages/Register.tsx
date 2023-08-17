@@ -13,7 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { RegsiserFormProps } from "../interfaces/FormProps";
 import { registerThunk } from "../store/asyncThunk";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
-import { getUser } from "../store/userSlice";
+import { getUser } from "../store/customerSlice";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);

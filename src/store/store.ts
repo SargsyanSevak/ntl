@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { mapSLice } from "./mapSlice";
-import userSlice from "./userSlice";
+import customerSlice from "./customerSlice";
 
 export const store = configureStore({
   reducer: {
     map: mapSLice.reducer,
-    user: userSlice,
+    user: customerSlice,
   },
 });
 

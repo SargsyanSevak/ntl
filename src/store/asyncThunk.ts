@@ -3,7 +3,7 @@ import axios from "../axios";
 import { saveToken } from "../utils/helpers";
 
 export const registerThunk = createAsyncThunk<any, any>(
-  "userSLice/registerThunk",
+  "customerSlice/registerThunk",
   async (data) => {
     const res = await axios.post(`auth/register`, data);
 
@@ -29,7 +29,7 @@ export const registerThunk = createAsyncThunk<any, any>(
 );
 
 export const loginThunk = createAsyncThunk<any, any>(
-  "userSLice/loginThunk",
+  "customerSlice/loginThunk",
   async (data) => {
     const res = await axios.post(`auth/login`, data);
 
@@ -43,7 +43,7 @@ export const loginThunk = createAsyncThunk<any, any>(
   }
 );
 
-export const authMe = createAsyncThunk<any>("userSLice/authMe", async () => {
+export const authMe = createAsyncThunk<any>("customerSlice/authMe", async () => {
   const res = await axios.get(`auth/me`);
 
   console.log(res);

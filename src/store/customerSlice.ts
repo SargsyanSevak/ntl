@@ -23,7 +23,7 @@ let initialState: any = {
   },
 };
 
-const userSlice = createSlice({
+const customerSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -53,6 +53,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { getUser } = userSlice.actions;
+export const { getUser } = customerSlice.actions;
 
-export default userSlice.reducer;
+export default customerSlice.reducer;
