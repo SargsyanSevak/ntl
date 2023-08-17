@@ -16,7 +16,9 @@ export interface LoadProps {
   length : number | null;
   weight : number | null;
   rate : number |null;
-  status:string
+  status:string,
+  commodity:string | null,
+  comment:string | null
 }
 
 export interface AddLoadProps {
@@ -28,4 +30,6 @@ export interface AddLoadProps {
   length? : number | null;
   weight? : number | null;
   rate? : number | null;
+  commodity?:string | null;
+  comment?:string | null
 }

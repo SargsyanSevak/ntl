@@ -21,6 +21,8 @@ const Accordion = ({
   length,
   weight,
   rate,
+  commodity,
+  comment,
   boardType,
 }: any) => {
   const isOpen = i === expanded;
@@ -118,16 +120,26 @@ const Accordion = ({
               transition={{ duration: 0.2 }}
               className="content-placeholder bg-inherit lg:block hidden"
             >
-              <div className="w-full h-[100px] flex justify-between items-center text-[12px] gap-4 dark:text-gray-100">
-                <div className="commodity w-[400px] h-full dark:border-[0.7px] dark:border-gray-700  border-[1.5px] flex items-center p-2 rounded-xl">
-                  Բեռը :{" "}
+              <div className="w-full h-[80px] flex justify-between items-center text-[12px] gap-4 dark:text-gray-100">
+                {boardType === "load" && (
+                  <div className="commodity w-[400px] h-full  flex items-center p-2 rounded-xl font-bold">
+                    Բեռը : <p className="font-normal pl-2">{commodity}</p>
+                  </div>
+                )}
+
+                <div
+                  className={`comment1  w-full h-full flex items-center ${
+                    boardType === "load" && "justify-center"
+                  }  p-2  font-bold`}
+                >
+                  Հավելյալ ինֆորմացիա :{" "}
+                  <p className="font-normal pl-2">{comment}</p>
                 </div>
-                <div className="comment1 border-[1.5px] dark:border-[0.7px] dark:border-gray-700 w-full h-full flex items-center p-2 rounded-xl">
-                  Հավելյալ ինֆորմացիա :
-                </div>
-                <div className="info w-[400px] h-full border-[1.5px] dark:border-[0.7px] dark:border-gray-700  flex items-center p-2 rounded-xl">
-                  Վճարում :
-                </div>
+                {boardType === "load" && (
+                  <div className="info w-[400px] h-full  flex items-center p-2  font-bold">
+                    Վճարում : <p className="font-normal pl-2"></p>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.section>

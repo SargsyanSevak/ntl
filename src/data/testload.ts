@@ -15,7 +15,9 @@ export const testload:LoadProps[] = [
         length : 86,
         weight : 23000,
         rate : 3500,
-        status:'open'
+        status:'open',
+        commodity:'գինի',
+        comment:'some comments here '
     },
     {
         id:'2',
@@ -31,7 +33,9 @@ export const testload:LoadProps[] = [
         length : 86,
         weight : 23000,
         rate : 3500,
-        status:'open'
+        status:'open',
+        commodity:'կոնյակ',
+        comment:'some comments here '
     },
     {
         id:'3',
@@ -47,6 +51,8 @@ export const testload:LoadProps[] = [
         length : 86,
         weight : 23000,
         rate : 3500,
-        status:'open'
+        status:'open',
+        commodity:'ցորեն',
+        comment:'some comments here '
     },
 ]

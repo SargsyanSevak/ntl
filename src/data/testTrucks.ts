@@ -15,7 +15,8 @@ export const testTrucks:TruckProps[] = [
         length : 86,
         weight : null,
         rate : 3500,
-        status:'open'
+        status:'open',
+        comment : 'Meqenan gtnvum e maqur vichakum'
     },
     {
         id:'2',
@@ -31,7 +32,8 @@ export const testTrucks:TruckProps[] = [
         length : 86,
         weight : 23000,
         rate : null,
-        status:'open'
+        status:'open',
+        comment : 'Meqenan gtnvum e maqur vichakum'
     },
     {
         id:'3',
@@ -47,6 +49,7 @@ export const testTrucks:TruckProps[] = [
         length : null,
         weight : 23000,
         rate : 3500,
-        status:'open'
+        status:'open',
+        comment : 'Meqenan gtnvum e maqur vichakum'
     },
 ]

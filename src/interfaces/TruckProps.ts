@@ -16,5 +16,6 @@ export interface TruckProps {
   length? : number | null;
   weight? : number | null;
   rate? : number | null;
-  status:string
+  status:string,
+  comment? : string | null
 }
