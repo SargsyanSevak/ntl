@@ -1,13 +1,13 @@
 import { LoadProps } from "../interfaces/LoadProps";
 import { AiOutlineClockCircle, AiOutlineCalendar } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
-import { BsRecordCircle } from "react-icons/bs";
+import { BsRecordCircle, BsArrowUpRight } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { CutString, checkLengthOfValue } from "../utils/Check";
 import CallOptions from "./CallOptions";
-import IsClicable from "../hoc/IsClicable";
 import { useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
+import { Link } from "react-router-dom";
 const LoadItemMobile = ({
   id,
   age,
@@ -31,16 +31,34 @@ const LoadItemMobile = ({
     setShowComment(!showComment);
   };
   return (
-    <div className="mb-2"  onClick={handeOpenComment}>
+    <div className="mb-2" onClick={handeOpenComment}>
       <div
         id={id}
-        className={`relative pb-10  lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
+        className={`relative pb-[60px] dark:border-b-4 border-b-gray-500 lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
-        {boardType === "load" || (
-          <div className="length text-[12px] absolute bottom-3 right-4  z-50 bg-[#2183d9] text-white px-4 py-2  rounded-xl lg:hidden block">
-            <CallOptions contact={contact} />
-          </div>
+        <div
+          className="length text-[12px] absolute  bottom-6 right-4  border-[#2183d9] z-50 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-4 py-2  rounded-xl lg:hidden block"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <CallOptions contact={contact} />
+        </div>
+        {boardType === "load" && (
+          <Link
+          to={`/dashboard/preview/${id}`}
+            className="length  text-[12px] absolute  bottom-6 left-4 border-[#2183d9]  z-50 border-[0.7px] text-black dark:text-white px-10 py-2  rounded-xl lg:hidden flex justify-center items-center gap-4 tracking-wider"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            Քարեզ{" "}
+            <span>
+              <BsArrowUpRight />
+            </span>
+          </Link>
         )}
+
         <div className="w-[20%] min-h-[100px] flex flex-col justify-around items-start md:items-center">
           <div className="age flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
@@ -48,9 +66,7 @@ const LoadItemMobile = ({
             </span>
             {age}
           </div>
-          <div
-            className="date flex flex-col justify-start items-center gap-2"
-          >
+          <div className="date flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
               <AiOutlineCalendar />
             </span>
@@ -99,7 +115,7 @@ const LoadItemMobile = ({
       <AnimatePresence>
         {showComment && (
           <m.div
-            className="lg:hidden flex w-full bg-slate-200 border-t-[1px] shadow-md border-t-gray-300"
+            className="lg:hidden flex w-full bg-slate-200 dark:bg-gray-500 border-t-[1px] shadow-md border-t-gray-300"
             key="content"
             initial="collapsed"
             animate="open"
@@ -113,22 +129,21 @@ const LoadItemMobile = ({
             <m.div
               variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden flex text-[12px] flex-col gap-4 py-4 md:pl-[68px] pl-4"
+              className="lg:hidden flex text-[12px] flex-col gap-4 py-4 pr-2 md:pl-[68px] pl-4"
             >
               {boardType === "load" && (
                 <div className="commodity w-full  flex items-center rounded-xl font-bold">
-                  Բեռը : <p className="font-normal pl-2">{commodity}</p>
+                  Բեռը : <p className="font-normal">{commodity}</p>
                 </div>
               )}
               <div
                 className={`comment1  w-full  flex items-center   font-bold`}
               >
-                Հավելյալ ինֆորմացիա :{" "}
-                <p className="font-normal pl-2">{comment}</p>
+                Comment : <p className="font-normal">{comment}</p>
               </div>
               {boardType === "load" && (
                 <div className="info w-full  flex items-center  font-bold">
-                  Վճարում : <p className="font-normal pl-2"></p>
+                  Վճարում : <p className="font-normal"></p>
                 </div>
               )}
             </m.div>

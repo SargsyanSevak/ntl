@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { LuPhoneCall } from "react-icons/lu";
 import { FaViber, FaWhatsapp } from "react-icons/fa";
-
+import { MdKeyboardArrowDown } from "react-icons/md";
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
@@ -11,8 +11,8 @@ export default function CallOptions({ contact }: any) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center bg-inherit ">
-          <p>{contact}</p>
+        <Menu.Button className="inline-flex w-full bg-inherit ">
+          <p className="flex items-center gap-2">{contact} <span ><MdKeyboardArrowDown size={20}/></span></p>
         </Menu.Button>
       </div>
 
@@ -25,7 +25,7 @@ export default function CallOptions({ contact }: any) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute -right-6 z-10 mt-2 w-[150px] origin-top-center rounded-md bg-white dark:bg-[#0E192D]   shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute -right-6 z-10 mt-4 w-[150px] origin-top-center rounded-md bg-white dark:bg-[#0E192D]   shadow-lg  ring-0 ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -35,7 +35,7 @@ export default function CallOptions({ contact }: any) {
                     active
                       ? "bg-gray-100 text-gray-900"
                       : "text-gray-700  dark:text-white",
-                    "flex px-4 py-2 text-sm items-center gap-2"
+                    "flex px-4 py-2 text-sm items-center gap-2 focus:ring-0"
                   )}
                 >
                   <span>
@@ -47,8 +47,7 @@ export default function CallOptions({ contact }: any) {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <div
                   className={classNames(
                     active
                       ? "bg-gray-100 text-gray-900 "
@@ -60,7 +59,7 @@ export default function CallOptions({ contact }: any) {
                     <FaViber color="#59267c	" />
                   </span>{" "}
                   Viber
-                </a>
+                </div>
               )}
             </Menu.Item>
             <Menu.Item>
