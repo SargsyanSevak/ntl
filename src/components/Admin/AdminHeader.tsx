@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "../Avatar";
 import Logo from "../../assets/mainlogowhite.svg";
 import { MdNotificationsNone } from "react-icons/md";
 import AdminAside from "./AdminAside";
 import { notificationsData } from "../../data/notificationData";
-import { adminNavItems } from "../../constants/NavItems";
-const AdminHeader: React.FC = () => {
-  const [notificationCount, setNotificationCount] = useState<number>(1);
-  const { pathname } = useLocation();
+import { NavItemsProps, customerNavItems } from "../../constants/NavItems";
+import { carrierNavItems } from "../../constants/NavItems";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
+const AdminHeader = () => {
+  const [notificationCount, setNotificationCount] = useState<number>(1);
+  const [activeUserNav, setActiveUserNav] = useState<NavItemsProps[]>([]);
+  const { pathname } = useLocation();
+  const { user } = useTypedSelector((state) => state.user);
+
+  const detectUserType = () => {
+    if (user.userType === "customer") {
+      setActiveUserNav(customerNavItems);
+      return;
+    } else {
+      setActiveUserNav(carrierNavItems);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      detectUserType();
+    });
+  }, []);
   const getNotificationCount = () => {
     return notificationsData.filter((el: any) => el.isOpened === false).length;
   };
@@ -29,9 +48,13 @@ const AdminHeader: React.FC = () => {
           <img src={Logo} alt="logo" className="w-[90px] logo -mt-[6px]" />
         </div>
         <nav className="lg:block hidden">
-          <ul className="flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide	">
-            {adminNavItems.map((el) => (
-              <li className="px-8" key={el.title}>
+          <ul
+            className={`flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide ${
+              user.userType === "customer" ? "gap-10" : "gap-[20px] xl:gap-10"
+            }`}
+          >
+            {activeUserNav.map((el) => (
+              <li key={el.title}>
                 <Link
                   to={el.to}
                   className={`${

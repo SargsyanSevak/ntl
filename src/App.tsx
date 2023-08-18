@@ -6,8 +6,6 @@ import Forgot from "./pages/Forgot";
 import Dashboard from "./pages/Dashboard";
 import Preview from "./components/Preview";
 import AdminPannel from "./pages/AdminPannel";
-import AddLoads from "./components/Admin/AddLoads";
-import ChangeLoads from "./components/Admin/ChangeLoads";
 import Settings from "./components/Admin/Settings";
 import {
   createBrowserRouter,
@@ -22,6 +20,8 @@ import Security from "./components/Admin/Security";
 import TrucksBoard from "./pages/TrucksBoard";
 import PrivateRoute from "./hoc/PrivateRoute";
 import PublicRoute from "./hoc/PublicRoute";
+import AddItems from "./components/Admin/AddItems";
+import ChangeItem from "./components/Admin/ChangeItem";
 
 function App() {
   const router = createBrowserRouter(
@@ -33,9 +33,9 @@ function App() {
         <Route
           path="/admin"
           element={
-            <PrivateRoute>
+            <PublicRoute>
               <AdminPannel />
-            </PrivateRoute>
+            </PublicRoute>
           }
         />
         <Route
@@ -67,7 +67,7 @@ function App() {
           path="/admin"
           element={
             <PrivateRoute>
-              <AdminPannel />
+              <AdminPannel/>
             </PrivateRoute>
           }
         >
@@ -80,18 +80,18 @@ function App() {
             }
           />
           <Route
-            path="addloads"
+            path="additems"
             element={
               <PrivateRoute>
-                <AddLoads />
+                <AddItems />
               </PrivateRoute>
             }
           />
           <Route
-            path="changeloads"
+            path="changeitems"
             element={
               <PrivateRoute>
-                <ChangeLoads />
+                <ChangeItem/>
               </PrivateRoute>
             }
           />

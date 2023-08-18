@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AddLoadProps } from "../../interfaces/LoadProps";
 import { useRef } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-export default function AddLoads() {
+export default function AddItems({userType}:any) {
+  const {user} = useTypedSelector((state)=>state.user)
   const ref = useRef<any>(null);
 
   const {
@@ -57,7 +59,7 @@ export default function AddLoads() {
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                Դատարկում
+              {user.userType === 'customer' ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
               </label>
               <div className="mt-2">
                 <input
@@ -122,7 +124,8 @@ export default function AddLoads() {
             </div>
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                Բեռի ծավալ մ³
+               
+                {user.userType === 'customer' ? ' Բեռի ծավալ մ³' : ' Բեռնատարի ծավալ մ³'} 
               </label>
               <div className="mt-2">
                 <input
@@ -139,7 +142,8 @@ export default function AddLoads() {
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                Բեռի քաշ կգ
+               
+                {user.userType === 'customer' ? 'Բեռի քաշ կգ' : 'Նախընտրելի քաշ կգ'} 
               </label>
               <div className="mt-2">
                 <input

@@ -1,5 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import "../../styles/pieChartBox.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const data = [
   { name: "Բեռներ", value: 13, color: "#0088FE" },
@@ -9,6 +10,8 @@ const data = [
 ];
 
 const PieChartBox = () => {
+  const {user} = useTypedSelector((state)=>state.user)
+
   function CutString(inputString: string): string {
     if (inputString.length > 5) {
       return inputString.slice(0, 5);
@@ -17,7 +20,7 @@ const PieChartBox = () => {
   }
   return (
     <div className="pieChartBox">
-      <h1>Բեռների վիճակագրություն</h1>
+      <h1>{user.userType === 'customer' ? 'Բեռների վիճակագրություն' : 'Բեռնատարների վիճակագրություն'}</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height={300}>
           <PieChart>

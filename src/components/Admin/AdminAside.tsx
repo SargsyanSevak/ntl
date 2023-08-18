@@ -7,6 +7,9 @@ import { MdPostAdd } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { BsFillBoxFill } from "react-icons/bs";
 import Avatar from "../Avatar";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
+
 interface NavigationItem {
   id: number;
   title: string;
@@ -22,14 +25,40 @@ const navigation: NavigationItem[] = [
   },
   {
     id: 2,
-    title: "Ավելացնել բեռներ",
-    to: "/admin/addloads",
+    title: `Ավելացնել բեռներ`,
+    to: "/admin/additems",
     icon: <MdPostAdd />,
   },
   {
     id: 3,
     title: "Փոփոխել բեռները",
-    to: "/admin/changeloads",
+    to: "/admin/changeitems",
+    icon: <AiOutlineEdit />,
+  },
+  {
+    id: 4,
+    title: "Կարգավորումներ",
+    to: "/admin/settings",
+    icon: <CiSettings />,
+  },
+];
+const navigationCarrier: NavigationItem[] = [
+  {
+    id: 1,
+    title: "Գլխավոր",
+    to: "/admin",
+    icon: <AiOutlineEdit />,
+  },
+  {
+    id: 2,
+    title: `Ավելացնել բեռնատարներ`,
+    to: "/admin/additems",
+    icon: <MdPostAdd />,
+  },
+  {
+    id: 3,
+    title: "Փոփոխել բեռնատարները",
+    to: "/admin/changeitems",
     icon: <AiOutlineEdit />,
   },
   {
@@ -44,8 +73,23 @@ const AdminAside: React.FC = () => {
   const { pathname } = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navItems,setNavItems] = useState<NavigationItem[]>([])
   const menuRef = useRef<HTMLButtonElement>(null);
+  const {user} = useTypedSelector((state)=>state.user)
 
+  const detectUserType = () => {
+    if (user.userType === "customer") {
+      setNavItems(navigation);
+      return;
+    } else {
+      setNavItems(navigationCarrier);
+    }
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      detectUserType();
+    });
+  }, []);
   const handleOutsideClick = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setIsMenuOpen(false);
@@ -92,7 +136,7 @@ const AdminAside: React.FC = () => {
         )}
       </button>
       <aside
-        className={`fixed top-0  right-0 h-full w-[280px] bg-[#141F20] shadow-lg transform ${
+        className={`fixed top-0  right-0 h-full ${user.userType === 'customer' ? 'w-[280px]' : 'w-[340px]'}  bg-[#141F20] shadow-lg transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-200`}
       >
@@ -102,7 +146,7 @@ const AdminAside: React.FC = () => {
             <p className="text-[20px] pt-[6px]">Vedi Alco</p>
           </div>
           <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
-            {navigation.map((el) => (
+            {navItems.map((el) => (
               <li
                 className={`flex items-center gap-4 h-16 pl-4  ${
                   pathname === el.to ? "active-link" : ""

@@ -3,28 +3,31 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { GiRoad } from "react-icons/gi";
 import { BsCheckAll } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const StatisticsTop: React.FC = () => {
+  const {user} = useTypedSelector((state)=>state.user)
+
   const { pathname } = useLocation();
 
   const dynamicStatisticTitle = useMemo(() => {
     switch (pathname) {
       case "/admin":
         return {
-          title: "Good morning ,Aram",
+          title: `Ողջույն ${user.firstName}`,
           description: "helooooooo",
         };
 
-      case "/admin/addloads":
+      case "/admin/additems":
         return {
-          title: "Add loads anytime ,anywhere",
-          description: "helooooooo",
+          title: `Ավելացնել ${user.userType === 'customer' ? 'բեռներ' : 'բեռնատարներ'}`,
+          description: `${user.userType === 'customer' ? 'Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին' : 'Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին'}`,
         };
 
-      case "/admin/changeloads":
+      case "/admin/changeitems":
         return {
-          title: "Change your loads below",
-          description: "helooooooo",
+          title: `Փոփոխել ${user.userType === 'customer' ? 'բեռները' : 'բեռնատարները'}`,
+          description: `Փոփոխել ${user.userType === 'customer' ? "բեռները" : "բեռնատարները"}`,
         };
 
       case "/admin/settings":
@@ -56,7 +59,7 @@ const StatisticsTop: React.FC = () => {
       </div>
 
       <div>
-        <h4 className="text-[28px]">{dynamicStatisticTitle.title}</h4>
+        <h4 className="md:text-[28px] text-[20px]">{dynamicStatisticTitle.title}</h4>
         <p className="text-gray-500">{dynamicStatisticTitle.description}</p>
       </div>
       <div className="statistics">

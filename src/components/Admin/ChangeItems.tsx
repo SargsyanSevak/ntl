@@ -43,7 +43,7 @@ const loadStatus = [
     name: "ջնջել",
   },
 ];
-const ChangeLoadItem = ({
+const ChangeItems= ({
   id,
   pickup,
   delivery,
@@ -175,4 +175,4 @@ const ChangeLoadItem = ({
   );
 };
 
-export default ChangeLoadItem;
+export default ChangeItems;

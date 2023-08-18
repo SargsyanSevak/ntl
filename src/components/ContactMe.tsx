@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import Loader from "./Loader";
 import { schema } from "../utils/formScheme";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormValues } from "../interfaces/FormProps";
 import emailjs from "emailjs-com";
 import Toast from "../UI/UIToast";
+import UILoader from "../UI/UILoader";
+
 interface ModalProps {
   isOpen: Boolean;
   onClose: () => void;
@@ -136,7 +137,7 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     className="flex justify-center items-center text-white w-[120px] bg-[#1C90F3] hover:bg-[#1c8ff3ea]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  transition-all"
                     onClick={handleSubmit(onSubmit)}
                   >
-                    {isSent ? <p>Ուղարկել </p> : <Loader />}
+                    {isSent ? <p>Ուղարկել </p> : <UILoader />}
                   </button>
                   <button
                     onClick={() => {

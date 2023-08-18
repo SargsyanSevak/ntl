@@ -3,20 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { isLogged } from "../utils/helpers";
 
 const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const checkToken = () => {
-    const token = isLogged();
-    console.log(token);
+  // const checkToken = () => {
+  //   const token = isLogged();
+  //   console.log(token);
 
-    if (!token) {
-      navigate("/login");
-    }
-  };
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // };
 
-  useEffect(() => {
-    checkToken();
-  }, []);
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   return <>{children}</>;
 };

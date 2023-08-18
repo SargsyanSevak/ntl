@@ -3,11 +3,11 @@ import { registerThunk, loginThunk, authMe } from "./asyncThunk";
 
 let initialState: any = {
   user: {
-    firstName: "",
+    firstName: "Արամ",
     lastName: "",
     email: "",
     phoneNumber: "",
-    userType: "",
+    userType: "carrier",
     companyName: "",
     subCustomers: "",
     address: "",

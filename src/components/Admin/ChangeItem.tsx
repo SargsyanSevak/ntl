@@ -1,7 +1,9 @@
 import React from "react";
 import { testload } from "../../data/testload";
-import ChangeLoadItem from "./ChangeLoadItem";
-const ChangeLoads: React.FC = ({}) => {
+import ChangeLoadItem from "./ChangeItems";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+const ChangeItem: React.FC = ({}) => {
+  const {user} = useTypedSelector((state)=>state.user)
   return (
     <div className="relative z-40 flex flex-col bg-inherit">
       <div className="w-full h-8 bg-slate-700 px-4 lg:flex hidden justify-between items-center gap-2 text-[13px] text-gray-400 font-semibold">
@@ -15,7 +17,7 @@ const ChangeLoads: React.FC = ({}) => {
           Բարձում
         </div>
         <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
-          Բեռնաթափում
+         {user.userType === 'customer' ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
         </div>
         <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
           Ծավալ
@@ -38,4 +40,4 @@ const ChangeLoads: React.FC = ({}) => {
   );
 };
 
-export default ChangeLoads;
+export default ChangeItem;

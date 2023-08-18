@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import Avatar from "../Avatar";
 import verifyIcon from "../../assets/verifyIcon.png";
 import Edit from "../../UI/Edit";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Profile = () => {
+  const {user} = useTypedSelector((state)=>state.user)
+
   const [bio, setBio] = useState(
     " Lorem ipsum dolor sit amet consectetur adipisicing elit. In iste aspernatur, adipisci eius rem reiciendis sed sequi, officiis placeat provident numquam quisquam iusto, quam accusamus nostrum accusantium ab quas. Quas delectus quis dicta amet praesentium deserunt sit ratione optio pariatur nemo. Explicabo autem quidem amet repellendus sequi nisi. Nemo rem obcaecati provident ipsa officia expedita dolores exercitationem atque minus, odio voluptatem consequuntur cupiditate fuga, iste quos quis possimus hic corporis! Rem doloribus eaque vitae enim reiciendis? Commodi quae nulla repudiandae. Iusto repudiandae saepe quas quo, ad, pariatur nobis architecto magni ab dolore placeat corporis enim commodi vel dicta delectus voluptatum."
   );
@@ -62,7 +65,7 @@ const Profile = () => {
             </div>
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Գործունեության տեսակը</h4>
-              <p>Պատվիրատու</p>
+              <p>{user.userType === 'customer' ? 'Պատվիրատու' : 'Փոխադրող'}</p>
             </div>
 
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
@@ -73,7 +76,9 @@ const Profile = () => {
         </div>
         <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
       </div>
-      <div className="payment relative">
+      {
+        user.userType === 'customer' && (
+          <div className="payment relative">
         <div className="w-full border-2 border-slate-300 rounded-xl">
           <h4 className="md:text-center  font-semibold pt-4 pl-4 md:pl-0">
             Վճարային համակարգ
@@ -91,6 +96,9 @@ const Profile = () => {
         </div>
         <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
       </div>
+        )
+      }
+      
       <div className="bio relative">
         <div className="w-full border-2 border-slate-300 rounded-xl">
           <h4 className="md:text-center  font-semibold py-4 pl-4 md:pl-0">
