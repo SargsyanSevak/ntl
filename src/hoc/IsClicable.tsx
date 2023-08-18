@@ -6,7 +6,7 @@ const IsClicable = ({ isClicable, children, id }: any) => {
     return (
       <Link
         to={`/dashboard/preview/${id}`}
-        className="relative  lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"
+        className="relative pb-40  lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200  border-b-4 border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold"
         target="_blank"
       >
         {children}

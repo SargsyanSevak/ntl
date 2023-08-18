@@ -55,5 +55,7 @@ export const addLoadsSchema = yup.object().shape({
   length : yup.number(),
   weight : yup.number(),
   rate : yup.number(),
+  commodity:yup.string(),
+  comment:yup.string()
 });
 

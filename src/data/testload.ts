@@ -53,6 +53,6 @@ export const testload:LoadProps[] = [
         rate : 3500,
         status:'open',
         commodity:'ցորեն',
-        comment:'some comments here '
+        comment:'some comments here for your load descriptuion.It is a good sway to describe your load whole details'
     },
 ]

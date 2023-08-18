@@ -194,6 +194,41 @@ export default function AddItems({userType}:any) {
                 />
               </div>
             </div>
+            {
+              user.userType === 'customer' &&
+              <div className="sm:col-span-3 ">
+              <label className="block text-sm font-medium leading-6 text-gray-900">
+                Ապրանքի տեսակ
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="commodity"
+                  autoComplete="given-commodity"
+                  placeholder="օր. գինի"
+                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  {...register("commodity")}
+                />
+              </div>
+            </div>
+            }
+            
+
+            <div className={`${user.userType === 'customer' ? 'sm:col-span-3' : 'sm:col-span-6'} `}>
+              <label className="block text-sm font-medium leading-6 text-gray-900">
+                Հավելյալ ինֆումացիա
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  id="rate"
+                  autoComplete="given-name"
+                  placeholder="Նշեք հավելյալ ինֆումացիա` ըստ անհրաժեշտության"
+                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  {...register("comment")}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
