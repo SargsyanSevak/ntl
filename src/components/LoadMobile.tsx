@@ -39,7 +39,7 @@ const LoadMobile = ({boardType}:any) => {
       ) : (
         <>
           {loadData.slice(0, next)?.map((el, i) => (
-            <div key={i} className="flex flex-col">
+            <div key={i} >
               <LoadItemMobile {...el}  boardType={boardType}/>
             </div>
           ))}

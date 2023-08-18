@@ -31,10 +31,10 @@ const LoadItemMobile = ({
     setShowComment(!showComment);
   };
   return (
-    <div className="mb-2">
+    <div className="mb-2"  onClick={handeOpenComment}>
       <div
         id={id}
-        className={`relative  lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
+        className={`relative pb-10  lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
         {boardType === "load" || (
           <div className="length text-[12px] absolute bottom-3 right-4  z-50 bg-[#2183d9] text-white px-4 py-2  rounded-xl lg:hidden block">
@@ -50,7 +50,6 @@ const LoadItemMobile = ({
           </div>
           <div
             className="date flex flex-col justify-start items-center gap-2"
-            onClick={handeOpenComment}
           >
             <span className="block lg:hidden">
               <AiOutlineCalendar />
@@ -97,34 +96,30 @@ const LoadItemMobile = ({
           </div>
         </div>
       </div>
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         {showComment && (
           <m.div
-            className="lg:hidden flex w-full h-[150px] bg-slate-200  flex-col justify-center items-center px-2 py-4"
-            // initial={{ height: 0,opacity:0 }}
-            // animate={{ height: "150px",opacity:1 }}
-            // transition={{ duration: 0.3, type: "spring",mass: 0.4,damping: 0, }}
-            // exit={{ height: 0,opacity:0 }}
+            className="lg:hidden flex w-full bg-slate-200 border-t-[1px] shadow-md border-t-gray-300"
+            key="content"
             initial="collapsed"
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: "140px" },
-              collapsed: { opacity: 0, height: '0px' },
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 },
             }}
-            transition={{ duration: 0.4, stiffness:400 }}
-           
+            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <m.div className="w-full h-full  flex flex-col justify-around items-center text-[12px] gap-4 dark:text-gray-100"
-             variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
-             transition={{ duration: 0.2 }}
+            <m.div
+              variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden flex text-[12px] flex-col gap-4 py-4 md:pl-[68px] pl-4"
             >
               {boardType === "load" && (
                 <div className="commodity w-full  flex items-center rounded-xl font-bold">
                   Բեռը : <p className="font-normal pl-2">{commodity}</p>
                 </div>
               )}
-
               <div
                 className={`comment1  w-full  flex items-center   font-bold`}
               >
