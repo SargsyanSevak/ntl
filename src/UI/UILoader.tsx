@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const UILoader = () => {
-  return (
-    <div>
-      <span className="loader"></span>
-    </div>
-  )
-}
+  return <span className="loader"></span>;
+};
 
-export default UILoader
+export default UILoader;
