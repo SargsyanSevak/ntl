@@ -37,7 +37,7 @@ const LoadItemMobile = ({
         className={`relative pb-[60px] dark:border-b-4 border-b-gray-500 lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
         <div
-          className="length text-[12px] absolute  bottom-6 right-4  border-[#2183d9] z-50 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-4 py-2  rounded-xl lg:hidden block"
+          className="length text-[12px] absolute  bottom-6 right-4  border-[#2183d9] z-50 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-2 py-2  rounded-xl lg:hidden block"
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -115,7 +115,7 @@ const LoadItemMobile = ({
       <AnimatePresence>
         {showComment && (
           <m.div
-            className="lg:hidden flex w-full bg-slate-200 dark:bg-gray-500 border-t-[1px] shadow-md border-t-gray-300"
+            className="lg:hidden flex w-full bg-slate-200 dark:bg-gray-600 border-t-[1px] shadow-md border-t-gray-300"
             key="content"
             initial="collapsed"
             animate="open"

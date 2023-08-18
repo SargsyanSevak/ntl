@@ -12,7 +12,7 @@ export default function CallOptions({ contact }: any) {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full bg-inherit ">
-          <p className="flex items-center gap-2">{contact} <span ><MdKeyboardArrowDown size={20}/></span></p>
+          <p className="flex items-center gap-2">{contact} <span className="lg:hidden block"><MdKeyboardArrowDown size={20}/></span></p>
         </Menu.Button>
       </div>
 

@@ -67,7 +67,7 @@ const Accordion = ({
             </div>
             <div className=" flex justify-start items-center pl-[6px] w-[140px]">
               <div
-                className="cursor-pointer"
+                className="cursor-pointer text-[13px]"
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
