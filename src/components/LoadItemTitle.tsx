@@ -36,7 +36,7 @@ const LoadItemTitle = ({boardType}:any) => {
           <div></div>
         </div>
         <div className="flex justify-start items-center pl-[6px] w-[150px]">
-          <div title={"բերնաթափման վայր"}>բեռնաթափում</div>
+          <div title={"բերնաթափման վայր"}>{boardType === 'load' ? 'բեռնաթափում' : 'նախընտրելի ուղղ.'} </div>
         </div>
         <div className="flex justify-start items-center pl-[6px] w-[70px]">
           <div title={"հեռավորություն"}>հեռավ.</div>
