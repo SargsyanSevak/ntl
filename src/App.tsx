@@ -22,8 +22,21 @@ import PrivateRoute from "./hoc/PrivateRoute";
 import PublicRoute from "./hoc/PublicRoute";
 import AddItems from "./components/Admin/AddItems";
 import ChangeItem from "./components/Admin/ChangeItem";
+import { useTypedDispatch } from "./hooks/useTypedSelector";
+import { useEffect } from "react";
+import { authMe } from "./store/asyncThunk";
 
 function App() {
+  const dispatch = useTypedDispatch();
+
+  const authMeFn = async () => {
+    await dispatch(authMe());
+  };
+
+  useEffect(() => {
+    authMeFn();
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -33,9 +46,9 @@ function App() {
         <Route
           path="/admin"
           element={
-            <PublicRoute>
+            <PrivateRoute>
               <AdminPannel />
-            </PublicRoute>
+            </PrivateRoute>
           }
         />
         <Route
@@ -67,7 +80,7 @@ function App() {
           path="/admin"
           element={
             <PrivateRoute>
-              <AdminPannel/>
+              <AdminPannel />
             </PrivateRoute>
           }
         >
@@ -91,7 +104,7 @@ function App() {
             path="changeitems"
             element={
               <PrivateRoute>
-                <ChangeItem/>
+                <ChangeItem />
               </PrivateRoute>
             }
           />

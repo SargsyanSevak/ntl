@@ -2,15 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import ModalContact from "./ContactMe";
-const Avatar = ({ showDropDown, setActivUser }: any) => {
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
+import { removeUser } from "../store/customerSlice";
+const Avatar = ({ showDropDown }: any) => {
   const [open, setOpen] = useState<Boolean | null>(false);
   const [openModal, setOpenModal] = useState(false);
   const ref = useRef<any>();
   const { pathname } = useLocation();
+  const { user } = useTypedSelector((state) => state.user);
+  const dispatch = useTypedDispatch();
 
   const handleOpen = () => {
     setOpen(!open);
-
   };
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -20,9 +23,8 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
   };
 
   const logOutUser = () => {
-    setActivUser(false);
+    dispatch(removeUser());
   };
-  let str = "Aram Petrosyan";
 
   const avatarWords = (fullName: string): string => {
     let fullNameArr = fullName.trim().split(" ");
@@ -32,7 +34,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
     } else if (fullNameArr.length === 1) {
       return `${fullNameArr[0][0]}${fullNameArr[0][1]}`.toUpperCase();
     } else {
-      return "NTL";
+      return "";
     }
   };
   useEffect(() => {
@@ -49,25 +51,27 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
     };
   }, [open]);
   return (
-    <div className="reletive z-50 pointer-events-none " ref={ref}>
+    <div className="reletive z-50 " ref={ref}>
       <ModalContact isOpen={openModal} onClose={handleCloseModal} />
       <div
         className="outline-0 focus:outline-none active:outline-none 
         w-10 h-10 bg-gray-600 dark:bg-slate-700 rounded-full cursor-pointer flex justify-center items-center font-bold text-xl text-white"
         onClick={handleOpen}
       >
-        <p> {avatarWords(str)}</p>
+        <p> {avatarWords(`${user.firstName} ${user.lastName}`)}</p>
       </div>
 
       {open && (
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-[#1e3053]  dark:divide-gray-600 cursor-pointer`}
+          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-[220px] max-w-[240px] dark:bg-[#1e3053]  dark:divide-gray-600 cursor-pointer`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>{str}</div>
-            <div className="font-medium truncate">name@ntluser.com</div>
+            <div>{`${user.firstName} ${user.lastName}`}</div>
+            <div className="font-medium truncate " title={user.email}>
+              {user.email}
+            </div>
           </div>
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200 "

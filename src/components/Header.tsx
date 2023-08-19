@@ -5,9 +5,10 @@ import Avatar from "./Avatar";
 import LoginBtn from "./LoginBtn";
 import ModeSwitcher from "./ModeSwitcher";
 import Search from "./Search";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export default function Header({ isDarkMode }: any) {
-  const [activeUser, setActivUser] = useState<boolean>(true);
+  const { user } = useTypedSelector((state) => state.user);
   const [changedMode, setIsChangedMode] = useState<boolean>(false);
 
   return (
@@ -33,11 +34,7 @@ export default function Header({ isDarkMode }: any) {
             <li className="cursor-pointer ">Рус</li>
           </ul>
         </div>
-        {activeUser ? (
-          <Avatar showDropDown={true} setActivUser={setActivUser} />
-        ) : (
-          <LoginBtn />
-        )}
+        {user?.firstName.length ? <Avatar showDropDown={true} /> : <LoginBtn />}
       </div>
     </header>
   );
