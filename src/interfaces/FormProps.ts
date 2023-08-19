@@ -18,3 +18,9 @@ export type FormValues = {
     email:string,
     password:string
   }
+  export interface ResetFormProps {
+    email:string,
+    code:string,
+    password:string,
+    repetPassword:string
+  }

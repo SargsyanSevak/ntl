@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
+
 import axios from "../axios";
 import {
   getTokens,
@@ -51,6 +53,12 @@ export const loginThunk = createAsyncThunk<any, any>(
 export const authMe = createAsyncThunk<any>(
   "customerSlice/authMe",
   async () => {
+    if (Cookies.get("Bearer")) {
+      return;
+    }else{
+      console.log('no token')
+    }
+
     const res = await axios.get(`auth/me`);
 
     console.log(res);
@@ -58,24 +66,27 @@ export const authMe = createAsyncThunk<any>(
     if (token) {
       saveToken(token);
     }
-    return res.data;
+    return res;
   }
 );
 
-export const recoverSend = createAsyncThunk<any>(
-  "customerSlice/authMe",
+export const recoverSend = createAsyncThunk<any, any>(
+  "customerSlice/recoverSend",
   async (data) => {
     const res = await axios.post(`recover/send`, data);
     const token = await res.data.token;
 
     if (token) {
       recoverToken(token);
+    }else{
+      return res
     }
+   
   }
 );
 
 export const recoverResponse = createAsyncThunk<any>(
-  "customerSlice/authMe",
+  "customerSlice/recoverResponse",
   async (data) => {
     const res = await axios.post(`recover/response`, data);
     const verifyToken = await res.data.verifyToken;
@@ -87,7 +98,7 @@ export const recoverResponse = createAsyncThunk<any>(
 );
 
 export const recoverPassRecovery = createAsyncThunk<any>(
-  "customerSlice/authMe",
+  "customerSlice/recoverPassRecovery",
   async (data: any) => {
     let tokens = getTokens();
     if (!tokens) {

@@ -52,10 +52,21 @@ export const addLoadsSchema = yup.object().shape({
   loadType: yup.string().required("Խնդրում ենք նշել բեռի տեսակը"),
   pickup: yup.string().required("Խնդրում ենք նշել բարձման վայրը"),
   delivery: yup.string().required("Խնդրում ենք նշել դատարկման վայրը"),
-  length : yup.number(),
-  weight : yup.number(),
-  rate : yup.number(),
-  commodity:yup.string(),
-  comment:yup.string()
+  length: yup.number(),
+  weight: yup.number(),
+  rate: yup.number(),
+  commodity: yup.string(),
+  comment: yup.string(),
 });
+export const recoverPasswordScheme = yup.object().shape({
+  email: yup
+    .string()
+    .email("Խնդրում ենք նշել ճիշտ էլ. հասցե")
+    .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
+    .required("Էլ. հասցեն պարտադիր է"),
 
+  code: yup.string()
+  .min(1,'dashty partdadir e'),
+  password: yup.string(),
+  repetPassword: yup.string()
+});
