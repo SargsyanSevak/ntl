@@ -43,30 +43,8 @@ const Preview = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-[250px] bg-slate-100 lg:hidden flex flex-col justify-center items-center">
-          <div className="w-full flex justify-between items-center px-4">
-            <p>Erevan</p>
-            <p>Moscow</p>
-          </div>
-          <div className=" w-full flex items-center justify-center ">
-            <div className="w-12 h-12 rounded-full bg-gray-400 flex justify-center items-center text-white text-2xl">
-              <BsRecordCircle />
-            </div>
-            <div className="w-[70%] h-[6px] bg-slate-400"></div>
-            <div className="w-12 h-12 rounded-full bg-gray-400 flex justify-center items-center text-white text-2xl">
-              <HiLocationMarker />
-            </div>
-          </div>
-          <div className="w-full">
-            {" "}
-            <p className="w-full text-center">2300 կմ</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <p>13 ժ 13 րոպե</p>
-          </div>
-        </div>
-        <Link to='/' className="flex justify-center items-center lg:hidden w-16 h-16 rounded-full bg-white absolute top-4 left-4 z-50 shadow-2xl">
-            <IoMdArrowBack size={40} color="gray"/>
+        <Link to='/' className="flex justify-center items-center lg:hidden w-[50px] h-[50px] rounded-full bg-white absolute top-4 left-4 z-50 shadow-2xl">
+            <IoMdArrowBack size={24} color="gray"/>
         </Link>
         <div className="map w-full h-full">
           <Map />
