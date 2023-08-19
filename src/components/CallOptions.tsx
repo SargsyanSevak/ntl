@@ -25,7 +25,7 @@ export default function CallOptions({ contact }: any) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute -right-6 z-10 mt-4 w-[150px] origin-top-center rounded-md bg-white dark:bg-[#0E192D]   shadow-lg  ring-0 ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute md:-right-6 -right-2 z-10 md:mt-[10px] mt-[14px] w-[150px] origin-top-center rounded-md bg-white dark:bg-[#0E192D]   shadow-lg  ring-0 ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
