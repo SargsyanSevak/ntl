@@ -1,13 +1,7 @@
 import { Map } from "./Map";
-import { FiPhoneCall } from "react-icons/fi";
-import { FaWeight } from "react-icons/fa";
-import { GiResize } from "react-icons/gi";
-import { BsTruckFront } from "react-icons/bs";
-import { GiPathDistance } from "react-icons/gi";
-import { RiPinDistanceLine } from "react-icons/ri";
 import { HiLocationMarker } from "react-icons/hi";
 import { BsRecordCircle } from "react-icons/bs";
-import { IoMdArrowBack } from "react-icons/io"; 
+import { IoMdArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const Preview = () => {
@@ -43,8 +37,11 @@ const Preview = () => {
             </div>
           </div>
         </div>
-        <Link to='/' className="flex justify-center items-center lg:hidden w-[50px] h-[50px] rounded-full bg-white absolute top-4 left-4 z-50 shadow-2xl">
-            <IoMdArrowBack size={24} color="gray"/>
+        <Link
+          to="/"
+          className="flex justify-center items-center lg:hidden w-[50px] h-[50px] rounded-full bg-white absolute top-4 left-4 z-50 shadow-2xl"
+        >
+          <IoMdArrowBack size={24} color="gray" />
         </Link>
         <div className="map w-full h-full">
           <Map />

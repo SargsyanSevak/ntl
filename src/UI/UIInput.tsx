@@ -24,7 +24,7 @@ const UIInput: React.FC<InputProps> = ({
         value={value}
         onChange={onChange}
         placeholder={text}
-        className="px-4 py-[7px] border-x-[1px] border-y-[1px]  border-slate-300 rounded-md focus:outline-none w-full text-black"
+        className="px-4 py-[7px] border-x-[1px] border-y-[1px] dark:bg-[#1e3053] dark:text-white  border-slate-300 dark:border-[#1e3053]  rounded-md focus:outline-none w-full text-black"
       />
     </div>
   );

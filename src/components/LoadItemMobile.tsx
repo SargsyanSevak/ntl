@@ -34,7 +34,7 @@ const LoadItemMobile = ({
     <div className="mb-2 dark:mb-0" onClick={handeOpenComment}>
       <div
         id={id}
-        className={`relative pb-[50px] dark:border-b-4 border-b-gray-500 lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
+        className={`relative pb-[50px] dark:border-b-4 border-b-[#1e3053] lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
         <div
           className="length text-[12px] absolute  bottom-[20px] right-4  border-[#2183d9] z-50 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-2 py-2  rounded-xl lg:hidden block"
@@ -115,7 +115,7 @@ const LoadItemMobile = ({
       <AnimatePresence>
         {showComment && (
           <m.div
-            className="lg:hidden flex w-full bg-slate-200 dark:bg-slate-700 border-t-[1px]  border-t-gray-300 dark:border-t-0  text-black dark:text-white"
+            className="lg:hidden flex w-full bg-slate-200 dark:bg-[#1e3053]  border-t-[1px]  border-t-gray-300 dark:border-t-0  text-black dark:text-white"
             key="content"
             initial="collapsed"
             animate="open"

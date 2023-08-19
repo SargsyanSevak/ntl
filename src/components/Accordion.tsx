@@ -85,17 +85,17 @@ const Accordion = ({
               <div className="text-[#1C90F3]">{checkLengthOfValue(rate, "$")}</div>
             </div>
             {boardType === "load" && (
-              <div className="flex justify-start items-center pl-[6px] w-[70px]">
+              <div className="flex justify-start items-center  w-[70px]">
                 <Link
                   to={`/dashboard/preview/${id}`}
                   target="_blank"
                   type="button"
-                  className=" font-light text-gray-900 bg-slate-300 focus:outline-none hover:bg-slate-200 hover:border-[0.2px] hover:shadow hover:border-blue-400 focus:ring-4 focus:ring-gray-200 rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
+                  className=" font-light text-gray-900 bg-slate-300 dark:bg-[#1e3053] dark:text-white focus:outline-none hover:bg-slate-200 hover:border-[0.2px] hover:shadow hover:border-blue-400  focus:ring-0  rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
                 >
-                  ավելին
+                  Քարտեզ
                 </Link>
               </div>
             )}

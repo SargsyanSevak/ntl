@@ -49,7 +49,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
     };
   }, [open]);
   return (
-    <div className="reletive z-50 " ref={ref}>
+    <div className="reletive z-50 pointer-events-none " ref={ref}>
       <ModalContact isOpen={openModal} onClose={handleCloseModal} />
       <div
         className="outline-0 focus:outline-none active:outline-none 
@@ -63,7 +63,7 @@ const Avatar = ({ showDropDown, setActivUser }: any) => {
         <div
           className={`${
             showDropDown ? "block" : "hidden"
-          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-gray-700 dark:divide-gray-600 cursor-pointer`}
+          } absolute z-20 top-[60px] right-[10px] outline-0  bg-white divide-y divide-gray-100 rounded-lg  w-44 dark:bg-[#1e3053]  dark:divide-gray-600 cursor-pointer`}
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
             <div>{str}</div>

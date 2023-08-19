@@ -19,8 +19,8 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
           <div className="relative mt-2 w-full">
             <Listbox.Button
               className={`${
-                isDisabled ? "bg-[#EFEFEF4D]" : "bg-white"
-              } relative  cursor-default rounded-md ${adminVersion ? 'lg:py-[9px] py-[10px]' : 'py-[6px]'} pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1C90F3] sm:text-sm sm:leading-6 w-full`}
+                isDisabled ? "bg-[#EFEFEF4D]" : "bg-white dark:text-slate-400"
+              } relative  cursor-default rounded-md ${adminVersion ? 'lg:py-[9px] py-[10px]' : 'py-[6px]'} pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-0 focus:outline-none focus:ring-2 focus:ring-[#1C90F3] dark:bg-[#1e3053] border-0  sm:text-sm sm:leading-6 w-full`}
               aria-disabled={isDisabled}
             >
               <span className="flex items-center">
@@ -41,14 +41,14 @@ export default function UISelect({ data, label, isDisabled = false,adminVersion=
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-4 text-base  ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white dark:bg-[#1e3053]  py-4 text-base  ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {data.map((el: any) => (
                   <Listbox.Option
                     key={el.id}
                     className={({ active }) =>
                       classNames(
                         active ? "bg-[#1C90F3] text-white" : "text-gray-900",
-                        "relative cursor-default select-none py-4 pl-3 pr-9",
+                        "relative cursor-default select-none py-2 pl-3 pr-9 dark:text-white",
                         el.name === 'ջնջել' && active ? 'bg-red-500' : ''
                       )
                     }
