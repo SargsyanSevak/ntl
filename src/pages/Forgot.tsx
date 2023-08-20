@@ -7,19 +7,50 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { recoverPasswordScheme } from "../utils/formScheme";
 import { useTypedDispatch } from "../hooks/useTypedSelector";
 import { loginThunk, recoverSend } from "../store/asyncThunk";
+import Timer from "../components/Timer";
+
 const Forgot: React.FC = () => {
   const [count, setCount] = useState<number>(1);
+  const [showTimer, setShowTimer] = useState<boolean>(false);
+  const durationInSeconds: number = 120;
 
+  const handleTimerTimeout = (): void => {
+    setShowTimer(false);
+  };
+
+  const handleResendClick = (): void => {
+    // Handle resend logic here, if needed
+    // For example, dispatch the recoverSend action again
+    setShowTimer(true);
+  };
+  const [resetData, setResetData] = useState<any>([
+    {
+      email: "",
+      code: "",
+      password: "",
+      resetPassword: "",
+    },
+  ]);
   const navigate = useNavigate();
   const dispatch = useTypedDispatch();
 
   const handleCheckEmail = async () => {
     const inputValue = watch("email");
-    const res = await dispatch(recoverSend({ email: inputValue }));
-    console.log(res)
+    const res: any = await dispatch(recoverSend({ "email": inputValue }));
+    if(res.payload){
+    //  setCount(prev => prev + 1)
+    }else{
+      console.log('invalid email')
+    }
   };
-  const handleCheckVerifyCode = () => {};
-  const handleCheckNewPassword = () => {};
+ 
+  const handleCheckVerifyCode = async () => {
+    const inputValue = watch("code");
+  };
+  const handleCheckNewPassword = async () => {
+    const inputValuePassword = watch("password");
+    const inputValueRepetPassword = watch("repetPassword");
+  };
   const ref = useRef<any>(null);
 
   const {
@@ -34,7 +65,7 @@ const Forgot: React.FC = () => {
   });
 
   const onSubmit = async (data: any) => {
-    return data;
+    setResetData(data);
   };
 
   return (
@@ -56,21 +87,22 @@ const Forgot: React.FC = () => {
               alt="email"
               className="w-[100px] h-[100px]"
             />
+            <div className="box w-full">
+              <input
+                id="email"
+                type="email"
+                autoComplete="email"
+                placeholder="Էլ.հասցե"
+                className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400  sm:text-sm sm:leading-6 border-none"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-red-600   pl-2 pt-1 text-[12px] tracking-wide">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
 
-            <input
-              id="email"
-              type="email"
-              autoComplete="email"
-              placeholder="Էլ.հասցե"
-              required
-              className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400  sm:text-sm sm:leading-6 border-none"
-              {...register("email")}
-            />
-            {errors.email && (
-              <p className="text-red-600   pl-2 pt-1 text-[12px] tracking-wide">
-                {errors.email.message}
-              </p>
-            )}
             <button
               type="submit"
               onClick={() => {
@@ -93,21 +125,22 @@ const Forgot: React.FC = () => {
               alt="email"
               className="w-[100px] h-[100px]"
             />
-
-            <input
-              id="code"
-              type="text"
-              autoComplete="text"
-              placeholder="Ծածկագիր"
-              required
-              className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400  sm:text-sm sm:leading-6 border-none"
-              {...register("code")}
-            />
-            {errors.code && (
-              <p className="text-red-600   pl-2 pt-1 text-[12px] tracking-wide">
-                {errors.code.message}
-              </p>
-            )}
+            <div className="box w-full relative z-50">
+              <input
+                id="code"
+                type="text"
+                autoComplete="text"
+                placeholder="Ծածկագիր"
+                required
+                className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400  sm:text-sm sm:leading-6 border-none"
+                {...register("code")}
+              />
+              {errors.code && (
+                <p className="text-red-600   pl-2 pt-1 text-[12px] tracking-wide">
+                  {errors.code.message}
+                </p>
+              )}
+            </div>
             <button
               type="submit"
               onClick={() => {
@@ -118,6 +151,16 @@ const Forgot: React.FC = () => {
             >
               Հաստատել
             </button>
+            <div>
+              {showTimer ? (
+                <Timer
+                  durationInSeconds={durationInSeconds}
+                  onTimeout={handleTimerTimeout}
+                />
+              ) : (
+                <button onClick={handleResendClick}>Resend Code</button>
+              )}
+            </div>
           </>
         )}
         {count === 3 && (

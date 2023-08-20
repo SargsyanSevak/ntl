@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const instance = axios.create({
-  baseURL: "https://ntl-api.vercel.app/",
+  baseURL: "https://ntiloadboardapi.vercel.app/",
 });
 
 instance.interceptors.request.use((config) => {

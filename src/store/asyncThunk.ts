@@ -60,13 +60,12 @@ export const authMe = createAsyncThunk<any>(
     }
 
     const res = await axios.get(`auth/me`);
-
-    console.log(res);
     const token = await res.data.token;
     if (token) {
       saveToken(token);
+     
     }
-    return res;
+    return res.data
   }
 );
 
@@ -78,8 +77,9 @@ export const recoverSend = createAsyncThunk<any, any>(
 
     if (token) {
       recoverToken(token);
+      return res.data
     }else{
-      return res
+      return res.data
     }
    
   }
