@@ -61,7 +61,6 @@ export const authMe = createAsyncThunk<any>(
     const token = await res.data.token;
     if (token) {
       saveToken(token);
-     
     }
     return res;
   }
@@ -70,14 +69,13 @@ export const authMe = createAsyncThunk<any>(
 export const recoverSend = createAsyncThunk<any, any>(
   "customerSlice/recoverSend",
   async (data, { rejectWithValue }) => {
-    try {
-      const res = await axios.post(`recover/send`, data);
-      const token = await res.data.token;
+    const res = await axios.post(`recover/send`, data);
+    const token = await res.data.token;
 
     if (token) {
       recoverToken(token);
-    }else{
-      return res
+    } else {
+      return res;
     }
   }
 );
