@@ -39,9 +39,6 @@ export const loginThunk = createAsyncThunk<any, any>(
   "customerSlice/loginThunk",
   async (data) => {
     const res = await axios.post(`auth/login`, data);
-
-    console.log(res);
-
     const token = await res.data.token;
     if (token) {
       saveToken(token);

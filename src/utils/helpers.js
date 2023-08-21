@@ -11,7 +11,6 @@ export const saveToken = (token) => {
 export const isLogged = () => {
   try {
     let token = Cookies.get("Bearer");
-    console.log(token);
     return token;
   } catch (error) {
     console.log("error saving token", error);
@@ -20,6 +19,7 @@ export const isLogged = () => {
 
 export const hasUser = () => {
   try {
+    
   } catch (error) {
     console.log("error saving token", error);
   }
