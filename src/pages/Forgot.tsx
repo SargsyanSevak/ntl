@@ -14,9 +14,13 @@ const Forgot: React.FC = () => {
   const dispatch = useTypedDispatch();
 
   const handleCheckEmail = async () => {
-    const inputValue = watch("email");
-    const res = await dispatch(recoverSend({ email: inputValue }));
-    console.log(res)
+    try {
+      const inputValue = watch("email");
+      const res = await dispatch(recoverSend({ email: inputValue }));
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleCheckVerifyCode = () => {};
   const handleCheckNewPassword = () => {};
