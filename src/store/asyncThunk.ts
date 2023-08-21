@@ -57,12 +57,11 @@ export const authMe = createAsyncThunk<any>(
 
     const res = await axios.get(`auth/me`);
 
-    console.log(res);
     const token = await res.data.token;
     if (token) {
       saveToken(token);
     }
-    return res;
+    return res.data;
   }
 );
 
