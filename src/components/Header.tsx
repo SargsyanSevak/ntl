@@ -34,7 +34,11 @@ export default function Header({ isDarkMode }: any) {
             <li className="cursor-pointer ">Рус</li>
           </ul>
         </div>
-        {user?.firstName.length ? <Avatar showDropDown={true} /> : <LoginBtn />}
+        {user?.firstName?.length ? (
+          <Avatar showDropDown={true} />
+        ) : (
+          <LoginBtn />
+        )}
       </div>
     </header>
   );

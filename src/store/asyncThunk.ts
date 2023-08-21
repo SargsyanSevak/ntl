@@ -65,7 +65,7 @@ export const authMe = createAsyncThunk<any>(
     if (token) {
       saveToken(token);
     }
-    return res;
+    return res.data;
   }
 );
 
