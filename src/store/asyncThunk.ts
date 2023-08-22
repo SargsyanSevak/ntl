@@ -50,12 +50,12 @@ export const loginThunk = createAsyncThunk<any, any>(
 export const authMe = createAsyncThunk<any>(
   "customerSlice/authMe",
   async () => {
-    // let res = null;
+    let res = null;
     if (Cookies.get("Bearer")) {
-      console.log("Bearer");
+      res = await axios.get(`auth/me`);
+    } else {
+      return;
     }
-
-    const res = await axios.get(`auth/me`);
 
     const token = await res.data.token;
     if (token) {
@@ -108,6 +108,15 @@ export const recoverPassRecovery = createAsyncThunk<any>(
     if (token) {
       saveToken(token);
     }
+    return res.data;
+  }
+);
+
+export const getLoads = createAsyncThunk<any>(
+  "customerSlice/getLoads",
+  async () => {
+    const res = await axios.post(`load/get`);
+
     return res.data;
   }
 );

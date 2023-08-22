@@ -24,13 +24,14 @@ import AddItems from "./components/Admin/AddItems";
 import ChangeItem from "./components/Admin/ChangeItem";
 import { useTypedDispatch } from "./hooks/useTypedSelector";
 import { useEffect } from "react";
-import { authMe } from "./store/asyncThunk";
+import { authMe, getLoads } from "./store/asyncThunk";
 
 function App() {
   const dispatch = useTypedDispatch();
 
   const authMeFn = async () => {
     await dispatch(authMe());
+    await dispatch(getLoads());
   };
 
   useEffect(() => {
