@@ -12,7 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormProps } from "../interfaces/FormProps";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 import { loginThunk } from "../store/asyncThunk";
-
+import { BiHide } from "react-icons/bi";
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
@@ -76,7 +76,7 @@ export default function LogIn() {
                     autoComplete="email"
                     placeholder="էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl border-[1px] border-slate-400 block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6  pr-[54px]"
                     {...register("email")}
                   />
                   {errors.email && (
@@ -99,7 +99,7 @@ export default function LogIn() {
                     autoComplete="current-password"
                     placeholder="Գաղտնաբառ"
                     required
-                    className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("password")}
                   />
                   {errors.password && (
@@ -111,8 +111,10 @@ export default function LogIn() {
                     className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
                     onClick={handleShow}
                   >
-                    {" "}
-                    <BiShow />
+                    {
+                      showPassword ?  <BiShow /> : <BiHide/>
+                    }
+                   
                   </div>
                 </div>
               </div>

@@ -46,7 +46,7 @@ export default function AddItems({userType}:any) {
                   id="pickup"
                   autoComplete="given-name"
                   placeholder="օր. Երևան"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  ring-0 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("pickup")}
                 />
                 {errors.pickup && (
@@ -68,7 +68,7 @@ export default function AddItems({userType}:any) {
                   autoComplete="given-name"
                   placeholder="օր. Սամարա
                   "
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900 ring-0 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("delivery")}
                 />
                 {errors.delivery && (
@@ -88,7 +88,7 @@ export default function AddItems({userType}:any) {
                   type="date"
                   id="date"
                   autoComplete="given-name"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900 shadow-sm  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("date")}
                 />
                 {errors.date && (
@@ -107,7 +107,7 @@ export default function AddItems({userType}:any) {
                 <select
                   id="truck-type"
                   autoComplete="country-name"
-                  className="p-4 block w-full rounded-md border-0 py-[9px] text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[9px] text-gray-900  focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("truckType")}
                 >
                   <option value={"ռեֆ"}>ռեֆ</option>
@@ -133,7 +133,7 @@ export default function AddItems({userType}:any) {
                   id="length"
                   autoComplete="family-name"
                   placeholder="օր. 86"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("length")}
                 />
                
@@ -151,7 +151,7 @@ export default function AddItems({userType}:any) {
                   id="weight"
                   placeholder="օր. 22000"
                   autoComplete="family-name"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("weight")}
                 />
                 
@@ -166,7 +166,7 @@ export default function AddItems({userType}:any) {
                 <select
                   id="type"
                   
-                  className="p-4 block w-full rounded-md border-0 py-[9px] text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[9px] text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("loadType")}
                 >
                   <option value={"ամբողջական"}>ամբողջական</option>
@@ -189,7 +189,7 @@ export default function AddItems({userType}:any) {
                   id="rate"
                   autoComplete="given-name"
                   placeholder="օր. 3400"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("rate")}
                 />
               </div>
@@ -206,7 +206,7 @@ export default function AddItems({userType}:any) {
                   id="commodity"
                   autoComplete="given-commodity"
                   placeholder="օր. գինի"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("commodity")}
                 />
               </div>
@@ -221,10 +221,10 @@ export default function AddItems({userType}:any) {
               <div className="mt-2">
                 <input
                   type="text"
-                  id="rate"
-                  autoComplete="given-name"
+                  id="comment"
+                  autoComplete="comment"
                   placeholder="Նշեք հավելյալ ինֆումացիա` ըստ անհրաժեշտության"
-                  className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("comment")}
                 />
               </div>

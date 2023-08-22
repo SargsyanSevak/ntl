@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { BiShow } from "react-icons/bi";
+import { BiHide, BiShow } from "react-icons/bi";
 import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsBuildingCheck } from "react-icons/bs";
@@ -72,7 +72,7 @@ export default function Register() {
                     autoComplete="name"
                     placeholder="Անուն"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("firstName")}
                   />
                   {errors.firstName && (
@@ -93,7 +93,7 @@ export default function Register() {
                     autoComplete="lastName"
                     required
                     placeholder="Ազգանուն"
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("lastName")}
                   />
                   {errors.lastName && (
@@ -110,7 +110,7 @@ export default function Register() {
               <div>
                 <div className=" relative">
                   <select
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 appearance-none	"
                     {...register("userType")}
                   >
                     <option
@@ -141,7 +141,7 @@ export default function Register() {
                   autoComplete="company"
                   required
                   placeholder="Ընկերության անվանումը"
-                  className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                  className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                   {...register("companyName")}
                 />
                 {errors.companyName && (
@@ -161,7 +161,7 @@ export default function Register() {
                     autoComplete="email"
                     placeholder="Էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("email")}
                   />
                   {errors.email && (
@@ -184,7 +184,7 @@ export default function Register() {
                     placeholder="Գաղտնաբառ"
                     autoComplete="current-password"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("password")}
                   />
                   {errors.password && (
@@ -196,8 +196,10 @@ export default function Register() {
                     className="absolute top-[1rem] right-6 text-2xl cursor-pointer text-slate-500 z-50"
                     onClick={handleShow}
                   >
-                    {" "}
-                    <BiShow />
+                   {
+                      showPassword ?  <BiShow /> : <BiHide/>
+                    }
+                   
                   </div>
                 </div>
               </div>
