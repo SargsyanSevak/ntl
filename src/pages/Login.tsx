@@ -37,8 +37,10 @@ export default function LogIn() {
   const onSubmit = async (data: any) => {
     let user = await dispatch(loginThunk(data));
     console.log(user);
-    if (user.payload.email) {
+    if (user?.payload?.email) {
       navigate("/");
+    }else{
+      alert('invalid fields')
     }
   };
 

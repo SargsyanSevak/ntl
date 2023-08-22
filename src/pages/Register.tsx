@@ -36,8 +36,10 @@ export default function Register() {
 
   const onSubmit = async (data: any) => {
     let user = await dispatch(registerThunk(data));
-    if (user.payload.email) {
+    if (user?.payload?.email) {
       navigate("/");
+    }else{
+      alert('invalid fields')
     }
   };
 

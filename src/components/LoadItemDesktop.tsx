@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import { testTrucks } from "../data/testTrucks";
 import Accordion from "./Accordion";
 import { TruckProps } from "../interfaces/TruckProps";
+import AccordionItemDesktop from "./AccordionItemDesktop";
 
 
 export default function LoadItemDesktop({ boardType }: any) {
@@ -45,11 +46,10 @@ export default function LoadItemDesktop({ boardType }: any) {
           <>
             {loadData.slice(0, next)?.map((el, i) => (
               <div key={i} className="pb-[2px]">
-                <Accordion
+                <AccordionItemDesktop
                   {...el}
                   i={i}
-                  expanded={expanded}
-                  setExpanded={setExpanded}
+                  
                   boardType={boardType}
                 />
               </div>
