@@ -39,8 +39,8 @@ export default function LogIn() {
     console.log(user);
     if (user?.payload?.email) {
       navigate("/");
-    }else{
-      alert('invalid fields')
+    } else {
+      alert("invalid fields");
     }
   };
 
