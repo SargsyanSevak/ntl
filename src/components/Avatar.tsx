@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import ModalContact from "./ContactMe";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
@@ -11,7 +11,7 @@ const Avatar = ({ showDropDown }: any) => {
   const { pathname } = useLocation();
   const { user } = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
-
+  const navigate = useNavigate();
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -24,6 +24,9 @@ const Avatar = ({ showDropDown }: any) => {
 
   const logOutUser = () => {
     dispatch(removeUser());
+    if (pathname.includes("admin")) {
+      navigate("/");
+    }
   };
 
   const avatarWords = (fullName: string): string => {

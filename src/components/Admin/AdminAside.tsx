@@ -143,7 +143,7 @@ const AdminAside: React.FC = () => {
         <div className="pt-12">
           <div className="avatar w-full h-[90px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
             <Avatar />
-            <p className="text-[20px] pt-[6px]">Vedi Alco</p>
+            <p className="text-[20px] pt-[6px]">{user.companyName}</p>
           </div>
           <ul className="text-[18px] tracking-wider	 flex flex-col h-full mt-6">
             {navItems.map((el) => (

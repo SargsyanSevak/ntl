@@ -28,6 +28,7 @@ export const hasUser = () => {
 export const LogOutUser = (token) => {
   try {
     Cookies.remove("Bearer", token);
+
   } catch (error) {
     console.log("error saving token", error);
   }

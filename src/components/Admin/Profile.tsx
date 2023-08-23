@@ -21,12 +21,12 @@ const Profile = () => {
     <div className="md:px-10 px-2 flex flex-col gap-6">
       <div className="avatar relative">
         <div className="w-full h-36 border-2 border-slate-300 rounded-xl flex flex-col justify-evenly items-center banner">
-          <div className="z-1">
+          <div className="z-1 pointer-events-none">
             <Avatar />
           </div>
 
           <p className="md:text-[30px] text-[24px] font-bold">
-            NTL LOGISTICS LLC
+            {user.companyName}
           </p>
           <div className="absolute right-4 top-4">
             <img
@@ -44,16 +44,16 @@ const Profile = () => {
           <div className="w-full  ">
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Ընկերության անվանումը</h4>
-              <p>NTL Logistics LLC</p>
+              <p> {user.companyName}</p>
             </div>
 
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Էլ-հասցե</h4>
-              <p>info@ntllogistics.com</p>
+              <p> {user.email}</p>
             </div>
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Հեռախուսահամար</h4>
-              <p>+374 77 35-80-90</p>
+              <p> {user.phoneNumber ? user.phoneNumber : '-'}</p>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ const Profile = () => {
           <div className="w-full  ">
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Հասցե</h4>
-              <p>ք.Երևան,Կենտրոն վ/շ 6/2</p>
+              <p> {user.address ? user.address : '-'}</p>
             </div>
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Գործունեության տեսակը</h4>
@@ -70,7 +70,7 @@ const Profile = () => {
 
             <div className="w-full h-14 border-b-2 flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Վեբ կայք</h4>
-              <p>www.ntl.am</p>
+              <p> {user.website ? user.website : '-'}</p>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ const Profile = () => {
             </div>
             <div className="w-full md:w-1/2 h-14  flex flex-col justify-center md:items-center items-start">
               <h4 className="text-gray-500">Տևողություն</h4>
-              <p>7 աշխատանքային օր</p>
+              <p> {user.duration ? user.duration : '-'}</p>
             </div>
           </div>
         </div>

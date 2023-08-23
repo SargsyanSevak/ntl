@@ -44,7 +44,7 @@ const StatisticsTop: React.FC = () => {
     }
   }, [pathname]);
   return (
-    <div className="w-full h-[200px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around ">
+    <div className="w-full h-[270px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around ">
       <div
         className="absolute inset-x-0 -top-40  transform-gpu overflow-hidden blur-3xl sm:-top-80 z-30"
         aria-hidden="true"
@@ -63,32 +63,32 @@ const StatisticsTop: React.FC = () => {
         <p className="text-gray-500">{dynamicStatisticTitle.description}</p>
       </div>
       <div className="statistics">
-        <div className="flex justify-between md:justify-start md:items-center md:gap-10 gap-2">
+        <div className="flex flex-col md:flex-row justify-between md:justify-start md:items-center md:gap-10 gap-2">
           <div className="loads flex gap-2 justify-start items-center ">
             <div className="w-10 h-10 rounded-full text-orange-300 bg-gray-800 flex justify-center items-center text-xl">
               <BsFillBoxFill />
             </div>
-            <div>
+            <div className=" md:block flex items-center gap-2">
               <h4 className="text-[25px]">13</h4>
-              <p className="text-[14px] text-gray-500">Toral loads</p>
+              <p className="text-[14px] text-gray-500">Ընդհանուր <span>{user.userType === 'customer' ? 'բեռներ' : 'բեռնատարներ'}</span></p>
             </div>
           </div>
           <div className="loads flex gap-2  justify-start items-center">
             <div className="w-10 h-10 rounded-full bg-gray-800 text-green-400 flex justify-center items-center text-2xl">
               <GiRoad />
             </div>
-            <div>
+            <div className=" md:block flex items-center gap-2">
               <h4 className="text-[25px]">13</h4>
-              <p className="text-[14px] text-gray-500">On Road</p>
+              <p className="text-[14px] text-gray-500">Ճանապարհին</p>
             </div>
           </div>
           <div className="loads flex gap-2 justify-start items-center">
             <div className="w-10 h-10 rounded-full text-[#1C90F3] bg-gray-800 flex justify-center items-center text-3xl">
               <BsCheckAll />
             </div>
-            <div>
+            <div className=" md:block flex items-center gap-2">
               <h4 className="text-[25px]">13</h4>
-              <p className="text-[14px] text-gray-500">Delivered</p>
+              <p className="text-[14px] text-gray-500">Դատարկված</p>
             </div>
           </div>
         </div>

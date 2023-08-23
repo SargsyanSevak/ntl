@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiShow } from "react-icons/bi";
+import { BiHide, BiShow } from "react-icons/bi";
 const Security = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -16,7 +16,7 @@ const Security = () => {
             autoComplete="current-email"
             placeholder="Էլ.հասցե"
             required
-            className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-2"
+            className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6  border-[1px] border-gray-400"
           />
         </div>
 
@@ -28,14 +28,16 @@ const Security = () => {
             autoComplete="current-password"
             placeholder="Ընթացիկ գաղտնաբառ"
             required
-            className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-2"
+            className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6  border-[1px] border-gray-400"
           />
           <div
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-            {" "}
-            <BiShow />
+            {
+                      showPassword ?  <BiShow /> : <BiHide/>
+                    }
+                   
           </div>
         </div>
 
@@ -47,14 +49,16 @@ const Security = () => {
             autoComplete="current-password"
             placeholder="Նոր գաղտնաբառ"
             required
-            className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-2"
+            className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6  border-[1px] border-gray-400"
           />
           <div
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-            {" "}
-            <BiShow />
+           {
+                      showPassword ?  <BiShow /> : <BiHide/>
+                    }
+                   
           </div>
         </div>
 
@@ -66,14 +70,16 @@ const Security = () => {
             autoComplete="current-password"
             placeholder="Կրկնել գաղտնաբառը"
             required
-            className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-2"
+            className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-gray-400"
           />
           <div
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-            {" "}
-            <BiShow />
+           {
+                      showPassword ?  <BiShow /> : <BiHide/>
+                    }
+                   
           </div>
         </div>
       </div>
@@ -86,7 +92,7 @@ const Security = () => {
         </button>
         <button
           type="button"
-          className=" md:w-1/2 w-full rounded-2xl inline-flex justify-center items-center   py-[14px] text-gray-900 bg-inherit   hover:bg-gray-400 hover:text-white sm:text-sm sm:leading-6 border-2 border-gray-400 transition-all"
+          className=" md:w-1/2 w-full rounded-2xl inline-flex justify-center items-center   py-[14px] text-gray-900 bg-inherit   hover:bg-gray-400 hover:text-white sm:text-sm sm:leading-6 border-[1px] border-gray-400 transition-all"
         >
           Չեղարկել
         </button>

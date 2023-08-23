@@ -5,8 +5,8 @@ import { AddLoadProps } from "../../interfaces/LoadProps";
 import { useRef } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-export default function AddItems({userType}:any) {
-  const {user} = useTypedSelector((state)=>state.user)
+export default function AddItems({ userType }: any) {
+  const { user } = useTypedSelector((state) => state.user);
   const ref = useRef<any>(null);
 
   const {
@@ -59,7 +59,9 @@ export default function AddItems({userType}:any) {
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-              {user.userType === 'customer' ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
+                {user.userType === "customer"
+                  ? "Բեռնաթափում"
+                  : "Նախընտրելի ուղղություն"}
               </label>
               <div className="mt-2">
                 <input
@@ -124,8 +126,9 @@ export default function AddItems({userType}:any) {
             </div>
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-               
-                {user.userType === 'customer' ? ' Բեռի ծավալ մ³' : ' Բեռնատարի ծավալ մ³'} 
+                {user.userType === "customer"
+                  ? " Բեռի ծավալ մ³"
+                  : " Բեռնատարի ծավալ մ³"}
               </label>
               <div className="mt-2">
                 <input
@@ -136,14 +139,14 @@ export default function AddItems({userType}:any) {
                   className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("length")}
                 />
-               
               </div>
             </div>
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-               
-                {user.userType === 'customer' ? 'Բեռի քաշ կգ' : 'Նախընտրելի քաշ կգ'} 
+                {user.userType === "customer"
+                  ? "Բեռի քաշ կգ"
+                  : "Նախընտրելի քաշ կգ"}
               </label>
               <div className="mt-2">
                 <input
@@ -154,7 +157,6 @@ export default function AddItems({userType}:any) {
                   className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("weight")}
                 />
-                
               </div>
             </div>
 
@@ -165,7 +167,6 @@ export default function AddItems({userType}:any) {
               <div className="mt-2">
                 <select
                   id="type"
-                  
                   className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[9px] text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                   {...register("loadType")}
                 >
@@ -194,27 +195,29 @@ export default function AddItems({userType}:any) {
                 />
               </div>
             </div>
-            {
-              user.userType === 'customer' &&
+            {user.userType === "customer" && (
               <div className="sm:col-span-3 ">
-              <label className="block text-sm font-medium leading-6 text-gray-900">
-                Ապրանքի տեսակ
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  id="commodity"
-                  autoComplete="given-commodity"
-                  placeholder="օր. գինի"
-                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
-                  {...register("commodity")}
-                />
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Ապրանքի տեսակ
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    id="commodity"
+                    autoComplete="given-commodity"
+                    placeholder="օր. գինի"
+                    className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                    {...register("commodity")}
+                  />
+                </div>
               </div>
-            </div>
-            }
-            
+            )}
 
-            <div className={`${user.userType === 'customer' ? 'sm:col-span-3' : 'sm:col-span-6'} `}>
+            <div
+              className={`${
+                user.userType === "customer" ? "sm:col-span-3" : "sm:col-span-6"
+              } `}
+            >
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Հավելյալ ինֆումացիա
               </label>
