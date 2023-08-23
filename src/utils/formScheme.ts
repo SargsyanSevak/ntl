@@ -65,8 +65,33 @@ export const recoverPasswordScheme = yup.object().shape({
     .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
     .required("Էլ. հասցեն պարտադիր է"),
 
-  code: yup.string()
-  .min(1,'dashty partdadir e'),
+  code: yup.string().min(1, "dashty partdadir e"),
   password: yup.string(),
-  repetPassword: yup.string()
+  repetPassword: yup.string(),
+});
+
+export const addTeamMemberSchema = yup.object().shape({
+  firstName: yup.string().required("Խնդրում ենք նշել Ձեր անունը"),
+  lastName: yup.string().required("Խնդրում ենք նշել Ձեր ազգանունը"),
+  email: yup
+    .string()
+    .email("Խնդրում ենք նշել ճիշտ  էլ. հասցե")
+    .required("Խնդրում ենք նշել Ձեր էլ. հասցեն"),
+  phoneNumber: yup.number(),
+  password: yup
+    .string()
+    .matches(
+      passwordRegex,
+      "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ,առնվազն 1 թիվ և առնվազն 1 նշան(!@#$%^&*.)"
+    )
+    .min(8, "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ")
+    .required("Խնդրում ենք նշել Ձեր գաղնտաբառը"),
+    repetPassword: yup
+    .string()
+    .matches(
+      passwordRegex,
+      "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ,առնվազն 1 թիվ և առնվազն 1 նշան(!@#$%^&*.)"
+    )
+    .min(8, "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ")
+    .required("Խնդրում ենք նշել Ձեր գաղնտաբառը"),
 });

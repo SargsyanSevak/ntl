@@ -34,10 +34,7 @@ const Security = () => {
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-            {
-                      showPassword ?  <BiShow /> : <BiHide/>
-                    }
-                   
+            {showPassword ? <BiShow /> : <BiHide />}
           </div>
         </div>
 
@@ -55,10 +52,7 @@ const Security = () => {
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-           {
-                      showPassword ?  <BiShow /> : <BiHide/>
-                    }
-                   
+            {showPassword ? <BiShow /> : <BiHide />}
           </div>
         </div>
 
@@ -76,10 +70,7 @@ const Security = () => {
             className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
             onClick={handleShow}
           >
-           {
-                      showPassword ?  <BiShow /> : <BiHide/>
-                    }
-                   
+            {showPassword ? <BiShow /> : <BiHide />}
           </div>
         </div>
       </div>
