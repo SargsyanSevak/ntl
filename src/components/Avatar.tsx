@@ -35,7 +35,12 @@ const Avatar = ({ showDropDown }: any) => {
     if (fullNameArr.length === 2) {
       return `${fullNameArr[0][0]}${fullNameArr[1][0]}`.toUpperCase();
     } else if (fullNameArr.length === 1) {
-      return `${fullNameArr[0][0]}${fullNameArr[0][1]}`.toUpperCase();
+      if(fullNameArr[0] === ''){
+        return ''
+      }else{
+        return `${fullNameArr[0][0]}${fullNameArr[0][1]}`.toUpperCase();
+      }
+      
     } else {
       return "";
     }

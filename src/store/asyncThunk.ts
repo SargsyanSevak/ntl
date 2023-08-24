@@ -51,9 +51,9 @@ export const authMe = createAsyncThunk<any>(
   "customerSlice/authMe",
   async () => {
     // let res = null;
-    if (Cookies.get("Bearer")) {
-      console.log("Bearer");
-    }
+    // if (Cookies.get("Bearer")) {
+    //   console.log("Bearer");
+    // }
 
     const res = await axios.get(`auth/me`);
 

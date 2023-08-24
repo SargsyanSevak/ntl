@@ -4,9 +4,9 @@ import { GiRoad } from "react-icons/gi";
 import { BsCheckAll } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-
+import { motion as m } from "framer-motion";
 const StatisticsTop: React.FC = () => {
-  const {user} = useTypedSelector((state)=>state.user)
+  const { user } = useTypedSelector((state) => state.user);
 
   const { pathname } = useLocation();
 
@@ -20,14 +20,24 @@ const StatisticsTop: React.FC = () => {
 
       case "/admin/additems":
         return {
-          title: `Ավելացնել ${user.userType === 'customer' ? 'բեռներ' : 'բեռնատարներ'}`,
-          description: `${user.userType === 'customer' ? 'Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին' : 'Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին'}`,
+          title: `Ավելացնել ${
+            user.userType === "customer" ? "բեռներ" : "բեռնատարներ"
+          }`,
+          description: `${
+            user.userType === "customer"
+              ? "Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին"
+              : "Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին"
+          }`,
         };
 
       case "/admin/changeitems":
         return {
-          title: `Փոփոխել ${user.userType === 'customer' ? 'բեռները' : 'բեռնատարները'}`,
-          description: `Փոփոխել ${user.userType === 'customer' ? "բեռները" : "բեռնատարները"}`,
+          title: `Փոփոխել ${
+            user.userType === "customer" ? "բեռները" : "բեռնատարները"
+          }`,
+          description: `Փոփոխել ${
+            user.userType === "customer" ? "բեռները" : "բեռնատարները"
+          }`,
         };
 
       case "/admin/settings":
@@ -42,7 +52,7 @@ const StatisticsTop: React.FC = () => {
           description: "helooooooo",
         };
     }
-  }, [pathname]);
+  }, [pathname, user]);
   return (
     <div className="w-full h-[270px] md:h-[250px] bg-black text-white md:px-10 px-4 flex flex-col justify-around ">
       <div
@@ -59,8 +69,32 @@ const StatisticsTop: React.FC = () => {
       </div>
 
       <div>
-        <h4 className="md:text-[28px] text-[20px]">{dynamicStatisticTitle.title}</h4>
-        <p className="text-gray-500">{dynamicStatisticTitle.description}</p>
+        <m.h4
+          className="md:text-[28px] text-[20px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+            delay: 0.5,
+            type: "spring",
+            stiffness: 10,
+          }}
+        >
+          {dynamicStatisticTitle.title}
+        </m.h4>
+        <m.p
+          className="text-gray-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+            delay: 0.7,
+            type: "spring",
+            stiffness: 10,
+          }}
+        >
+          {dynamicStatisticTitle.description}
+        </m.p>
       </div>
       <div className="statistics">
         <div className="flex flex-col md:flex-row justify-between md:justify-start md:items-center md:gap-10 gap-2">
@@ -70,7 +104,12 @@ const StatisticsTop: React.FC = () => {
             </div>
             <div className=" md:block flex items-center gap-2">
               <h4 className="text-[25px]">13</h4>
-              <p className="text-[14px] text-gray-500">Ընդհանուր <span>{user.userType === 'customer' ? 'բեռներ' : 'բեռնատարներ'}</span></p>
+              <p className="text-[14px] text-gray-500">
+                Ընդհանուր{" "}
+                <span>
+                  {user.userType === "customer" ? "բեռներ" : "բեռնատարներ"}
+                </span>
+              </p>
             </div>
           </div>
           <div className="loads flex gap-2  justify-start items-center">

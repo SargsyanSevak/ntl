@@ -16,7 +16,8 @@ export type FormValues = {
   }
   export interface LoginFormProps {
     email:string,
-    password:string
+    password:string,
+    userType:string
   }
   export interface ResetFormProps {
     email:string,

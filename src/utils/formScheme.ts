@@ -44,6 +44,7 @@ export const loginSchema = yup.object().shape({
     .required("Էլ. հասցեն պարտադիր է"),
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
+  userType: yup.string().required("Գործունեության տեսակը պարտադիր է"),
 });
 
 export const addLoadsSchema = yup.object().shape({

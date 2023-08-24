@@ -20,9 +20,9 @@ export default function AddItems({ userType }: any) {
   });
 
   const onSubmit = async (data: any) => {
-    if (isValid) {
+ 
       console.log(data);
-    }
+    
   };
   return (
     <form

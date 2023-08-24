@@ -13,6 +13,8 @@ import { LoginFormProps } from "../interfaces/FormProps";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 import { loginThunk } from "../store/asyncThunk";
 import { BiHide } from "react-icons/bi";
+import UISelect from "../UI/UISelect";
+import { IoIosArrowDown } from "react-icons/io";
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
@@ -20,7 +22,6 @@ export default function LogIn() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleShow = () => setShowPassword(!showPassword);
-  const user = useTypedSelector((state) => state.user);
 
   const ref = useRef<any>(null);
 
@@ -36,14 +37,14 @@ export default function LogIn() {
 
   const onSubmit = async (data: any) => {
     let user = await dispatch(loginThunk(data));
-    console.log(user);
+   
     if (user?.payload?.email) {
       navigate("/");
     } else {
       alert("invalid fields");
     }
   };
-
+  
   return (
     <section className="w-full h-screen flex ">
       <Helmet>
@@ -111,13 +112,36 @@ export default function LogIn() {
                     className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
                     onClick={handleShow}
                   >
-                    {
-                      showPassword ?  <BiShow /> : <BiHide/>
-                    }
-                   
+                    {showPassword ? <BiShow /> : <BiHide />}
                   </div>
                 </div>
               </div>
+
+              <div>
+                <div className=" relative">
+                  <select
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 appearance-none	"
+                    {...register("userType")}
+                  >
+                    <option value="" disabled selected className="text-gray-200">
+                      Գործունեության տեսակ
+                    </option>
+                    <option value="customer">Պատվիրատու</option>
+                    <option value="subCustomer">Պատվիրատու/աշխատակից</option>
+                    <option value="carrier">Փոխադրող</option>
+                    <option value="subCarrier">Փոխադրող/աշխատակից</option>
+                  </select>
+                  {errors.userType && (
+                    <p className="text-red-600   pt-1 pl-2 text-[12px] tracking-wide">
+                      {errors.userType.message}
+                    </p>
+                  )}
+                  <div className="absolute top-[1rem] right-6 text-2xl text-slate-500">
+                    <IoIosArrowDown />
+                  </div>
+                </div>
+              </div>
+
               <div className="text-sm text-right">
                 <Link
                   to={"/forgot"}

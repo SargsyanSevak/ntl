@@ -1,14 +1,15 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { addTeamMemberSchema } from "../utils/formScheme";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { BiHide, BiShow } from "react-icons/bi";
 
 export default function UIModal({ open, setOpen }: any) {
   const cancelButtonRef = useRef(null);
   const ref = useRef<any>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShow = () => setShowPassword(!showPassword);
 
   const {
     register,
@@ -21,9 +22,12 @@ export default function UIModal({ open, setOpen }: any) {
   });
 
   const onSubmit = async (data: any) => {
-    if (isValid) {
+    if(isValid){
       console.log(data);
+    }else{
+      console.log('all fields are required')
     }
+    
   };
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -56,26 +60,104 @@ export default function UIModal({ open, setOpen }: any) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all md:w-2/3 w-[90%] md:py-10 py-4" ref={ref}>
-                <h4 className="w-full text-center md:text-[18px] text-[16px] font-semibold">Ավելացնել թիմի նոր անդամ</h4>
+              <Dialog.Panel
+                className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all md:w-2/3 w-[90%] md:py-10 py-4"
+                ref={ref}
+              >
+                <h4 className="w-full text-center md:text-[18px] text-[16px] font-semibold">
+                  Ավելացնել թիմի նոր անդամ
+                </h4>
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 flex flex-wrap justify-between items-center gap-y-4">
                   <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="անուն" className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4" {...register('firstName')}/>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="անուն"
+                      className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4"
+                      {...register("firstName")}
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
+                        {errors.firstName.message}
+                      </p>
+                    )}
                   </div>
                   <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="ազգանուն" className="w-full h-full  border-[1px] border-gray-400 rounded-xl pl-4" {...register('lastName')}/>
+                    <input
+                      type="text"
+                      id="lastName"
+                      placeholder="ազգանուն"
+                      className="w-full h-full  border-[1px] border-gray-400 rounded-xl pl-4"
+                      {...register("lastName")}
+                    />
+                    {errors.lastName && (
+                      <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
+                        {errors.lastName.message}
+                      </p>
+                    )}
                   </div>
                   <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="էլ.հասցե" className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4" {...register('email')}/>
+                    <input
+                      type="text"
+                      id="email"
+                      placeholder="էլ.հասցե"
+                      className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4"
+                      {...register("email")}
+                    />
+                    {errors.email && (
+                      <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                   <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="հեռախոսահամար" className="w-full h-full border-[1px] border-gray-400 rounded-xl pl-4" {...register('phoneNumber')}/>
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      placeholder="հեռախոսահամար"
+                      className="w-full h-full border-[1px] border-gray-400 rounded-xl pl-4"
+                      {...register("phoneNumber")}
+                    />
                   </div>
-                  <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="գաղտնաբառ" className="w-full h-full border-[1px] border-gray-400 rounded-xl pl-4" {...register('password')}/>
+                  <div className="w-full md:w-[48%] h-12 overflow-hidden relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      id="repetPassword"
+                      placeholder="գաղտնաբառ"
+                      className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4"
+                      {...register("password")}
+                    />
+                    {errors.password && (
+                      <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
+                        {errors.password.message}
+                      </p>
+                    )}
+                    <div
+                      className="absolute top-[0.8rem] right-6 text-2xl cursor-pointer text-slate-500"
+                      onClick={handleShow}
+                    >
+                      {showPassword ? <BiShow /> : <BiHide />}
+                    </div>
                   </div>
-                  <div className="w-full md:w-[48%] h-12 overflow-hidden">
-                    <input type="text" placeholder="կրկնել գաղտնաբառը" className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4" {...register('repetPassword')}/>
+                  <div className="w-full md:w-[48%] h-12 overflow-hidden relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      id="repetPassword"
+                      placeholder="կրկնել գաղտնաբառը"
+                      className="w-full h-full rounded-xl border-[1px] border-gray-400 pl-4"
+                      {...register("repetPassword")}
+                    />
+                    {errors.repetPassword && (
+                      <p className="text-red-600  pl-2 pt-1 text-[12px] tracking-wide">
+                        {errors.repetPassword.message}
+                      </p>
+                    )}
+                    <div
+                      className="absolute top-[0.8rem] right-6 text-2xl cursor-pointer text-slate-500"
+                      onClick={handleShow}
+                    >
+                      {showPassword ? <BiShow /> : <BiHide />}
+                    </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
