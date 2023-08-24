@@ -6,7 +6,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Profile = () => {
   const {user} = useTypedSelector((state)=>state.user)
-
+console.log(user)
   const [bio, setBio] = useState(
     " Lorem ipsum dolor sit amet consectetur adipisicing elit. In iste aspernatur, adipisci eius rem reiciendis sed sequi, officiis placeat provident numquam quisquam iusto, quam accusamus nostrum accusantium ab quas. Quas delectus quis dicta amet praesentium deserunt sit ratione optio pariatur nemo. Explicabo autem quidem amet repellendus sequi nisi. Nemo rem obcaecati provident ipsa officia expedita dolores exercitationem atque minus, odio voluptatem consequuntur cupiditate fuga, iste quos quis possimus hic corporis! Rem doloribus eaque vitae enim reiciendis? Commodi quae nulla repudiandae. Iusto repudiandae saepe quas quo, ad, pariatur nobis architecto magni ab dolore placeat corporis enim commodi vel dicta delectus voluptatum."
   );

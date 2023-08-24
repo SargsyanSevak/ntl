@@ -35,11 +35,13 @@ export default function Register() {
   });
 
   const onSubmit = async (data: any) => {
-    let user = await dispatch(registerThunk(data));
-    if (user?.payload?.email) {
-      navigate("/");
-    }else{
-      alert('invalid fields')
+    if (isValid) {
+      let user = await dispatch(registerThunk(data));
+      if (user?.payload?.email) {
+        navigate("/");
+      }
+    } else {
+      console.log("some error during registration");
     }
   };
 
@@ -196,10 +198,7 @@ export default function Register() {
                     className="absolute top-[1rem] right-6 text-2xl cursor-pointer text-slate-500 z-50"
                     onClick={handleShow}
                   >
-                   {
-                      showPassword ?  <BiShow /> : <BiHide/>
-                    }
-                   
+                    {showPassword ? <BiShow /> : <BiHide />}
                   </div>
                 </div>
               </div>

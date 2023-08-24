@@ -14,7 +14,7 @@ export const saveUserType = (type) => {
     console.log("error saving user type", error);
   }
 };
-export const getUserType = (type) => {
+export const getUserType = () => {
   try {
    return Cookies.get("userType");
   } catch (error) {

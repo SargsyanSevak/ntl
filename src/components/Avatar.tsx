@@ -98,7 +98,7 @@ const Avatar = ({ showDropDown }: any) => {
               <li>
                 <Link
                   to="/admin"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Իմ էջը
                 </Link>
@@ -106,7 +106,7 @@ const Avatar = ({ showDropDown }: any) => {
             )}
             <li>
               <button
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                className=" w-full flex justify-start items-start  px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 onClick={handleOpenModal}
               >
                 Հետադարձ կապ

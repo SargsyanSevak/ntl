@@ -19,7 +19,9 @@ export const schema = yup.object().shape({
 export const registerSchema = yup.object().shape({
   firstName: yup.string().required("Խնդրում ենք նշել Ձեր անունը"),
   lastName: yup.string().required("Խնդրում ենք նշել Ձեր ազգանունը"),
-  userType: yup.string().required("Խնդրում ենք նշել Ձեր գործունեության տեսակը"),
+  userType: yup.string()
+  .oneOf(['carrier','customer'], 'Գործունեության տեսակը պարտադիր է')
+  .required("Գործունեության տեսակը պարտադիր է"),
   companyName: yup
     .string()
     .required("Խնդրում ենք նշել Ձեր ընկերության անվանումը"),
@@ -98,4 +100,16 @@ export const addTeamMemberSchema = yup.object().shape({
     )
     .min(8, "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ")
     .required("Խնդրում ենք նշել Ձեր գաղնտաբառը"),
+});
+
+export const changePasswordScheme = yup.object().shape({
+  email: yup
+    .string()
+    .email("Խնդրում ենք նշել ճիշտ էլ. հասցե")
+    .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
+    .required("Էլ. հասցեն պարտադիր է"),
+
+  currentPassword: yup.string().required('Դաշտը պարտադիր է'),
+  newPassword: yup.string().required('Դաշտը պարտադիր է'),
+  repetPassword: yup.string().required('Դաշտը պարտադիր է'),
 });
