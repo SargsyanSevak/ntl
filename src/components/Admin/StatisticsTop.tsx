@@ -21,10 +21,10 @@ const StatisticsTop: React.FC = () => {
       case "/admin/additems":
         return {
           title: `Ավելացնել ${
-            user.userType === "customer" ? "բեռներ" : "բեռնատարներ"
+            user.userType === "customer" || user.userType === "subCustomer" ? "բեռներ" : "բեռնատարներ"
           }`,
           description: `${
-            user.userType === "customer"
+            user.userType === "customer" || user.userType === "subCustomer"
               ? "Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին"
               : "Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին"
           }`,
@@ -33,10 +33,10 @@ const StatisticsTop: React.FC = () => {
       case "/admin/changeitems":
         return {
           title: `Փոփոխել ${
-            user.userType === "customer" ? "բեռները" : "բեռնատարները"
+            user.userType === "customer" || user.userType === "subCustomer" ? "բեռները" : "բեռնատարները"
           }`,
           description: `Փոփոխել ${
-            user.userType === "customer" ? "բեռները" : "բեռնատարները"
+            user.userType === "customer" || user.userType === "subCustomer" ? "բեռները" : "բեռնատարները"
           }`,
         };
 

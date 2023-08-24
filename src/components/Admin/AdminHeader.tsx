@@ -50,7 +50,7 @@ const AdminHeader = () => {
         <nav className="lg:block hidden">
           <ul
             className={`flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide ${
-              user.userType === "customer" ? "gap-10" : "gap-[20px] xl:gap-10"
+              user.userType === "customer" || user.userType === "subCustomer" ? "gap-10" : "gap-[20px] xl:gap-10"
             }`}
           >
             {activeUserNav.map((el) => (

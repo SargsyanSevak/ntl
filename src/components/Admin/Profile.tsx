@@ -77,7 +77,7 @@ const Profile = () => {
         <Edit handleEdit={handleEdit} handleSave={handleSave} isDisabled={isDisabled}/>
       </div>
       {
-        user.userType === 'customer' && (
+        user.userType === "customer" || user.userType === "subCustomer" && (
           <div className="payment relative">
         <div className="w-full border-2 border-slate-300 rounded-xl">
           <h4 className="md:text-center  font-semibold pt-4 pl-4 md:pl-0">

@@ -59,7 +59,7 @@ export default function AddItems({ userType }: any) {
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                {user.userType === "customer"
+                {user.userType === "customer" || user.userType === "subCustomer"
                   ? "Բեռնաթափում"
                   : "Նախընտրելի ուղղություն"}
               </label>
@@ -126,7 +126,7 @@ export default function AddItems({ userType }: any) {
             </div>
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                {user.userType === "customer"
+                {user.userType === "customer" || user.userType === "subCustomer"
                   ? " Բեռի ծավալ մ³"
                   : " Բեռնատարի ծավալ մ³"}
               </label>
@@ -144,7 +144,7 @@ export default function AddItems({ userType }: any) {
 
             <div className="sm:col-span-3">
               <label className="block text-sm font-medium leading-6 text-gray-900">
-                {user.userType === "customer"
+                {user.userType === "customer" || user.userType === "subCustomer"
                   ? "Բեռի քաշ կգ"
                   : "Նախընտրելի քաշ կգ"}
               </label>
@@ -195,7 +195,7 @@ export default function AddItems({ userType }: any) {
                 />
               </div>
             </div>
-            {user.userType === "customer" && (
+            {user.userType === "customer" || user.userType === "subCustomer"  && (
               <div className="sm:col-span-3 ">
                 <label className="block text-sm font-medium leading-6 text-gray-900">
                   Ապրանքի տեսակ
@@ -215,7 +215,7 @@ export default function AddItems({ userType }: any) {
 
             <div
               className={`${
-                user.userType === "customer" ? "sm:col-span-3" : "sm:col-span-6"
+                user.userType === "customer" || user.userType === "subCustomer" ? "sm:col-span-3" : "sm:col-span-6"
               } `}
             >
               <label className="block text-sm font-medium leading-6 text-gray-900">

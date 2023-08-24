@@ -17,7 +17,7 @@ const ChangeItem: React.FC = ({}) => {
           Բարձում
         </div>
         <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
-         {user.userType === 'customer' ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
+         {user.userType === "customer" || user.userType === "subCustomer" ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
         </div>
         <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
           Ծավալ
