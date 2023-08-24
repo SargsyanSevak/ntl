@@ -36,15 +36,16 @@ export default function LogIn() {
   });
 
   const onSubmit = async (data: any) => {
-    let user = await dispatch(loginThunk(data));
-   
-    if (user?.payload?.email) {
-      navigate("/");
-    } else {
-      alert("invalid fields");
+    if (isValid) {
+      let user = await dispatch(loginThunk(data));
+
+      if (user?.payload?.email) {
+        navigate("/");
+      }
     }
+    alert("Օգտատեր չի գտնվել");
   };
-  
+
   return (
     <section className="w-full h-screen flex ">
       <Helmet>
@@ -123,7 +124,7 @@ export default function LogIn() {
                     className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 appearance-none	"
                     {...register("userType")}
                   >
-                    <option value="" disabled selected className="text-gray-200">
+                    <option disabled className="text-gray-200">
                       Գործունեության տեսակ
                     </option>
                     <option value="customer">Պատվիրատու</option>
