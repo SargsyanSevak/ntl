@@ -3,21 +3,11 @@ import React, { useEffect, useState } from "react";
 interface ToastProps {
   type: "success" | "error" | "warning";
   message: string;
-//   onClose: () => void;
+  isVisible:boolean;
+  setIsVisible?: any
 }
 
-const Toast: React.FC<ToastProps> = ({ type, message }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 4000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+const Toast: React.FC<ToastProps> = ({ type, message,isVisible }) => {
 
   const getIcon = () => {
     switch (type) {

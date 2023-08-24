@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormValues } from "../interfaces/FormProps";
 import emailjs from "emailjs-com";
 import Toast from "../UI/UIToast";
-import UILoader from "../UI/UILoader";
+
 
 interface ModalProps {
   isOpen: Boolean;
@@ -13,8 +13,7 @@ interface ModalProps {
 }
 
 const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-  const [isSent, setIsSent] = useState(true);
-  const [success, setSuccess] = useState<Boolean>(false);
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<any>(null);
 
   const {
@@ -37,21 +36,17 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           "7juDdm_vDM8bVfl97"
         )
         .then(() => {
-          setIsSent(false);
+          setIsVisible(true);
+          reset();
           setTimeout(() => {
-            setIsSent(true);
-            reset();
-            setSuccess(true);
+            setIsVisible(false);
           }, 3000);
         })
-        .then(() => {
-          setSuccess(false);
-        })
         .catch((err) => {
-          setSuccess(false);
+          console.log(err);
         });
     } else {
-      setSuccess(false);
+      console.log("some error occured during sending email");
     }
   };
   return (
@@ -131,13 +126,12 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   </div>
                 </form>
                 <div className="flex relative items-center justify-between p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                  <p className="absolute top-0 w-full">{success && ""}</p>
                   <button
                     type="button"
                     className="flex justify-center items-center text-white w-[120px] bg-[#1C90F3] hover:bg-[#1c8ff3ea]  focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  transition-all"
                     onClick={handleSubmit(onSubmit)}
                   >
-                    {isSent ? <p>Ուղարկել </p> : <UILoader />}
+                    Ուղարկել
                   </button>
                   <button
                     onClick={() => {
@@ -155,12 +149,13 @@ const ModalContact: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
       )}
-      {success && (
-        <Toast
-          type="success"
-          message="Ձեր հաղորդագրությունը հաջողությամբ ուղարկվել է"
-        />
-      )}
+
+      <Toast
+        type="success"
+        message="Ձեր հաղորդագրությունը հաջողությամբ ուղարկվել է"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
     </>
   );
 };

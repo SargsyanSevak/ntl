@@ -14,10 +14,11 @@ export type FormValues = {
     companyName:string,
     password:string
   }
+  
   export interface LoginFormProps {
-    email:string,
-    password:string,
-    userType:string
+    email: string;
+    password: string;
+    userType: 'carrier' | 'subcarrier' | 'customer' | 'subCustomer';
   }
   export interface ResetFormProps {
     email:string,

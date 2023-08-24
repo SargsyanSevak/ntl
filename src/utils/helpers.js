@@ -7,6 +7,21 @@ export const saveToken = (token) => {
     console.log("error saving token", error);
   }
 };
+export const saveUserType = (type) => {
+  try {
+    Cookies.set("userType", type);
+  } catch (error) {
+    console.log("error saving user type", error);
+  }
+};
+export const getUserType = (type) => {
+  try {
+   return Cookies.get("userType");
+  } catch (error) {
+    console.log("error getting user type", error);
+  }
+};
+
 
 export const isLogged = () => {
   try {

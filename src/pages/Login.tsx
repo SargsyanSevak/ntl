@@ -15,11 +15,14 @@ import { loginThunk } from "../store/asyncThunk";
 import { BiHide } from "react-icons/bi";
 import UISelect from "../UI/UISelect";
 import { IoIosArrowDown } from "react-icons/io";
+import Toast from "../UI/UIToast";
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
   const dispatch = useTypedDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const [valid, setValid] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
   const handleShow = () => setShowPassword(!showPassword);
 
@@ -29,7 +32,7 @@ export default function LogIn() {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
+   
   } = useForm<LoginFormProps>({
     mode: "onChange",
     resolver: yupResolver(loginSchema),
@@ -43,7 +46,15 @@ export default function LogIn() {
         navigate("/");
       }
     }
-    alert("Օգտատեր չի գտնվել");
+    setValid(false);
+    setIsVisible(true)
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   };
 
   return (
@@ -78,7 +89,9 @@ export default function LogIn() {
                     autoComplete="email"
                     placeholder="էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-xl border-[1px] border-slate-400 block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6  pr-[54px]"
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px]`}
                     {...register("email")}
                   />
                   {errors.email && (
@@ -94,14 +107,16 @@ export default function LogIn() {
 
               <div>
                 <div className="flex items-center justify-between"></div>
-                <div className="mt-2 relative">
+                <div className="relative">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                     placeholder="Գաղտնաբառ"
                     required
-                    className=" bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px]`}
                     {...register("password")}
                   />
                   {errors.password && (
@@ -119,12 +134,14 @@ export default function LogIn() {
               </div>
 
               <div>
-                <div className=" relative">
+                <div className="mt-2 relative">
                   <select
-                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 appearance-none	"
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400   placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px] appearance-none`}
                     {...register("userType")}
                   >
-                    <option disabled className="text-gray-200">
+                    <option disabled className="text-gray-200 " selected>
                       Գործունեության տեսակ
                     </option>
                     <option value="customer">Պատվիրատու</option>
@@ -175,6 +192,7 @@ export default function LogIn() {
         </div>
       </div>
       <div className="w-full md:w-1/2 h-screen  hidden lg:block login"></div>
+      <Toast type="error" message="Օգտատեր չի գտնվել" isVisible={isVisible} setIsVisible={setIsVisible}/>
     </section>
   );
 }

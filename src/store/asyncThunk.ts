@@ -1,12 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
+
 
 import axios from "../axios";
 import {
   getTokens,
+  getUserType,
   recoverToken,
   recoverVerifyToken,
   saveToken,
+  saveUserType,
 } from "../utils/helpers";
 
 export const registerThunk = createAsyncThunk<any, any>(
@@ -14,22 +16,11 @@ export const registerThunk = createAsyncThunk<any, any>(
   async (data) => {
     const res = await axios.post(`auth/register`, data);
 
-    // console.log(res);
-
-    // if (res?.status === "error") {
-    //   thunkApi.dispatch(
-    //     showSnackBar({
-    //       bg: "rgba(255, 0, 0, 0.54)",
-    //       text: res?.message,
-    //       isVisible: true,
-    //       withoutSnack: true,
-    //     })
-    //   );
-    //   return thunkApi.rejectWithValue(res.message);
-    // }
     const token = await res.data.token;
+    const userType = await res.data.userType;
     if (token) {
       saveToken(token);
+      saveUserType(userType)
     }
     return res.data;
   }
@@ -40,8 +31,10 @@ export const loginThunk = createAsyncThunk<any, any>(
   async (data) => {
     const res = await axios.post(`auth/login`, data);
     const token = await res.data.token;
+    const userType = await res.data.userType;
     if (token) {
       saveToken(token);
+      saveUserType(userType)
     }
     return res.data;
   }
@@ -50,16 +43,15 @@ export const loginThunk = createAsyncThunk<any, any>(
 export const authMe = createAsyncThunk<any>(
   "customerSlice/authMe",
   async () => {
-    // let res = null;
-    // if (Cookies.get("Bearer")) {
-    //   console.log("Bearer");
-    // }
-
-    const res = await axios.get(`auth/me`);
+   
+    const currentUserType = getUserType()
+    const res = await axios.post(`auth/me`,{userType:currentUserType});
 
     const token = await res.data.token;
+    
     if (token) {
       saveToken(token);
+      saveUserType(currentUserType)
     }
     return res.data;
   }

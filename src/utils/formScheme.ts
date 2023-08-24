@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+
 const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#\$%\^&\*\.\-_])(?=.{8,})/;
 
 export const schema = yup.object().shape({
@@ -44,7 +45,9 @@ export const loginSchema = yup.object().shape({
     .required("Էլ. հասցեն պարտադիր է"),
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
-  userType: yup.string().required("Գործունեության տեսակը պարտադիր է"),
+  userType: yup.string()
+  .oneOf(['carrier', 'subcarrier', 'customer', 'subCustomer'], 'Գործունեության տեսակը պարտադիր է')
+  .required("Գործունեության տեսակը պարտադիր է"),
 });
 
 export const addLoadsSchema = yup.object().shape({
