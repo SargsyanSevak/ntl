@@ -13,12 +13,13 @@ export default function Header({ isDarkMode }: any) {
 
   return (
     <header className="bg-gray-300 dark:bg-[#0E192D] h-16 md:px-4 px-2 flex relative">
-      <div className="logo1 md:w-1/2 w-1/4 flex justify-start items-center overflow-hidden -ml-1">
+      <div className="logo1 md:w-1/2 w-1/4 flex justify-start items-center overflow-hidden -ml-1 relative">
         <img
           src={changedMode ? LogoWhite : Logo}
           alt="logo"
           className="w-[90px] logo"
         />
+        <span className="absolute text-[8px] font-bold top-2 left-20 dark:text-white">DEMO</span>
       </div>
       <div className="title md:w-full w-0 flex justify-center items-center">
         <p className="text-xl font-bold text-gray-600 md:block hidden dark:text-white">

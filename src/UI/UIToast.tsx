@@ -58,7 +58,7 @@ const Toast: React.FC<ToastProps> = ({ type, message,isVisible }) => {
   return (
     <div>
       <div
-        className={`fixed top-4 md:right-4 right-0 z-50 max-w-xl bg-white border rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700 ${
+        className={`fixed top-6 md:right-6 right-[4px] maxZindex max-w-xl bg-white border rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700 ${
           isVisible ? "" : "hidden pointer-events-none"
         }`}
         role="alert"

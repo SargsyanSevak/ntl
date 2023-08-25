@@ -2,10 +2,13 @@ import { addLoadsSchema } from "../../utils/formScheme";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AddLoadProps } from "../../interfaces/LoadProps";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { IoIosArrowDown } from "react-icons/io";
+import Toast from "../../UI/UIToast";
 
 export default function AddItems({ userType }: any) {
+  const [isVisible, setIsVisible] = useState(false);
   const { user } = useTypedSelector((state) => state.user);
   const ref = useRef<any>(null);
 
@@ -22,9 +25,12 @@ export default function AddItems({ userType }: any) {
   const onSubmit = async (data: any) => {
  
       console.log(data);
-    
+      setIsVisible(true)
   };
   return (
+    <>
+    
+   
     <form
       className="px-4 md:px-10 pb-4 "
       ref={ref}
@@ -105,11 +111,11 @@ export default function AddItems({ userType }: any) {
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Բեռնատարի տեսակ
               </label>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <select
                   id="truck-type"
                   autoComplete="country-name"
-                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[9px] text-gray-900  focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[6px] text-gray-900  focus:ring-gray-300 placeholder:text-gray-400   sm:text-sm sm:leading-6 appearance-none"
                   {...register("truckType")}
                 >
                   <option value={"ռեֆ"}>ռեֆ</option>
@@ -122,6 +128,9 @@ export default function AddItems({ userType }: any) {
                     {errors.truckType.message}
                   </p>
                 )}
+                <div className="absolute top-[.5rem] right-4 text-2xl text-slate-500">
+                    <IoIosArrowDown />
+                  </div>
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -164,10 +173,10 @@ export default function AddItems({ userType }: any) {
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Ամբողջական/հավաքական
               </label>
-              <div className="mt-2">
+              <div className="mt-2 relative">
                 <select
                   id="type"
-                  className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-[9px] text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                  className=" p-4  block w-full rounded-md border-[1px] border-slate-400 py-[6px] text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6 appearance-none"
                   {...register("loadType")}
                 >
                   <option value={"ամբողջական"}>ամբողջական</option>
@@ -178,6 +187,9 @@ export default function AddItems({ userType }: any) {
                     {errors.loadType.message}
                   </p>
                 )}
+                 <div className="absolute top-[.5rem] right-4 text-2xl text-slate-500">
+                    <IoIosArrowDown />
+                  </div>
               </div>
             </div>
             <div className="sm:col-span-3">
@@ -239,19 +251,26 @@ export default function AddItems({ userType }: any) {
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
           type="button"
-          className="text-sm  leading-6 text-gray-900"
+          className="rounded-md bg-inherit border-[1px] hover:bg-gray-400 px-3 py-2 text-sm text-gray-900 border-gray-400  hover:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
           onClick={() => reset()}
         >
           Չեղարկել
         </button>
         <button
           type="submit"
-          className="rounded-md bg-blue-600 px-3 py-2 text-sm  text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
+          className="rounded-md bg-[#1c90f3] hover:bg-[#1c8ff3cd] px-3 py-2 text-sm  text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
           onClick={handleSubmit(onSubmit)}
         >
           Ավելացնել
         </button>
       </div>
     </form>
+    <Toast
+        type="success"
+        message="Ձեր բեռը հաջողությամբ ավելացվել է"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
+    </>
   );
 }

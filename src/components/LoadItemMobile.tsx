@@ -37,7 +37,7 @@ const LoadItemMobile = ({
         className={`relative pb-[50px] dark:border-b-4 border-b-[#1e3053] lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
         <div
-          className="length text-[12px] absolute  bottom-[20px] right-4  border-[#2183d9] z-40 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-2 py-2  rounded-xl lg:hidden block"
+          className="length text-[12px] absolute  bottom-[20px] right-4  border-[#2183d9] z-40 border-[0.7px]  text-blue-500 dark:text-gray-300 font-bold  px-2 py-[7px]  rounded-xl lg:hidden block"
           onClick={(e) => {
             e.stopPropagation();
           }}

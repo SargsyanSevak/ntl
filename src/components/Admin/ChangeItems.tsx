@@ -3,6 +3,7 @@ import UISelect from "../../UI/UISelect";
 import { FiEdit2 } from "react-icons/fi";
 import { BsCheck2All } from "react-icons/bs";
 import { FiX } from "react-icons/fi";
+import Toast from "../../UI/UIToast";
 const trucks = [
   {
     id: 1,
@@ -51,15 +52,21 @@ const ChangeItems= ({
   weight,
   length,
   rate,
+  comment
 }: any) => {
   const [value, setValue] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const makeDisabled = () => {
     setIsDisabled(false);
   };
   return (
+    <>
+    
+    
+  
     <div
-      className={`w-full min-h-[50px] bg-slate-300 dark:bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] mb-2 text-sm`}
+      className={`w-full min-h-[50px] bg-slate-300 dark:bg-slate-300 px-4 flex py-4 lg:py-4 flex-wrap lg:flex-nowrap justify-between items-center lg:gap-4 gap-y-[8px] ${isDisabled && 'mb-[5px]'}  text-sm`}
     >
       <div className="date w-full sm:w-[48%] lg:w-[200px]  h-[40px]  flex items-center mb-[1px] md:mb-0">
         <input
@@ -172,6 +179,24 @@ const ChangeItems= ({
         </div>
       </div>
     </div>
+    {
+      !isDisabled &&  <div className="w-full h-24 bg-slate-300  mb-[5px] border-t-[1px] border-t-slate-400">
+         <input
+          type="text"
+          value={comment}
+          onChange={(e) => setValue(e.target.value)}
+          className="bg-slate-300  px-2 w-full h-full rounded-md border-none focus:outline-none focus:bg-blue-100"
+          
+        />
+      </div>
+    }
+   <Toast
+        type="success"
+        message="Ձեր բեռը հաջողությամբ թարմացվել է"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
+    </>
   );
 };
 
