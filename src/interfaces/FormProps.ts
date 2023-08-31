@@ -18,7 +18,7 @@ export type FormValues = {
   export interface LoginFormProps {
     email: string;
     password: string;
-    userType: 'carrier' | 'subcarrier' | 'customer' | 'subCustomer';
+    userType: 'carrier' | 'subCarrier' | 'customer' | 'subCustomer';
   }
   export interface ResetFormProps {
     email:string,

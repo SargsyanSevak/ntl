@@ -8,10 +8,11 @@ export const checkLengthOfValue = (val:any, symbol = ''):any => {
 
   export const CutString =(inputString: any): any => {
     if (typeof inputString == "string") {
-      if (inputString.length > 15) {
-        return inputString.slice(0, 18) + "...";
+      if (inputString.length > 20) {
+        return inputString.slice(0, 20) + '...'
+      }else{
+        return inputString
       }
     }
-    return inputString;
   }
 

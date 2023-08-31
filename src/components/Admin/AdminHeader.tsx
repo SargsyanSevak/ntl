@@ -7,8 +7,9 @@ import AdminAside from "./AdminAside";
 import { notificationsData } from "../../data/notificationData";
 import { NavItemsProps, customerNavItems } from "../../constants/NavItems";
 import { carrierNavItems } from "../../constants/NavItems";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { motion as m } from "framer-motion";
+import DetectCurrentUserType from "../../utils/detectUserType";
+import UILoader from "../../UI/UILoader";
 
 const staggerChildren = 0.5; // Stagger interval
 const baseDuration = 0.3; // Base animation duration
@@ -18,27 +19,23 @@ const calculateDuration = (index: number) => {
   return baseDuration + index * 0.5; // Example: Increase duration by 0.1 seconds per index
 };
 const AdminHeader = () => {
-  const [notificationCount, setNotificationCount] = useState<number>(1);
+  const [loading, setLoading] = useState(false);
   const [activeUserNav, setActiveUserNav] = useState<NavItemsProps[]>([]);
   const { pathname } = useLocation();
-  const { user } = useTypedSelector((state) => state.user);
+  const userType = DetectCurrentUserType();
 
-  const currentUserType =
-    user.userType === "customer" || user.userType === "subCustomer";
-  const detectUserType = () => {
-    if (detector(user.userType, "customer") && user) {
+  const handleNav = () => {
+    if (userType === "customer") {
       setActiveUserNav(customerNavItems);
-    } else if (detector(user.userType, "carrier") && user) {
+      setLoading(false);
+    } else if (userType === "carrier") {
       setActiveUserNav(carrierNavItems);
+      setLoading(false);
+    } else if (userType === "loading") {
+      setLoading(true);
     }
   };
-  const detector = (param: string, txt: string) => {
-    return param.toLowerCase().includes(txt.toLowerCase());
-  };
-  useEffect(() => {
-    detectUserType();
-  }, [user]);
-  
+
   const getNotificationCount = () => {
     return notificationsData.filter((el: any) => el.isOpened === false).length;
   };
@@ -50,6 +47,9 @@ const AdminHeader = () => {
       return path.split("/").at(2) === to.split("/").at(2);
     }
   };
+  useEffect(() => {
+    handleNav();
+  }, [userType]);
 
   return (
     <header className="w-full h-16 bg-black  text-white mx-auto md:px-10 px-4 border-b-[0.3px] border-b-slate-500">
@@ -70,43 +70,50 @@ const AdminHeader = () => {
         <nav className="lg:block hidden">
           <ul
             className={`flex w-full h-16 justify-center  items-center text-[13px]  tracking-wide ${
-              currentUserType ? "gap-10" : "gap-[20px] xl:gap-10"
+              userType ? "gap-10" : "gap-[20px] xl:gap-10"
             }`}
           >
-            {activeUserNav.map((el, i) => (
-              <m.li
-                key={el.title}
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  delay: 0.4,
-                  duration: calculateDuration(i),
-                  staggerChildren,
-                  type: "spring",
-                }}
-              >
-                <Link
-                  to={el.to}
-                  className={`${
-                    handlePath(pathname, el.to) ? "text-[#1C90F3]" : ""
-                  }`}
-                >
-                  {el.title}
-                </Link>
-              </m.li>
-            ))}
+            {loading ? (
+              <UILoader />
+            ) : (
+              <>
+                {activeUserNav.map((el, i) => (
+                  <m.li
+                    key={el.title}
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.4,
+                      duration: calculateDuration(i),
+                      staggerChildren,
+                      type: "spring",
+                    }}
+                  >
+                    <Link
+                      to={el.to}
+                      className={`${
+                        handlePath(pathname, el.to) ? "text-[#1C90F3]" : ""
+                      }`}
+                    >
+                      {el.title}
+                    </Link>
+                  </m.li>
+                ))}
+              </>
+            )}
           </ul>
         </nav>
 
-        <m.div className="flex items-center  gap-4"
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{
-          delay: 0.4,
-          duration:0.5,
-          staggerChildren,
-          type: "spring",
-        }}
+        <m.div
+          className="flex items-center  gap-4"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.4,
+            duration: 0.5,
+            staggerChildren,
+            type: "spring",
+          }}
         >
           <div className=" font-bold text-sm">
             <ul className="flex  gap-2">

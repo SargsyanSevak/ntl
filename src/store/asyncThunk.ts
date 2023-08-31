@@ -114,3 +114,44 @@ export const recoverPassRecovery = createAsyncThunk<any>(
     return res.data;
   }
 );
+
+export const addNewItemThunk = createAsyncThunk<any, any>(
+  "customerSlice/addNewItemThunk",
+  async (data: any) => {
+    const res = await axios.post(`load/add`, data);
+
+    return res.data;
+  }
+);
+export const updateNewItemThunk = createAsyncThunk<any, any>(
+  "customerSlice/updateNewItemThunk",
+  async (data) => {
+    const res = await axios.post(`load/updateLoad`, data);
+
+    return res.data;
+  }
+);
+export const deleteItemThunk = createAsyncThunk<any, any>(
+  "customerSlice/deleteItemThunk",
+  async (data) => {
+    const res = await axios.post(`load/deleteLoad`, data);
+
+    return res.data;
+  }
+);
+
+export const getLoadThunk = createAsyncThunk<any>(
+  "customerSlice/getLoadThunk",
+  async () => {
+    const res = await axios.get(`load/get`);
+    return res
+  }
+);
+export const getUserLoadsThunk = createAsyncThunk<any,any>(
+  "customerSlice/getUserLoadsThunk",
+  async (data) => {
+    const res = await axios.post(`load/getUserLoads`,data);
+    return res;
+   
+  }
+);

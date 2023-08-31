@@ -12,12 +12,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegsiserFormProps } from "../interfaces/FormProps";
 import { registerThunk } from "../store/asyncThunk";
+import Toast from "../UI/UIToast";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 // import { removeUser } from "../store/customerSlice";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const handleShow = () => setShowPassword(!showPassword);
+  const [isVisible, setIsVisible] = useState(false);
+  const [valid, setValid] = useState(true);
   const dispatch = useTypedDispatch();
   const user = useTypedSelector((state) => state.user);
   const navigate = useNavigate();
@@ -39,6 +42,16 @@ export default function Register() {
       let user = await dispatch(registerThunk(data));
       if (user?.payload?.email) {
         navigate("/");
+      } else {
+        setValid(false);
+        setIsVisible(true);
+        const timer = setTimeout(() => {
+          setIsVisible(false);
+        }, 4000);
+
+        return () => {
+          clearTimeout(timer);
+        };
       }
     } else {
       console.log("some error during registration");
@@ -143,7 +156,7 @@ export default function Register() {
                   autoComplete="company"
                   required
                   placeholder="Ընկերության անվանումը"
-                  className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
+                  className={`${ valid ? "border-slate-400" : "border-red-400"} bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px]  pr-[54px]`}
                   {...register("companyName")}
                 />
                 {errors.companyName && (
@@ -163,7 +176,7 @@ export default function Register() {
                     autoComplete="email"
                     placeholder="Էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
+                    className={`${ valid ? "border-slate-400" : "border-red-400"} bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] pr-[54px]`}
                     {...register("email")}
                   />
                   {errors.email && (
@@ -228,6 +241,12 @@ export default function Register() {
       </div>
 
       <div className="w-full md:w-1/2 h-screen  hidden lg:block register"></div>
+      <Toast
+        type="error"
+        message="Այս տվյալներով օգտատեր գոյություն ունի"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
     </section>
   );
 }

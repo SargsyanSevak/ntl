@@ -5,11 +5,23 @@ import { BsCheckAll } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { motion as m } from "framer-motion";
+import DetectCurrentUserType from "../../utils/detectUserType";
+import { IoLogoUsd } from "react-icons/io";
 const StatisticsTop: React.FC = () => {
   const { user } = useTypedSelector((state) => state.user);
-
+  const userType = DetectCurrentUserType();
   const { pathname } = useLocation();
+  const { userLoads } = useTypedSelector((state) => state.load);
 
+  const onRoadLoads = () => {
+   return  userLoads.filter ((el:any) => el?.status === 'onRoad').length
+  }
+  const deliveredLoads = () => {
+   return  userLoads.filter ((el:any) => el?.status === 'delivered').length
+  }
+  const paidLoads = () => {
+   return  userLoads.filter ((el:any) => el?.status === 'paid').length
+  }
   const dynamicStatisticTitle = useMemo(() => {
     switch (pathname) {
       case "/admin":
@@ -21,10 +33,10 @@ const StatisticsTop: React.FC = () => {
       case "/admin/additems":
         return {
           title: `Ավելացնել ${
-            user.userType === "customer" || user.userType === "subCustomer" ? "բեռներ" : "բեռնատարներ"
+            userType === "customer" ? "բեռներ" : "բեռնատարներ"
           }`,
           description: `${
-            user.userType === "customer" || user.userType === "subCustomer"
+            userType === "customer"
               ? "Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին"
               : "Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին"
           }`,
@@ -33,10 +45,10 @@ const StatisticsTop: React.FC = () => {
       case "/admin/changeitems":
         return {
           title: `Փոփոխել ${
-            user.userType === "customer" || user.userType === "subCustomer" ? "բեռները" : "բեռնատարները"
+            userType === "customer" ? "բեռները" : "բեռնատարները"
           }`,
           description: `Փոփոխել ${
-            user.userType === "customer" || user.userType === "subCustomer" ? "բեռները" : "բեռնատարները"
+            userType === "customer" ? "բեռները" : "բեռնատարները"
           }`,
         };
 
@@ -103,11 +115,11 @@ const StatisticsTop: React.FC = () => {
               <BsFillBoxFill />
             </div>
             <div className=" md:block flex items-center gap-2">
-              <h4 className="text-[25px]">13</h4>
+              <h4 className="text-[25px]">{userLoads.length}</h4>
               <p className="text-[14px] text-gray-500">
                 Ընդհանուր{" "}
                 <span>
-                  {user.userType === "customer" ? "բեռներ" : "բեռնատարներ"}
+                  {userType === "customer" ? "բեռներ" : "բեռնատարներ"}
                 </span>
               </p>
             </div>
@@ -117,7 +129,7 @@ const StatisticsTop: React.FC = () => {
               <GiRoad />
             </div>
             <div className=" md:block flex items-center gap-2">
-              <h4 className="text-[25px]">13</h4>
+              <h4 className="text-[25px]">{onRoadLoads()}</h4>
               <p className="text-[14px] text-gray-500">Ճանապարհին</p>
             </div>
           </div>
@@ -126,10 +138,21 @@ const StatisticsTop: React.FC = () => {
               <BsCheckAll />
             </div>
             <div className=" md:block flex items-center gap-2">
-              <h4 className="text-[25px]">13</h4>
+              <h4 className="text-[25px]">{deliveredLoads()}</h4>
               <p className="text-[14px] text-gray-500">Դատարկված</p>
             </div>
           </div>
+
+          <div className="loads flex gap-2 justify-start items-center">
+            <div className="w-10 h-10 rounded-full text-green-600 bg-gray-800 flex justify-center items-center text-[22px]">
+              <IoLogoUsd />
+            </div>
+            <div className=" md:block flex items-center gap-2">
+              <h4 className="text-[25px]">{paidLoads()}</h4>
+              <p className="text-[14px] text-gray-500">Վճարված</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

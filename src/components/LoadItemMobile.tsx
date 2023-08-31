@@ -70,7 +70,7 @@ const LoadItemMobile = ({
             <span className="block lg:hidden">
               <AiOutlineCalendar />
             </span>
-            {date}
+            {date.slice(5)}
           </div>
         </div>
 

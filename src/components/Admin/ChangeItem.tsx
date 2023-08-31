@@ -1,9 +1,22 @@
-import React from "react";
-import { testload } from "../../data/testload";
+import React, { useEffect } from "react";
 import ChangeLoadItem from "./ChangeItems";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import {
+  useTypedDispatch,
+  useTypedSelector,
+} from "../../hooks/useTypedSelector";
+import { getUserLoadsThunk } from "../../store/asyncThunk";
+import DetectCurrentUserType from "../../utils/detectUserType";
 const ChangeItem: React.FC = ({}) => {
-  const {user} = useTypedSelector((state)=>state.user)
+
+  const { user } = useTypedSelector((state) => state.user);
+  const dispatch = useTypedDispatch();
+  const { userLoads } = useTypedSelector((state) => state.load);
+  const currentUserType = DetectCurrentUserType();
+  console.log(userLoads)
+  // useEffect(() => {
+  //   dispatch(getUserLoadsThunk({ userType: user.userType }));
+  // }, []);
+
   return (
     <div className="relative z-40 flex flex-col bg-inherit">
       <div className="w-full h-8 bg-slate-700 px-4 lg:flex hidden justify-between items-center gap-2 text-[13px] text-gray-400 font-semibold">
@@ -17,7 +30,9 @@ const ChangeItem: React.FC = ({}) => {
           Բարձում
         </div>
         <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
-         {user.userType === "customer" || user.userType === "subCustomer" ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
+          {currentUserType === "customer"
+            ? "Բեռնաթափում"
+            : "Նախընտրելի ուղղություն"}
         </div>
         <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
           Ծավալ
@@ -33,8 +48,10 @@ const ChangeItem: React.FC = ({}) => {
         </div>
         <div className="w-full sm:w-[48%] lg:w-[80px]"></div>
       </div>
-      {testload.map((el) => (
-        <ChangeLoadItem {...el} />
+      {userLoads.map((el: any, i: number) => (
+        <div key={i}>
+          <ChangeLoadItem {...el} />
+        </div>
       ))}
     </div>
   );

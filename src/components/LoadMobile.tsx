@@ -34,7 +34,7 @@ const LoadMobile = ({boardType}:any) => {
     <div>
       {isLoading ? (
         <div className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
-          <Loader />
+          {/* <Loader /> */}
         </div>
       ) : (
         <>

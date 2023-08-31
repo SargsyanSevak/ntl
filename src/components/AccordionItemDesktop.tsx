@@ -8,6 +8,22 @@ import {
 import { HiArrowRight } from "react-icons/hi";
 import CallOptions from "./CallOptions";
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { GiPathDistance } from "react-icons/gi";
+
+
+
+function calculateFormattedPostAge(postTimestamp: number): string {
+  const now = Date.now();
+  const timeDifference = now - postTimestamp;
+
+  const minutes = Math.floor(timeDifference / (1000 * 60)) % 60;
+  const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+}
 const AccordionItemDesktop = ({
   id,
   age,
@@ -17,7 +33,7 @@ const AccordionItemDesktop = ({
   pickup,
   delivery,
   distance,
-  company,
+  customerInfo,
   contact,
   length,
   weight,
@@ -25,77 +41,157 @@ const AccordionItemDesktop = ({
   commodity,
   comment,
   boardType,
+  updatedAt,
+  subCustomerInfo,
 }: any) => {
+  const mydate = new Date(updatedAt).getTime();
+  const [formattedAge, setFormattedAge] = useState("");
+  const [clicked,setClicked] = useState(false)
+  const handleClick = () => {
+    setClicked(true)
+  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const age = calculateFormattedPostAge(mydate);
+      setFormattedAge(age);
+    }, 60000);
+
+    const initialAge = calculateFormattedPostAge(mydate);
+    setFormattedAge(initialAge);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [mydate]);
+
+
+
   return (
     <>
       <Accordion className="lg:block hidden" as="div">
         <AccordionItem>
           <AccordionHeader className="AccordionHeader" as="div">
-            <div className="max-w-[2000px] lg:flex hidden">
-              <div className="w-full h-[32px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[13px]  flex justify-around gap-[1px] font-[400]">
-                <div className="flex justify-start items-center pl-[6px] w-[50px]">
-                  <div>{age}</div>
+            <div className="max-w-[2000px] lg:flex hidden " onClick={handleClick}>
+              <div className={`w-full  h-[35px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[12px] ${clicked ? 'font-normal' : 'font-semibold'} flex justify-around gap-[1px]`}>
+                <div className="flex justify-start items-center  w-[50px]">
+                  <div className="flex justify-start items-center">{formattedAge}</div>
+                </div> 
+                <div className=" flex justify-start items-center  w-[50px]">
+                  <div className="w-full flex justify-start items-center ">
+                    {date.slice(5)}
+                  </div>
                 </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[50px]">
-                  <div>{date}</div>
+                <div className="flex justify-start items-center  w-[50px]">
+                  <div className="w-full flex justify-start items-center">
+                    {truckType}
+                  </div>
                 </div>
-                <div className="flex justify-start items-center pl-[6px] w-[50px]">
-                  <div>{truckType}</div>
-                </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[40px]">
-                  <div title={loadType}>{loadType[0].toUpperCase()}</div>
+                <div className=" flex justify-start items-center  w-[40px]">
+                  <div
+                    title={loadType}
+                    className="w-full flex justify-start items-center"
+                  >
+                    {loadType[0]}
+                  </div>
                 </div>
 
-                <div className="flex justify-start items-center pl-[6px] w-[150px]">
-                  <div title={pickup}>{CutString(pickup)}</div>
+                <div className="flex justify-start items-center  w-[150px]">
+                  <div
+                    title={pickup}
+                    className="w-full flex justify-start items-center"
+                  >
+                    {CutString(pickup)}
+                  </div>
                 </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[35px]">
+                <div className=" flex justify-start items-center  w-[35px]">
                   <div>
                     <HiArrowRight />
                   </div>
                 </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[150px]">
-                  <div title={delivery}>{CutString(delivery)}</div>
-                </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[70px]">
-                  <div>{distance} կմ</div>
-                </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[160px] text-[#1C90F3]">
-                  <div title={company}>{CutString(company)}</div>
-                </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[140px]">
+                <div className=" flex justify-start items-center  w-[150px]">
                   <div
-                    className="cursor-pointer text-[13px]"
+                    title={delivery}
+                    className="w-full flex justify-start items-center"
+                  >
+                    {CutString(delivery)}
+                  </div>
+                </div>
+                <div className=" flex justify-start items-center  w-[70px]">
+                  <div className="w-full flex justify-start items-center">
+                  <p className="flex justify-start items-center w-full"> {distance}2300կմ</p> 
+                  </div>
+                </div>
+                <div className=" flex justify-start items-center w-[170px] text-[#1C90F3]">
+                  <div
+                    title={customerInfo?.companyName}
+                    className="w-full flex justify-start items-center"
+                  >
+                    {CutString(customerInfo?.companyName)}
+                  </div>
+                </div>
+                <div className=" flex justify-start items-center  w-[170px] overflow-hidden">
+                  <div
+                    className="cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                     }}
                   >
-                    <CallOptions contact={contact} />
+                    {subCustomerInfo?.phoneNumber ||
+                    customerInfo?.phoneNumber ? (
+                      <CallOptions
+                        contact={
+                          subCustomerInfo
+                            ? subCustomerInfo?.phoneNumber
+                            : customerInfo?.phoneNumber
+                        }
+                      />
+                    ) : (
+                      <a
+                        href={`mailto:${
+                          subCustomerInfo
+                            ? subCustomerInfo?.email
+                            : customerInfo?.email
+                        }`}
+                      >
+                        {
+                          subCustomerInfo
+                            ? subCustomerInfo?.email
+                            : customerInfo?.email
+                        }
+                      </a>
+                    )}
                   </div>
                 </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[50px]">
-                  <div>{checkLengthOfValue(length, "մ³")} </div>
+                <div className=" flex justify-start items-center  w-[50px]">
+                  <div className="w-full flex justify-start items-center">
+                    {checkLengthOfValue(length, "մ³")}{" "}
+                  </div>
                 </div>
-                <div className=" flex justify-start items-center pl-[6px] w-[80px]">
-                  <div>{checkLengthOfValue(weight, "կգ")} </div>
+                <div className=" flex justify-start items-center  w-[80px]">
+                  <div className="w-full flex justify-start items-center">
+                    {checkLengthOfValue(weight, "կգ")}{" "}
+                  </div>
                 </div>
-                <div className="flex justify-start items-center pl-[6px] w-[70px]">
-                  <div className="text-[#1C90F3]">
+                <div className="flex justify-start items-center  w-[70px]">
+                  <div className="w-full flex justify-start items-center text-[#1C90F3]">
                     {checkLengthOfValue(rate, "$")}
                   </div>
                 </div>
                 {boardType === "load" && (
-                  <div className="flex justify-start items-center  w-[70px]">
+                  <div
+                    className="flex justify-center items-center  w-[30px]"
+                    title="Դիտել քարտեզի վրա"
+                  >
                     <Link
                       to={`/dashboard/preview/${id}`}
                       target="_blank"
                       type="button"
-                      className=" font-light   bg-slate-500 hover:bg-slate-400 text-white focus:outline-none    focus:ring-0  rounded-xl text-[11px] px-[13px] py-[3px]  flex justify-center items-center transition-all"
+                      className="flex justify-center items-center"
                       onClick={(e) => {
                         e.stopPropagation();
                       }}
                     >
-                      Քարտեզ
+                      <span className="font-extrabold text-slate-600 hover:text-[#1C90F3] transition-all duration-200"><GiPathDistance fontSize={20}/></span>
                     </Link>
                   </div>
                 )}

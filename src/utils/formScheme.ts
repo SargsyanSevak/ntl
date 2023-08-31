@@ -1,6 +1,5 @@
 import * as yup from "yup";
 
-
 const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#\$%\^&\*\.\-_])(?=.{8,})/;
 
 export const schema = yup.object().shape({
@@ -19,9 +18,10 @@ export const schema = yup.object().shape({
 export const registerSchema = yup.object().shape({
   firstName: yup.string().required("Խնդրում ենք նշել Ձեր անունը"),
   lastName: yup.string().required("Խնդրում ենք նշել Ձեր ազգանունը"),
-  userType: yup.string()
-  .oneOf(['carrier','customer'], 'Գործունեության տեսակը պարտադիր է')
-  .required("Գործունեության տեսակը պարտադիր է"),
+  userType: yup
+    .string()
+    .oneOf(["carrier", "customer"], "Գործունեության տեսակը պարտադիր է")
+    .required("Գործունեության տեսակը պարտադիր է"),
   companyName: yup
     .string()
     .required("Խնդրում ենք նշել Ձեր ընկերության անվանումը"),
@@ -47,15 +47,29 @@ export const loginSchema = yup.object().shape({
     .required("Էլ. հասցեն պարտադիր է"),
 
   password: yup.string().required("Գաղտնաբառը պարտադիր է"),
-  userType: yup.string()
-  .oneOf(['carrier', 'subcarrier', 'customer', 'subCustomer'], 'Գործունեության տեսակը պարտադիր է')
-  .required("Գործունեության տեսակը պարտադիր է"),
+  userType: yup
+    .string()
+    .oneOf(
+      ["carrier", "subCarrier", "customer", "subCustomer"],
+      "Գործունեության տեսակը պարտադիր է"
+    )
+    .required("Գործունեության տեսակը պարտադիր է"),
 });
 
 export const addLoadsSchema = yup.object().shape({
   date: yup.string().required("Խնդրում ենք նշել բարձման օրը"),
-  truckType: yup.string().required("Խնդրում ենք նշել բեռնատարի տեսակը"),
-  loadType: yup.string().required("Խնդրում ենք նշել բեռի տեսակը"),
+  truckType: yup
+    .string()
+    .required("Խնդրում ենք նշել բեռնատարի տեսակը")
+    .oneOf(
+      ["տենտ", "ռեֆ", "կոնտեյներ", "ավիա"],
+      "Խնդրում ենք նշել բեռնատարի տեսակը"
+    ),
+  loadType: yup.string().required("Խնդրում ենք նշել բեռի տեսակը")
+   .oneOf(
+    ["ամբողջական", "հավաքական"],
+    "Խնդրում ենք նշել բեռի տեսակը"
+  ),
   pickup: yup.string().required("Խնդրում ենք նշել բարձման վայրը"),
   delivery: yup.string().required("Խնդրում ենք նշել դատարկման վայրը"),
   length: yup.number(),
@@ -63,6 +77,19 @@ export const addLoadsSchema = yup.object().shape({
   rate: yup.number(),
   commodity: yup.string(),
   comment: yup.string(),
+});
+export const updateLoadsSchema = yup.object().shape({
+  date: yup.string(),
+  truckType: yup.string(),
+  loadType: yup.string(),
+  pickup: yup.string().min(2, "Խնդրում ենք նշել բարձման վայրը"),
+  delivery: yup.string().min(2, "Խնդրում ենք նշել դատարկման վայրը"),
+  length: yup.number(),
+  weight: yup.number(),
+  rate: yup.number(),
+  commodity: yup.string(),
+  comment: yup.string(),
+  status: yup.string(),
 });
 export const recoverPasswordScheme = yup.object().shape({
   email: yup
@@ -92,7 +119,7 @@ export const addTeamMemberSchema = yup.object().shape({
     )
     .min(8, "Գաղնտաբառը պետք է պարունակի մինիմում 8 տառ")
     .required("Խնդրում ենք նշել Ձեր գաղնտաբառը"),
-    repetPassword: yup
+  repetPassword: yup
     .string()
     .matches(
       passwordRegex,
@@ -109,7 +136,7 @@ export const changePasswordScheme = yup.object().shape({
     .matches(/[@.]/, "Էլ. հասցեն պարտադիր է")
     .required("Էլ. հասցեն պարտադիր է"),
 
-  currentPassword: yup.string().required('Դաշտը պարտադիր է'),
-  newPassword: yup.string().required('Դաշտը պարտադիր է'),
-  repetPassword: yup.string().required('Դաշտը պարտադիր է'),
+  currentPassword: yup.string().required("Դաշտը պարտադիր է"),
+  newPassword: yup.string().required("Դաշտը պարտադիր է"),
+  repetPassword: yup.string().required("Դաշտը պարտադիր է"),
 });
