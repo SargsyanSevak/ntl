@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "../../hooks/useTypedSelector";
 import { IoIosArrowDown } from "react-icons/io";
 import Toast from "../../UI/UIToast";
-import { addNewItemThunk } from "../../store/asyncThunk";
+import { addNewItemThunk, getLoadThunk } from "../../store/asyncThunk";
 import DetectCurrentUserType from "../../utils/detectUserType";
 
 export default function AddItems() {
@@ -32,6 +32,7 @@ export default function AddItems() {
       setIsVisible(true);
       setTimeout(()=>{
         setIsVisible(false)
+        dispatch(getLoadThunk())
         reset()
       },3000)
     }else{

@@ -12,7 +12,7 @@
   display: none;
 }
 .maxZindex {
-  z-index: 9999;
+  z-index: 9999 !important;
 }
 .darkMode {
   background: #0e192d;

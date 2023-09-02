@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addNewItemThunk, deleteItemThunk, getLoadThunk, getUserLoadsThunk } from "./asyncThunk";
-// 
+import {
+  addNewItemThunk,
+  deleteItemThunk,
+  getLoadThunk,
+  getUserLoadsThunk,
+  updateNewItemThunk,
+} from "./asyncThunk";
+//
 let initialState: any = {
   load: [
     // {
@@ -43,7 +49,7 @@ let initialState: any = {
     // },
   ],
   isLoading: true,
-  isEmpty:false
+  isEmpty: false,
 };
 
 const loadSlice = createSlice({
@@ -95,15 +101,14 @@ const loadSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getLoadThunk.fulfilled, (state, { payload }) => {
-
-      state.load = payload.data
-      if(payload.request.status === 200){
-        if(!payload.data?.length){
-          state.isEmpty = true
+      state.load = payload.data;
+      if (payload.request.status === 200) {
+        if (!payload.data?.length) {
+          state.isEmpty = true;
         }
-        state.isLoading = false
-      }else{
-        state.isLoading = true
+        state.isLoading = false;
+      } else {
+        state.isLoading = true;
       }
     });
     builder.addCase(getUserLoadsThunk.fulfilled, (state, { payload }) => {
@@ -112,12 +117,22 @@ const loadSlice = createSlice({
     builder.addCase(addNewItemThunk.fulfilled, (state, { payload }) => {
       state.userLoads.push(payload);
     });
+    builder.addCase(updateNewItemThunk.fulfilled, (state, { payload }) => {
+      state.userLoads = state.userLoads.map(
+        (el: any) =>{
+          if(el._id === payload._id){
+            return payload
+          }else{
+            return el
+          }
+        }
+      );
+    });
     builder.addCase(deleteItemThunk.fulfilled, (state, { payload }) => {
-      console.log(payload)
-
-      state.userLoads= state.userLoads.filter((el:any)=> el._id != payload.id)
-      
-      console.log(payload)
+      const deletedItemId = payload.id;
+      state.userLoads = state.userLoads.filter(
+        (el: any) => el._id !== deletedItemId
+      );
     });
   },
 });

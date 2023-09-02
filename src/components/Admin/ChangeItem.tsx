@@ -48,8 +48,8 @@ const ChangeItem: React.FC = ({}) => {
         </div>
         <div className="w-full sm:w-[48%] lg:w-[80px]"></div>
       </div>
-      {userLoads.map((el: any, i: number) => (
-        <div key={i}>
+      {userLoads.map((el: any) => (
+        <div key={el._id}>
           <ChangeLoadItem {...el} />
         </div>
       ))}

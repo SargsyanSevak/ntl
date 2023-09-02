@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { RxUpdate } from "react-icons/rx";
+import { getLoadThunk } from "../store/asyncThunk";
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 
 const LoadItemTitle = ({boardType}:any) => {
     const [isUpdated, setIsUpdated] = useState(false);
+    const dispatch = useTypedDispatch()
     const handleUpdateData = () => {
         setIsUpdated(true);
+        dispatch(getLoadThunk())
         setTimeout(() => {
           setIsUpdated(false);
+         
         }, 2000);
       };
   return (
@@ -14,7 +19,7 @@ const LoadItemTitle = ({boardType}:any) => {
       <div className="w-full h-[28px] bg-gray-300 dark:bg-[#27374D] dark:text-white text-[10px]  flex justify-around gap-[1px] font-semibold text-slate-700 mb-[2px]">
         <div className=" flex justify-start items-center pl-[12px] w-[50px] text-[14px] font-bold">
           <div title={"վերջին թարմացումը"} className="cursor-pointer">
-            <span onClick={handleUpdateData}>
+            <span onClick={handleUpdateData} >
               <RxUpdate className={` ${isUpdated ? "animate-rotate" : ""}`} />
             </span>
           </div>

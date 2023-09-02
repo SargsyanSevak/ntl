@@ -87,9 +87,9 @@ const AdminAside: React.FC = () => {
     }
   };
   useEffect(() => {
-    setTimeout(() => {
+  
       detectUserType();
-    });
+  
   }, []);
 
   const handleOutsideClick = (event: MouseEvent) => {

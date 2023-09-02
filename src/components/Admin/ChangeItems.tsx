@@ -24,6 +24,8 @@ const ChangeItems = ({
 }: any) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [isDeleted,setIsDeleted] = useState(false)
+  const [isUpdated,setIsUpdated] = useState(false)
   const dispatch = useTypedDispatch();
   const ref = useRef<any>(null);
   const makeDisabled = () => {
@@ -46,6 +48,10 @@ const ChangeItems = ({
     } else {
       dispatch(updateNewItemThunk({ ...data, id: _id }));
       setIsDisabled(true);
+      setIsVisible(true)
+      setTimeout(()=>{
+        setIsVisible(false)
+      },3000)
     }
   };
 
@@ -208,6 +214,7 @@ const ChangeItems = ({
             className={`text-[25px] text-red-600 hover:text-red-800 transition-all ${
               isDisabled ? "hidden" : "lg:block hidden"
             } cursor-pointer`}
+            onClick={()=>setIsDisabled(true)}
           >
             <FiX />
           </div>
@@ -264,10 +271,17 @@ const ChangeItems = ({
           className={`px-4 py-2 bg-red-500 text-white rounded-md  ${
             isDisabled ? "hidden" : "block lg:hidden"
           }`}
+          onClick={()=>setIsDisabled(true)}
         >
           Չեղարկել
         </div>
       </div>
+      <Toast
+        type="success"
+        message={"Ձեր բեռը հաջողությամբ թարմացվել է"}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
     </>
   );
 };

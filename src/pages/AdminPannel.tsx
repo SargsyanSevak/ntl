@@ -14,6 +14,8 @@ const AdminPannel = () => {
   const dispatch = useTypedDispatch();
 
   const currentUserType = getUserType()
+  const userType= DetectCurrentUserType();
+  
   useEffect(() => {
     dispatch(getUserLoadsThunk({ userType: user.userType ? user.userType : currentUserType }));
   }, []);
