@@ -11,12 +11,12 @@ import { motion as m } from "framer-motion";
 import DetectCurrentUserType from "../../utils/detectUserType";
 import UILoader from "../../UI/UILoader";
 
-const staggerChildren = 0.5; // Stagger interval
-const baseDuration = 0.3; // Base animation duration
+const staggerChildren = 0.5;
+const baseDuration = 0.3;
 
 const calculateDuration = (index: number) => {
-  // You can adjust this formula to suit your needs
-  return baseDuration + index * 0.5; // Example: Increase duration by 0.1 seconds per index
+
+  return baseDuration + index * 0.5; 
 };
 const AdminHeader = () => {
   const [loading, setLoading] = useState(false);
@@ -104,17 +104,7 @@ const AdminHeader = () => {
           </ul>
         </nav>
 
-        <m.div
-          className="flex items-center  gap-4"
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            delay: 0.4,
-            duration: 0.5,
-            staggerChildren,
-            type: "spring",
-          }}
-        >
+        <div className="flex items-center  gap-4">
           <div className=" font-bold text-sm">
             <ul className="flex  gap-2">
               <li className="active cursor-pointer">Հայ</li>
@@ -142,7 +132,7 @@ const AdminHeader = () => {
               <AdminAside />
             </div>
           </div>
-        </m.div>
+        </div>
       </div>
     </header>
   );

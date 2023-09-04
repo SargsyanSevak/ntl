@@ -5,7 +5,7 @@ import StatisticsTop from "../components/Admin/StatisticsTop";
 import { Helmet } from "react-helmet";
 import DetectCurrentUserType from "../utils/detectUserType";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
-import { getUserLoadsThunk } from "../store/asyncThunk";
+import { getUserLoadsThunk, getUserTrucksThunk } from "../store/asyncThunk";
 import { getUserType } from "../utils/helpers";
 
 const AdminPannel = () => {
@@ -15,10 +15,16 @@ const AdminPannel = () => {
 
   const currentUserType = getUserType()
   const userType= DetectCurrentUserType();
-  
+
   useEffect(() => {
-    dispatch(getUserLoadsThunk({ userType: user.userType ? user.userType : currentUserType }));
-  }, []);
+    if(userType == 'customer'){
+      dispatch(getUserLoadsThunk({ userType: user.userType ? user.userType : currentUserType }));
+    }else{
+      dispatch(getUserTrucksThunk({ userType: user.userType ? user.userType : currentUserType }));
+    }
+   
+  }, [userType]);
+
 
   return (
     <section className="w-full bg-red-600">

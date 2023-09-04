@@ -3,16 +3,24 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AddLoadProps } from "../../interfaces/LoadProps";
 import { useState } from "react";
-import { useTypedDispatch, useTypedSelector } from "../../hooks/useTypedSelector";
+import {
+  useTypedDispatch,
+  useTypedSelector,
+} from "../../hooks/useTypedSelector";
 import { IoIosArrowDown } from "react-icons/io";
 import Toast from "../../UI/UIToast";
-import { addNewItemThunk, getLoadThunk } from "../../store/asyncThunk";
+import {
+  addNewItemThunk,
+  addNewTruckThunk,
+  getLoadThunk,
+  getTruckThunk,
+} from "../../store/asyncThunk";
 import DetectCurrentUserType from "../../utils/detectUserType";
 
 export default function AddItems() {
   const [isVisible, setIsVisible] = useState(false);
   const { user } = useTypedSelector((state) => state.user);
-  const dispatch = useTypedDispatch()
+  const dispatch = useTypedDispatch();
   const currentUserType = DetectCurrentUserType();
 
   const {
@@ -27,18 +35,29 @@ export default function AddItems() {
 
   const onSubmit = async (data: any) => {
     if (isValid) {
-      const {userType,parent} = user
-      dispatch(addNewItemThunk({...data,userType,parent}))
-      setIsVisible(true);
-      setTimeout(()=>{
-        setIsVisible(false)
-        dispatch(getLoadThunk())
-        reset()
-      },3000)
-    }else{
-      alert("some error was accured during adding")
+      const { userType, parent } = user;
+      if (currentUserType === "customer") {
+        dispatch(addNewItemThunk({ ...data, userType, parent }));
+        dispatch(getLoadThunk());
+        setIsVisible(true);
+        setTimeout(() => {
+          setIsVisible(false);
+
+          reset();
+        }, 3000);
+      } else if (currentUserType === "carrier") {
+        dispatch(addNewTruckThunk({ ...data, userType, parent }));
+        dispatch(getTruckThunk());
+        setIsVisible(true);
+        setTimeout(() => {
+          setIsVisible(false);
+
+          reset();
+        }, 3000);
+      }
+    } else {
+      alert("some error was accured during adding");
     }
-   
   };
   return (
     <>
@@ -218,23 +237,23 @@ export default function AddItems() {
                   />
                 </div>
               </div>
-              {currentUserType === "customer"  && (
-                  <div className="sm:col-span-3 ">
-                    <label className="block text-sm font-medium leading-6 text-gray-900">
-                      Ապրանքի տեսակ
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        id="commodity"
-                        autoComplete="given-commodity"
-                        placeholder="օր. գինի"
-                        className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
-                        {...register("commodity")}
-                      />
-                    </div>
+              {currentUserType === "customer" && (
+                <div className="sm:col-span-3 ">
+                  <label className="block text-sm font-medium leading-6 text-gray-900">
+                    Ապրանքի տեսակ
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      id="commodity"
+                      autoComplete="given-commodity"
+                      placeholder="օր. գինի"
+                      className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
+                      {...register("commodity")}
+                    />
                   </div>
-                )}
+                </div>
+              )}
 
               <div
                 className={`${
@@ -280,7 +299,7 @@ export default function AddItems() {
       </form>
       <Toast
         type="success"
-        message="Ձեր բեռը հաջողությամբ ավելացվել է"
+        message={`Ձեր ${currentUserType === 'customer' ? 'բեռը' : 'բեռնատարը'} հաջողությամբ ավելացվել է`}
         isVisible={isVisible}
         setIsVisible={setIsVisible}
       />

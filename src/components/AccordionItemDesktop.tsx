@@ -10,8 +10,7 @@ import CallOptions from "./CallOptions";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { GiPathDistance } from "react-icons/gi";
-
-
+import DetectCurrentUserType from "../utils/detectUserType";
 
 function calculateFormattedPostAge(postTimestamp: number): string {
   const now = Date.now();
@@ -34,7 +33,8 @@ const AccordionItemDesktop = ({
   delivery,
   distance,
   customerInfo,
-  contact,
+  contactInfo,
+  subContactInfo,
   length,
   weight,
   rate,
@@ -42,14 +42,14 @@ const AccordionItemDesktop = ({
   comment,
   boardType,
   updatedAt,
-  subCustomerInfo,
 }: any) => {
   const mydate = new Date(updatedAt).getTime();
   const [formattedAge, setFormattedAge] = useState("");
-  const [clicked,setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
+  const userType = DetectCurrentUserType();
   const handleClick = () => {
-    setClicked(true)
-  }
+    setClicked(true);
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       const age = calculateFormattedPostAge(mydate);
@@ -64,6 +64,16 @@ const AccordionItemDesktop = ({
     };
   }, [mydate]);
 
+  const renderContactInformation = (main: any, sub: any):any => {
+
+    if( sub?.phoneNumber || main?.phoneNumber){
+      return  <CallOptions contact={sub ? sub?.phoneNumber : main?.phoneNumber} />
+    }else{
+      return ( <a href={`mailto:${sub ? sub?.email : main?.email}`}>
+      {sub ? sub?.email : main?.email}
+    </a>)
+    }
+  };
 
 
   return (
@@ -71,11 +81,20 @@ const AccordionItemDesktop = ({
       <Accordion className="lg:block hidden" as="div">
         <AccordionItem>
           <AccordionHeader className="AccordionHeader" as="div">
-            <div className="max-w-[2000px] lg:flex hidden " onClick={handleClick}>
-              <div className={`w-full  h-[35px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[12px] ${clicked ? 'font-normal' : 'font-semibold'} flex justify-around gap-[1px]`}>
+            <div
+              className="max-w-[2000px] lg:flex hidden "
+              onClick={handleClick}
+            >
+              <div
+                className={`w-full  h-[35px] bg-slate-200 dark:bg-slate-700 dark:text-slate-200  text-[12px] ${
+                  clicked ? "font-normal" : "font-semibold"
+                } flex justify-around gap-[1px]`}
+              >
                 <div className="flex justify-start items-center  w-[50px]">
-                  <div className="flex justify-start items-center">{formattedAge}</div>
-                </div> 
+                  <div className="flex justify-start items-center">
+                    {formattedAge}
+                  </div>
+                </div>
                 <div className=" flex justify-start items-center  w-[50px]">
                   <div className="w-full flex justify-start items-center ">
                     {date.slice(5)}
@@ -118,7 +137,10 @@ const AccordionItemDesktop = ({
                 </div>
                 <div className=" flex justify-start items-center  w-[70px]">
                   <div className="w-full flex justify-start items-center">
-                  <p className="flex justify-start items-center w-full"> {distance}2300կմ</p> 
+                    <p className="flex justify-start items-center w-full">
+                      {" "}
+                      {distance}2300կմ
+                    </p>
                   </div>
                 </div>
                 <div className=" flex justify-start items-center w-[170px] text-[#1C90F3]">
@@ -126,7 +148,7 @@ const AccordionItemDesktop = ({
                     title={customerInfo?.companyName}
                     className="w-full flex justify-start items-center"
                   >
-                    {CutString(customerInfo?.companyName)}
+                    {CutString(contactInfo?.companyName)}
                   </div>
                 </div>
                 <div className=" flex justify-start items-center  w-[170px] overflow-hidden">
@@ -136,30 +158,9 @@ const AccordionItemDesktop = ({
                       e.stopPropagation();
                     }}
                   >
-                    {subCustomerInfo?.phoneNumber ||
-                    customerInfo?.phoneNumber ? (
-                      <CallOptions
-                        contact={
-                          subCustomerInfo
-                            ? subCustomerInfo?.phoneNumber
-                            : customerInfo?.phoneNumber
-                        }
-                      />
-                    ) : (
-                      <a
-                        href={`mailto:${
-                          subCustomerInfo
-                            ? subCustomerInfo?.email
-                            : customerInfo?.email
-                        }`}
-                      >
-                        {
-                          subCustomerInfo
-                            ? subCustomerInfo?.email
-                            : customerInfo?.email
-                        }
-                      </a>
-                    )}
+                    {
+                      renderContactInformation(contactInfo,subContactInfo)
+                    }
                   </div>
                 </div>
                 <div className=" flex justify-start items-center  w-[50px]">
@@ -191,7 +192,9 @@ const AccordionItemDesktop = ({
                         e.stopPropagation();
                       }}
                     >
-                      <span className="font-extrabold text-slate-600 hover:text-[#1C90F3] transition-all duration-200"><GiPathDistance fontSize={20}/></span>
+                      <span className="font-extrabold text-slate-600 hover:text-[#1C90F3] transition-all duration-200">
+                        <GiPathDistance fontSize={20} />
+                      </span>
                     </Link>
                   </div>
                 )}

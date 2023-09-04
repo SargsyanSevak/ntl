@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import { testTrucks } from "../data/testTrucks";
 import { TruckProps } from "../interfaces/TruckProps";
 import AccordionItemDesktop from "./AccordionItemDesktop";
-import { getLoadThunk } from "../store/asyncThunk";
+import { getLoadThunk, getTruckThunk } from "../store/asyncThunk";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 import { useLocation } from "react-router-dom";
 
@@ -13,7 +13,8 @@ export default function LoadItemDesktop({ boardType }: any) {
   const [next, setNext] = useState<number>(itemsPerRow);
   const [loadData, setLoadData] = useState<LoadProps[] | TruckProps[]>([]);
   const dispatch = useTypedDispatch();
-  const { load,isLoading,isEmpty } = useTypedSelector((state) => state.load);
+  const { load, isLoading, isEmpty } = useTypedSelector((state) => state.load);
+  const { truck,isLoadingTruck, isEmptyTruck} = useTypedSelector((state) => state.truck);
   const { pathname } = useLocation();
 
   const detectBoardType = async () => {
@@ -21,16 +22,17 @@ export default function LoadItemDesktop({ boardType }: any) {
       setLoadData(load);
       return;
     } else {
-      setLoadData(testTrucks);
+      setLoadData(truck);
     }
   };
 
   useEffect(() => {
     detectBoardType();
-  }, [load]);
+  }, [load,truck]);
 
   useEffect(() => {
     dispatch(getLoadThunk());
+    dispatch(getTruckThunk());
   }, []);
 
   const handleMoreLoads = () => {
@@ -42,9 +44,13 @@ export default function LoadItemDesktop({ boardType }: any) {
       <div>
         {isLoading ? (
           <div className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
-           <Loader/>
+            <Loader />
           </div>
-        ) : isEmpty ? <p className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">Բեռներ չի գտնվել</p> : (
+        ) : isEmpty ? (
+          <p className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
+            Բեռներ չի գտնվել
+          </p>
+        ) : (
           <>
             {pathname === "/" ? (
               load?.slice(0, next)?.map((el: any, i: any) => (
@@ -53,7 +59,7 @@ export default function LoadItemDesktop({ boardType }: any) {
                 </div>
               ))
             ) : pathname.includes("/trucks") ? (
-              testTrucks.slice(0, next)?.map((el: any, i: any) => (
+              truck.slice(0, next)?.map((el: any, i: any) => (
                 <div key={i} className="pb-[2px]">
                   <AccordionItemDesktop {...el} i={i} boardType={boardType} />
                 </div>

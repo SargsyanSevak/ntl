@@ -12,16 +12,33 @@ const StatisticsTop: React.FC = () => {
   const userType = DetectCurrentUserType();
   const { pathname } = useLocation();
   const { userLoads } = useTypedSelector((state) => state.load);
+  const { userTrucks} = useTypedSelector((state) => state.truck);
+
 
   const onRoadLoads = () => {
-   return  userLoads.filter ((el:any) => el?.status === 'onRoad').length
+    if(userType === 'customer'){
+      return  userLoads.filter ((el:any) => el?.status === 'onRoad').length
+    }else{
+      return userTrucks.filter ((el:any) => el?.status === 'onRoad').length
+    }
   }
   const deliveredLoads = () => {
-   return  userLoads.filter ((el:any) => el?.status === 'delivered').length
+    if(userType === 'customer'){
+      return  userLoads.filter ((el:any) => el?.status === 'delivered').length
+    }else{
+      return userTrucks.filter ((el:any) => el?.status === 'delivered').length
+    }
+  
   }
   const paidLoads = () => {
-   return  userLoads.filter ((el:any) => el?.status === 'paid').length
+    if(userType === 'customer'){
+      return  userLoads.filter ((el:any) => el?.status === 'paid').length
+    }else{
+      return  userTrucks.filter ((el:any) => el?.status === 'paid').length
+    }
+ 
   }
+
   const dynamicStatisticTitle = useMemo(() => {
     switch (pathname) {
       case "/admin":
@@ -115,7 +132,7 @@ const StatisticsTop: React.FC = () => {
               <BsFillBoxFill />
             </div>
             <div className=" md:block flex items-center gap-2">
-              <h4 className="text-[25px]">{userLoads.length}</h4>
+              <h4 className="text-[25px]">{userType === 'customer' ? userLoads?.length : userTrucks?.length}</h4>
               <p className="text-[14px] text-gray-500">
                 Ընդհանուր{" "}
                 <span>

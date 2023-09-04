@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import DetectCurrentUserType from "./detectUserType";
 
 export const saveToken = (token) => {
   try {
@@ -79,3 +80,49 @@ export const getTokens = () => {
   }
 };
 
+
+export const renderContactInformation = () => {
+  const currentUserType = DetectCurrentUserType();
+  if(currentUserType === 'customer'){
+
+  }else{
+
+  }
+}
+{/* <div className=" flex justify-start items-center  w-[170px] overflow-hidden">
+                  <div
+                    className="cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                      {
+                        
+                      }
+
+                    {subCustomerInfo?.phoneNumber ||
+                    customerInfo?.phoneNumber ? (
+                      <CallOptions
+                        contact={
+                          subCustomerInfo
+                            ? subCustomerInfo?.phoneNumber
+                            : customerInfo?.phoneNumber
+                        }
+                      />
+                    ) : (
+                      <a
+                        href={`mailto:${
+                          subCustomerInfo
+                            ? subCustomerInfo?.email
+                            : customerInfo?.email
+                        }`}
+                      >
+                        {
+                          subCustomerInfo
+                            ? subCustomerInfo?.email
+                            : customerInfo?.email
+                        }
+                      </a>
+                    )}
+                  </div>
+                </div> */}

@@ -7,7 +7,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTypedDispatch } from "../../hooks/useTypedSelector";
 import Toast from "../../UI/UIToast";
-import { deleteItemThunk, updateNewItemThunk } from "../../store/asyncThunk";
+import { deleteItemThunk, deleteTruckThunk, updateNewItemThunk, updateNewTruckThunk } from "../../store/asyncThunk";
+import DetectCurrentUserType from "../../utils/detectUserType";
 
 const ChangeItems = ({
   _id,
@@ -26,6 +27,7 @@ const ChangeItems = ({
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [isDeleted,setIsDeleted] = useState(false)
   const [isUpdated,setIsUpdated] = useState(false)
+  const userType = DetectCurrentUserType();
   const dispatch = useTypedDispatch();
   const ref = useRef<any>(null);
   const makeDisabled = () => {
@@ -43,10 +45,19 @@ const ChangeItems = ({
   });
 
   const onSubmit = async (data: any) => {
-    if (data.status === "delete") {
+    if(userType === 'customer' && data.status === "delete"){
       dispatch(deleteItemThunk({ id: _id }));
-    } else {
+    }else if(userType === 'carrier' && data.status === "delete"){
+      dispatch(deleteTruckThunk({ id: _id }));
+    }else if(userType === 'customer' && data.status !== "delete"){
       dispatch(updateNewItemThunk({ ...data, id: _id }));
+      setIsDisabled(true);
+      setIsVisible(true)
+      setTimeout(()=>{
+        setIsVisible(false)
+      },3000)
+    }else if(userType === 'carrier' && data.status !== "delete") {
+      dispatch(updateNewTruckThunk({ ...data, id: _id }));
       setIsDisabled(true);
       setIsVisible(true)
       setTimeout(()=>{
@@ -278,7 +289,7 @@ const ChangeItems = ({
       </div>
       <Toast
         type="success"
-        message={"Ձեր բեռը հաջողությամբ թարմացվել է"}
+        message={`Ձեր ${userType === 'customer' ? 'բեռը' : 'բեռնատարը'}  հաջողությամբ թարմացվել է`}
         isVisible={isVisible}
         setIsVisible={setIsVisible}
       />

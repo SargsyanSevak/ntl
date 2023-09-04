@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addNewItemThunk,
+  addNewTruckThunk,
   deleteItemThunk,
-  getLoadThunk,
-  getUserLoadsThunk,
+  deleteTruckThunk,
+  getTruckThunk,
+  getUserTrucksThunk,
   updateNewItemThunk,
+  updateNewTruckThunk,
 } from "./asyncThunk";
-//
+
 let initialState: any = {
-  load: [
+  truck: [
     // {
     //   id: "",
     //   age: "",
@@ -28,7 +31,7 @@ let initialState: any = {
     //   comment: "",
     // },
   ],
-  userLoads: [
+  userTrucks: [
     // {
     //   id: "",
     //   age: "",
@@ -48,16 +51,16 @@ let initialState: any = {
     //   comment: "",
     // },
   ],
-  isLoading: true,
-  isEmpty: false,
+  isLoadingTruck: true,
+  isEmptyTruck: false,
 };
 
-const itemSlice = createSlice({
+const truckSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     removeUser: (state) => {
-      state.load = [
+      state.truck = [
         {
           id: "",
           age: "",
@@ -67,17 +70,16 @@ const itemSlice = createSlice({
           pickup: "",
           delivery: "",
           distance: null,
-          customerInfo: { companyName: "", email: "", phoneNumber: "" },
-          subCustomerInfo: { email: "", phoneNumber: "" },
+          carrierInfo: { companyName: "", email: "", phoneNumber: "" },
+          subCarrierrInfo: { email: "", phoneNumber: "" },
           length: null,
           weight: null,
           rate: null,
           status: "",
-          commodity: "",
           comment: "",
         },
       ];
-      state.userLoad = [
+      state.userTruck = [
         {
           id: "",
           age: "",
@@ -87,56 +89,53 @@ const itemSlice = createSlice({
           pickup: "",
           delivery: "",
           distance: null,
-          customerInfo: { companyName: "", email: "", phoneNumber: "" },
-          subCustomerInfo: { email: "", phoneNumber: "" },
+          carrierInfo: { companyName: "", email: "", phoneNumber: "" },
+          subCarrierInfo: { email: "", phoneNumber: "" },
           length: null,
           weight: null,
           rate: null,
           status: "",
-          commodity: "",
           comment: "",
         },
       ];
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getLoadThunk.fulfilled, (state, { payload }) => {
-      state.load = payload.data;
+    builder.addCase(getTruckThunk.fulfilled, (state, { payload }) => {
+      state.truck = payload.data;
       if (payload.request.status === 200) {
         if (!payload.data?.length) {
-          state.isEmpty = true;
+          state.isEmptyTruck = true;
         }
-        state.isLoading = false;
+        state.isLoadingTruck = false;
       } else {
-        state.isLoading = true;
+        state.isLoadingTruck = true;
       }
     });
-    builder.addCase(getUserLoadsThunk.fulfilled, (state, { payload }) => {
-      state.userLoads = payload.data;
+    builder.addCase(getUserTrucksThunk.fulfilled, (state, { payload }) => {
+      state.userTrucks = payload.data;
     });
-    builder.addCase(addNewItemThunk.fulfilled, (state, { payload }) => {
-      state.userLoads.push(payload);
+    builder.addCase(addNewTruckThunk.fulfilled, (state, { payload }) => {
+      state.userTrucks.push(payload);
     });
-    builder.addCase(updateNewItemThunk.fulfilled, (state, { payload }) => {
-      state.userLoads = state.userLoads.map(
-        (el: any) =>{
-          if(el._id === payload._id){
-            return payload
-          }else{
-            return el
-          }
+    builder.addCase(updateNewTruckThunk.fulfilled, (state, { payload }) => {
+      state.userTrucks = state.userTrucks.map((el: any) => {
+        if (el._id === payload._id) {
+          return payload;
+        } else {
+          return el;
         }
-      );
+      });
     });
-    builder.addCase(deleteItemThunk.fulfilled, (state, { payload }) => {
+    builder.addCase(deleteTruckThunk.fulfilled, (state, { payload }) => {
       const deletedItemId = payload.id;
-      state.userLoads = state.userLoads.filter(
+      state.userTrucks = state.userTrucks.filter(
         (el: any) => el._id !== deletedItemId
       );
-    }); 
+    });
   },
 });
 
-export const { removeUser } = itemSlice.actions;
+export const { removeUser } = truckSlice.actions;
 
-export default itemSlice.reducer;
+export default truckSlice.reducer;

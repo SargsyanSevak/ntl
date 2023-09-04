@@ -9,7 +9,6 @@ import Avatar from "../Avatar";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import DetectCurrentUserType from "../../utils/detectUserType";
 
-
 interface NavigationItem {
   id: number;
   title: string;
@@ -71,26 +70,27 @@ const navigationCarrier: NavigationItem[] = [
 
 const AdminAside: React.FC = () => {
   const { pathname } = useLocation();
-
+  const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [navItems,setNavItems] = useState<NavigationItem[]>([])
+  const [navItems, setNavItems] = useState<NavigationItem[]>([]);
   const menuRef = useRef<HTMLButtonElement>(null);
-  const {user} = useTypedSelector((state)=>state.user)
-  const userType= DetectCurrentUserType();
+  const { user } = useTypedSelector((state) => state.user);
+  const userType = DetectCurrentUserType();
 
   const detectUserType = () => {
     if (userType === "customer") {
       setNavItems(navigation);
-      return;
-    } else {
+      setLoading(false);
+    } else if (userType === "carrier") {
       setNavItems(navigationCarrier);
+      setLoading(false);
+    } else if (userType === "loading") {
+      setLoading(true);
     }
   };
   useEffect(() => {
-  
-      detectUserType();
-  
-  }, []);
+    detectUserType();
+  }, [userType]);
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -138,27 +138,37 @@ const AdminAside: React.FC = () => {
         )}
       </button>
       <aside
-        className={`admin-mobile-menu fixed top-0  right-0 h-full ${userType === 'customer' ? 'w-[280px]' : 'w-[340px]'}  bg-[#141F20] shadow-lg transform ${
+        className={`admin-mobile-menu fixed top-0  right-0 h-full ${
+          userType === "customer" ? "w-[280px]" : "w-[340px]"
+        }  bg-[#141F20] shadow-lg transform ${
           isMenuOpen ? "translate-x-0 aside-shadow" : "translate-x-full"
         } transition-transform duration-200`}
       >
         <div className="pt-12">
           <div className="avatar w-full h-[90px] p-4 flex  gap-4 border-b-2 border-b-gray-500">
             <Avatar />
-            <p className="text-[20px] pt-[6px] text-black font-bold tracking-wider">{user.companyName}</p>
+            <p className="text-[20px] pt-[6px] text-black font-bold tracking-wider">
+              {user.companyName}
+            </p>
           </div>
           <ul className="text-[18px] tracking-wider text-black font-normal	 flex flex-col h-full mt-6">
-            {navItems.map((el) => (
-              <li
-                className={`flex items-center gap-4 h-16 pl-4  ${
-                  pathname === el.to ? "active-link" : ""
-                }`}
-                key={el.id}
-              >
-                <div className="text-[24px]">{el.icon}</div>
-                <Link to={el.to}>{el.title}</Link>
-              </li>
-            ))}
+            {loading ? (
+              <></>
+            ) : (
+              <>
+                {navItems.map((el) => (
+                  <li
+                    className={`flex items-center gap-4 h-16 pl-4  ${
+                      pathname === el.to ? "active-link" : ""
+                    }`}
+                    key={el.id}
+                  >
+                    <div className="text-[24px]">{el.icon}</div>
+                    <Link to={el.to}>{el.title}</Link>
+                  </li>
+                ))}
+              </>
+            )}
           </ul>
         </div>
       </aside>

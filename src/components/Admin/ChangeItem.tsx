@@ -1,21 +1,16 @@
 import React, { useEffect } from "react";
 import ChangeLoadItem from "./ChangeItems";
 import {
-  useTypedDispatch,
   useTypedSelector,
 } from "../../hooks/useTypedSelector";
 import { getUserLoadsThunk } from "../../store/asyncThunk";
 import DetectCurrentUserType from "../../utils/detectUserType";
 const ChangeItem: React.FC = ({}) => {
 
-  const { user } = useTypedSelector((state) => state.user);
-  const dispatch = useTypedDispatch();
+
   const { userLoads } = useTypedSelector((state) => state.load);
+  const { userTrucks } = useTypedSelector((state) => state.truck);
   const currentUserType = DetectCurrentUserType();
-  console.log(userLoads)
-  // useEffect(() => {
-  //   dispatch(getUserLoadsThunk({ userType: user.userType }));
-  // }, []);
 
   return (
     <div className="relative z-40 flex flex-col bg-inherit">
@@ -48,11 +43,23 @@ const ChangeItem: React.FC = ({}) => {
         </div>
         <div className="w-full sm:w-[48%] lg:w-[80px]"></div>
       </div>
-      {userLoads.map((el: any) => (
-        <div key={el._id}>
-          <ChangeLoadItem {...el} />
-        </div>
-      ))}
+      {currentUserType === "customer" ? (
+        <>
+          {userLoads.map((el: any) => (
+            <div key={el._id}>
+              <ChangeLoadItem {...el} />
+            </div>
+          ))}
+        </>
+      ) : (
+        <>
+          {userTrucks.map((el: any) => (
+            <div key={el._id}>
+              <ChangeLoadItem {...el} />
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
