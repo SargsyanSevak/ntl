@@ -1,17 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { testload } from "../../data/testload";
 import ChangeLoadItem from "./ChangeItems";
-import {
-  useTypedSelector,
-} from "../../hooks/useTypedSelector";
-import { getUserLoadsThunk } from "../../store/asyncThunk";
-import DetectCurrentUserType from "../../utils/detectUserType";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 const ChangeItem: React.FC = ({}) => {
-
-
-  const { userLoads } = useTypedSelector((state) => state.load);
-  const { userTrucks } = useTypedSelector((state) => state.truck);
-  const currentUserType = DetectCurrentUserType();
-
+  const {user} = useTypedSelector((state)=>state.user)
   return (
     <div className="relative z-40 flex flex-col bg-inherit">
       <div className="w-full h-8 bg-slate-700 px-4 lg:flex hidden justify-between items-center gap-2 text-[13px] text-gray-400 font-semibold">
@@ -25,9 +17,7 @@ const ChangeItem: React.FC = ({}) => {
           Բարձում
         </div>
         <div className="w-full sm:w-[48%] lg:w-[350px] pl-1 flex items-center">
-          {currentUserType === "customer"
-            ? "Բեռնաթափում"
-            : "Նախընտրելի ուղղություն"}
+         {user.userType === 'customer' ? 'Բեռնաթափում' : 'Նախընտրելի ուղղություն'} 
         </div>
         <div className="w-full sm:w-[48%] lg:w-[100px] pl-1 flex items-center">
           Ծավալ
@@ -43,23 +33,9 @@ const ChangeItem: React.FC = ({}) => {
         </div>
         <div className="w-full sm:w-[48%] lg:w-[80px]"></div>
       </div>
-      {currentUserType === "customer" ? (
-        <>
-          {userLoads.map((el: any) => (
-            <div key={el._id}>
-              <ChangeLoadItem {...el} />
-            </div>
-          ))}
-        </>
-      ) : (
-        <>
-          {userTrucks.map((el: any) => (
-            <div key={el._id}>
-              <ChangeLoadItem {...el} />
-            </div>
-          ))}
-        </>
-      )}
+      {testload.map((el) => (
+        <ChangeLoadItem {...el} />
+      ))}
     </div>
   );
 };

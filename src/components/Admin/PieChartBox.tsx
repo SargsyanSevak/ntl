@@ -20,7 +20,7 @@ const PieChartBox = () => {
   }
   return (
     <div className="pieChartBox">
-      <h1>{user.userType === "customer" || user.userType === "subCustomer" ? 'Բեռների վիճակագրություն' : 'Բեռնատարների վիճակագրություն'}</h1>
+      <h1>{user.userType === 'customer' ? 'Բեռների վիճակագրություն' : 'Բեռնատարների վիճակագրություն'}</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height={300}>
           <PieChart>

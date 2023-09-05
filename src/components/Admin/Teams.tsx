@@ -50,7 +50,7 @@ const Teams = () => {
           <p>({teamData.length})</p>
         </div>
         <div className="add-team">
-          <button className="bg-transparent hover:bg-[#1C90F3] text-[#1C90F3] hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded transition-all duration-200"
+          <button className="bg-transparent hover:bg-[#1C90F3] text-[#1C90F3] hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
             onClick={handleAddNewTeamMember}
           >
             Ավելացնել
@@ -84,8 +84,8 @@ const Teams = () => {
                     </th>
                   </tr>
                 </thead>
-                {teamData.map((el,i) => (
-                  <TeamMember {...el} key={i}/>
+                {teamData.map((el) => (
+                  <TeamMember {...el} />
                 ))}
               </table>
             </div>
