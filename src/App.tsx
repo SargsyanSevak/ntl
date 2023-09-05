@@ -25,6 +25,7 @@ import ChangeItem from "./components/Admin/ChangeItem";
 import { useTypedDispatch } from "./hooks/useTypedSelector";
 import { useEffect } from "react";
 import { authMe } from "./store/asyncThunk";
+import TestInput from "./pages/TestInput";
 
 function App() {
   const dispatch = useTypedDispatch();
@@ -43,6 +44,7 @@ function App() {
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" index element={<Dashboard />} />
         <Route path="/trucks" element={<TrucksBoard />} />
+        <Route path="/testInput" element={<TestInput />} />
         <Route
           path="/admin"
           element={
