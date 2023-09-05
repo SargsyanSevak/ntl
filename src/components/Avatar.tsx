@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import ModalContact from "./ContactMe";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
@@ -11,7 +11,7 @@ const Avatar = ({ showDropDown }: any) => {
   const { pathname } = useLocation();
   const { user } = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
-
+  const navigate = useNavigate();
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -24,6 +24,9 @@ const Avatar = ({ showDropDown }: any) => {
 
   const logOutUser = () => {
     dispatch(removeUser());
+    if (pathname.includes("admin")) {
+      navigate("/");
+    }
   };
 
   const avatarWords = (fullName: string): string => {
@@ -32,7 +35,12 @@ const Avatar = ({ showDropDown }: any) => {
     if (fullNameArr.length === 2) {
       return `${fullNameArr[0][0]}${fullNameArr[1][0]}`.toUpperCase();
     } else if (fullNameArr.length === 1) {
-      return `${fullNameArr[0][0]}${fullNameArr[0][1]}`.toUpperCase();
+      if(fullNameArr[0] === ''){
+        return ''
+      }else{
+        return `${fullNameArr[0][0]}${fullNameArr[0][1]}`.toUpperCase();
+      }
+      
     } else {
       return "";
     }
@@ -90,7 +98,8 @@ const Avatar = ({ showDropDown }: any) => {
               <li>
                 <Link
                   to="/admin"
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  target="_blank"
+                  className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Իմ էջը
                 </Link>
@@ -98,7 +107,7 @@ const Avatar = ({ showDropDown }: any) => {
             )}
             <li>
               <button
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                className=" w-full flex justify-start items-start  px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 onClick={handleOpenModal}
               >
                 Հետադարձ կապ

@@ -1,34 +1,38 @@
 import { useEffect, useState } from "react";
-import { testload } from "../data/testload";
 import { LoadProps } from "../interfaces/LoadProps";
-import Loader from "./Loader"; 
+import Loader from "./Loader";
 import { testTrucks } from "../data/testTrucks";
-import Accordion from "./Accordion";
 import { TruckProps } from "../interfaces/TruckProps";
 import AccordionItemDesktop from "./AccordionItemDesktop";
-
+import { getLoadThunk, getTruckThunk } from "../store/asyncThunk";
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
+import { useLocation } from "react-router-dom";
 
 export default function LoadItemDesktop({ boardType }: any) {
   const itemsPerRow = 50;
-  const [expanded, setExpanded] = useState<false | number>(false);
   const [next, setNext] = useState<number>(itemsPerRow);
-  const [isLoading, setIsLoading] = useState(true);
   const [loadData, setLoadData] = useState<LoadProps[] | TruckProps[]>([]);
+  const dispatch = useTypedDispatch();
+  const { load, isLoading, isEmpty } = useTypedSelector((state) => state.load);
+  const { truck,isLoadingTruck, isEmptyTruck} = useTypedSelector((state) => state.truck);
+  const { pathname } = useLocation();
 
-
-  const detectBoardType = () => {
+  const detectBoardType = async () => {
     if (boardType === "load") {
-      setLoadData(testload);
+      setLoadData(load);
       return;
     } else {
-      setLoadData(testTrucks);
+      setLoadData(truck);
     }
   };
+
   useEffect(() => {
-    setTimeout(() => {
-      detectBoardType();
-      setIsLoading(false);
-    }, 2000);
+    detectBoardType();
+  }, [load,truck]);
+
+  useEffect(() => {
+    dispatch(getLoadThunk());
+    dispatch(getTruckThunk());
   }, []);
 
   const handleMoreLoads = () => {
@@ -42,18 +46,27 @@ export default function LoadItemDesktop({ boardType }: any) {
           <div className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
             <Loader />
           </div>
+        ) : isEmpty ? (
+          <p className="w-full h-[calc(100vh-110px)]  flex justify-center items-center">
+            Բեռներ չի գտնվել
+          </p>
         ) : (
           <>
-            {loadData.slice(0, next)?.map((el, i) => (
-              <div key={i} className="pb-[2px]">
-                <AccordionItemDesktop
-                  {...el}
-                  i={i}
-                  
-                  boardType={boardType}
-                />
-              </div>
-            ))}
+            {pathname === "/" ? (
+              load?.slice(0, next)?.map((el: any, i: any) => (
+                <div key={i} className="pb-[2px]">
+                  <AccordionItemDesktop {...el} i={i} boardType={boardType} />
+                </div>
+              ))
+            ) : pathname.includes("/trucks") ? (
+              truck.slice(0, next)?.map((el: any, i: any) => (
+                <div key={i} className="pb-[2px]">
+                  <AccordionItemDesktop {...el} i={i} boardType={boardType} />
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
           </>
         )}
         {next < loadData?.length && (

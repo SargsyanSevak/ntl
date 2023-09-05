@@ -4,7 +4,7 @@ export const testload:LoadProps[] = [
     {
         id:'1',
         age: '00:01',
-        date: '07/07',
+        date: '2023-08-29',
         truckType: 'տենտ',
         loadType: 'հավաքական',
         pickup: 'Մոսկվա',
@@ -22,7 +22,7 @@ export const testload:LoadProps[] = [
     {
         id:'2',
         age: '00:02',
-        date: '07/07',
+        date: '2023-08-29',
         truckType: 'տենտ',
         loadType: 'հավաքական',
         pickup: 'Վանաձոր',
@@ -40,7 +40,7 @@ export const testload:LoadProps[] = [
     {
         id:'3',
         age: '00:03',
-        date: '07/07',
+        date: '2023-08-29',
         truckType: 'տենտ',
         loadType: 'հավաքական',
         pickup: 'Մարտունի',

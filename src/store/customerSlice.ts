@@ -70,8 +70,6 @@ const customerSlice = createSlice({
         state.user = payload;
       })
       .addCase(authMe.fulfilled, (state, { payload }) => {
-        console.log("payload");
-        console.log(payload);
         state.user = payload;
       });
   },

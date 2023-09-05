@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { BiShow } from "react-icons/bi";
+import { BiHide, BiShow } from "react-icons/bi";
 import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsBuildingCheck } from "react-icons/bs";
@@ -12,12 +12,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegsiserFormProps } from "../interfaces/FormProps";
 import { registerThunk } from "../store/asyncThunk";
+import Toast from "../UI/UIToast";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 // import { removeUser } from "../store/customerSlice";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const handleShow = () => setShowPassword(!showPassword);
+  const [isVisible, setIsVisible] = useState(false);
+  const [valid, setValid] = useState(true);
   const dispatch = useTypedDispatch();
   const user = useTypedSelector((state) => state.user);
   const navigate = useNavigate();
@@ -35,11 +38,23 @@ export default function Register() {
   });
 
   const onSubmit = async (data: any) => {
-    let user = await dispatch(registerThunk(data));
-    if (user?.payload?.email) {
-      navigate("/");
-    }else{
-      alert('invalid fields')
+    if (isValid) {
+      let user = await dispatch(registerThunk(data));
+      if (user?.payload?.email) {
+        navigate("/");
+      } else {
+        setValid(false);
+        setIsVisible(true);
+        const timer = setTimeout(() => {
+          setIsVisible(false);
+        }, 4000);
+
+        return () => {
+          clearTimeout(timer);
+        };
+      }
+    } else {
+      console.log("some error during registration");
     }
   };
 
@@ -72,7 +87,7 @@ export default function Register() {
                     autoComplete="name"
                     placeholder="Անուն"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("firstName")}
                   />
                   {errors.firstName && (
@@ -93,7 +108,7 @@ export default function Register() {
                     autoComplete="lastName"
                     required
                     placeholder="Ազգանուն"
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("lastName")}
                   />
                   {errors.lastName && (
@@ -110,7 +125,7 @@ export default function Register() {
               <div>
                 <div className=" relative">
                   <select
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none appearance-none	"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400  placeholder:text-gray-900   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 appearance-none	"
                     {...register("userType")}
                   >
                     <option
@@ -141,7 +156,7 @@ export default function Register() {
                   autoComplete="company"
                   required
                   placeholder="Ընկերության անվանումը"
-                  className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                  className={`${ valid ? "border-slate-400" : "border-red-400"} bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px]  pr-[54px]`}
                   {...register("companyName")}
                 />
                 {errors.companyName && (
@@ -161,7 +176,7 @@ export default function Register() {
                     autoComplete="email"
                     placeholder="Էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className={`${ valid ? "border-slate-400" : "border-red-400"} bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] pr-[54px]`}
                     {...register("email")}
                   />
                   {errors.email && (
@@ -184,7 +199,7 @@ export default function Register() {
                     placeholder="Գաղտնաբառ"
                     autoComplete="current-password"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className="bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] border-slate-400 pr-[54px]"
                     {...register("password")}
                   />
                   {errors.password && (
@@ -196,8 +211,7 @@ export default function Register() {
                     className="absolute top-[1rem] right-6 text-2xl cursor-pointer text-slate-500 z-50"
                     onClick={handleShow}
                   >
-                    {" "}
-                    <BiShow />
+                    {showPassword ? <BiShow /> : <BiHide />}
                   </div>
                 </div>
               </div>
@@ -227,6 +241,12 @@ export default function Register() {
       </div>
 
       <div className="w-full md:w-1/2 h-screen  hidden lg:block register"></div>
+      <Toast
+        type="error"
+        message="Այս տվյալներով օգտատեր գոյություն ունի"
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
     </section>
   );
 }

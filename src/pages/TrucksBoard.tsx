@@ -8,9 +8,11 @@ import { LuFilter, LuFilterX } from "react-icons/lu";
 import DashboardFilter from "../components/DashboardFilter";
 import LoadItemTitle from "../components/LoadItemTitle";
 import LoadItemDesktop from "../components/LoadItemDesktop";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const TrucksBoard: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const { truck } = useTypedSelector((state) => state.truck);
   return (
     <>
       <section className="max-w-[2000px] h-screen mx-auto">
@@ -19,7 +21,7 @@ const TrucksBoard: React.FC = () => {
         </Helmet>
         <Header />
         <div className="w-full h-10 bg-[#eaeaea] flex items-center justify-between pl-4 pr-4 border-t-[1px] dark:border-t-0 dark:bg-[#0b1c2f] dark:text-white">
-          <p className="text-[14px]">{testload.length} գտնված բեռնատարներ</p>
+          <p className="text-[14px]">{truck.length} գտնված բեռնատարներ</p>
           <div className="h-full flex items-center gap-4 relative -z-1">
             <SortLoads />
             <div

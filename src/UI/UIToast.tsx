@@ -3,21 +3,11 @@ import React, { useEffect, useState } from "react";
 interface ToastProps {
   type: "success" | "error" | "warning";
   message: string;
-//   onClose: () => void;
+  isVisible:boolean;
+  setIsVisible?: any
 }
 
-const Toast: React.FC<ToastProps> = ({ type, message }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 4000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+const Toast: React.FC<ToastProps> = ({ type, message,isVisible }) => {
 
   const getIcon = () => {
     switch (type) {
@@ -68,7 +58,7 @@ const Toast: React.FC<ToastProps> = ({ type, message }) => {
   return (
     <div>
       <div
-        className={`fixed top-4 md:right-4 right-0 z-50 max-w-xl bg-white border rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700 ${
+        className={`fixed top-[70px] md:right-2 right-[4px] maxZindex max-w-xl bg-red-500 border rounded-md shadow-lg dark:bg-gray-800 dark:border-gray-700 ${
           isVisible ? "" : "hidden pointer-events-none"
         }`}
         role="alert"

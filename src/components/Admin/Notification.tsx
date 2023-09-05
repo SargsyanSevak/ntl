@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { HiOutlineMail, HiOutlineMailOpen } from "react-icons/hi";
 import { RiDeleteBin7Line } from "react-icons/ri";
-import Logo from '../../assets/mainlogo.svg'
+import Logo from "../../assets/mainlogo.svg";
 interface NotificationProps {
   title?: string;
   description?: string;
@@ -28,9 +28,9 @@ const Notification = ({
     setShowDetails(false);
     setIsImportant((prev) => !prev);
   };
-const toggleEmailIcon = () =>{
-    setIsRead((prev)=> !prev);
-}
+  const toggleEmailIcon = () => {
+    setIsRead((prev) => !prev);
+  };
   const getCurrentDateTime = (): string => {
     const now = new Date();
     const day = now.getDate().toString().padStart(2, "0");
@@ -49,11 +49,7 @@ const toggleEmailIcon = () =>{
       >
         <div className="w-[50px] h-full flex justify-center items-center">
           <div className="w-[40px] h-[40px] border-2 border-gray-400 rounded-full bg-gray-200 flex justify-center items-center ">
-            <img
-              src={Logo}
-              alt=""
-              className="w-[36px]"
-            />
+            <img src={Logo} alt="" className="w-[36px]" />
           </div>
         </div>
         <div className="w-full  flex md:flex-row flex-col-reverse">
@@ -74,21 +70,19 @@ const toggleEmailIcon = () =>{
                   <AiOutlineStar />
                 )}
               </span>
-              <div
-                className="text-xl flex gap-4"
-               
-              >
-                <span className="transition-all hover:text-gray-500" onClick={toggleEmailIcon}>
-                  {
-                    isRead ? <HiOutlineMailOpen/> : <HiOutlineMail />
-                  }
-                 
+              <div className="text-xl flex gap-4">
+                <span
+                  className="transition-all hover:text-gray-500"
+                  onClick={toggleEmailIcon}
+                >
+                  {isRead ? <HiOutlineMailOpen /> : <HiOutlineMail />}
                 </span>
-                <span className="transition-all hover:text-gray-500"  onClick={() => handleDeleteNotification(id)}>
+                <span
+                  className="transition-all hover:text-gray-500"
+                  onClick={() => handleDeleteNotification(id)}
+                >
                   <RiDeleteBin7Line />
                 </span>
-
-               
               </div>
             </div>
           </div>

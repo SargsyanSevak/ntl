@@ -7,7 +7,6 @@ const PrivateRoute: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const checkToken = () => {
     const token = isLogged();
-    console.log(token);
 
     if (!token) {
       navigate("/login");

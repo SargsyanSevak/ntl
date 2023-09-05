@@ -23,8 +23,8 @@ export interface LoadProps {
 
 export interface AddLoadProps {
   date: string
-  truckType: TruckTypeProps;
-  loadType: LoadTypeProps;
+  truckType:  "տենտ" | "ռեֆ" | "կոնտեյներ" | "ավիա";
+  loadType: "ամբողջակսն" | "հավաքական";
   pickup: string;
   delivery: string;
   length? : number | null;

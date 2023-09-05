@@ -12,15 +12,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormProps } from "../interfaces/FormProps";
 import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
 import { loginThunk } from "../store/asyncThunk";
-
+import { BiHide } from "react-icons/bi";
+import UISelect from "../UI/UISelect";
+import { IoIosArrowDown } from "react-icons/io";
+import Toast from "../UI/UIToast";
 export default function LogIn() {
   //i18n
   const { t } = useTranslation();
   const dispatch = useTypedDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const [valid, setValid] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
   const handleShow = () => setShowPassword(!showPassword);
-  const user = useTypedSelector((state) => state.user);
 
   const ref = useRef<any>(null);
 
@@ -28,20 +32,29 @@ export default function LogIn() {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
+   
   } = useForm<LoginFormProps>({
     mode: "onChange",
     resolver: yupResolver(loginSchema),
   });
 
   const onSubmit = async (data: any) => {
-    let user = await dispatch(loginThunk(data));
-    console.log(user);
-    if (user?.payload?.email) {
-      navigate("/");
-    }else{
-      alert('invalid fields')
+    if (isValid) {
+      let user = await dispatch(loginThunk(data));
+
+      if (user?.payload?.email) {
+        navigate("/");
+      }
     }
+    setValid(false);
+    setIsVisible(true)
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   };
 
   return (
@@ -76,7 +89,9 @@ export default function LogIn() {
                     autoComplete="email"
                     placeholder="էլ-հասցե"
                     required
-                    className="bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px]`}
                     {...register("email")}
                   />
                   {errors.email && (
@@ -92,14 +107,16 @@ export default function LogIn() {
 
               <div>
                 <div className="flex items-center justify-between"></div>
-                <div className="mt-2 relative">
+                <div className="relative">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                     placeholder="Գաղտնաբառ"
                     required
-                    className=" bg-[#f2f5fc] rounded-2xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-none pr-[54px]"
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-900    placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px]`}
                     {...register("password")}
                   />
                   {errors.password && (
@@ -111,11 +128,38 @@ export default function LogIn() {
                     className="absolute top-[0.9rem] right-6 text-2xl cursor-pointer text-slate-500"
                     onClick={handleShow}
                   >
-                    {" "}
-                    <BiShow />
+                    {showPassword ? <BiShow /> : <BiHide />}
                   </div>
                 </div>
               </div>
+
+              <div>
+                <div className="mt-2 relative">
+                  <select
+                    className={` bg-[#f2f5fc] rounded-xl block w-full pl-[20px] py-[14px] text-gray-400   placeholder:text-gray-400   focus:ring-[#1c90f3] sm:text-sm sm:leading-6 border-[1px] ${
+                      valid ? "border-slate-400" : "border-red-400"
+                    } pr-[54px] appearance-none`}
+                    {...register("userType")}
+                  >
+                    <option disabled className="text-gray-200 " selected>
+                      Գործունեության տեսակ
+                    </option>
+                    <option value="customer">Պատվիրատու</option>
+                    <option value="subCustomer">Պատվիրատու/աշխատակից</option>
+                    <option value="carrier">Փոխադրող</option>
+                    <option value="subCarrier">Փոխադրող/աշխատակից</option>
+                  </select>
+                  {errors.userType && (
+                    <p className="text-red-600   pt-1 pl-2 text-[12px] tracking-wide">
+                      {errors.userType.message}
+                    </p>
+                  )}
+                  <div className="absolute top-[1rem] right-6 text-2xl text-slate-500">
+                    <IoIosArrowDown />
+                  </div>
+                </div>
+              </div>
+
               <div className="text-sm text-right">
                 <Link
                   to={"/forgot"}
@@ -148,6 +192,7 @@ export default function LogIn() {
         </div>
       </div>
       <div className="w-full md:w-1/2 h-screen  hidden lg:block login"></div>
+      <Toast type="error" message="Օգտատեր չի գտնվել" isVisible={isVisible} setIsVisible={setIsVisible}/>
     </section>
   );
 }

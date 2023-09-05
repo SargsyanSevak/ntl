@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
 
 import axios from "../axios";
 import {
   getTokens,
+  getUserType,
   recoverToken,
   recoverVerifyToken,
   saveToken,
+  saveUserType,
 } from "../utils/helpers";
 
 export const registerThunk = createAsyncThunk<any, any>(
@@ -14,34 +15,38 @@ export const registerThunk = createAsyncThunk<any, any>(
   async (data) => {
     const res = await axios.post(`auth/register`, data);
 
-    // console.log(res);
-
-    // if (res?.status === "error") {
-    //   thunkApi.dispatch(
-    //     showSnackBar({
-    //       bg: "rgba(255, 0, 0, 0.54)",
-    //       text: res?.message,
-    //       isVisible: true,
-    //       withoutSnack: true,
-    //     })
-    //   );
-    //   return thunkApi.rejectWithValue(res.message);
-    // }
     const token = await res.data.token;
+    const userType = await res.data.userType;
     if (token) {
       saveToken(token);
+      saveUserType(userType);
     }
     return res.data;
   }
 );
+export const registerSubUserThunk = createAsyncThunk<any, any>(
+  "customerSlice/registerSubUserThunk",
+  async (data) => {
+    const getCurrentUserTypeViaCookie = getUserType();
 
+    const mixedData = {
+      ...data,
+      currentUserType: getCurrentUserTypeViaCookie,
+    };
+
+    const res = await axios.post(`auth/registerSub`, mixedData);
+    return res.data;
+  }
+);
 export const loginThunk = createAsyncThunk<any, any>(
   "customerSlice/loginThunk",
   async (data) => {
     const res = await axios.post(`auth/login`, data);
     const token = await res.data.token;
+    const userType = await res.data.userType;
     if (token) {
       saveToken(token);
+      saveUserType(userType);
     }
     return res.data;
   }
@@ -50,16 +55,14 @@ export const loginThunk = createAsyncThunk<any, any>(
 export const authMe = createAsyncThunk<any>(
   "customerSlice/authMe",
   async () => {
-    let res = null;
-    if (Cookies.get("Bearer")) {
-      res = await axios.get(`auth/me`);
-    } else {
-      return;
-    }
+    const currentUserType = getUserType();
+    const res = await axios.post(`auth/me`, { userType: currentUserType });
 
     const token = await res.data.token;
+
     if (token) {
       saveToken(token);
+      saveUserType(currentUserType);
     }
     return res.data;
   }
@@ -112,11 +115,83 @@ export const recoverPassRecovery = createAsyncThunk<any>(
   }
 );
 
-export const getLoads = createAsyncThunk<any>(
-  "customerSlice/getLoads",
-  async () => {
-    const res = await axios.post(`load/get`);
+export const addNewItemThunk = createAsyncThunk<any, any>(
+  "itemSlice/addNewItemThunk",
+  async (data: any) => {
+    const res = await axios.post(`load/add`, data);
 
+    return res.data;
+  }
+);
+export const addNewTruckThunk = createAsyncThunk<any, any>(
+  "truckSlice/addNewTruckThunk",
+  async (data: any) => {
+    const res = await axios.post(`truck/add`, data);
+
+    return res.data;
+  }
+);
+export const updateNewItemThunk = createAsyncThunk<any, any>(
+  "itemSlice/updateNewItemThunk",
+  async (data) => {
+    const res = await axios.post(`load/updateLoad`, data);
+
+    return res.data;
+  }
+);
+export const deleteItemThunk = createAsyncThunk<any, any>(
+  "itemSlice/deleteItemThunk",
+  async (data) => {
+    const res = await axios.post(`load/deleteLoad`, data);
+
+    return res.data;
+  }
+);
+
+export const getLoadThunk = createAsyncThunk<any>(
+  "itemSlice/getLoadThunk",
+  async () => {
+    const res = await axios.get(`load/get`);
+    return res;
+  }
+);
+export const getUserLoadsThunk = createAsyncThunk<any, any>(
+  "itemSlice/getUserLoadsThunk",
+  async (data) => {
+    const res = await axios.post(`load/getUserLoads`, data);
+    return res;
+  }
+);
+export const getTruckThunk = createAsyncThunk<any>(
+  "truckSlice/getTruckThunk",
+  async () => {
+    const res = await axios.get(`truck/get`);
+    return res;
+  }
+);
+
+export const getUserTrucksThunk = createAsyncThunk<any, any>(
+  "truckSlice/getUserTrucksThunk",
+  async (data) => {
+    const res = await axios.post(`truck/getUserTrucks`, data);
+    return res;
+  }
+);
+
+export const updateNewTruckThunk = createAsyncThunk<any, any>(
+  "truckSlice/updateNewTruckThunk",
+  async (data) => {
+    const res = await axios.post(`truck/updateTruck`, data);
+
+    return res.data;
+  }
+);
+
+export const deleteTruckThunk = createAsyncThunk<any, any>(
+  "truckSlice/deleteTruckThunk",
+  async (data) => {
+    const res = await axios.post(`truck/deleteTruck`, data);
+    console.log(res);
     return res.data;
   }
 );
