@@ -18,12 +18,5 @@ root.render(
 reportWebVitals();
 
 /// test autocomplate
-const script = document.createElement("script");
-script.src =
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyAylJ09laT7k9vKX5UbLQ5zKV0W4BKi3Gw&libraries=places";
-script.defer = true;
 
-script.onload = function () {};
-
-document.head.appendChild(script);
 /// test autocomplate

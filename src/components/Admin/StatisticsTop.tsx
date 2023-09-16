@@ -52,11 +52,6 @@ const StatisticsTop: React.FC = () => {
           title: `Ավելացնել ${
             userType === "customer" ? "բեռներ" : "բեռնատարներ"
           }`,
-          description: `${
-            userType === "customer"
-              ? "Տեղեկացրեք բեռնափւադրողներին Ձեր հնարավոր բեռների մասին"
-              : "Տեղեկացրեք պատվիրատուներին Ձեր հնարավոր բեռնատարների մասին"
-          }`,
         };
 
       case "/admin/changeitems":
@@ -111,19 +106,7 @@ const StatisticsTop: React.FC = () => {
         >
           {dynamicStatisticTitle.title}
         </m.h4>
-        <m.p
-          className="text-gray-500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.3,
-            delay: 0.7,
-            type: "spring",
-            stiffness: 10,
-          }}
-        >
-          {dynamicStatisticTitle.description}
-        </m.p>
+       
       </div>
       <div className="statistics">
         <div className="flex flex-col md:flex-row justify-between md:justify-start md:items-center md:gap-10 gap-2">

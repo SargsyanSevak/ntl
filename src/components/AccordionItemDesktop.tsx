@@ -24,7 +24,7 @@ function calculateFormattedPostAge(postTimestamp: number): string {
     .padStart(2, "0")}`;
 }
 const AccordionItemDesktop = ({
-  id,
+  _id,
   age,
   date,
   truckType,
@@ -116,10 +116,10 @@ const AccordionItemDesktop = ({
 
                 <div className="flex justify-start items-center  w-[150px]">
                   <div
-                    title={pickup}
+                    title={pickup?.description}
                     className="w-full flex justify-start items-center"
                   >
-                    {CutString(pickup)}
+                    {CutString(pickup?.description)}
                   </div>
                 </div>
                 <div className=" flex justify-start items-center  w-[35px]">
@@ -129,10 +129,10 @@ const AccordionItemDesktop = ({
                 </div>
                 <div className=" flex justify-start items-center  w-[150px]">
                   <div
-                    title={delivery}
+                    title={delivery?.description}
                     className="w-full flex justify-start items-center"
                   >
-                    {CutString(delivery)}
+                    {CutString(delivery?.description)}
                   </div>
                 </div>
                 <div className=" flex justify-start items-center  w-[70px]">
@@ -184,7 +184,7 @@ const AccordionItemDesktop = ({
                     title="Դիտել քարտեզի վրա"
                   >
                     <Link
-                      to={`/dashboard/preview/${id}`}
+                      to={`/dashboard/preview/${_id}`}
                       target="_blank"
                       type="button"
                       className="flex justify-center items-center"

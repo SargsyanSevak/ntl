@@ -2,9 +2,34 @@ import { Map } from "./Map";
 import { HiLocationMarker } from "react-icons/hi";
 import { BsRecordCircle } from "react-icons/bs";
 import { IoMdArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useTypedDispatch, useTypedSelector } from "../hooks/useTypedSelector";
+import { openItemPreview } from "../store/itemsSlice";
+import { useEffect, useState } from "react";
+import { getPreviewItem } from "../store/asyncThunk";
 
 const Preview = () => {
+  const locationId = useParams();
+  const dispatch = useTypedDispatch();
+  const findedItem = useTypedSelector(state => state.load.previewItem)
+
+  const [distanceAndDur,setDistanceAndDur] = useState({
+    distance : 0,
+    duration : ''
+  })
+
+  
+  useEffect(() => {
+    dispatch(getPreviewItem(locationId));
+  }, []);
+
+  const getDistanceAndDuration = (km:number,dur:number) => {
+      return {
+        distance : km,
+        duration:dur
+      }
+  }
+  
   return (
     <>
       <div className="desktop w-full h-screen flex flex-col-reverse relative">
@@ -22,16 +47,16 @@ const Preview = () => {
               </div>
               <div className="w-full h-full flex flex-col justify-center items-center ">
                 <div className="h-[300px] w-full  flex flex-col justify-between items-start text-[14px] py-2">
-                  <h4 className="text-[18px]">Երևան</h4>
+                  <h4 className="text-[18px]">{findedItem?.pickup?.description}</h4>
                   <div>
                     <h4 className="text-gray-600">Հեռավորությունը</h4>
-                    <p>2300կմ</p>
+                    <p>{distanceAndDur?.distance} կմ</p>
                   </div>
                   <div>
                     <h4 className="text-gray-600">Տևողությունը</h4>
-                    <p>13 ժ 13 րոպե</p>
+                    <p>{distanceAndDur?.duration}</p>
                   </div>
-                  <h4 className="text-[18px]">Եկատերինբուրգ</h4>
+                  <h4 className="text-[18px]">{findedItem?.delivery?.description}</h4>
                 </div>
               </div>
             </div>
@@ -44,7 +69,7 @@ const Preview = () => {
           <IoMdArrowBack size={24} color="gray" />
         </Link>
         <div className="map w-full h-full">
-          <Map />
+          <Map pickup={findedItem?.pickup} delivery={findedItem?.delivery} setDistanceAndDur={setDistanceAndDur}/>
         </div>
       </div>
     </>

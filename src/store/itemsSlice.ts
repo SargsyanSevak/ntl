@@ -3,6 +3,7 @@ import {
   addNewItemThunk,
   deleteItemThunk,
   getLoadThunk,
+  getPreviewItem,
   getUserLoadsThunk,
   updateNewItemThunk,
 } from "./asyncThunk";
@@ -50,12 +51,20 @@ let initialState: any = {
   ],
   isLoading: true,
   isEmpty: false,
+  previewItem : {}
 };
 
 const itemSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    openItemPreview : (state,action) => {
+    const previewItem =  state.load.find((item:any)=> item._id === action.payload)
+    console.log(state.load);
+    console.log(action.payload);
+    
+    
+    },
     removeUser: (state) => {
       state.load = [
         {
@@ -134,9 +143,12 @@ const itemSlice = createSlice({
         (el: any) => el._id !== deletedItemId
       );
     }); 
+    builder.addCase(getPreviewItem.fulfilled, (state, { payload }) => {
+      state.previewItem = payload;
+    });
   },
 });
 
-export const { removeUser } = itemSlice.actions;
+export const { removeUser,openItemPreview } = itemSlice.actions;
 
 export default itemSlice.reducer;

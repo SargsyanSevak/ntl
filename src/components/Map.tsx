@@ -7,13 +7,17 @@ interface IMAP {
   map: google.maps.Map;
   maps: any;
 }
-
-export const Map: React.FC = () => {
+interface MapProps {
+  pickup: any;
+  delivery: any;
+  setDistanceAndDur:any
+}
+export const Map = ({pickup,delivery,setDistanceAndDur}:MapProps) => {
   const [MAP, setMAP] = useState<IMAP>({} as IMAP);
   const [isExistRoute, setIsExistRoute] = useState(false);
-  const { from, to, travelTime } = useTypedSelector((state) => state.map);
   const { setTravelTime, setSelectedOption } = useMapActions();
 
+  
   const renderWay = () => {
     const { map, maps } = MAP;
 
@@ -25,23 +29,24 @@ export const Map: React.FC = () => {
 
       directionsService
         .route({
-          origin: from.location,
-          destination: to.location,
+          origin: pickup?.location,
+          destination: delivery?.location,
           travelMode: google.maps.TravelMode.DRIVING,
         })
         .then((res) => {
           directionsRenderer.setDirections(res);
+console.log(res);
 
           // stex karanq tevoxutyun@ vercnenq kam kilometr@, kam urish ban: videoyi mej 1:25 ropen a
-          const durationSec = res.routes[0].legs[0].duration?.value;
-          const km = res.routes[0].legs[0].distance?.value;
+          const durationSec = res.routes[0].legs[0].duration?.text;
+          const km = res.routes[0].legs[0].distance?.text;
 
-          // console.log(durationSec);
-          console.log(km);
+          setDistanceAndDur({
+            duration:durationSec,
+            distance : km
+          })
 
-          if (durationSec) {
-            setTravelTime(Math.ceil(durationSec / 60));
-          }
+          
         })
         .catch((err) => alert(err));
 
@@ -56,15 +61,17 @@ export const Map: React.FC = () => {
 
   useEffect(() => {
     if (
-      from.location?.lat &&
-      to.location?.lat &&
+      pickup?.location?.lat &&
+      delivery?.location?.lat &&
       MAP?.map &&
       MAP?.maps &&
       !isExistRoute
     ) {
       renderWay();
+      
     }
-  }, [from, to, MAP?.map, MAP?.maps, isExistRoute]);
+
+  }, [pickup, delivery, MAP?.map, MAP?.maps, isExistRoute]);
 
   return (
     <div className="w-full h-full">
@@ -85,10 +92,10 @@ export const Map: React.FC = () => {
           }
         }
         center={
-          from.location?.lat
+          pickup?.location?.lat
             ? {
-                lat: from.location?.lat,
-                lng: from.location?.lng,
+                lat: pickup?.location?.lat,
+                lng: pickup?.location?.lng,
               }
             : undefined
         }

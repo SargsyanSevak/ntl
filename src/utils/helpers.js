@@ -3,7 +3,7 @@ import DetectCurrentUserType from "./detectUserType";
 
 export const saveToken = (token) => {
   try {
-    Cookies.set("Bearer", token);
+    Cookies.set("Bearer", token,{ expires: 4 });
   } catch (error) {
     console.log("error saving token", error);
   }
@@ -89,40 +89,3 @@ export const renderContactInformation = () => {
 
   }
 }
-{/* <div className=" flex justify-start items-center  w-[170px] overflow-hidden">
-                  <div
-                    className="cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                  >
-                      {
-                        
-                      }
-
-                    {subCustomerInfo?.phoneNumber ||
-                    customerInfo?.phoneNumber ? (
-                      <CallOptions
-                        contact={
-                          subCustomerInfo
-                            ? subCustomerInfo?.phoneNumber
-                            : customerInfo?.phoneNumber
-                        }
-                      />
-                    ) : (
-                      <a
-                        href={`mailto:${
-                          subCustomerInfo
-                            ? subCustomerInfo?.email
-                            : customerInfo?.email
-                        }`}
-                      >
-                        {
-                          subCustomerInfo
-                            ? subCustomerInfo?.email
-                            : customerInfo?.email
-                        }
-                      </a>
-                    )}
-                  </div>
-                </div> */}

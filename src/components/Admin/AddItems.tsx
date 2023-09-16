@@ -1,7 +1,7 @@
 import { addLoadsSchema } from "../../utils/formScheme";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AddLoadProps } from "../../interfaces/LoadProps";
+import FromInput from "../autocompleteInput/FromInput";
 import { useState } from "react";
 import {
   useTypedDispatch,
@@ -16,12 +16,23 @@ import {
   getTruckThunk,
 } from "../../store/asyncThunk";
 import DetectCurrentUserType from "../../utils/detectUserType";
+import { Coords } from "google-map-react";
+import ToInput from "../autocompleteInput/ToInput";
 
 export default function AddItems() {
   const [isVisible, setIsVisible] = useState(false);
+  const [fromInfo,setFromInfo] = useState({})
+  const [toInfo,setToInfo] = useState({})
   const { user } = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
   const currentUserType = DetectCurrentUserType();
+
+  const getFromInfo = (address: string, location: Coords) => {
+    setFromInfo({ location, description: address }) 
+  }
+  const getToInfo = (address: string, location: Coords) => {
+    setToInfo({ location, description: address }) 
+  }
 
   const {
     register,
@@ -34,10 +45,12 @@ export default function AddItems() {
   });
 
   const onSubmit = async (data: any) => {
+  
     if (isValid) {
       const { userType, parent } = user;
       if (currentUserType === "customer") {
-        dispatch(addNewItemThunk({ ...data, userType, parent }));
+        
+        dispatch(addNewItemThunk({ ...data, userType, parent,toInfo,fromInfo }));
         dispatch(getLoadThunk());
         setIsVisible(true);
         setTimeout(() => {
@@ -46,7 +59,7 @@ export default function AddItems() {
           reset();
         }, 3000);
       } else if (currentUserType === "carrier") {
-        dispatch(addNewTruckThunk({ ...data, userType, parent }));
+        dispatch(addNewTruckThunk({ ...data, userType, parent,toInfo,fromInfo  }));
         dispatch(getTruckThunk());
         setIsVisible(true);
         setTimeout(() => {
@@ -76,19 +89,21 @@ export default function AddItems() {
                   Բարձում
                 </label>
                 <div className="mt-2">
-                  <input
+                  {/* <input
                     type="text"
                     id="pickup"
                     autoComplete="given-name"
                     placeholder="օր. Երևան"
                     className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900  ring-0 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                     {...register("pickup")}
-                  />
-                  {errors.pickup && (
+                  /> */}
+                  <FromInput cbSuccess={getFromInfo}/>
+
+                  {/* {errors.pickup && (
                     <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
                       {errors.pickup.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
 
@@ -100,7 +115,7 @@ export default function AddItems() {
                     : "Նախընտրելի ուղղություն"}
                 </label>
                 <div className="mt-2">
-                  <input
+                  {/* <input
                     type="text"
                     id="delivery"
                     autoComplete="given-name"
@@ -108,12 +123,13 @@ export default function AddItems() {
                   "
                     className="p-4 block w-full rounded-md border-[1px] border-slate-400 py-1.5 text-gray-900 ring-0 focus:ring-0 placeholder:text-gray-400   sm:text-sm sm:leading-6"
                     {...register("delivery")}
-                  />
-                  {errors.delivery && (
+                  /> */}
+                  <ToInput cbSuccess={getToInfo}/>
+                  {/* {errors.delivery && (
                     <p className="text-red-600   pt-1 pl-2  text-[12px] tracking-wide">
                       {errors.delivery.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
 

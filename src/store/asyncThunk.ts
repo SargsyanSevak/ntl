@@ -195,3 +195,12 @@ export const deleteTruckThunk = createAsyncThunk<any, any>(
     return res.data;
   }
 );
+
+export const getPreviewItem = createAsyncThunk<any, any>(
+  "itemsSlice/getPreviewItem",
+  async (data) => {
+    const res = await axios.post(`load/getDetail`, data);
+    console.log(res)
+    return res.data;
+  }
+);
