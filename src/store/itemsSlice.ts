@@ -65,7 +65,7 @@ const itemSlice = createSlice({
     
     
     },
-    removeUser: (state) => {
+    removeLoads: (state) => {
       state.load = [
         {
           id: "",
@@ -149,6 +149,6 @@ const itemSlice = createSlice({
   },
 });
 
-export const { removeUser,openItemPreview } = itemSlice.actions;
+export const { removeLoads,openItemPreview } = itemSlice.actions;
 
 export default itemSlice.reducer;
