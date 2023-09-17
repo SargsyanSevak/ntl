@@ -5,35 +5,80 @@ import { BsRecordCircle, BsArrowUpRight } from "react-icons/bs";
 import { HiLocationMarker } from "react-icons/hi";
 import { CutString, checkLengthOfValue } from "../utils/Check";
 import CallOptions from "./CallOptions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { Link } from "react-router-dom";
+
+function calculateFormattedPostAge(postTimestamp: number): string {
+  const now = Date.now();
+  const timeDifference = now - postTimestamp;
+
+  const minutes = Math.floor(timeDifference / (1000 * 60)) % 60;
+  const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+}
+
 const LoadItemMobile = ({
-  id,
-  age,
+  _id,
   date,
   truckType,
   loadType,
   pickup,
   delivery,
   distance,
-  company,
-  contact,
+  customerInfo,
+  contactInfo,
+  subContactInfo,
   length,
   weight,
   rate,
   comment,
   commodity,
   boardType,
+  updatedAt,
 }: any) => {
   const [showComment, setShowComment] = useState(false);
   const handeOpenComment = () => {
     setShowComment(!showComment);
   };
+  console.log(customerInfo);
+  
+  const mydate = new Date(updatedAt).getTime();
+  const [formattedAge, setFormattedAge] = useState("");
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const age = calculateFormattedPostAge(mydate);
+      setFormattedAge(age);
+    }, 60000);
+
+    const initialAge = calculateFormattedPostAge(mydate);
+    setFormattedAge(initialAge);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [mydate]);
+
+  const renderContactInformation = (main: any, sub: any): any => {
+    if (sub?.phoneNumber || main?.phoneNumber) {
+      return (
+        <CallOptions contact={sub ? sub?.phoneNumber : main?.phoneNumber} />
+      );
+    } else {
+      return (
+        <a href={`mailto:${sub ? sub?.email : main?.email}`}>
+          {sub ? sub?.email : main?.email}
+        </a>
+      );
+    }
+  };
   return (
     <div className="mb-2 dark:mb-0" onClick={handeOpenComment}>
       <div
-        id={id}
+        id={_id}
         className={`relative pb-[50px] dark:border-b-4 border-b-[#1e3053] lg:hidden flex bg-slate-200 dark:bg-[#0E192D] dark:text-slate-200   border-stone-50 sm:px-4 px-4 text-[0.9rem] md:text-[1.2rem] font-bold`}
       >
         <div
@@ -42,11 +87,11 @@ const LoadItemMobile = ({
             e.stopPropagation();
           }}
         >
-          <CallOptions contact={contact} />
+          {renderContactInformation(contactInfo, subContactInfo)}
         </div>
         {boardType === "load" && (
           <Link
-          to={`/dashboard/preview/${id}`}
+            to={`/dashboard/preview/${_id}`}
             className="length  text-[12px] absolute  bottom-[20px] left-4 border-[#2183d9]  z-40 border-[0.7px] text-black dark:text-white px-10 py-2  rounded-xl lg:hidden flex justify-center items-center gap-4 tracking-wider"
             onClick={(e) => {
               e.stopPropagation();
@@ -64,7 +109,7 @@ const LoadItemMobile = ({
             <span className="block lg:hidden">
               <AiOutlineClockCircle />
             </span>
-            {age}
+            {formattedAge}
           </div>
           <div className="date flex flex-col justify-start items-center gap-2">
             <span className="block lg:hidden">
@@ -80,7 +125,7 @@ const LoadItemMobile = ({
               <span className="block lg:hidden">
                 <BsRecordCircle />
               </span>
-              {CutString(pickup)}
+              {CutString(pickup?.description)}
             </div>
             <div className="arrow text-gray-500">
               {" "}
@@ -90,7 +135,7 @@ const LoadItemMobile = ({
               <span className="block lg:hidden text-[#1C90F3] ">
                 <HiLocationMarker />
               </span>
-              {CutString(delivery)}
+              {CutString(delivery?.description)}
             </div>
           </div>
           <div className="flex w-full h-[40px] items-center justify-between">
@@ -102,11 +147,11 @@ const LoadItemMobile = ({
               </span>
               {truckType}
             </div>
-            <div className="distance">{distance}կմ</div>
+            <div className="distance">{distance}2300 կմ</div>
           </div>
           <div className="flex w-full h-[40px] justify-between items-center">
-            <div className="company text-[#1C90F3]" title={company}>
-              {company}
+            <div className="company text-[#1C90F3]" title={contactInfo?.companyName}>
+              {contactInfo?.companyName}
             </div>
             <div className="rate">{checkLengthOfValue(rate, "$")}</div>
           </div>

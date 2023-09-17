@@ -4,10 +4,11 @@ import InputPlaces from "./InputPlaces";
 
 
 
-const FromInput = ({cbSuccess}:any) => {
+const FromInput = ({cbSuccess,disabled,defaultLocation}:any) => {
+ console.log(disabled);
  
   return (
-    <InputPlaces cbSuccess={cbSuccess} type={"from"} />
+    <InputPlaces cbSuccess={cbSuccess} type={"from"} disabled={disabled} defaultLocation={defaultLocation}/>
   );
 };
 

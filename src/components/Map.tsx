@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useMapActions } from "../hooks/useMapActions";
 
 interface IMAP {
@@ -35,7 +34,6 @@ export const Map = ({pickup,delivery,setDistanceAndDur}:MapProps) => {
         })
         .then((res) => {
           directionsRenderer.setDirections(res);
-console.log(res);
 
           // stex karanq tevoxutyun@ vercnenq kam kilometr@, kam urish ban: videoyi mej 1:25 ropen a
           const durationSec = res.routes[0].legs[0].duration?.text;

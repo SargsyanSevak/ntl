@@ -9,6 +9,10 @@ import { useTypedDispatch } from "../../hooks/useTypedSelector";
 import Toast from "../../UI/UIToast";
 import { deleteItemThunk, deleteTruckThunk, updateNewItemThunk, updateNewTruckThunk } from "../../store/asyncThunk";
 import DetectCurrentUserType from "../../utils/detectUserType";
+import FromInput from "../autocompleteInput/FromInput";
+import { Coords } from "google-map-react";
+import { useLocation } from "react-router-dom";
+import ToInput from "../autocompleteInput/ToInput";
 
 const ChangeItems = ({
   _id,
@@ -27,9 +31,22 @@ const ChangeItems = ({
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [isDeleted,setIsDeleted] = useState(false)
   const [isUpdated,setIsUpdated] = useState(false)
+  const [fromInfo,setFromInfo] = useState<any>({})
+  const [toInfo,setToInfo] = useState<any>({})
   const userType = DetectCurrentUserType();
   const dispatch = useTypedDispatch();
+  const {pathname} = useLocation()
   const ref = useRef<any>(null);
+
+console.log(pickup,delivery);
+
+  const getFromInfo = (address: string, location: Coords) => {
+    setFromInfo({ location, description: address }) 
+  }
+  const getToInfo = (address: string, location: Coords) => {
+    setToInfo({ location, description: address }) 
+  }
+
   const makeDisabled = () => {
     setIsDisabled(false);
   };
@@ -66,6 +83,8 @@ const ChangeItems = ({
     }
   };
 
+  console.log(isDisabled && pathname.includes('changeitems'));
+  
   return (
     <>
       <div
@@ -116,24 +135,26 @@ const ChangeItems = ({
           </div>
         </div>
         <div className="pickup w-full sm:w-[48%] lg:w-[350px]  h-[40px]">
-          <input
+          {/* <input
             type="text"
-            defaultValue={pickup}
+            defaultValue={pickup?.description}
             id="change-pickup"
             className="w-full h-full px-2 rounded-md border-none focus:outline-none focus:bg-blue-100"
             disabled={isDisabled}
             {...register("pickup")}
-          />
+          /> */}
+           <FromInput cbSuccess={getFromInfo} disabled={isDisabled && pathname.includes('changeitems')} defaultLocation = {pickup?.description}/>
         </div>
         <div className="delivery w-full sm:w-[48%] lg:w-[350px]  h-[40px] ">
-          <input
+          {/* <input
             type="text"
-            defaultValue={delivery}
+            defaultValue={delivery?.description}
             id="change-delivery"
             className="px-2 w-full   h-[40px] rounded-md border-none focus:outline-none focus:bg-blue-100"
             disabled={isDisabled}
             {...register("delivery")}
-          />
+          /> */}
+          <ToInput cbSuccess={getToInfo} disabled={isDisabled && pathname.includes('changeitems')} defaultLocation = {delivery?.description}/>
         </div>
         <div className="length w-[49%] sm:w-[48%] lg:w-[100px]  h-[40px] relative overflow-hidden">
           <input

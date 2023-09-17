@@ -21,8 +21,8 @@ import ToInput from "../autocompleteInput/ToInput";
 
 export default function AddItems() {
   const [isVisible, setIsVisible] = useState(false);
-  const [fromInfo,setFromInfo] = useState({})
-  const [toInfo,setToInfo] = useState({})
+  const [fromInfo,setFromInfo] = useState<any>({})
+  const [toInfo,setToInfo] = useState<any>({})
   const { user } = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
   const currentUserType = DetectCurrentUserType();
@@ -59,7 +59,7 @@ export default function AddItems() {
           reset();
         }, 3000);
       } else if (currentUserType === "carrier") {
-        dispatch(addNewTruckThunk({ ...data, userType, parent,toInfo,fromInfo  }));
+        dispatch(addNewTruckThunk({ ...data, userType, parent, delivery:toInfo?.description,pickup:fromInfo?.description  }));
         dispatch(getTruckThunk());
         setIsVisible(true);
         setTimeout(() => {
